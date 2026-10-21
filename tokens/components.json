@@ -1,0 +1,9 @@
+{
+  "article": {
+    "$description": "Article: long-form reading container.",
+    "measure": { "$type": "dimension", "$value": "{measure.reading}" },
+    "text": { "$type": "color", "$value": "{color.reading.text}" },
+    "bg": { "$type": "color", "$value": "{color.reading.bg}" },
+    "paragraph-gap": { "$type": "dimension", "$value": "{space.24}" }
+  }
+}

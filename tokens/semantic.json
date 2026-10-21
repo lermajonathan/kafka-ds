@@ -1,0 +1,44 @@
+{
+  "color": {
+    "bg": {
+      "$type": "color",
+      "page": { "$value": "{color.paper.50}", "$extensions": { "kafka.modes": { "dark": "{color.ink.900}" } } },
+      "surface": { "$value": "{color.paper.0}", "$extensions": { "kafka.modes": { "dark": "{color.ink.800}" } } },
+      "sunken": { "$value": "{color.paper.200}", "$extensions": { "kafka.modes": { "dark": "{color.ink.950}" } } },
+      "inverse": { "$value": "{color.ink.900}", "$extensions": { "kafka.modes": { "dark": "{color.paper.50}" } } }
+    },
+    "fg": {
+      "$type": "color",
+      "default": { "$value": "{color.ink.900}", "$extensions": { "kafka.modes": { "dark": "{color.paper.50}" } } },
+      "soft": { "$value": "{color.ink.700}", "$extensions": { "kafka.modes": { "dark": "{color.ink.100}" } } },
+      "muted": { "$value": "{color.ink.600}", "$extensions": { "kafka.modes": { "dark": "{color.ink.200}" } } },
+      "brand": { "$value": "{color.gold.800}", "$extensions": { "kafka.modes": { "dark": "{color.gold.400}" } }, "$description": "Gold text. Dark step on paper; the brand gold itself only on ink." },
+      "link": { "$value": "{color.gold.800}", "$extensions": { "kafka.modes": { "dark": "{color.gold.300}" } }, "$description": "Always underlined; colour alone never marks a link." },
+      "inverse": { "$value": "{color.paper.50}", "$extensions": { "kafka.modes": { "dark": "{color.ink.900}" } } }
+    },
+    "border": {
+      "$type": "color",
+      "default": { "$value": "{color.ink.200}", "$extensions": { "kafka.modes": { "dark": "{color.ink.600}" } } },
+      "focus": { "$value": "{color.gold.700}", "$extensions": { "kafka.modes": { "dark": "{color.gold.400}" } } }
+    },
+    "reading": {
+      "$type": "color",
+      "$description": "Long-form text pairs. Held to 7:1 (WCAG AAA) in tests.",
+      "bg": { "$value": "{color.bg.page}" },
+      "text": { "$value": "{color.fg.default}" },
+      "text-secondary": { "$value": "{color.fg.soft}" }
+    }
+  },
+  "typography": {
+    "reading": {
+      "body": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.18}", "fontWeight": 400, "lineHeight": "{lineHeight.reading}", "letterSpacing": "0em" }
+      },
+      "title": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.44}", "fontWeight": 700, "lineHeight": "{lineHeight.heading}", "letterSpacing": "-0.01em" }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "kafka-design-system",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Kafka — design system for literary arts on screen, with a print module. Built on Pance's architecture.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "lint:tokens": "node scripts/check-token-usage.mjs",
+    "test:contrast": "node tests/contrast.mjs",
+    "verify": "npm run tokens && npm run lint:tokens && npm run test:contrast"
+  },
+  "engines": { "node": ">=22" }
+}

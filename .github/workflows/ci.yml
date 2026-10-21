@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build tokens
+        run: npm run tokens
+      - name: Generated token files are up to date
+        run: git diff --exit-code -- src/styles/tokens.css src/tokens.ts tokens/dist docs/tokens.md || (echo "::error::Run 'npm run tokens' and commit the generated files" && exit 1)
+      - name: Components only use tokens
+        run: npm run lint:tokens
+      - name: Token contrast (reading 7:1, UI 4.5:1, non-text 3:1; light + dark)
+        run: npm run test:contrast

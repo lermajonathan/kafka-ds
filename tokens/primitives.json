@@ -1,0 +1,80 @@
+{
+  "color": {
+    "paper": {
+      "$type": "color",
+      "$description": "Warm paper whites. Page and surface backgrounds.",
+      "0": { "$value": "#fffdf9" },
+      "50": { "$value": "#fbf8f1" },
+      "100": { "$value": "#f6f1e6" },
+      "200": { "$value": "#ece4d2" }
+    },
+    "ink": {
+      "$type": "color",
+      "$description": "Warm neutral inks. Text, lines and dark surfaces.",
+      "50": { "$value": "#f4f2ef" },
+      "100": { "$value": "#e6e2dc" },
+      "200": { "$value": "#cfc9c0" },
+      "300": { "$value": "#aaa398" },
+      "400": { "$value": "#857e73" },
+      "500": { "$value": "#615b52" },
+      "600": { "$value": "#4a453e" },
+      "700": { "$value": "#36322d" },
+      "800": { "$value": "#26231f" },
+      "900": { "$value": "#1a1a1a" },
+      "950": { "$value": "#0f0f0e" }
+    },
+    "gold": {
+      "$type": "color",
+      "$description": "Brand gold. 400 is the Altazor gold (#d4af37); 700-800 are the text-safe steps on paper.",
+      "100": { "$value": "#f7ecc4" },
+      "300": { "$value": "#e6c964" },
+      "400": { "$value": "#d4af37" },
+      "500": { "$value": "#b8932a" },
+      "600": { "$value": "#8f6f14" },
+      "700": { "$value": "#715808" },
+      "800": { "$value": "#574306" }
+    }
+  },
+  "fontFamily": {
+    "reading": { "$type": "fontFamily", "$value": ["Literata", "Georgia", "serif"], "$description": "PROVISIONAL until DDR-KF-001 (specimen test with real text)." },
+    "ui": { "$type": "fontFamily", "$value": ["system-ui", "-apple-system", "Segoe UI", "sans-serif"] },
+    "mono": { "$type": "fontFamily", "$value": ["ui-monospace", "Menlo", "Consolas", "monospace"] }
+  },
+  "fontSize": {
+    "$type": "dimension",
+    "14": { "$value": "0.875rem" },
+    "16": { "$value": "1rem" },
+    "18": { "$value": "1.125rem", "$description": "Minimum body size for reading text." },
+    "20": { "$value": "1.25rem" },
+    "24": { "$value": "1.5rem" },
+    "32": { "$value": "2rem" },
+    "44": { "$value": "2.75rem" }
+  },
+  "lineHeight": {
+    "$type": "number",
+    "heading": { "$value": 1.2 },
+    "ui": { "$value": 1.4 },
+    "reading": { "$value": 1.6, "$description": "Inside the 1.5-1.7 range for sustained reading." }
+  },
+  "measure": {
+    "$type": "dimension",
+    "min": { "$value": "45ch", "$description": "Narrowest comfortable line." },
+    "reading": { "$value": "66ch", "$description": "Target line length." },
+    "max": { "$value": "75ch", "$description": "Widest comfortable line." }
+  },
+  "space": {
+    "$type": "dimension",
+    "$description": "8pt grid with a 2pt sub-grid. Name = pixels.",
+    "2": { "$value": "0.125rem" },
+    "4": { "$value": "0.25rem" },
+    "6": { "$value": "0.375rem" },
+    "8": { "$value": "0.5rem" },
+    "12": { "$value": "0.75rem" },
+    "16": { "$value": "1rem" },
+    "24": { "$value": "1.5rem" },
+    "32": { "$value": "2rem" },
+    "48": { "$value": "3rem" },
+    "64": { "$value": "4rem" },
+    "96": { "$value": "6rem" }
+  }
+}
