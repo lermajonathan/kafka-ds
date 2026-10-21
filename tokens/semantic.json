@@ -5,7 +5,8 @@
       "page": { "$value": "{color.paper.50}", "$extensions": { "kafka.modes": { "dark": "{color.ink.900}" } } },
       "surface": { "$value": "{color.paper.0}", "$extensions": { "kafka.modes": { "dark": "{color.ink.800}" } } },
       "sunken": { "$value": "{color.paper.200}", "$extensions": { "kafka.modes": { "dark": "{color.ink.950}" } } },
-      "inverse": { "$value": "{color.ink.900}", "$extensions": { "kafka.modes": { "dark": "{color.paper.50}" } } }
+      "inverse": { "$value": "{color.ink.900}", "$extensions": { "kafka.modes": { "dark": "{color.paper.50}" } } },
+      "brand": { "$value": "{color.gold.400}", "$description": "Superficie de oro: botón primario, insignia de marca, mosaico de ícono. El texto encima va en fg.on-brand (8,3:1)." }
     },
     "fg": {
       "$type": "color",
@@ -14,12 +15,15 @@
       "muted": { "$value": "{color.ink.600}", "$extensions": { "kafka.modes": { "dark": "{color.ink.200}" } } },
       "brand": { "$value": "{color.gold.800}", "$extensions": { "kafka.modes": { "dark": "{color.gold.400}" } }, "$description": "Gold text. Dark step on paper; the brand gold itself only on ink." },
       "link": { "$value": "{color.gold.800}", "$extensions": { "kafka.modes": { "dark": "{color.gold.300}" } }, "$description": "Always underlined; colour alone never marks a link." },
-      "inverse": { "$value": "{color.paper.50}", "$extensions": { "kafka.modes": { "dark": "{color.ink.900}" } } }
+      "inverse": { "$value": "{color.paper.50}", "$extensions": { "kafka.modes": { "dark": "{color.ink.900}" } } },
+      "on-brand": { "$value": "{color.ink.900}", "$description": "Texto sobre bg.brand. No cambia con el modo porque el oro tampoco." }
     },
     "border": {
       "$type": "color",
       "default": { "$value": "{color.ink.200}", "$extensions": { "kafka.modes": { "dark": "{color.ink.600}" } } },
-      "focus": { "$value": "{color.gold.700}", "$extensions": { "kafka.modes": { "dark": "{color.gold.400}" } } }
+      "strong": { "$value": "{color.ink.500}", "$extensions": { "kafka.modes": { "dark": "{color.ink.300}" } }, "$description": "Borde de controles que lo necesitan para identificarse (botón de contorno, campos). 3:1 o más." },
+      "focus": { "$value": "{color.gold.700}", "$extensions": { "kafka.modes": { "dark": "{color.gold.400}" } } },
+      "brand": { "$value": "{color.gold.600}", "$extensions": { "kafka.modes": { "dark": "{color.gold.400}" } }, "$description": "Borde dorado de tarjetas destacadas y de noticias. 3:1 o más contra el fondo." }
     },
     "reading": {
       "$type": "color",
@@ -28,6 +32,24 @@
       "text": { "$value": "{color.fg.default}" },
       "text-secondary": { "$value": "{color.fg.soft}" }
     }
+  },
+  "radius": {
+    "$type": "dimension",
+    "control": { "$value": "{radius.12}", "$description": "Botones, campos y chips rectangulares." },
+    "card": { "$value": "{radius.16}" },
+    "media": { "$value": "{radius.20}", "$description": "Portadas e imágenes grandes." },
+    "pill": { "$value": "{radius.full}" }
+  },
+  "elevation": {
+    "$type": "shadow",
+    "card": { "$value": "{shadow.md}" },
+    "floating": { "$value": "{shadow.lg}", "$description": "Elementos que flotan sobre la página, como la caja de noticias." },
+    "glow": { "$value": "{shadow.glow}" }
+  },
+  "focus": {
+    "$type": "dimension",
+    "width": { "$value": "{borderWidth.thick}" },
+    "offset": { "$value": "{space.2}" }
   },
   "typography": {
     "reading": {
@@ -38,6 +60,40 @@
       "title": {
         "$type": "typography",
         "$value": { "fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.44}", "fontWeight": 700, "lineHeight": "{lineHeight.heading}", "letterSpacing": "-0.01em" }
+      },
+      "lead": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.20}", "fontWeight": 400, "lineHeight": "{lineHeight.reading}", "letterSpacing": "0em" }
+      },
+      "heading-lg": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.32}", "fontWeight": 700, "lineHeight": "{lineHeight.heading}", "letterSpacing": "-0.01em" }
+      },
+      "heading-md": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.24}", "fontWeight": 700, "lineHeight": "{lineHeight.heading}", "letterSpacing": "0em" }
+      },
+      "heading-sm": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.20}", "fontWeight": 700, "lineHeight": "{lineHeight.heading}", "letterSpacing": "0em" }
+      }
+    },
+    "ui": {
+      "button": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.ui}", "fontSize": "{fontSize.16}", "fontWeight": 600, "lineHeight": "{lineHeight.ui}", "letterSpacing": "0em" }
+      },
+      "label": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.ui}", "fontSize": "{fontSize.14}", "fontWeight": 500, "lineHeight": "{lineHeight.ui}", "letterSpacing": "0em" }
+      },
+      "caption": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.ui}", "fontSize": "{fontSize.12}", "fontWeight": 600, "lineHeight": "{lineHeight.ui}", "letterSpacing": "0.04em" }
+      },
+      "overline": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{fontFamily.ui}", "fontSize": "{fontSize.12}", "fontWeight": 700, "lineHeight": "{lineHeight.ui}", "letterSpacing": "0.1em" }
       }
     }
   }

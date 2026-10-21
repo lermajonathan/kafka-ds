@@ -26,6 +26,7 @@
     "gold": {
       "$type": "color",
       "$description": "Brand gold. 400 is the Altazor gold (#d4af37); 700-800 are the text-safe steps on paper.",
+      "50": { "$value": "#fff6cf", "$description": "Brillo del borde VIP." },
       "100": { "$value": "#f7ecc4" },
       "300": { "$value": "#e6c964" },
       "400": { "$value": "#d4af37" },
@@ -33,6 +34,13 @@
       "600": { "$value": "#8f6f14" },
       "700": { "$value": "#715808" },
       "800": { "$value": "#574306" }
+    },
+    "shadow": {
+      "$type": "color",
+      "$description": "Sombras translúcidas (ink 10 % y 22 %, oro 38 %). Solo para elevación.",
+      "soft": { "$value": "#0f0f0e1a" },
+      "strong": { "$value": "#0f0f0e38" },
+      "glow": { "$value": "#b8932a61" }
     }
   },
   "fontFamily": {
@@ -42,6 +50,7 @@
   },
   "fontSize": {
     "$type": "dimension",
+    "12": { "$value": "0.75rem", "$description": "Solo para metadatos e insignias." },
     "14": { "$value": "0.875rem" },
     "16": { "$value": "1rem" },
     "18": { "$value": "1.125rem", "$description": "Minimum body size for reading text." },
@@ -71,10 +80,60 @@
     "8": { "$value": "0.5rem" },
     "12": { "$value": "0.75rem" },
     "16": { "$value": "1rem" },
+    "20": { "$value": "1.25rem" },
     "24": { "$value": "1.5rem" },
     "32": { "$value": "2rem" },
     "48": { "$value": "3rem" },
     "64": { "$value": "4rem" },
     "96": { "$value": "6rem" }
+  },
+  "radius": {
+    "$type": "dimension",
+    "$description": "Name = pixels. full = pill.",
+    "4": { "$value": "0.25rem" },
+    "8": { "$value": "0.5rem" },
+    "12": { "$value": "0.75rem" },
+    "16": { "$value": "1rem" },
+    "20": { "$value": "1.25rem" },
+    "full": { "$value": "9999px" }
+  },
+  "borderWidth": {
+    "$type": "dimension",
+    "hairline": { "$value": "1px" },
+    "thin": { "$value": "1.5px", "$description": "Tarjetas destacadas." },
+    "medium": { "$value": "2px" },
+    "thick": { "$value": "3px", "$description": "Anillo de foco y brillo VIP." }
+  },
+  "size": {
+    "$type": "dimension",
+    "touch": { "$value": "2.75rem", "$description": "Área táctil mínima: 44 px." },
+    "icon": {
+      "sm": { "$value": "1rem" },
+      "md": { "$value": "1.25rem" },
+      "lg": { "$value": "1.5rem" }
+    },
+    "floating": { "$value": "24.25rem", "$description": "Ancho de la caja flotante de noticias." }
+  },
+  "duration": {
+    "$type": "duration",
+    "fast": { "$value": "150ms" },
+    "base": { "$value": "250ms" },
+    "slow": { "$value": "350ms" },
+    "shine": { "$value": "3600ms", "$description": "Vuelta completa del brillo VIP." }
+  },
+  "ease": {
+    "$type": "cubicBezier",
+    "standard": { "$value": "cubic-bezier(0.2, 0, 0, 1)" }
+  },
+  "shadow": {
+    "$type": "shadow",
+    "sm": { "$value": { "offsetX": "0px", "offsetY": "2px", "blur": "8px", "spread": "0px", "color": "{color.shadow.soft}" } },
+    "md": { "$value": { "offsetX": "0px", "offsetY": "10px", "blur": "28px", "spread": "0px", "color": "{color.shadow.soft}" } },
+    "lg": { "$value": { "offsetX": "0px", "offsetY": "18px", "blur": "44px", "spread": "0px", "color": "{color.shadow.strong}" } },
+    "glow": { "$value": { "offsetX": "0px", "offsetY": "14px", "blur": "36px", "spread": "0px", "color": "{color.shadow.glow}" } }
+  },
+  "gradient": {
+    "$type": "gradient",
+    "vip": { "$value": { "angle": "140deg", "stops": [ { "color": "{color.gold.100}", "position": "0%" }, { "color": "{color.gold.300}", "position": "42%" }, { "color": "{color.gold.500}", "position": "100%" } ] }, "$description": "Fondo de la tarjeta VIP. El texto va en ink 900 (5,9:1 o más en todo el degradado)." }
   }
 }

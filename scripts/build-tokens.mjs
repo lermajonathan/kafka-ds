@@ -79,6 +79,8 @@ function toCss(tok) {
   const { value, type } = tok
   if (typeof value === 'string' && REF.test(value)) return cssRef(value)
   if (type === 'fontFamily') return Array.isArray(value) ? fontStack(value) : value
+  if (type === 'shadow') return `${cssRef(value.offsetX)} ${cssRef(value.offsetY)} ${cssRef(value.blur)} ${cssRef(value.spread)} ${cssRef(value.color)}`
+  if (type === 'gradient') return `linear-gradient(${value.angle}, ${value.stops.map((s) => `${cssRef(s.color)} ${s.position}`).join(', ')})`
   return cssRef(String(value))
 }
 const TYPO_PARTS = { fontFamily: 'font-family', fontSize: 'font-size', fontWeight: 'font-weight', lineHeight: 'line-height', letterSpacing: 'letter-spacing' }

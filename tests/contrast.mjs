@@ -52,6 +52,28 @@ pairs.push(
   ['color.border.focus', 'color.bg.page', UI, 'focus ring on page'],
   ['color.border.focus', 'color.bg.surface', UI, 'focus ring on surface'],
   ['article.text', 'article.bg', READING, 'article text on article bg'],
+  // Oro como superficie y bordes de marca
+  ['color.fg.on-brand', 'color.bg.brand', TEXT, 'text on gold surface'],
+  ['color.border.brand', 'color.bg.page', UI, 'brand border on page'],
+  ['color.border.brand', 'color.bg.surface', UI, 'brand border on surface'],
+  ['color.border.strong', 'color.bg.page', UI, 'strong border on page'],
+  ['color.border.strong', 'color.bg.surface', UI, 'strong border on surface'],
+  // Componentes
+  ['button.primary.fg', 'button.primary.bg', TEXT, 'primary button label'],
+  ['button.primary.fg', 'button.primary.bg-hover', TEXT, 'primary button label (hover)'],
+  ['button.soft.fg', 'button.soft.bg', TEXT, 'soft button label'],
+  ['button.outline.border', 'color.bg.surface', UI, 'outline button border'],
+  ['badge.neutral.fg', 'badge.neutral.bg', TEXT, 'neutral badge'],
+  ['badge.brand.fg', 'badge.brand.bg', TEXT, 'brand badge'],
+  ['chip.fg', 'chip.bg', TEXT, 'chip label'],
+  ['chip.selected-fg', 'chip.selected-bg', TEXT, 'selected chip label'],
+  ['news.kind-fg', 'news.kind-bg', TEXT, 'news kind tile'],
+  ['news.border', 'news.bg', UI, 'news border'],
+  // VIP: texto fijo sobre los tres puntos del degradado y la insignia
+  ['vip.fg', 'color.gold.100', TEXT, 'VIP text on gradient start'],
+  ['vip.fg', 'color.gold.300', TEXT, 'VIP text on gradient middle'],
+  ['vip.fg', 'color.gold.500', TEXT, 'VIP text on gradient end'],
+  ['vip.badge-fg', 'vip.badge-bg', TEXT, 'VIP badge'],
   // The brand gold itself is only a text colour on ink, never on paper
   ['color.gold.400', 'color.ink.900', READING, 'brand gold on ink (dark surfaces)'],
 )

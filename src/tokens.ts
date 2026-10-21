@@ -23,6 +23,7 @@ export const tokens = {
       "950": "#0f0f0e"
     },
     "gold": {
+      "50": "#fff6cf",
       "100": "#f7ecc4",
       "300": "#e6c964",
       "400": "#d4af37",
@@ -31,11 +32,17 @@ export const tokens = {
       "700": "#715808",
       "800": "#574306"
     },
+    "shadow": {
+      "soft": "#0f0f0e1a",
+      "strong": "#0f0f0e38",
+      "glow": "#b8932a61"
+    },
     "bg": {
       "page": "#fbf8f1",
       "surface": "#fffdf9",
       "sunken": "#ece4d2",
-      "inverse": "#1a1a1a"
+      "inverse": "#1a1a1a",
+      "brand": "#d4af37"
     },
     "fg": {
       "default": "#1a1a1a",
@@ -43,11 +50,14 @@ export const tokens = {
       "muted": "#4a453e",
       "brand": "#574306",
       "link": "#574306",
-      "inverse": "#fbf8f1"
+      "inverse": "#fbf8f1",
+      "on-brand": "#1a1a1a"
     },
     "border": {
       "default": "#cfc9c0",
-      "focus": "#715808"
+      "strong": "#615b52",
+      "focus": "#715808",
+      "brand": "#8f6f14"
     },
     "reading": {
       "bg": "#fbf8f1",
@@ -61,6 +71,7 @@ export const tokens = {
     "mono": "ui-monospace, Menlo, Consolas, monospace"
   },
   "fontSize": {
+    "12": "0.75rem",
     "14": "0.875rem",
     "16": "1rem",
     "18": "1.125rem",
@@ -86,11 +97,124 @@ export const tokens = {
     "8": "0.5rem",
     "12": "0.75rem",
     "16": "1rem",
+    "20": "1.25rem",
     "24": "1.5rem",
     "32": "2rem",
     "48": "3rem",
     "64": "4rem",
     "96": "6rem"
+  },
+  "radius": {
+    "4": "0.25rem",
+    "8": "0.5rem",
+    "12": "0.75rem",
+    "16": "1rem",
+    "20": "1.25rem",
+    "full": "9999px",
+    "control": "0.75rem",
+    "card": "1rem",
+    "media": "1.25rem",
+    "pill": "9999px"
+  },
+  "borderWidth": {
+    "hairline": "1px",
+    "thin": "1.5px",
+    "medium": "2px",
+    "thick": "3px"
+  },
+  "size": {
+    "touch": "2.75rem",
+    "icon": {
+      "sm": "1rem",
+      "md": "1.25rem",
+      "lg": "1.5rem"
+    },
+    "floating": "24.25rem"
+  },
+  "duration": {
+    "fast": "150ms",
+    "base": "250ms",
+    "slow": "350ms",
+    "shine": "3600ms"
+  },
+  "ease": {
+    "standard": "cubic-bezier(0.2, 0, 0, 1)"
+  },
+  "shadow": {
+    "sm": {
+      "offsetX": "0px",
+      "offsetY": "2px",
+      "blur": "8px",
+      "spread": "0px",
+      "color": "#0f0f0e1a"
+    },
+    "md": {
+      "offsetX": "0px",
+      "offsetY": "10px",
+      "blur": "28px",
+      "spread": "0px",
+      "color": "#0f0f0e1a"
+    },
+    "lg": {
+      "offsetX": "0px",
+      "offsetY": "18px",
+      "blur": "44px",
+      "spread": "0px",
+      "color": "#0f0f0e38"
+    },
+    "glow": {
+      "offsetX": "0px",
+      "offsetY": "14px",
+      "blur": "36px",
+      "spread": "0px",
+      "color": "#b8932a61"
+    }
+  },
+  "gradient": {
+    "vip": {
+      "angle": "140deg",
+      "stops": [
+        {
+          "color": "#f7ecc4",
+          "position": "0%"
+        },
+        {
+          "color": "#e6c964",
+          "position": "42%"
+        },
+        {
+          "color": "#b8932a",
+          "position": "100%"
+        }
+      ]
+    }
+  },
+  "elevation": {
+    "card": {
+      "offsetX": "0px",
+      "offsetY": "10px",
+      "blur": "28px",
+      "spread": "0px",
+      "color": "#0f0f0e1a"
+    },
+    "floating": {
+      "offsetX": "0px",
+      "offsetY": "18px",
+      "blur": "44px",
+      "spread": "0px",
+      "color": "#0f0f0e38"
+    },
+    "glow": {
+      "offsetX": "0px",
+      "offsetY": "14px",
+      "blur": "36px",
+      "spread": "0px",
+      "color": "#b8932a61"
+    }
+  },
+  "focus": {
+    "width": "3px",
+    "offset": "0.125rem"
   },
   "typography": {
     "reading": {
@@ -115,6 +239,100 @@ export const tokens = {
         "fontWeight": 700,
         "lineHeight": 1.2,
         "letterSpacing": "-0.01em"
+      },
+      "lead": {
+        "fontFamily": [
+          "Literata",
+          "Georgia",
+          "serif"
+        ],
+        "fontSize": "1.25rem",
+        "fontWeight": 400,
+        "lineHeight": 1.6,
+        "letterSpacing": "0em"
+      },
+      "heading-lg": {
+        "fontFamily": [
+          "Literata",
+          "Georgia",
+          "serif"
+        ],
+        "fontSize": "2rem",
+        "fontWeight": 700,
+        "lineHeight": 1.2,
+        "letterSpacing": "-0.01em"
+      },
+      "heading-md": {
+        "fontFamily": [
+          "Literata",
+          "Georgia",
+          "serif"
+        ],
+        "fontSize": "1.5rem",
+        "fontWeight": 700,
+        "lineHeight": 1.2,
+        "letterSpacing": "0em"
+      },
+      "heading-sm": {
+        "fontFamily": [
+          "Literata",
+          "Georgia",
+          "serif"
+        ],
+        "fontSize": "1.25rem",
+        "fontWeight": 700,
+        "lineHeight": 1.2,
+        "letterSpacing": "0em"
+      }
+    },
+    "ui": {
+      "button": {
+        "fontFamily": [
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "sans-serif"
+        ],
+        "fontSize": "1rem",
+        "fontWeight": 600,
+        "lineHeight": 1.4,
+        "letterSpacing": "0em"
+      },
+      "label": {
+        "fontFamily": [
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "sans-serif"
+        ],
+        "fontSize": "0.875rem",
+        "fontWeight": 500,
+        "lineHeight": 1.4,
+        "letterSpacing": "0em"
+      },
+      "caption": {
+        "fontFamily": [
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "sans-serif"
+        ],
+        "fontSize": "0.75rem",
+        "fontWeight": 600,
+        "lineHeight": 1.4,
+        "letterSpacing": "0.04em"
+      },
+      "overline": {
+        "fontFamily": [
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "sans-serif"
+        ],
+        "fontSize": "0.75rem",
+        "fontWeight": 700,
+        "lineHeight": 1.4,
+        "letterSpacing": "0.1em"
       }
     }
   },
@@ -122,7 +340,180 @@ export const tokens = {
     "measure": "66ch",
     "text": "#1a1a1a",
     "bg": "#fbf8f1",
-    "paragraph-gap": "1.5rem"
+    "paragraph-gap": "1.5rem",
+    "cover-radius": "1.25rem"
+  },
+  "button": {
+    "radius": "0.75rem",
+    "padding-x": "1.5rem",
+    "padding-y": "0.75rem",
+    "gap": "0.5rem",
+    "min-height": "2.75rem",
+    "type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "1rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "primary": {
+      "bg": "#d4af37",
+      "bg-hover": "#e6c964",
+      "fg": "#1a1a1a"
+    },
+    "soft": {
+      "bg": "#ece4d2",
+      "fg": "#1a1a1a"
+    },
+    "outline": {
+      "border": "#615b52",
+      "fg": "#1a1a1a"
+    }
+  },
+  "badge": {
+    "radius": "9999px",
+    "padding-x": "0.75rem",
+    "padding-y": "0.25rem",
+    "type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "neutral": {
+      "bg": "#1a1a1a",
+      "fg": "#fbf8f1"
+    },
+    "brand": {
+      "bg": "#d4af37",
+      "fg": "#1a1a1a"
+    }
+  },
+  "chip": {
+    "radius": "9999px",
+    "padding-x": "1rem",
+    "padding-y": "0.5rem",
+    "min-height": "2.75rem",
+    "type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "bg": "#fffdf9",
+    "border": "#cfc9c0",
+    "fg": "#36322d",
+    "selected-bg": "#1a1a1a",
+    "selected-fg": "#fbf8f1"
+  },
+  "card": {
+    "bg": "#fffdf9",
+    "border": "#cfc9c0",
+    "border-width": "1px",
+    "radius": "1rem",
+    "padding": "1.5rem",
+    "gap": "0.75rem",
+    "shadow": {
+      "offsetX": "0px",
+      "offsetY": "10px",
+      "blur": "28px",
+      "spread": "0px",
+      "color": "#0f0f0e1a"
+    },
+    "title": {
+      "fontFamily": [
+        "Literata",
+        "Georgia",
+        "serif"
+      ],
+      "fontSize": "1.25rem",
+      "fontWeight": 700,
+      "lineHeight": 1.2,
+      "letterSpacing": "0em"
+    },
+    "featured": {
+      "border": "#8f6f14",
+      "border-width": "1.5px"
+    }
+  },
+  "vip": {
+    "bg": {
+      "angle": "140deg",
+      "stops": [
+        {
+          "color": "#f7ecc4",
+          "position": "0%"
+        },
+        {
+          "color": "#e6c964",
+          "position": "42%"
+        },
+        {
+          "color": "#b8932a",
+          "position": "100%"
+        }
+      ]
+    },
+    "fg": "#1a1a1a",
+    "shine": "#fff6cf",
+    "shine-width": "3px",
+    "shine-duration": "3600ms",
+    "glow": {
+      "offsetX": "0px",
+      "offsetY": "14px",
+      "blur": "36px",
+      "spread": "0px",
+      "color": "#b8932a61"
+    },
+    "badge-bg": "#1a1a1a",
+    "badge-fg": "#f7ecc4"
+  },
+  "news": {
+    "width": "24.25rem",
+    "bg": "#fffdf9",
+    "border": "#8f6f14",
+    "border-width": "1.5px",
+    "radius": "1rem",
+    "padding": "1.25rem",
+    "shadow": {
+      "offsetX": "0px",
+      "offsetY": "18px",
+      "blur": "44px",
+      "spread": "0px",
+      "color": "#0f0f0e38"
+    },
+    "title": {
+      "fontFamily": [
+        "Literata",
+        "Georgia",
+        "serif"
+      ],
+      "fontSize": "1.25rem",
+      "fontWeight": 700,
+      "lineHeight": 1.2,
+      "letterSpacing": "0em"
+    },
+    "kind-bg": "#d4af37",
+    "kind-fg": "#1a1a1a",
+    "kind-size": "2rem",
+    "enter": "350ms"
   }
 } as const
 
