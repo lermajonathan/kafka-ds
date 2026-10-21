@@ -4,6 +4,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H3 · UI esencial (21 oct 2026)
+- **16 componentes**: [IconButton](docs/components/icon-button.md), [ButtonGroup](docs/components/button-group.md), [Link](docs/components/link.md), [Badge](docs/components/badge.md), [Chip](docs/components/chip.md), [Field](docs/components/field.md), [Input](docs/components/input.md), [Textarea](docs/components/textarea.md), [Select](docs/components/select.md), [Checkbox](docs/components/checkbox.md), [Radio](docs/components/radio.md), [Switch](docs/components/switch.md), [Slider](docs/components/slider.md), [PinInput](docs/components/pin-input.md), [TagInput](docs/components/tag-input.md) y [FileUpload](docs/components/file-upload.md) ([DDR-KF-009](docs/decisions/DDR-KF-009-ui-esencial-y-estados.md)).
+- **Colores de estado** `color.status.*` (peligro, éxito, aviso, info) con cuatro escalas primitivas, verificados en claro y oscuro. Rol tipográfico `typography.ui.input` (16 px).
+- 648 tokens; 184 pares de contraste en claro y 183 en oscuro; 183 comprobaciones de teclado y ARIA; axe-core sin violaciones en 31 componentes (124 páginas).
+
 ### H2 · Componentes de lectura (21 oct 2026)
 - **14 componentes**: [Prose](docs/components/prose.md), [PullQuote](docs/components/pull-quote.md), [Footnote](docs/components/footnote.md), [Verse](docs/components/verse.md), [Epigraph](docs/components/epigraph.md), [DropCap](docs/components/drop-cap.md), [ReadingProgress](docs/components/reading-progress.md), [TableOfContents](docs/components/toc.md), [ReadingSettings](docs/components/reading-settings.md), [PrevNext](docs/components/prev-next.md), [Figure](docs/components/figure.md), [Author](docs/components/author.md), [ReadingTime](docs/components/reading-time.md) y [Embed](docs/components/embed.md) ([DDR-KF-008](docs/decisions/DDR-KF-008-componentes-de-lectura.md)).
 - 141 tokens de componente nuevos (214 en total); textos de la interfaz en inglés y español (`labelsEs`).

@@ -2,253 +2,825 @@
   "color": {
     "bg": {
       "$type": "color",
-      "page": {"$value": "{color.paper.50}", "$extensions": {"kafka.modes": {"dark": "{color.ink.900}"}}},
-      "surface": {"$value": "{color.paper.0}", "$extensions": {"kafka.modes": {"dark": "{color.ink.800}"}}},
-      "sunken": {"$value": "{color.paper.200}", "$extensions": {"kafka.modes": {"dark": "{color.ink.950}"}}},
-      "inverse": {"$value": "{color.ink.900}", "$extensions": {"kafka.modes": {"dark": "{color.paper.50}"}}},
-      "brand": {"$value": "{color.gold.400}", "$description": "Superficie de oro: botón primario, insignia de marca, mosaico de ícono. El texto encima va en fg.on-brand (8,3:1)."},
-      "hover": {"$value": "{color.paper.100}", "$description": "Hover de superficies: filas de menú, chips, tarjetas interactivas.", "$extensions": {"kafka.modes": {"dark": "{color.ink.700}"}}},
-      "active": {"$value": "{color.paper.200}", "$description": "Pulsado de superficies.", "$extensions": {"kafka.modes": {"dark": "{color.ink.600}"}}},
-      "sunken-hover": {"$value": "{color.ink.100}", "$description": "Hover de controles sobre bg.sunken (botón suave).", "$extensions": {"kafka.modes": {"dark": "{color.ink.700}"}}},
-      "sunken-active": {"$value": "{color.ink.200}", "$description": "Pulsado de controles sobre bg.sunken.", "$extensions": {"kafka.modes": {"dark": "{color.ink.600}"}}},
-      "brand-hover": {"$value": "{color.gold.300}", "$description": "Hover del oro. El texto sigue siendo fg.on-brand."},
-      "brand-active": {"$value": "{color.gold.500}", "$description": "Pulsado del oro. El texto sigue siendo fg.on-brand."}
+      "page": {
+        "$value": "{color.paper.50}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.900}"
+          }
+        }
+      },
+      "surface": {
+        "$value": "{color.paper.0}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.800}"
+          }
+        }
+      },
+      "sunken": {
+        "$value": "{color.paper.200}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.950}"
+          }
+        }
+      },
+      "inverse": {
+        "$value": "{color.ink.900}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.paper.50}"
+          }
+        }
+      },
+      "brand": {
+        "$value": "{color.gold.400}",
+        "$description": "Superficie de oro: botón primario, insignia de marca, mosaico de ícono. El texto encima va en fg.on-brand (8,3:1)."
+      },
+      "hover": {
+        "$value": "{color.paper.100}",
+        "$description": "Hover de superficies: filas de menú, chips, tarjetas interactivas.",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.700}"
+          }
+        }
+      },
+      "active": {
+        "$value": "{color.paper.200}",
+        "$description": "Pulsado de superficies.",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.600}"
+          }
+        }
+      },
+      "sunken-hover": {
+        "$value": "{color.ink.100}",
+        "$description": "Hover de controles sobre bg.sunken (botón suave).",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.700}"
+          }
+        }
+      },
+      "sunken-active": {
+        "$value": "{color.ink.200}",
+        "$description": "Pulsado de controles sobre bg.sunken.",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.600}"
+          }
+        }
+      },
+      "brand-hover": {
+        "$value": "{color.gold.300}",
+        "$description": "Hover del oro. El texto sigue siendo fg.on-brand."
+      },
+      "brand-active": {
+        "$value": "{color.gold.500}",
+        "$description": "Pulsado del oro. El texto sigue siendo fg.on-brand."
+      }
     },
     "fg": {
       "$type": "color",
-      "default": {"$value": "{color.ink.900}", "$extensions": {"kafka.modes": {"dark": "{color.paper.50}"}}},
-      "soft": {"$value": "{color.ink.700}", "$extensions": {"kafka.modes": {"dark": "{color.ink.100}"}}},
-      "muted": {"$value": "{color.ink.600}", "$extensions": {"kafka.modes": {"dark": "{color.ink.200}"}}},
-      "brand": {"$value": "{color.gold.800}", "$extensions": {"kafka.modes": {"dark": "{color.gold.400}"}}, "$description": "Gold text. Dark step on paper; the brand gold itself only on ink."},
-      "link": {"$value": "{color.gold.800}", "$extensions": {"kafka.modes": {"dark": "{color.gold.300}"}}, "$description": "Always underlined; colour alone never marks a link."},
-      "inverse": {"$value": "{color.paper.50}", "$extensions": {"kafka.modes": {"dark": "{color.ink.900}"}}},
-      "on-brand": {"$value": "{color.ink.900}", "$description": "Texto sobre bg.brand. No cambia con el modo porque el oro tampoco."},
-      "link-hover": {"$value": "{color.ink.900}", "$description": "Hover de enlace: más oscuro y con subrayado más grueso.", "$extensions": {"kafka.modes": {"dark": "{color.gold.100}"}}},
-      "link-visited": {"$value": "{color.ink.600}", "$description": "Enlace visitado. Siempre subrayado: el color solo no distingue.", "$extensions": {"kafka.modes": {"dark": "{color.ink.200}"}}}
+      "default": {
+        "$value": "{color.ink.900}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.paper.50}"
+          }
+        }
+      },
+      "soft": {
+        "$value": "{color.ink.700}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.100}"
+          }
+        }
+      },
+      "muted": {
+        "$value": "{color.ink.600}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.200}"
+          }
+        }
+      },
+      "brand": {
+        "$value": "{color.gold.800}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.gold.400}"
+          }
+        },
+        "$description": "Gold text. Dark step on paper; the brand gold itself only on ink."
+      },
+      "link": {
+        "$value": "{color.gold.800}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.gold.300}"
+          }
+        },
+        "$description": "Always underlined; colour alone never marks a link."
+      },
+      "inverse": {
+        "$value": "{color.paper.50}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.900}"
+          }
+        }
+      },
+      "on-brand": {
+        "$value": "{color.ink.900}",
+        "$description": "Texto sobre bg.brand. No cambia con el modo porque el oro tampoco."
+      },
+      "link-hover": {
+        "$value": "{color.ink.900}",
+        "$description": "Hover de enlace: más oscuro y con subrayado más grueso.",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.gold.100}"
+          }
+        }
+      },
+      "link-visited": {
+        "$value": "{color.ink.600}",
+        "$description": "Enlace visitado. Siempre subrayado: el color solo no distingue.",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.200}"
+          }
+        }
+      }
     },
     "border": {
       "$type": "color",
-      "default": {"$value": "{color.ink.200}", "$extensions": {"kafka.modes": {"dark": "{color.ink.600}"}}},
+      "default": {
+        "$value": "{color.ink.200}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.600}"
+          }
+        }
+      },
       "strong": {
         "$value": "{color.ink.500}",
-        "$extensions": {"kafka.modes": {"dark": "{color.ink.300}"}},
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.ink.300}"
+          }
+        },
         "$description": "Borde de controles que lo necesitan para identificarse (botón de contorno, campos). 3:1 o más."
       },
-      "focus": {"$value": "{color.gold.700}", "$extensions": {"kafka.modes": {"dark": "{color.gold.400}"}}},
-      "brand": {"$value": "{color.gold.600}", "$extensions": {"kafka.modes": {"dark": "{color.gold.400}"}}, "$description": "Borde dorado de tarjetas destacadas y de noticias. 3:1 o más contra el fondo."}
+      "focus": {
+        "$value": "{color.gold.700}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.gold.400}"
+          }
+        }
+      },
+      "brand": {
+        "$value": "{color.gold.600}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.gold.400}"
+          }
+        },
+        "$description": "Borde dorado de tarjetas destacadas y de noticias. 3:1 o más contra el fondo."
+      }
     },
     "reading": {
       "$type": "color",
       "$description": "Long-form text pairs. Held to 7:1 (WCAG AAA) in tests.",
-      "bg": {"$value": "{color.bg.page}"},
-      "text": {"$value": "{color.fg.default}"},
-      "text-secondary": {"$value": "{color.fg.soft}"},
-      "progress-track": {"$value": "{color.border.default}"},
-      "progress-fill": {"$value": "{color.border.brand}", "$description": "Relleno de la barra de progreso. Usa el oro de borde (3:1 sobre el papel), no bg.brand (1,98:1)."},
-      "quote-rule": {"$value": "{color.border.brand}"},
-      "footnote-rule": {"$value": "{color.border.default}"},
-      "dropcap": {"$value": "{color.fg.brand}"}
+      "bg": {
+        "$value": "{color.bg.page}"
+      },
+      "text": {
+        "$value": "{color.fg.default}"
+      },
+      "text-secondary": {
+        "$value": "{color.fg.soft}"
+      },
+      "progress-track": {
+        "$value": "{color.border.default}"
+      },
+      "progress-fill": {
+        "$value": "{color.border.brand}",
+        "$description": "Relleno de la barra de progreso. Usa el oro de borde (3:1 sobre el papel), no bg.brand (1,98:1)."
+      },
+      "quote-rule": {
+        "$value": "{color.border.brand}"
+      },
+      "footnote-rule": {
+        "$value": "{color.border.default}"
+      },
+      "dropcap": {
+        "$value": "{color.fg.brand}"
+      }
     },
     "selection": {
       "$type": "color",
-      "bg": {"$value": "{color.gold.100}", "$description": "Texto seleccionado.", "$extensions": {"kafka.modes": {"dark": "{color.gold.800}"}}},
-      "fg": {"$value": "{color.ink.900}", "$extensions": {"kafka.modes": {"dark": "{color.paper.50}"}}}
+      "bg": {
+        "$value": "{color.gold.100}",
+        "$description": "Texto seleccionado.",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.gold.800}"
+          }
+        }
+      },
+      "fg": {
+        "$value": "{color.ink.900}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.paper.50}"
+          }
+        }
+      }
     },
     "highlight": {
       "$type": "color",
-      "bg": {"$value": "{color.gold.300}", "$description": "Marca de texto (<mark>) y resultados de búsqueda.", "$extensions": {"kafka.modes": {"dark": "{color.gold.400}"}}},
-      "fg": {"$value": "{color.ink.900}"}
+      "bg": {
+        "$value": "{color.gold.300}",
+        "$description": "Marca de texto (<mark>) y resultados de búsqueda.",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.gold.400}"
+          }
+        }
+      },
+      "fg": {
+        "$value": "{color.ink.900}"
+      }
     },
     "vip": {
       "$type": "color",
       "$description": "Tarjeta VIP. Fijos en ambos modos porque el oro tampoco cambia.",
-      "fg": {"$value": "{color.ink.900}"},
-      "shine": {"$value": "{color.gold.50}"},
-      "badge-bg": {"$value": "{color.ink.900}"},
-      "badge-fg": {"$value": "{color.gold.100}"}
+      "fg": {
+        "$value": "{color.ink.900}"
+      },
+      "shine": {
+        "$value": "{color.gold.50}"
+      },
+      "badge-bg": {
+        "$value": "{color.ink.900}"
+      },
+      "badge-fg": {
+        "$value": "{color.gold.100}"
+      }
+    },
+    "status": {
+      "$type": "color",
+      "$description": "Color de estado. Nunca solo color: siempre va con ícono o texto. fg 4,5:1 sobre bg y sobre las superficies; border 3:1 contra la página.",
+      "danger": {
+        "fg": {
+          "$value": "{color.red.700}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.red.300}"
+            }
+          }
+        },
+        "bg": {
+          "$value": "{color.red.50}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.red.900}"
+            }
+          }
+        },
+        "border": {
+          "$value": "{color.red.600}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.red.400}"
+            }
+          }
+        }
+      },
+      "success": {
+        "fg": {
+          "$value": "{color.green.700}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.green.300}"
+            }
+          }
+        },
+        "bg": {
+          "$value": "{color.green.50}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.green.900}"
+            }
+          }
+        },
+        "border": {
+          "$value": "{color.green.600}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.green.400}"
+            }
+          }
+        }
+      },
+      "warning": {
+        "fg": {
+          "$value": "{color.amber.700}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.amber.300}"
+            }
+          }
+        },
+        "bg": {
+          "$value": "{color.amber.50}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.amber.900}"
+            }
+          }
+        },
+        "border": {
+          "$value": "{color.amber.600}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.amber.400}"
+            }
+          }
+        }
+      },
+      "info": {
+        "fg": {
+          "$value": "{color.blue.700}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.blue.300}"
+            }
+          }
+        },
+        "bg": {
+          "$value": "{color.blue.50}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.blue.900}"
+            }
+          }
+        },
+        "border": {
+          "$value": "{color.blue.600}",
+          "$extensions": {
+            "kafka.modes": {
+              "dark": "{color.blue.400}"
+            }
+          }
+        }
+      }
     }
   },
   "radius": {
     "$type": "dimension",
-    "control": {"$value": "{radius.12}", "$description": "Botones, campos y chips rectangulares."},
-    "card": {"$value": "{radius.16}"},
-    "media": {"$value": "{radius.20}", "$description": "Portadas e imágenes grandes."},
-    "pill": {"$value": "{radius.full}"}
+    "control": {
+      "$value": "{radius.12}",
+      "$description": "Botones, campos y chips rectangulares."
+    },
+    "card": {
+      "$value": "{radius.16}"
+    },
+    "media": {
+      "$value": "{radius.20}",
+      "$description": "Portadas e imágenes grandes."
+    },
+    "pill": {
+      "$value": "{radius.full}"
+    }
   },
   "elevation": {
     "$type": "shadow",
-    "card": {"$value": "{shadow.md}"},
-    "floating": {"$value": "{shadow.lg}", "$description": "Elementos que flotan sobre la página, como la caja de noticias."},
-    "glow": {"$value": "{shadow.glow}"}
+    "card": {
+      "$value": "{shadow.md}"
+    },
+    "floating": {
+      "$value": "{shadow.lg}",
+      "$description": "Elementos que flotan sobre la página, como la caja de noticias."
+    },
+    "glow": {
+      "$value": "{shadow.glow}"
+    }
   },
   "focus": {
     "$type": "dimension",
-    "width": {"$value": "{borderWidth.thick}"},
-    "offset": {"$value": "{space.2}"}
+    "width": {
+      "$value": "{borderWidth.thick}"
+    },
+    "offset": {
+      "$value": "{space.2}"
+    }
   },
   "typography": {
     "reading": {
       "body": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.18}", "fontWeight": "{fontWeight.regular}", "lineHeight": "{lineHeight.reading}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{fontSize.18}",
+          "fontWeight": "{fontWeight.regular}",
+          "lineHeight": "{lineHeight.reading}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "title": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.44}", "fontWeight": "{fontWeight.bold}", "lineHeight": "{lineHeight.heading}", "letterSpacing": "{letterSpacing.tight}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{fontSize.44}",
+          "fontWeight": "{fontWeight.bold}",
+          "lineHeight": "{lineHeight.heading}",
+          "letterSpacing": "{letterSpacing.tight}"
+        }
       },
       "lead": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.20}", "fontWeight": "{fontWeight.regular}", "lineHeight": "{lineHeight.reading}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{fontSize.20}",
+          "fontWeight": "{fontWeight.regular}",
+          "lineHeight": "{lineHeight.reading}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "heading-lg": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.32}", "fontWeight": "{fontWeight.bold}", "lineHeight": "{lineHeight.heading}", "letterSpacing": "{letterSpacing.tight}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{fontSize.32}",
+          "fontWeight": "{fontWeight.bold}",
+          "lineHeight": "{lineHeight.heading}",
+          "letterSpacing": "{letterSpacing.tight}"
+        }
       },
       "heading-md": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.24}", "fontWeight": "{fontWeight.bold}", "lineHeight": "{lineHeight.heading}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{fontSize.24}",
+          "fontWeight": "{fontWeight.bold}",
+          "lineHeight": "{lineHeight.heading}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "heading-sm": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.20}", "fontWeight": "{fontWeight.bold}", "lineHeight": "{lineHeight.heading}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{fontSize.20}",
+          "fontWeight": "{fontWeight.bold}",
+          "lineHeight": "{lineHeight.heading}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "quote": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.20}", "fontWeight": "{fontWeight.regular}", "lineHeight": "{lineHeight.reading}", "letterSpacing": "{letterSpacing.normal}", "fontStyle": "italic"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{fontSize.20}",
+          "fontWeight": "{fontWeight.regular}",
+          "lineHeight": "{lineHeight.reading}",
+          "letterSpacing": "{letterSpacing.normal}",
+          "fontStyle": "italic"
+        }
       },
       "footnote": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.14}", "fontWeight": "{fontWeight.regular}", "lineHeight": "{lineHeight.footnote}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{fontSize.14}",
+          "fontWeight": "{fontWeight.regular}",
+          "lineHeight": "{lineHeight.footnote}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "dropcap": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{fontSize.64}", "fontWeight": "{fontWeight.bold}", "lineHeight": "{lineHeight.dropcap}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{fontSize.64}",
+          "fontWeight": "{fontWeight.bold}",
+          "lineHeight": "{lineHeight.dropcap}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       }
     },
     "ui": {
       "button": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.ui}", "fontSize": "{fontSize.16}", "fontWeight": "{fontWeight.semibold}", "lineHeight": "{lineHeight.ui}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.ui}",
+          "fontSize": "{fontSize.16}",
+          "fontWeight": "{fontWeight.semibold}",
+          "lineHeight": "{lineHeight.ui}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "label": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.ui}", "fontSize": "{fontSize.14}", "fontWeight": "{fontWeight.medium}", "lineHeight": "{lineHeight.ui}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.ui}",
+          "fontSize": "{fontSize.14}",
+          "fontWeight": "{fontWeight.medium}",
+          "lineHeight": "{lineHeight.ui}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "caption": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.ui}", "fontSize": "{fontSize.12}", "fontWeight": "{fontWeight.semibold}", "lineHeight": "{lineHeight.ui}", "letterSpacing": "{letterSpacing.wide}"}
+        "$value": {
+          "fontFamily": "{fontFamily.ui}",
+          "fontSize": "{fontSize.12}",
+          "fontWeight": "{fontWeight.semibold}",
+          "lineHeight": "{lineHeight.ui}",
+          "letterSpacing": "{letterSpacing.wide}"
+        }
       },
       "overline": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.ui}", "fontSize": "{fontSize.12}", "fontWeight": "{fontWeight.bold}", "lineHeight": "{lineHeight.ui}", "letterSpacing": "{letterSpacing.wider}"}
+        "$value": {
+          "fontFamily": "{fontFamily.ui}",
+          "fontSize": "{fontSize.12}",
+          "fontWeight": "{fontWeight.bold}",
+          "lineHeight": "{lineHeight.ui}",
+          "letterSpacing": "{letterSpacing.wider}"
+        }
+      },
+      "input": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{fontFamily.ui}",
+          "fontSize": "{fontSize.16}",
+          "fontWeight": "{fontWeight.regular}",
+          "lineHeight": "{lineHeight.ui}",
+          "letterSpacing": "{letterSpacing.normal}"
+        },
+        "$description": "Texto dentro de campos y etiquetas de controles. 16 px: por debajo, iOS amplía la página al enfocar."
       }
     },
     "print": {
       "body": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{physical.type.body}", "fontWeight": "{fontWeight.regular}", "lineHeight": "{physical.leading.body}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{physical.type.body}",
+          "fontWeight": "{fontWeight.regular}",
+          "lineHeight": "{physical.leading.body}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "lead": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{physical.type.lead}", "fontWeight": "{fontWeight.regular}", "lineHeight": "{physical.leading.lead}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{physical.type.lead}",
+          "fontWeight": "{fontWeight.regular}",
+          "lineHeight": "{physical.leading.lead}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "footnote": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{physical.type.footnote}", "fontWeight": "{fontWeight.regular}", "lineHeight": "{physical.leading.footnote}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{physical.type.footnote}",
+          "fontWeight": "{fontWeight.regular}",
+          "lineHeight": "{physical.leading.footnote}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "caption": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{physical.type.caption}", "fontWeight": "{fontWeight.regular}", "lineHeight": "{physical.leading.caption}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{physical.type.caption}",
+          "fontWeight": "{fontWeight.regular}",
+          "lineHeight": "{physical.leading.caption}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "heading": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{physical.type.heading}", "fontWeight": "{fontWeight.bold}", "lineHeight": "{physical.leading.heading}", "letterSpacing": "{letterSpacing.normal}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{physical.type.heading}",
+          "fontWeight": "{fontWeight.bold}",
+          "lineHeight": "{physical.leading.heading}",
+          "letterSpacing": "{letterSpacing.normal}"
+        }
       },
       "heading-lg": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{physical.type.heading-lg}", "fontWeight": "{fontWeight.bold}", "lineHeight": "{physical.leading.heading-lg}", "letterSpacing": "{letterSpacing.tight}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{physical.type.heading-lg}",
+          "fontWeight": "{fontWeight.bold}",
+          "lineHeight": "{physical.leading.heading-lg}",
+          "letterSpacing": "{letterSpacing.tight}"
+        }
       },
       "title": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.reading}", "fontSize": "{physical.type.title}", "fontWeight": "{fontWeight.bold}", "lineHeight": "{physical.leading.title}", "letterSpacing": "{letterSpacing.tight}"}
+        "$value": {
+          "fontFamily": "{fontFamily.reading}",
+          "fontSize": "{physical.type.title}",
+          "fontWeight": "{fontWeight.bold}",
+          "lineHeight": "{physical.leading.title}",
+          "letterSpacing": "{letterSpacing.tight}"
+        }
       },
       "folio": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.ui}", "fontSize": "{physical.type.caption}", "fontWeight": "{fontWeight.medium}", "lineHeight": "{physical.leading.caption}", "letterSpacing": "{letterSpacing.wide}"}
+        "$value": {
+          "fontFamily": "{fontFamily.ui}",
+          "fontSize": "{physical.type.caption}",
+          "fontWeight": "{fontWeight.medium}",
+          "lineHeight": "{physical.leading.caption}",
+          "letterSpacing": "{letterSpacing.wide}"
+        }
       },
       "running-head": {
         "$type": "typography",
-        "$value": {"fontFamily": "{fontFamily.ui}", "fontSize": "{physical.type.caption}", "fontWeight": "{fontWeight.semibold}", "lineHeight": "{physical.leading.caption}", "letterSpacing": "{letterSpacing.wider}"}
+        "$value": {
+          "fontFamily": "{fontFamily.ui}",
+          "fontSize": "{physical.type.caption}",
+          "fontWeight": "{fontWeight.semibold}",
+          "lineHeight": "{physical.leading.caption}",
+          "letterSpacing": "{letterSpacing.wider}"
+        }
       }
     }
   },
   "gradient": {
     "$type": "gradient",
     "vip": {
-      "$value": {"angle": "140deg", "stops": [{"color": "{color.gold.100}", "position": "0%"}, {"color": "{color.gold.300}", "position": "42%"}, {"color": "{color.gold.500}", "position": "100%"}]},
+      "$value": {
+        "angle": "140deg",
+        "stops": [
+          {
+            "color": "{color.gold.100}",
+            "position": "0%"
+          },
+          {
+            "color": "{color.gold.300}",
+            "position": "42%"
+          },
+          {
+            "color": "{color.gold.500}",
+            "position": "100%"
+          }
+        ]
+      },
       "$description": "Fondo de la tarjeta VIP. El texto va en ink 900 (5,9:1 o más en todo el degradado)."
     }
   },
   "opacity": {
     "$type": "number",
-    "disabled": {"$value": "{opacity.45}"}
+    "disabled": {
+      "$value": "{opacity.45}"
+    }
   },
   "motion": {
     "duration": {
       "$type": "duration",
-      "fast": {"$value": "{duration.fast}"},
-      "base": {"$value": "{duration.base}"},
-      "slow": {"$value": "{duration.slow}"},
-      "shine": {"$value": "{duration.shine}"}
+      "fast": {
+        "$value": "{duration.fast}"
+      },
+      "base": {
+        "$value": "{duration.base}"
+      },
+      "slow": {
+        "$value": "{duration.slow}"
+      },
+      "shine": {
+        "$value": "{duration.shine}"
+      }
     },
     "easing": {
       "$type": "cubicBezier",
-      "standard": {"$value": "{ease.standard}", "$description": "Con prefers-reduced-motion se eliminan los desplazamientos y el brillo; se mantiene solo el cambio de opacidad."}
+      "standard": {
+        "$value": "{ease.standard}",
+        "$description": "Con prefers-reduced-motion se eliminan los desplazamientos y el brillo; se mantiene solo el cambio de opacidad."
+      }
     }
   },
   "layer": {
     "$type": "number",
-    "base": {"$value": "{zIndex.base}"},
-    "sticky": {"$value": "{zIndex.sticky}"},
-    "dropdown": {"$value": "{zIndex.dropdown}"},
-    "overlay": {"$value": "{zIndex.overlay}"},
-    "modal": {"$value": "{zIndex.modal}"},
-    "toast": {"$value": "{zIndex.toast}"},
-    "tooltip": {"$value": "{zIndex.tooltip}"}
+    "base": {
+      "$value": "{zIndex.base}"
+    },
+    "sticky": {
+      "$value": "{zIndex.sticky}"
+    },
+    "dropdown": {
+      "$value": "{zIndex.dropdown}"
+    },
+    "overlay": {
+      "$value": "{zIndex.overlay}"
+    },
+    "modal": {
+      "$value": "{zIndex.modal}"
+    },
+    "toast": {
+      "$value": "{zIndex.toast}"
+    },
+    "tooltip": {
+      "$value": "{zIndex.tooltip}"
+    }
   },
   "layout": {
     "$type": "dimension",
-    "reading-width": {"$value": "{size.reading}"},
-    "page-width": {"$value": "{size.page}"},
-    "gutter": {"$value": "{space.24}"}
+    "reading-width": {
+      "$value": "{size.reading}"
+    },
+    "page-width": {
+      "$value": "{size.page}"
+    },
+    "gutter": {
+      "$value": "{space.24}"
+    }
   },
   "print": {
     "$type": "dimension",
     "$description": "Plantillas de página (DDR-KF-005).",
-    "bleed": {"$value": "{physical.bleed}"},
-    "baseline": {"$value": "{physical.baseline}"},
-    "widows": {"$type": "number", "$value": "{physical.widows}"},
-    "orphans": {"$type": "number", "$value": "{physical.orphans}"},
+    "bleed": {
+      "$value": "{physical.bleed}"
+    },
+    "baseline": {
+      "$value": "{physical.baseline}"
+    },
+    "widows": {
+      "$type": "number",
+      "$value": "{physical.widows}"
+    },
+    "orphans": {
+      "$type": "number",
+      "$value": "{physical.orphans}"
+    },
     "book": {
-      "width": {"$value": "{physical.page.a5.width}"},
-      "height": {"$value": "{physical.page.a5.height}"},
-      "margin-top": {"$value": "{physical.margin.18}"},
-      "margin-bottom": {"$value": "{physical.margin.22}"},
-      "margin-inner": {"$value": "{physical.margin.20}", "$description": "Lado del lomo: más ancho para la encuadernación."},
-      "margin-outer": {"$value": "{physical.margin.15}"}
+      "width": {
+        "$value": "{physical.page.a5.width}"
+      },
+      "height": {
+        "$value": "{physical.page.a5.height}"
+      },
+      "margin-top": {
+        "$value": "{physical.margin.18}"
+      },
+      "margin-bottom": {
+        "$value": "{physical.margin.22}"
+      },
+      "margin-inner": {
+        "$value": "{physical.margin.20}",
+        "$description": "Lado del lomo: más ancho para la encuadernación."
+      },
+      "margin-outer": {
+        "$value": "{physical.margin.15}"
+      }
     },
     "magazine": {
-      "width": {"$value": "{physical.page.a4.width}"},
-      "height": {"$value": "{physical.page.a4.height}"},
-      "margin-top": {"$value": "{physical.margin.15}"},
-      "margin-bottom": {"$value": "{physical.margin.18}"},
-      "margin-inner": {"$value": "{physical.margin.18}"},
-      "margin-outer": {"$value": "{physical.margin.15}"}
+      "width": {
+        "$value": "{physical.page.a4.width}"
+      },
+      "height": {
+        "$value": "{physical.page.a4.height}"
+      },
+      "margin-top": {
+        "$value": "{physical.margin.15}"
+      },
+      "margin-bottom": {
+        "$value": "{physical.margin.18}"
+      },
+      "margin-inner": {
+        "$value": "{physical.margin.18}"
+      },
+      "margin-outer": {
+        "$value": "{physical.margin.15}"
+      }
     },
     "sheet": {
-      "width": {"$value": "{physical.page.a4.width}"},
-      "height": {"$value": "{physical.page.a4.height}"},
-      "margin": {"$value": "{physical.margin.18}", "$description": "Ficha de programa: mismo margen por los cuatro lados."}
+      "width": {
+        "$value": "{physical.page.a4.width}"
+      },
+      "height": {
+        "$value": "{physical.page.a4.height}"
+      },
+      "margin": {
+        "$value": "{physical.margin.18}",
+        "$description": "Ficha de programa: mismo margen por los cuatro lados."
+      }
     }
   }
 }

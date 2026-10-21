@@ -3,7 +3,7 @@
    Aliases are added when a component needs them, never in advance. */
 import type { ComponentType } from 'react'
 import type { IconProps } from '@phosphor-icons/react'
-import { ArrowBendUpLeft, ArrowLeft, ArrowRight, ArrowSquareOut, Check, CircleNotch, Clock, CrownSimple, Minus, Play, Plus, X } from '@phosphor-icons/react'
+import { ArrowBendUpLeft, CaretDown, CheckCircle, FileText, Info, UploadSimple, Warning, XCircle, ArrowLeft, ArrowRight, ArrowSquareOut, Check, CircleNotch, Clock, CrownSimple, Minus, Play, Plus, X } from '@phosphor-icons/react'
 
 export type IconType = ComponentType<IconProps>
 export type { IconProps }
@@ -20,3 +20,10 @@ export const IconExternal: IconType = ArrowSquareOut
 export const IconMinus: IconType = Minus
 export const IconPlay: IconType = Play
 export const IconPlus: IconType = Plus
+export const IconChevronDown: IconType = CaretDown
+export const IconSuccess: IconType = CheckCircle
+export const IconInfo: IconType = Info
+export const IconWarning: IconType = Warning
+export const IconDanger: IconType = XCircle
+export const IconUpload: IconType = UploadSimple
+export const IconFile: IconType = FileText

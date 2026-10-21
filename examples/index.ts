@@ -1,6 +1,22 @@
 /* Registry of documented components. Add an entry here when a component ships. */
 import type { Example } from './types'
 import { examples as button } from './button'
+import { examples as icon_button } from './icon-button'
+import { examples as button_group } from './button-group'
+import { examples as link } from './link'
+import { examples as badge } from './badge'
+import { examples as chip } from './chip'
+import { examples as field } from './field'
+import { examples as input } from './input'
+import { examples as textarea } from './textarea'
+import { examples as select } from './select'
+import { examples as checkbox } from './checkbox'
+import { examples as radio } from './radio'
+import { examples as switch_ } from './switch'
+import { examples as slider } from './slider'
+import { examples as pin_input } from './pin-input'
+import { examples as tag_input } from './tag-input'
+import { examples as file_upload } from './file-upload'
 import { examples as prose } from './prose'
 import { examples as pull_quote } from './pull-quote'
 import { examples as footnote } from './footnote'
@@ -26,6 +42,22 @@ export interface ComponentEntry {
 
 export const registry: Record<string, ComponentEntry> = {
   button: { name: 'Button', file: 'button.tsx', examples: button },
+  'icon-button': { name: 'IconButton', file: 'icon-button.tsx', examples: icon_button },
+  'button-group': { name: 'ButtonGroup', file: 'button-group.tsx', examples: button_group },
+  'link': { name: 'Link', file: 'link.tsx', examples: link },
+  'badge': { name: 'Badge', file: 'badge.tsx', examples: badge },
+  'chip': { name: 'Chip', file: 'chip.tsx', examples: chip },
+  'field': { name: 'Field', file: 'field.tsx', examples: field },
+  'input': { name: 'Input', file: 'input.tsx', examples: input },
+  'textarea': { name: 'Textarea', file: 'textarea.tsx', examples: textarea },
+  'select': { name: 'Select', file: 'select.tsx', examples: select },
+  'checkbox': { name: 'Checkbox', file: 'checkbox.tsx', examples: checkbox },
+  'radio': { name: 'Radio', file: 'radio.tsx', examples: radio },
+  'switch': { name: 'Switch', file: 'switch.tsx', examples: switch_ },
+  'slider': { name: 'Slider', file: 'slider.tsx', examples: slider },
+  'pin-input': { name: 'PinInput', file: 'pin-input.tsx', examples: pin_input },
+  'tag-input': { name: 'TagInput', file: 'tag-input.tsx', examples: tag_input },
+  'file-upload': { name: 'FileUpload', file: 'file-upload.tsx', examples: file_upload },
   'prose': { name: 'Prose', file: 'prose.tsx', examples: prose },
   'pull-quote': { name: 'PullQuote', file: 'pull-quote.tsx', examples: pull_quote },
   'footnote': { name: 'Footnote', file: 'footnote.tsx', examples: footnote },

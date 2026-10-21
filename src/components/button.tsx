@@ -8,7 +8,7 @@ export type ButtonVariant = 'primary' | 'soft' | 'outline'
 
 // Every value is a component token (tokens/components.json → button.*). Class strings are written out in full
 // so Tailwind can see them. Hover and active come from tokens too; none of them lowers the label contrast.
-const VARIANT: Record<ButtonVariant, string> = {
+export const BUTTON_VARIANT: Record<ButtonVariant, string> = {
   primary:
     'bg-(--kafka-button-primary-bg) text-(--kafka-button-primary-fg) hover:bg-(--kafka-button-primary-bg-hover) active:bg-(--kafka-button-primary-bg-active)',
   soft: 'bg-(--kafka-button-soft-bg) text-(--kafka-button-soft-fg) hover:bg-(--kafka-button-soft-bg-hover) active:bg-(--kafka-button-soft-bg-active)',
@@ -43,7 +43,7 @@ export function Button({ variant = 'primary', Icon, TrailingIcon, loading = fals
         'kafka-type-button-type inline-flex min-h-(--kafka-button-min-height) cursor-pointer items-center justify-center gap-(--kafka-button-gap) rounded-(--kafka-button-radius) px-(--kafka-button-padding-x) py-(--kafka-button-padding-y) no-underline',
         'disabled:cursor-not-allowed disabled:opacity-(--kafka-button-disabled-opacity)',
         block && 'w-full',
-        VARIANT[variant],
+        BUTTON_VARIANT[variant],
         className,
       )}
       {...rest}

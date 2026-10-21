@@ -5,6 +5,25 @@ import { createContext, useContext, type ReactNode } from 'react'
 export interface Labels {
   /** Announced by screen readers while a button is busy. */
   loading: string
+  /** Appended to a link that opens in a new tab. */
+  opensInNewTab: string
+  /** Field marks. */
+  required: string
+  optional: string
+  /** Tag input. */
+  removeTag: (tag: string) => string
+  tagAdded: (tag: string) => string
+  tagRemoved: (tag: string) => string
+  /** Pin input: accessible name of each cell. */
+  pinDigit: (i: number, n: number) => string
+  /** File upload. */
+  chooseFiles: string
+  dropFiles: string
+  removeFile: (name: string) => string
+  fileTooLarge: (name: string, max: string) => string
+  fileTypeNotAllowed: (name: string) => string
+  tooManyFiles: (max: number) => string
+  filesSelected: (n: number) => string
   /** Accessible name of the reading progress bar. */
   readingProgress: string
   /** Heading of the table of contents. */
@@ -44,6 +63,20 @@ export interface Labels {
 
 export const labelsEn: Labels = {
   loading: 'Loading',
+  opensInNewTab: '(opens in a new tab)',
+  required: 'required',
+  optional: 'optional',
+  removeTag: (t) => `Remove ${t}`,
+  tagAdded: (t) => `${t} added`,
+  tagRemoved: (t) => `${t} removed`,
+  pinDigit: (i, n) => `Digit ${i} of ${n}`,
+  chooseFiles: 'Choose files',
+  dropFiles: 'or drop them here',
+  removeFile: (n) => `Remove ${n}`,
+  fileTooLarge: (n, max) => `${n} is larger than ${max}`,
+  fileTypeNotAllowed: (n) => `${n} is not an accepted file type`,
+  tooManyFiles: (max) => `You can add up to ${max} files`,
+  filesSelected: (n) => (n === 1 ? '1 file selected' : `${n} files selected`),
   readingProgress: 'Reading progress',
   tocTitle: 'On this page',
   notes: 'Notes',
@@ -74,6 +107,20 @@ export const labelsEn: Labels = {
 
 export const labelsEs: Labels = {
   loading: 'Cargando',
+  opensInNewTab: '(se abre en una pestaña nueva)',
+  required: 'obligatorio',
+  optional: 'opcional',
+  removeTag: (t) => `Quitar ${t}`,
+  tagAdded: (t) => `${t} añadida`,
+  tagRemoved: (t) => `${t} quitada`,
+  pinDigit: (i, n) => `Dígito ${i} de ${n}`,
+  chooseFiles: 'Elegir archivos',
+  dropFiles: 'o suéltalos aquí',
+  removeFile: (n) => `Quitar ${n}`,
+  fileTooLarge: (n, max) => `${n} pesa más de ${max}`,
+  fileTypeNotAllowed: (n) => `${n} no es un tipo de archivo admitido`,
+  tooManyFiles: (max) => `Puedes añadir hasta ${max} archivos`,
+  filesSelected: (n) => (n === 1 ? '1 archivo seleccionado' : `${n} archivos seleccionados`),
   readingProgress: 'Progreso de lectura',
   tocTitle: 'En esta página',
   notes: 'Notas',

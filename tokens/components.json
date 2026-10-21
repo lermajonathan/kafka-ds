@@ -138,6 +138,70 @@
         "$type": "color",
         "$value": "{color.fg.on-brand}"
       }
+    },
+    "info": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.info.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.info.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.info.border}"
+      }
+    },
+    "success": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.success.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.success.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.success.border}"
+      }
+    },
+    "warning": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.warning.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.warning.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.warning.border}"
+      }
+    },
+    "danger": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.danger.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.danger.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.danger.border}"
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
     }
   },
   "chip": {
@@ -919,6 +983,582 @@
     "facade-gap": {
       "$value": "{space.16}",
       "$type": "dimension"
+    }
+  },
+  "icon-button": {
+    "$description": "Botón solo de ícono. Misma paleta que el botón; 44 × 44 px y nombre accesible obligatorio.",
+    "size": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "icon": {
+      "$type": "dimension",
+      "$value": "{size.icon.md}"
+    }
+  },
+  "button-group": {
+    "$description": "Agrupa botones relacionados bajo un nombre.",
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    }
+  },
+  "link": {
+    "$description": "Enlace: siempre subrayado; el color nunca es la única señal.",
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.link}"
+    },
+    "fg-hover": {
+      "$type": "color",
+      "$value": "{color.fg.link-hover}"
+    },
+    "fg-visited": {
+      "$type": "color",
+      "$value": "{color.fg.link-visited}"
+    },
+    "icon-gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    }
+  },
+  "field": {
+    "$description": "Etiqueta, ayuda y error de un control, enlazados por id.",
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "label": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "hint": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "hint-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "error": {
+      "$type": "color",
+      "$value": "{color.status.danger.fg}"
+    },
+    "error-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "required": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    }
+  },
+  "input": {
+    "$description": "Campo de texto de una línea. 44 px de alto, 16 px de letra, borde de 3:1.",
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "padding-y": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "placeholder": {
+      "$type": "color",
+      "$value": "{color.fg.muted}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "border-hover": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "border-focus": {
+      "$type": "color",
+      "$value": "{color.border.focus}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thin}"
+    },
+    "invalid-border": {
+      "$type": "color",
+      "$value": "{color.status.danger.border}"
+    },
+    "icon": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.md}"
+    },
+    "icon-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    }
+  },
+  "textarea": {
+    "$description": "Campo de varias líneas. Comparte los tokens de `input`.",
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{space.96}"
+    }
+  },
+  "select": {
+    "$description": "Selección de una opción con el `<select>` nativo, para que el teclado y los lectores de pantalla funcionen como en cualquier formulario.",
+    "icon": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.md}"
+    },
+    "padding-right": {
+      "$type": "dimension",
+      "$value": "{space.48}"
+    }
+  },
+  "checkbox": {
+    "$description": "Casilla nativa con marca propia. Admite estado indeterminado.",
+    "size": {
+      "$type": "dimension",
+      "$value": "{size.icon.lg}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "checked-bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "checked-fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "label": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "description": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "invalid-border": {
+      "$type": "color",
+      "$value": "{color.status.danger.border}"
+    },
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    }
+  },
+  "radio": {
+    "$description": "Opción única dentro de un grupo, con `fieldset` y `legend`.",
+    "size": {
+      "$type": "dimension",
+      "$value": "{size.icon.lg}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "checked-bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "checked-fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "label": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "description": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "invalid-border": {
+      "$type": "color",
+      "$value": "{color.status.danger.border}"
+    },
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.pill}"
+    },
+    "dot": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "group-gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    }
+  },
+  "switch": {
+    "$description": "Interruptor de efecto inmediato (`role=switch`). Para cambios que se aplican al instante, no para formularios que se envían.",
+    "track-width": {
+      "$type": "dimension",
+      "$value": "{space.48}"
+    },
+    "track-height": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "thumb-size": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "thumb-offset": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "track-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "track-border": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "track-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "thumb": {
+      "$type": "color",
+      "$value": "{color.fg.muted}"
+    },
+    "track-on-bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "thumb-on": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "label": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "description": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "duration": {
+      "$value": "{motion.duration.fast}"
+    },
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    }
+  },
+  "slider": {
+    "$description": "Valor dentro de un rango con el `input type=range` nativo: flechas, Inicio, Fin y Re Pág ya funcionan.",
+    "rail-height": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "rail": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "fill": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "thumb-size": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "thumb": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "thumb-ring": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "thumb-ring-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "value": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "value-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.pill}"
+    },
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    }
+  },
+  "pin-input": {
+    "$description": "Código de varios dígitos, una casilla por carácter, con pegado y autocompletado de código de un solo uso.",
+    "cell-width": {
+      "$type": "dimension",
+      "$value": "{space.48}"
+    },
+    "cell-height": {
+      "$type": "dimension",
+      "$value": "{space.48}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-md}"
+    }
+  },
+  "tag-input": {
+    "$description": "Lista de etiquetas que se escriben y se quitan. Cada etiqueta mide 44 px y su botón de quitar también.",
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "tag-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "tag-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "tag-radius": {
+      "$type": "dimension",
+      "$value": "{radius.pill}"
+    },
+    "tag-padding-left": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "tag-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "remove-size": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "remove-hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken-hover}"
+    },
+    "remove-icon": {
+      "$type": "dimension",
+      "$value": "{size.icon.sm}"
+    }
+  },
+  "file-upload": {
+    "$description": "Zona para elegir o soltar archivos. El `input type=file` nativo está dentro: se activa con teclado.",
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "bg-hover": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "drag-border": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "drag-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "icon": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.lg}"
+    },
+    "hint": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "hint-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "item-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "item-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "item-padding": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "item-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "error": {
+      "$type": "color",
+      "$value": "{color.status.danger.fg}"
+    },
+    "remove-size": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
     }
   }
 }

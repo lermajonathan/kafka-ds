@@ -77,3 +77,53 @@ mark {
 @media (prefers-reduced-motion: reduce) {
   .kafka-progress-fill { transition: none !important; }
 }
+
+/* ── Switch: the mark inside the thumb appears with the checked state (colour is never the only signal) ── */
+.kafka-switch-input:checked ~ .kafka-switch-thumb svg { display: block; }
+
+/* ── Slider: native range input, styled through its pseudo-elements. Component tokens only. ── */
+.kafka-slider {
+  --kafka-slider-pct: 0%;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: var(--kafka-slider-min-height);
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.kafka-slider:disabled { cursor: not-allowed; opacity: var(--kafka-slider-disabled-opacity); }
+.kafka-slider::-webkit-slider-runnable-track {
+  height: var(--kafka-slider-rail-height);
+  border-radius: var(--kafka-slider-radius);
+  background: linear-gradient(to right, var(--kafka-slider-fill) var(--kafka-slider-pct), var(--kafka-slider-rail) var(--kafka-slider-pct));
+}
+.kafka-slider::-moz-range-track { height: var(--kafka-slider-rail-height); border-radius: var(--kafka-slider-radius); background: var(--kafka-slider-rail); }
+.kafka-slider::-moz-range-progress { height: var(--kafka-slider-rail-height); border-radius: var(--kafka-slider-radius); background: var(--kafka-slider-fill); }
+.kafka-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  width: var(--kafka-slider-thumb-size);
+  height: var(--kafka-slider-thumb-size);
+  margin-top: calc((var(--kafka-slider-rail-height) - var(--kafka-slider-thumb-size)) / 2);
+  border-radius: 50%;
+  background: var(--kafka-slider-thumb);
+  border: var(--kafka-slider-thumb-ring-width) solid var(--kafka-slider-thumb-ring);
+  box-shadow: 0 0 0 var(--kafka-slider-thumb-ring-width) var(--kafka-slider-thumb);
+}
+.kafka-slider::-moz-range-thumb {
+  box-sizing: border-box;
+  width: var(--kafka-slider-thumb-size);
+  height: var(--kafka-slider-thumb-size);
+  border-radius: 50%;
+  background: var(--kafka-slider-thumb);
+  border: var(--kafka-slider-thumb-ring-width) solid var(--kafka-slider-thumb-ring);
+  box-shadow: 0 0 0 var(--kafka-slider-thumb-ring-width) var(--kafka-slider-thumb);
+}
+.kafka-slider:focus { outline: none; }
+.kafka-slider:focus-visible::-webkit-slider-thumb { outline: var(--kafka-focus-width) solid var(--kafka-color-border-focus); outline-offset: var(--kafka-focus-offset); }
+.kafka-slider:focus-visible::-moz-range-thumb { outline: var(--kafka-focus-width) solid var(--kafka-color-border-focus); outline-offset: var(--kafka-focus-offset); }
+
+/* ── Dropzone while a file is dragged over it ── */
+.kafka-dropzone[data-dragging="true"] { border-color: var(--kafka-file-upload-drag-border); background: var(--kafka-file-upload-drag-bg); }

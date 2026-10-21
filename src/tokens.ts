@@ -37,6 +37,46 @@ export const tokens = {
       "strong": "#0f0f0e38",
       "glow": "#b8932a61"
     },
+    "red": {
+      "50": "#fdf0ee",
+      "100": "#f9d9d4",
+      "300": "#ee8f84",
+      "400": "#e0584a",
+      "600": "#b3261e",
+      "700": "#8f1d17",
+      "800": "#6b1511",
+      "900": "#3d0d0b"
+    },
+    "green": {
+      "50": "#eef7ee",
+      "100": "#d4ebd5",
+      "300": "#86c98b",
+      "400": "#4ba857",
+      "600": "#2e7d32",
+      "700": "#1f5f23",
+      "800": "#174a1a",
+      "900": "#0c2a0e"
+    },
+    "amber": {
+      "50": "#fff6e0",
+      "100": "#ffe7ad",
+      "300": "#f5c04a",
+      "400": "#e89e10",
+      "600": "#a86400",
+      "700": "#7f4b00",
+      "800": "#5c3600",
+      "900": "#331e00"
+    },
+    "blue": {
+      "50": "#eaf2fc",
+      "100": "#cfe2f8",
+      "300": "#82b4ec",
+      "400": "#4a8fe0",
+      "600": "#1f5fb4",
+      "700": "#184b8f",
+      "800": "#11386a",
+      "900": "#0a2140"
+    },
     "bg": {
       "page": "#fbf8f1",
       "surface": "#fffdf9",
@@ -90,6 +130,28 @@ export const tokens = {
       "shine": "#fff6cf",
       "badge-bg": "#1a1a1a",
       "badge-fg": "#f7ecc4"
+    },
+    "status": {
+      "danger": {
+        "fg": "#8f1d17",
+        "bg": "#fdf0ee",
+        "border": "#b3261e"
+      },
+      "success": {
+        "fg": "#1f5f23",
+        "bg": "#eef7ee",
+        "border": "#2e7d32"
+      },
+      "warning": {
+        "fg": "#7f4b00",
+        "bg": "#fff6e0",
+        "border": "#a86400"
+      },
+      "info": {
+        "fg": "#184b8f",
+        "bg": "#eaf2fc",
+        "border": "#1f5fb4"
+      }
     }
   },
   "fontFamily": {
@@ -456,6 +518,18 @@ export const tokens = {
         "fontWeight": 700,
         "lineHeight": 1.4,
         "letterSpacing": "0.1em"
+      },
+      "input": {
+        "fontFamily": [
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "sans-serif"
+        ],
+        "fontSize": "1rem",
+        "fontWeight": 400,
+        "lineHeight": 1.4,
+        "letterSpacing": "0em"
       }
     },
     "print": {
@@ -701,7 +775,29 @@ export const tokens = {
     "brand": {
       "bg": "#d4af37",
       "fg": "#1a1a1a"
-    }
+    },
+    "info": {
+      "bg": "#eaf2fc",
+      "fg": "#184b8f",
+      "border": "#1f5fb4"
+    },
+    "success": {
+      "bg": "#eef7ee",
+      "fg": "#1f5f23",
+      "border": "#2e7d32"
+    },
+    "warning": {
+      "bg": "#fff6e0",
+      "fg": "#7f4b00",
+      "border": "#a86400"
+    },
+    "danger": {
+      "bg": "#fdf0ee",
+      "fg": "#8f1d17",
+      "border": "#b3261e"
+    },
+    "gap": "0.25rem",
+    "border-width": "1px"
   },
   "chip": {
     "radius": "9999px",
@@ -1252,6 +1348,333 @@ export const tokens = {
     },
     "facade-fg": "#1a1a1a",
     "facade-gap": "1rem"
+  },
+  "icon-button": {
+    "size": "2.75rem",
+    "radius": "0.75rem",
+    "icon": "1.25rem"
+  },
+  "button-group": {
+    "gap": "0.5rem"
+  },
+  "link": {
+    "fg": "#574306",
+    "fg-hover": "#1a1a1a",
+    "fg-visited": "#4a453e",
+    "icon-gap": "0.25rem",
+    "min-height": "2.75rem"
+  },
+  "field": {
+    "gap": "0.5rem",
+    "label": "#1a1a1a",
+    "label-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "hint": "#36322d",
+    "hint-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "error": "#8f1d17",
+    "error-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "required": "#36322d"
+  },
+  "input": {
+    "radius": "0.75rem",
+    "min-height": "2.75rem",
+    "padding-x": "1rem",
+    "padding-y": "0.5rem",
+    "bg": "#fffdf9",
+    "fg": "#1a1a1a",
+    "placeholder": "#4a453e",
+    "border": "#615b52",
+    "border-hover": "#1a1a1a",
+    "border-focus": "#715808",
+    "border-width": "1.5px",
+    "invalid-border": "#b3261e",
+    "icon": "#36322d",
+    "icon-size": "1.25rem",
+    "icon-gap": "0.75rem",
+    "type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "disabled-opacity": 0.45
+  },
+  "textarea": {
+    "min-height": "6rem"
+  },
+  "select": {
+    "icon": "#36322d",
+    "icon-size": "1.25rem",
+    "padding-right": "3rem"
+  },
+  "checkbox": {
+    "size": "1.5rem",
+    "bg": "#fffdf9",
+    "border": "#615b52",
+    "border-width": "2px",
+    "checked-bg": "#1a1a1a",
+    "checked-fg": "#fbf8f1",
+    "hover-bg": "#f6f1e6",
+    "gap": "0.75rem",
+    "min-height": "2.75rem",
+    "label-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "label": "#1a1a1a",
+    "description": "#36322d",
+    "description-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "invalid-border": "#b3261e",
+    "disabled-opacity": 0.45,
+    "radius": "0.75rem"
+  },
+  "radio": {
+    "size": "1.5rem",
+    "bg": "#fffdf9",
+    "border": "#615b52",
+    "border-width": "2px",
+    "checked-bg": "#1a1a1a",
+    "checked-fg": "#fbf8f1",
+    "hover-bg": "#f6f1e6",
+    "gap": "0.75rem",
+    "min-height": "2.75rem",
+    "label-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "label": "#1a1a1a",
+    "description": "#36322d",
+    "description-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "invalid-border": "#b3261e",
+    "disabled-opacity": 0.45,
+    "radius": "9999px",
+    "dot": "0.5rem",
+    "group-gap": "0.25rem"
+  },
+  "switch": {
+    "track-width": "3rem",
+    "track-height": "2rem",
+    "thumb-size": "1.5rem",
+    "thumb-offset": "0.25rem",
+    "track-bg": "#ece4d2",
+    "track-border": "#615b52",
+    "track-border-width": "2px",
+    "thumb": "#4a453e",
+    "track-on-bg": "#1a1a1a",
+    "thumb-on": "#fffdf9",
+    "gap": "0.75rem",
+    "min-height": "2.75rem",
+    "label-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "label": "#1a1a1a",
+    "description": "#36322d",
+    "description-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "duration": "150ms",
+    "disabled-opacity": 0.45
+  },
+  "slider": {
+    "rail-height": "0.5rem",
+    "rail": "#615b52",
+    "fill": "#1a1a1a",
+    "thumb-size": "1.5rem",
+    "thumb": "#1a1a1a",
+    "thumb-ring": "#fffdf9",
+    "thumb-ring-width": "2px",
+    "min-height": "2.75rem",
+    "value": "#1a1a1a",
+    "value-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "radius": "9999px",
+    "disabled-opacity": 0.45
+  },
+  "pin-input": {
+    "cell-width": "3rem",
+    "cell-height": "3rem",
+    "gap": "0.5rem",
+    "radius": "0.75rem",
+    "type": {
+      "fontFamily": [
+        "Literata",
+        "Georgia",
+        "serif"
+      ],
+      "fontSize": "1.5rem",
+      "fontWeight": 700,
+      "lineHeight": 1.2,
+      "letterSpacing": "0em"
+    }
+  },
+  "tag-input": {
+    "gap": "0.5rem",
+    "tag-bg": "#ece4d2",
+    "tag-fg": "#1a1a1a",
+    "tag-radius": "9999px",
+    "tag-padding-left": "1rem",
+    "tag-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "remove-size": "2.75rem",
+    "remove-hover-bg": "#e6e2dc",
+    "remove-icon": "1rem"
+  },
+  "file-upload": {
+    "border": "#615b52",
+    "border-width": "2px",
+    "radius": "1rem",
+    "padding": "2rem",
+    "bg": "#fffdf9",
+    "bg-hover": "#f6f1e6",
+    "drag-border": "#8f6f14",
+    "drag-bg": "#ece4d2",
+    "gap": "0.75rem",
+    "icon": "#36322d",
+    "icon-size": "1.5rem",
+    "hint": "#36322d",
+    "hint-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "item-bg": "#ece4d2",
+    "item-radius": "0.75rem",
+    "item-padding": "0.75rem",
+    "item-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "error": "#8f1d17",
+    "remove-size": "2.75rem"
   }
 } as const
 

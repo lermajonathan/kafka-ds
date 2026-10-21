@@ -18,7 +18,7 @@ Alcance: [DDR-KF-004](decisions/DDR-KF-004-alcance-v1.md) y [DDR-KF-005](decisio
 | H0 ✅ | Cimientos | Tokens que faltan (estados, breakpoints, z-index, opacidad, lectura, impresión); componentes leen solo semánticos; oscuro por componente; archivos de gobierno; README y CHANGELOG | `npm run verify` pasa y el lint ya comprueba componentes reales |
 | H1 ✅ | Librería | React + Tailwind v4 sobre los tokens, `@kafka/tokens` y `@kafka/react` (ESM y tipos), generador de documentación, CI con teclado, axe y diff visual | Un componente de ejemplo pasa todas las pruebas en CI |
 | H2 ✅ | Lectura (14), código y pruebas; Figma en H7 | Prosa, cita destacada, nota al pie, verso, epígrafe, capitular, progreso, tabla de contenidos, ajustes de lectura, anterior/siguiente, figura, autor, tiempo de lectura, incrustado | Cada uno cumple los 7 criterios de DDR-KF-004 |
-| H3 | UI esencial | Botón, ícono-botón, grupo, enlace, insignia, chip, campo, entrada, área de texto, selección, casilla, radio, interruptor, deslizador, pin, etiquetas, archivo | Idem |
+| H3 ✅ | UI esencial, código y pruebas; Figma en H7 | Botón, ícono-botón, grupo, enlace, insignia, chip, campo, entrada, área de texto, selección, casilla, radio, interruptor, deslizador, pin, etiquetas, archivo | Idem |
 | H4 | Navegación y capas | Pestañas, acordeón, migas, paginación, pasos, menú, desplegable, popover, tooltip, modal, cajón, confirmar, calendarios | Idem |
 | H5 | Retroalimentación y superficies | Alerta, toast, progreso, esqueleto, estado vacío, tarjeta, panel, divisor, avatar, notificaciones, **tarjeta VIP, caja de noticias, tarjeta de programa** | Idem |
 | H6 | Impresión | Tokens de página, `print.css`, plantillas libro, revista y ficha, prueba de PDF | PDF de ejemplo pasa la prueba de salida |
