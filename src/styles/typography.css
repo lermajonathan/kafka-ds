@@ -190,3 +190,180 @@
   line-height: var(--kafka-news-title-line-height);
   letter-spacing: var(--kafka-news-title-letter-spacing);
 }
+.kafka-type-prose-body-type {
+  font-family: var(--kafka-prose-body-type-font-family);
+  font-size: var(--kafka-prose-body-type-font-size);
+  font-weight: var(--kafka-prose-body-type-font-weight);
+  line-height: var(--kafka-prose-body-type-line-height);
+  letter-spacing: var(--kafka-prose-body-type-letter-spacing);
+}
+.kafka-type-prose-lead-type {
+  font-family: var(--kafka-prose-lead-type-font-family);
+  font-size: var(--kafka-prose-lead-type-font-size);
+  font-weight: var(--kafka-prose-lead-type-font-weight);
+  line-height: var(--kafka-prose-lead-type-line-height);
+  letter-spacing: var(--kafka-prose-lead-type-letter-spacing);
+}
+.kafka-type-prose-title-type {
+  font-family: var(--kafka-prose-title-type-font-family);
+  font-size: var(--kafka-prose-title-type-font-size);
+  font-weight: var(--kafka-prose-title-type-font-weight);
+  line-height: var(--kafka-prose-title-type-line-height);
+  letter-spacing: var(--kafka-prose-title-type-letter-spacing);
+}
+.kafka-type-prose-h2-type {
+  font-family: var(--kafka-prose-h2-type-font-family);
+  font-size: var(--kafka-prose-h2-type-font-size);
+  font-weight: var(--kafka-prose-h2-type-font-weight);
+  line-height: var(--kafka-prose-h2-type-line-height);
+  letter-spacing: var(--kafka-prose-h2-type-letter-spacing);
+}
+.kafka-type-prose-h3-type {
+  font-family: var(--kafka-prose-h3-type-font-family);
+  font-size: var(--kafka-prose-h3-type-font-size);
+  font-weight: var(--kafka-prose-h3-type-font-weight);
+  line-height: var(--kafka-prose-h3-type-line-height);
+  letter-spacing: var(--kafka-prose-h3-type-letter-spacing);
+}
+.kafka-type-prose-h4-type {
+  font-family: var(--kafka-prose-h4-type-font-family);
+  font-size: var(--kafka-prose-h4-type-font-size);
+  font-weight: var(--kafka-prose-h4-type-font-weight);
+  line-height: var(--kafka-prose-h4-type-line-height);
+  letter-spacing: var(--kafka-prose-h4-type-letter-spacing);
+}
+.kafka-type-pull-quote-type {
+  font-family: var(--kafka-pull-quote-type-font-family);
+  font-size: var(--kafka-pull-quote-type-font-size);
+  font-weight: var(--kafka-pull-quote-type-font-weight);
+  font-style: var(--kafka-pull-quote-type-font-style);
+  line-height: var(--kafka-pull-quote-type-line-height);
+  letter-spacing: var(--kafka-pull-quote-type-letter-spacing);
+}
+.kafka-type-pull-quote-attribution-type {
+  font-family: var(--kafka-pull-quote-attribution-type-font-family);
+  font-size: var(--kafka-pull-quote-attribution-type-font-size);
+  font-weight: var(--kafka-pull-quote-attribution-type-font-weight);
+  line-height: var(--kafka-pull-quote-attribution-type-line-height);
+  letter-spacing: var(--kafka-pull-quote-attribution-type-letter-spacing);
+}
+.kafka-type-footnote-type {
+  font-family: var(--kafka-footnote-type-font-family);
+  font-size: var(--kafka-footnote-type-font-size);
+  font-weight: var(--kafka-footnote-type-font-weight);
+  line-height: var(--kafka-footnote-type-line-height);
+  letter-spacing: var(--kafka-footnote-type-letter-spacing);
+}
+.kafka-type-verse-type {
+  font-family: var(--kafka-verse-type-font-family);
+  font-size: var(--kafka-verse-type-font-size);
+  font-weight: var(--kafka-verse-type-font-weight);
+  line-height: var(--kafka-verse-type-line-height);
+  letter-spacing: var(--kafka-verse-type-letter-spacing);
+}
+.kafka-type-verse-attribution-type {
+  font-family: var(--kafka-verse-attribution-type-font-family);
+  font-size: var(--kafka-verse-attribution-type-font-size);
+  font-weight: var(--kafka-verse-attribution-type-font-weight);
+  line-height: var(--kafka-verse-attribution-type-line-height);
+  letter-spacing: var(--kafka-verse-attribution-type-letter-spacing);
+}
+.kafka-type-epigraph-type {
+  font-family: var(--kafka-epigraph-type-font-family);
+  font-size: var(--kafka-epigraph-type-font-size);
+  font-weight: var(--kafka-epigraph-type-font-weight);
+  font-style: var(--kafka-epigraph-type-font-style);
+  line-height: var(--kafka-epigraph-type-line-height);
+  letter-spacing: var(--kafka-epigraph-type-letter-spacing);
+}
+.kafka-type-epigraph-attribution-type {
+  font-family: var(--kafka-epigraph-attribution-type-font-family);
+  font-size: var(--kafka-epigraph-attribution-type-font-size);
+  font-weight: var(--kafka-epigraph-attribution-type-font-weight);
+  line-height: var(--kafka-epigraph-attribution-type-line-height);
+  letter-spacing: var(--kafka-epigraph-attribution-type-letter-spacing);
+}
+.kafka-type-drop-cap-type {
+  font-family: var(--kafka-drop-cap-type-font-family);
+  font-size: var(--kafka-drop-cap-type-font-size);
+  font-weight: var(--kafka-drop-cap-type-font-weight);
+  line-height: var(--kafka-drop-cap-type-line-height);
+  letter-spacing: var(--kafka-drop-cap-type-letter-spacing);
+}
+.kafka-type-toc-title-type {
+  font-family: var(--kafka-toc-title-type-font-family);
+  font-size: var(--kafka-toc-title-type-font-size);
+  font-weight: var(--kafka-toc-title-type-font-weight);
+  line-height: var(--kafka-toc-title-type-line-height);
+  letter-spacing: var(--kafka-toc-title-type-letter-spacing);
+}
+.kafka-type-toc-type {
+  font-family: var(--kafka-toc-type-font-family);
+  font-size: var(--kafka-toc-type-font-size);
+  font-weight: var(--kafka-toc-type-font-weight);
+  line-height: var(--kafka-toc-type-line-height);
+  letter-spacing: var(--kafka-toc-type-letter-spacing);
+}
+.kafka-type-reading-settings-legend-type {
+  font-family: var(--kafka-reading-settings-legend-type-font-family);
+  font-size: var(--kafka-reading-settings-legend-type-font-size);
+  font-weight: var(--kafka-reading-settings-legend-type-font-weight);
+  line-height: var(--kafka-reading-settings-legend-type-line-height);
+  letter-spacing: var(--kafka-reading-settings-legend-type-letter-spacing);
+}
+.kafka-type-reading-settings-option-type {
+  font-family: var(--kafka-reading-settings-option-type-font-family);
+  font-size: var(--kafka-reading-settings-option-type-font-size);
+  font-weight: var(--kafka-reading-settings-option-type-font-weight);
+  line-height: var(--kafka-reading-settings-option-type-line-height);
+  letter-spacing: var(--kafka-reading-settings-option-type-letter-spacing);
+}
+.kafka-type-prev-next-direction-type {
+  font-family: var(--kafka-prev-next-direction-type-font-family);
+  font-size: var(--kafka-prev-next-direction-type-font-size);
+  font-weight: var(--kafka-prev-next-direction-type-font-weight);
+  line-height: var(--kafka-prev-next-direction-type-line-height);
+  letter-spacing: var(--kafka-prev-next-direction-type-letter-spacing);
+}
+.kafka-type-prev-next-title-type {
+  font-family: var(--kafka-prev-next-title-type-font-family);
+  font-size: var(--kafka-prev-next-title-type-font-size);
+  font-weight: var(--kafka-prev-next-title-type-font-weight);
+  line-height: var(--kafka-prev-next-title-type-line-height);
+  letter-spacing: var(--kafka-prev-next-title-type-letter-spacing);
+}
+.kafka-type-figure-caption-type {
+  font-family: var(--kafka-figure-caption-type-font-family);
+  font-size: var(--kafka-figure-caption-type-font-size);
+  font-weight: var(--kafka-figure-caption-type-font-weight);
+  line-height: var(--kafka-figure-caption-type-line-height);
+  letter-spacing: var(--kafka-figure-caption-type-letter-spacing);
+}
+.kafka-type-author-name-type {
+  font-family: var(--kafka-author-name-type-font-family);
+  font-size: var(--kafka-author-name-type-font-size);
+  font-weight: var(--kafka-author-name-type-font-weight);
+  line-height: var(--kafka-author-name-type-line-height);
+  letter-spacing: var(--kafka-author-name-type-letter-spacing);
+}
+.kafka-type-author-role-type {
+  font-family: var(--kafka-author-role-type-font-family);
+  font-size: var(--kafka-author-role-type-font-size);
+  font-weight: var(--kafka-author-role-type-font-weight);
+  line-height: var(--kafka-author-role-type-line-height);
+  letter-spacing: var(--kafka-author-role-type-letter-spacing);
+}
+.kafka-type-reading-time-type {
+  font-family: var(--kafka-reading-time-type-font-family);
+  font-size: var(--kafka-reading-time-type-font-size);
+  font-weight: var(--kafka-reading-time-type-font-weight);
+  line-height: var(--kafka-reading-time-type-line-height);
+  letter-spacing: var(--kafka-reading-time-type-letter-spacing);
+}
+.kafka-type-embed-caption-type {
+  font-family: var(--kafka-embed-caption-type-font-family);
+  font-size: var(--kafka-embed-caption-type-font-size);
+  font-weight: var(--kafka-embed-caption-type-font-weight);
+  line-height: var(--kafka-embed-caption-type-line-height);
+  letter-spacing: var(--kafka-embed-caption-type-letter-spacing);
+}

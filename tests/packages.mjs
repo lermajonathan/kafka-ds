@@ -33,17 +33,25 @@ check(!/\.bg-slate-|\.bg-blue-|\.bg-red-/.test(css), 'styles.css contains no def
 const tw = fs.readFileSync(path.join(kr, 'dist/tailwind.css'), 'utf8')
 check(tw.includes('@source "./index.js"') && tw.includes('@theme'), 'tailwind.css scans the package and defines the theme')
 // 3 · the library renders on the server, with Spanish labels from the provider
+const { registry } = await (await import('tsx/esm/api')).tsImport('../examples/index.ts', import.meta.url)
+const names = Object.values(registry).map((e) => e.name)
 fs.writeFileSync(path.join(app, 'render.mjs'), `
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import tokens from '@kafka/tokens'
+import * as K from '@kafka/react'
 import { Button, KafkaProvider, labelsEs, IconCrown } from '@kafka/react'
 const html = renderToStaticMarkup(h(KafkaProvider, { labels: labelsEs }, h(Button, { loading: true, Icon: IconCrown }, 'Enviar')))
-console.log(JSON.stringify({ html, brand: tokens.color.bg.brand, print: tokens.print.book.width }))
+const names = ${JSON.stringify(names)}
+const missing = names.filter((n) => typeof K[n] !== 'function')
+const reading = renderToStaticMarkup(h(KafkaProvider, { labels: labelsEs }, h(K.ReadingTime, { words: 1450 }), h(K.PrevNext, { next: { href: '#n', title: 'T' } })))
+console.log(JSON.stringify({ missing, reading, html, brand: tokens.color.bg.brand, print: tokens.print.book.width }))
 `)
 const out = JSON.parse(sh('node render.mjs', app))
 check(out.html.includes('aria-busy="true"') && out.html.includes('disabled') && out.html.includes('Cargando'), 'Button renders busy, disabled and localised')
 check(out.html.includes('kafka-focus') && out.html.includes('--kafka-button-primary-bg'), 'Button renders token-based classes')
+check(out.missing.length === 0, `every documented component is exported (${out.missing.join(', ') || 'all ' + names.length}))`)
+check(out.reading.includes('8 min de lectura') && out.reading.includes('rel="next"'), 'reading components render on the server, localised')
 check(out.brand === '#d4af37', 'tokens export resolves colours')
 check(out.print === '148mm', 'tokens export includes the print module')
 // 4 · types compile for a consumer (and reject a wrong variant)

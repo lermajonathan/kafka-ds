@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H2 · Componentes de lectura (21 oct 2026)
+- **14 componentes**: [Prose](docs/components/prose.md), [PullQuote](docs/components/pull-quote.md), [Footnote](docs/components/footnote.md), [Verse](docs/components/verse.md), [Epigraph](docs/components/epigraph.md), [DropCap](docs/components/drop-cap.md), [ReadingProgress](docs/components/reading-progress.md), [TableOfContents](docs/components/toc.md), [ReadingSettings](docs/components/reading-settings.md), [PrevNext](docs/components/prev-next.md), [Figure](docs/components/figure.md), [Author](docs/components/author.md), [ReadingTime](docs/components/reading-time.md) y [Embed](docs/components/embed.md) ([DDR-KF-008](docs/decisions/DDR-KF-008-componentes-de-lectura.md)).
+- 141 tokens de componente nuevos (214 en total); textos de la interfaz en inglés y español (`labelsEs`).
+- 37 pares de contraste nuevos (ahora 102 en claro y 101 en oscuro), 89 comprobaciones de teclado y ARIA, axe-core en 15 componentes × 2 tamaños × 2 temas con 0 violaciones, y los paquetes exportan y renderizan en servidor todos los componentes documentados.
+- Pendiente: la versión en Figma de estos componentes (H7).
+
 ### H1 · Librería (21 oct 2026)
 - **Pila**: React 19, Tailwind v4, Vite 8, TypeScript 5.9 y pnpm 10 ([DDR-KF-007](docs/decisions/DDR-KF-007-pila-de-la-libreria.md)).
 - **Tema de Tailwind generado desde los tokens** (`src/styles/theme.css`) que desactiva paletas, tamaños, radios y sombras por defecto, más una clase por rol tipográfico (`typography.css`).

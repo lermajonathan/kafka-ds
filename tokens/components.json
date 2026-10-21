@@ -1,108 +1,924 @@
 {
   "article": {
     "$description": "Artículo: contenedor de lectura larga.",
-    "measure": {"$type": "dimension", "$value": "{measure.reading}"},
-    "text": {"$type": "color", "$value": "{color.reading.text}"},
-    "bg": {"$type": "color", "$value": "{color.reading.bg}"},
-    "paragraph-gap": {"$type": "dimension", "$value": "{space.24}"},
-    "cover-radius": {"$type": "dimension", "$value": "{radius.media}"}
+    "measure": {
+      "$type": "dimension",
+      "$value": "{measure.reading}"
+    },
+    "text": {
+      "$type": "color",
+      "$value": "{color.reading.text}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.reading.bg}"
+    },
+    "paragraph-gap": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "cover-radius": {
+      "$type": "dimension",
+      "$value": "{radius.media}"
+    }
   },
   "button": {
     "$description": "Botón. Interfaz en sans; 44 px de alto mínimo.",
-    "radius": {"$type": "dimension", "$value": "{radius.control}"},
-    "padding-x": {"$type": "dimension", "$value": "{space.24}"},
-    "padding-y": {"$type": "dimension", "$value": "{space.12}"},
-    "gap": {"$type": "dimension", "$value": "{space.8}"},
-    "min-height": {"$type": "dimension", "$value": "{size.touch}"},
-    "type": {"$type": "typography", "$value": "{typography.ui.button}"},
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "padding-y": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.button}"
+    },
     "primary": {
-      "bg": {"$type": "color", "$value": "{color.bg.brand}"},
-      "bg-hover": {"$type": "color", "$value": "{color.bg.brand-hover}"},
-      "fg": {"$type": "color", "$value": "{color.fg.on-brand}"},
-      "bg-active": {"$value": "{color.bg.brand-active}"}
+      "bg": {
+        "$type": "color",
+        "$value": "{color.bg.brand}"
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{color.bg.brand-hover}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.fg.on-brand}"
+      },
+      "bg-active": {
+        "$value": "{color.bg.brand-active}"
+      }
     },
     "soft": {
-      "bg": {"$type": "color", "$value": "{color.bg.sunken}"},
-      "fg": {"$type": "color", "$value": "{color.fg.default}"},
-      "bg-hover": {"$value": "{color.bg.sunken-hover}"},
-      "bg-active": {"$value": "{color.bg.sunken-active}"}
+      "bg": {
+        "$type": "color",
+        "$value": "{color.bg.sunken}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.fg.default}"
+      },
+      "bg-hover": {
+        "$value": "{color.bg.sunken-hover}"
+      },
+      "bg-active": {
+        "$value": "{color.bg.sunken-active}"
+      }
     },
     "outline": {
-      "border": {"$type": "color", "$value": "{color.border.strong}"},
-      "fg": {"$type": "color", "$value": "{color.fg.default}"},
-      "bg-hover": {"$value": "{color.bg.hover}"},
-      "bg-active": {"$value": "{color.bg.active}"}
+      "border": {
+        "$type": "color",
+        "$value": "{color.border.strong}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.fg.default}"
+      },
+      "bg-hover": {
+        "$value": "{color.bg.hover}"
+      },
+      "bg-active": {
+        "$value": "{color.bg.active}"
+      }
     },
-    "disabled-opacity": {"$value": "{opacity.disabled}"}
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    }
   },
   "badge": {
     "$description": "Insignia de estado o categoría.",
-    "radius": {"$type": "dimension", "$value": "{radius.pill}"},
-    "padding-x": {"$type": "dimension", "$value": "{space.12}"},
-    "padding-y": {"$type": "dimension", "$value": "{space.4}"},
-    "type": {"$type": "typography", "$value": "{typography.ui.caption}"},
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.pill}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "padding-y": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
     "neutral": {
-      "bg": {"$type": "color", "$value": "{color.bg.inverse}"},
-      "fg": {"$type": "color", "$value": "{color.fg.inverse}"}
+      "bg": {
+        "$type": "color",
+        "$value": "{color.bg.inverse}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.fg.inverse}"
+      }
     },
     "brand": {
-      "bg": {"$type": "color", "$value": "{color.bg.brand}"},
-      "fg": {"$type": "color", "$value": "{color.fg.on-brand}"}
+      "bg": {
+        "$type": "color",
+        "$value": "{color.bg.brand}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.fg.on-brand}"
+      }
     }
   },
   "chip": {
     "$description": "Chip de filtro. Seleccionado = invertido.",
-    "radius": {"$type": "dimension", "$value": "{radius.pill}"},
-    "padding-x": {"$type": "dimension", "$value": "{space.16}"},
-    "padding-y": {"$type": "dimension", "$value": "{space.8}"},
-    "min-height": {"$type": "dimension", "$value": "{size.touch}"},
-    "type": {"$type": "typography", "$value": "{typography.ui.label}"},
-    "bg": {"$type": "color", "$value": "{color.bg.surface}"},
-    "border": {"$type": "color", "$value": "{color.border.default}"},
-    "fg": {"$type": "color", "$value": "{color.fg.soft}"},
-    "selected-bg": {"$type": "color", "$value": "{color.bg.inverse}"},
-    "selected-fg": {"$type": "color", "$value": "{color.fg.inverse}"},
-    "bg-hover": {"$value": "{color.bg.hover}"}
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.pill}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "padding-y": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "selected-bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "selected-fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    },
+    "bg-hover": {
+      "$value": "{color.bg.hover}"
+    }
   },
   "card": {
     "$description": "Tarjeta de programa. Destacada = borde dorado; VIP = ver vip.*",
-    "bg": {"$type": "color", "$value": "{color.bg.surface}"},
-    "border": {"$type": "color", "$value": "{color.border.default}"},
-    "border-width": {"$type": "dimension", "$value": "{borderWidth.hairline}"},
-    "radius": {"$type": "dimension", "$value": "{radius.card}"},
-    "padding": {"$type": "dimension", "$value": "{space.24}"},
-    "gap": {"$type": "dimension", "$value": "{space.12}"},
-    "shadow": {"$type": "shadow", "$value": "{elevation.card}"},
-    "title": {"$type": "typography", "$value": "{typography.reading.heading-sm}"},
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.card}"
+    },
+    "title": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-sm}"
+    },
     "featured": {
-      "border": {"$type": "color", "$value": "{color.border.brand}"},
-      "border-width": {"$type": "dimension", "$value": "{borderWidth.thin}"}
+      "border": {
+        "$type": "color",
+        "$value": "{color.border.brand}"
+      },
+      "border-width": {
+        "$type": "dimension",
+        "$value": "{borderWidth.thin}"
+      }
     }
   },
   "vip": {
     "$description": "Tarjeta VIP (membresía): oro, insignia y brillo animado en el borde. Texto fijo en ink 900.",
-    "bg": {"$type": "gradient", "$value": "{gradient.vip}"},
-    "fg": {"$type": "color", "$value": "{color.vip.fg}"},
-    "shine": {"$type": "color", "$value": "{color.vip.shine}"},
-    "shine-width": {"$type": "dimension", "$value": "{borderWidth.thick}"},
-    "shine-duration": {"$type": "duration", "$value": "{motion.duration.shine}"},
-    "glow": {"$type": "shadow", "$value": "{elevation.glow}"},
-    "badge-bg": {"$type": "color", "$value": "{color.vip.badge-bg}"},
-    "badge-fg": {"$type": "color", "$value": "{color.vip.badge-fg}"}
+    "bg": {
+      "$type": "gradient",
+      "$value": "{gradient.vip}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.vip.fg}"
+    },
+    "shine": {
+      "$type": "color",
+      "$value": "{color.vip.shine}"
+    },
+    "shine-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thick}"
+    },
+    "shine-duration": {
+      "$type": "duration",
+      "$value": "{motion.duration.shine}"
+    },
+    "glow": {
+      "$type": "shadow",
+      "$value": "{elevation.glow}"
+    },
+    "badge-bg": {
+      "$type": "color",
+      "$value": "{color.vip.badge-bg}"
+    },
+    "badge-fg": {
+      "$type": "color",
+      "$value": "{color.vip.badge-fg}"
+    }
   },
   "news": {
     "$description": "Caja flotante de noticias de la comunidad.",
-    "width": {"$type": "dimension", "$value": "{size.floating}"},
-    "bg": {"$type": "color", "$value": "{color.bg.surface}"},
-    "border": {"$type": "color", "$value": "{color.border.brand}"},
-    "border-width": {"$type": "dimension", "$value": "{borderWidth.thin}"},
-    "radius": {"$type": "dimension", "$value": "{radius.card}"},
-    "padding": {"$type": "dimension", "$value": "{space.20}"},
-    "shadow": {"$type": "shadow", "$value": "{elevation.floating}"},
-    "title": {"$type": "typography", "$value": "{typography.reading.heading-sm}"},
-    "kind-bg": {"$type": "color", "$value": "{color.bg.brand}"},
-    "kind-fg": {"$type": "color", "$value": "{color.fg.on-brand}"},
-    "kind-size": {"$type": "dimension", "$value": "{space.32}"},
-    "enter": {"$type": "duration", "$value": "{motion.duration.slow}"}
+    "width": {
+      "$type": "dimension",
+      "$value": "{size.floating}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thin}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.20}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.floating}"
+    },
+    "title": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-sm}"
+    },
+    "kind-bg": {
+      "$type": "color",
+      "$value": "{color.bg.brand}"
+    },
+    "kind-fg": {
+      "$type": "color",
+      "$value": "{color.fg.on-brand}"
+    },
+    "kind-size": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "enter": {
+      "$type": "duration",
+      "$value": "{motion.duration.slow}"
+    }
+  },
+  "prose": {
+    "$description": "Texto corrido de lectura: párrafos, títulos, listas, enlaces y citas en bloque dentro de una columna de 66ch.",
+    "measure": {
+      "$value": "{measure.reading}",
+      "$type": "dimension"
+    },
+    "text": {
+      "$value": "{color.reading.text}",
+      "$type": "color"
+    },
+    "text-secondary": {
+      "$value": "{color.reading.text-secondary}",
+      "$type": "color"
+    },
+    "paragraph-gap": {
+      "$value": "{space.24}",
+      "$type": "dimension"
+    },
+    "section-gap": {
+      "$value": "{space.48}",
+      "$type": "dimension"
+    },
+    "heading-gap": {
+      "$value": "{space.12}",
+      "$type": "dimension"
+    },
+    "list-indent": {
+      "$value": "{space.24}",
+      "$type": "dimension"
+    },
+    "list-gap": {
+      "$value": "{space.8}",
+      "$type": "dimension"
+    },
+    "link": {
+      "$value": "{color.fg.link}",
+      "$type": "color"
+    },
+    "link-hover": {
+      "$value": "{color.fg.link-hover}",
+      "$type": "color"
+    },
+    "link-visited": {
+      "$value": "{color.fg.link-visited}",
+      "$type": "color"
+    },
+    "rule": {
+      "$value": "{color.border.default}",
+      "$type": "color"
+    },
+    "rule-width": {
+      "$value": "{borderWidth.hairline}",
+      "$type": "dimension"
+    },
+    "quote-rule": {
+      "$value": "{color.reading.quote-rule}",
+      "$type": "color"
+    },
+    "quote-rule-width": {
+      "$value": "{borderWidth.thick}",
+      "$type": "dimension"
+    },
+    "quote-padding": {
+      "$value": "{space.20}",
+      "$type": "dimension"
+    },
+    "body-type": {
+      "$value": "{typography.reading.body}",
+      "$type": "typography"
+    },
+    "lead-type": {
+      "$value": "{typography.reading.lead}",
+      "$type": "typography"
+    },
+    "title-type": {
+      "$value": "{typography.reading.title}",
+      "$type": "typography"
+    },
+    "h2-type": {
+      "$value": "{typography.reading.heading-lg}",
+      "$type": "typography"
+    },
+    "h3-type": {
+      "$value": "{typography.reading.heading-md}",
+      "$type": "typography"
+    },
+    "h4-type": {
+      "$value": "{typography.reading.heading-sm}",
+      "$type": "typography"
+    }
+  },
+  "pull-quote": {
+    "$description": "Cita destacada fuera del flujo del texto. La regla lateral usa el oro de borde (3:1), no el oro de superficie.",
+    "rule": {
+      "$value": "{color.reading.quote-rule}",
+      "$type": "color"
+    },
+    "rule-width": {
+      "$value": "{borderWidth.thick}",
+      "$type": "dimension"
+    },
+    "padding": {
+      "$value": "{space.24}",
+      "$type": "dimension"
+    },
+    "gap": {
+      "$value": "{space.12}",
+      "$type": "dimension"
+    },
+    "text": {
+      "$value": "{color.reading.text}",
+      "$type": "color"
+    },
+    "attribution": {
+      "$value": "{color.reading.text-secondary}",
+      "$type": "color"
+    },
+    "type": {
+      "$value": "{typography.reading.quote}",
+      "$type": "typography"
+    },
+    "attribution-type": {
+      "$value": "{typography.ui.label}",
+      "$type": "typography"
+    }
+  },
+  "footnote": {
+    "$description": "Llamada numerada en el texto y lista de notas al final, con enlace de regreso.",
+    "ref-size": {
+      "$value": "{size.icon.lg}",
+      "$type": "dimension"
+    },
+    "ref-fg": {
+      "$value": "{color.fg.link}",
+      "$type": "color"
+    },
+    "ref-hover-bg": {
+      "$value": "{color.bg.hover}",
+      "$type": "color"
+    },
+    "ref-radius": {
+      "$value": "{radius.control}",
+      "$type": "dimension"
+    },
+    "rule": {
+      "$value": "{color.reading.footnote-rule}",
+      "$type": "color"
+    },
+    "rule-width": {
+      "$value": "{borderWidth.hairline}",
+      "$type": "dimension"
+    },
+    "text": {
+      "$value": "{color.reading.text-secondary}",
+      "$type": "color"
+    },
+    "padding-top": {
+      "$value": "{space.24}",
+      "$type": "dimension"
+    },
+    "gap": {
+      "$value": "{space.8}",
+      "$type": "dimension"
+    },
+    "indent": {
+      "$value": "{space.24}",
+      "$type": "dimension"
+    },
+    "type": {
+      "$value": "{typography.reading.footnote}",
+      "$type": "typography"
+    },
+    "back-size": {
+      "$value": "{size.touch}",
+      "$type": "dimension"
+    },
+    "target-bg": {
+      "$value": "{color.highlight.bg}",
+      "$type": "color"
+    },
+    "target-fg": {
+      "$value": "{color.highlight.fg}",
+      "$type": "color"
+    }
+  },
+  "verse": {
+    "$description": "Poema con saltos de verso y de estrofa conservados y sangría francesa para los versos largos.",
+    "text": {
+      "$value": "{color.reading.text}",
+      "$type": "color"
+    },
+    "hanging-indent": {
+      "$value": "{space.24}",
+      "$type": "dimension"
+    },
+    "stanza-gap": {
+      "$value": "{space.24}",
+      "$type": "dimension"
+    },
+    "attribution": {
+      "$value": "{color.reading.text-secondary}",
+      "$type": "color"
+    },
+    "type": {
+      "$value": "{typography.reading.body}",
+      "$type": "typography"
+    },
+    "attribution-type": {
+      "$value": "{typography.ui.label}",
+      "$type": "typography"
+    },
+    "attribution-gap": {
+      "$value": "{space.12}",
+      "$type": "dimension"
+    }
+  },
+  "epigraph": {
+    "$description": "Cita breve que abre un texto: a la derecha, en cursiva y en tono suave.",
+    "text": {
+      "$value": "{color.fg.soft}",
+      "$type": "color"
+    },
+    "attribution": {
+      "$value": "{color.fg.muted}",
+      "$type": "color"
+    },
+    "max-width": {
+      "$value": "{measure.min}",
+      "$type": "dimension"
+    },
+    "offset": {
+      "$value": "{space.48}",
+      "$type": "dimension"
+    },
+    "gap": {
+      "$value": "{space.8}",
+      "$type": "dimension"
+    },
+    "type": {
+      "$value": "{typography.reading.quote}",
+      "$type": "typography"
+    },
+    "attribution-type": {
+      "$value": "{typography.ui.caption}",
+      "$type": "typography"
+    }
+  },
+  "drop-cap": {
+    "$description": "Letra capital de varias líneas hecha con ::first-letter: el texto sigue siendo un párrafo normal.",
+    "fg": {
+      "$value": "{color.reading.dropcap}",
+      "$type": "color"
+    },
+    "padding-right": {
+      "$value": "{space.8}",
+      "$type": "dimension"
+    },
+    "type": {
+      "$value": "{typography.reading.dropcap}",
+      "$type": "typography"
+    }
+  },
+  "reading-progress": {
+    "$description": "Barra de avance de lectura. El relleno usa el oro de borde (3:1 sobre el riel).",
+    "track": {
+      "$value": "{color.reading.progress-track}",
+      "$type": "color"
+    },
+    "fill": {
+      "$value": "{color.reading.progress-fill}",
+      "$type": "color"
+    },
+    "height": {
+      "$value": "{size.progress}",
+      "$type": "dimension"
+    },
+    "z": {
+      "$value": "{layer.sticky}"
+    },
+    "duration": {
+      "$value": "{motion.duration.fast}"
+    }
+  },
+  "toc": {
+    "$description": "Tabla de contenido con la sección actual marcada. Cada enlace mide 44 px de alto.",
+    "link": {
+      "$value": "{color.fg.soft}",
+      "$type": "color"
+    },
+    "link-hover": {
+      "$value": "{color.fg.default}",
+      "$type": "color"
+    },
+    "current": {
+      "$value": "{color.fg.default}",
+      "$type": "color"
+    },
+    "current-rule": {
+      "$value": "{color.border.brand}",
+      "$type": "color"
+    },
+    "rule": {
+      "$value": "{color.border.default}",
+      "$type": "color"
+    },
+    "rule-width": {
+      "$value": "{borderWidth.medium}",
+      "$type": "dimension"
+    },
+    "padding-x": {
+      "$value": "{space.16}",
+      "$type": "dimension"
+    },
+    "indent": {
+      "$value": "{space.16}",
+      "$type": "dimension"
+    },
+    "min-height": {
+      "$value": "{size.touch}",
+      "$type": "dimension"
+    },
+    "title": {
+      "$value": "{color.fg.muted}",
+      "$type": "color"
+    },
+    "title-type": {
+      "$value": "{typography.ui.overline}",
+      "$type": "typography"
+    },
+    "type": {
+      "$value": "{typography.ui.label}",
+      "$type": "typography"
+    },
+    "hover-bg": {
+      "$value": "{color.bg.hover}",
+      "$type": "color"
+    },
+    "radius": {
+      "$value": "{radius.control}",
+      "$type": "dimension"
+    }
+  },
+  "reading-settings": {
+    "$description": "Panel de preferencias de lectura: tamaño, ancho, tipografía y tema.",
+    "bg": {
+      "$value": "{color.bg.surface}",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "{color.border.default}",
+      "$type": "color"
+    },
+    "border-width": {
+      "$value": "{borderWidth.hairline}",
+      "$type": "dimension"
+    },
+    "radius": {
+      "$value": "{radius.card}",
+      "$type": "dimension"
+    },
+    "padding": {
+      "$value": "{space.20}",
+      "$type": "dimension"
+    },
+    "gap": {
+      "$value": "{space.20}",
+      "$type": "dimension"
+    },
+    "group-gap": {
+      "$value": "{space.8}",
+      "$type": "dimension"
+    },
+    "legend": {
+      "$value": "{color.fg.muted}",
+      "$type": "color"
+    },
+    "legend-type": {
+      "$value": "{typography.ui.overline}",
+      "$type": "typography"
+    },
+    "option-bg": {
+      "$value": "{color.bg.surface}",
+      "$type": "color"
+    },
+    "option-border": {
+      "$value": "{color.border.strong}",
+      "$type": "color"
+    },
+    "option-fg": {
+      "$value": "{color.fg.soft}",
+      "$type": "color"
+    },
+    "option-hover-bg": {
+      "$value": "{color.bg.hover}",
+      "$type": "color"
+    },
+    "option-selected-bg": {
+      "$value": "{color.bg.inverse}",
+      "$type": "color"
+    },
+    "option-selected-fg": {
+      "$value": "{color.fg.inverse}",
+      "$type": "color"
+    },
+    "option-min-height": {
+      "$value": "{size.touch}",
+      "$type": "dimension"
+    },
+    "option-padding-x": {
+      "$value": "{space.16}",
+      "$type": "dimension"
+    },
+    "option-radius": {
+      "$value": "{radius.pill}",
+      "$type": "dimension"
+    },
+    "option-type": {
+      "$value": "{typography.ui.label}",
+      "$type": "typography"
+    },
+    "value-fg": {
+      "$value": "{color.fg.default}",
+      "$type": "color"
+    }
+  },
+  "prev-next": {
+    "$description": "Navegación entre textos. Cada destino es un enlace grande con su título.",
+    "gap": {
+      "$value": "{space.16}",
+      "$type": "dimension"
+    },
+    "padding": {
+      "$value": "{space.20}",
+      "$type": "dimension"
+    },
+    "bg": {
+      "$value": "{color.bg.surface}",
+      "$type": "color"
+    },
+    "bg-hover": {
+      "$value": "{color.bg.hover}",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "{color.border.default}",
+      "$type": "color"
+    },
+    "border-hover": {
+      "$value": "{color.border.strong}",
+      "$type": "color"
+    },
+    "border-width": {
+      "$value": "{borderWidth.hairline}",
+      "$type": "dimension"
+    },
+    "radius": {
+      "$value": "{radius.card}",
+      "$type": "dimension"
+    },
+    "min-height": {
+      "$value": "{size.touch}",
+      "$type": "dimension"
+    },
+    "direction": {
+      "$value": "{color.fg.muted}",
+      "$type": "color"
+    },
+    "direction-type": {
+      "$value": "{typography.ui.overline}",
+      "$type": "typography"
+    },
+    "title": {
+      "$value": "{color.fg.default}",
+      "$type": "color"
+    },
+    "title-type": {
+      "$value": "{typography.reading.heading-sm}",
+      "$type": "typography"
+    }
+  },
+  "figure": {
+    "$description": "Imagen con pie y crédito. Un texto alternativo es obligatorio (vacío solo si la imagen es decorativa).",
+    "radius": {
+      "$value": "{radius.media}",
+      "$type": "dimension"
+    },
+    "bg": {
+      "$value": "{color.bg.sunken}",
+      "$type": "color"
+    },
+    "caption": {
+      "$value": "{color.fg.soft}",
+      "$type": "color"
+    },
+    "credit": {
+      "$value": "{color.fg.muted}",
+      "$type": "color"
+    },
+    "gap": {
+      "$value": "{space.12}",
+      "$type": "dimension"
+    },
+    "caption-type": {
+      "$value": "{typography.ui.caption}",
+      "$type": "typography"
+    }
+  },
+  "author": {
+    "$description": "Firma de autoría con retrato o iniciales, nombre, cargo y reseña opcional.",
+    "avatar-size": {
+      "$value": "{space.48}",
+      "$type": "dimension"
+    },
+    "avatar-bg": {
+      "$value": "{color.bg.sunken}",
+      "$type": "color"
+    },
+    "avatar-fg": {
+      "$value": "{color.fg.default}",
+      "$type": "color"
+    },
+    "avatar-radius": {
+      "$value": "{radius.pill}",
+      "$type": "dimension"
+    },
+    "gap": {
+      "$value": "{space.12}",
+      "$type": "dimension"
+    },
+    "name": {
+      "$value": "{color.fg.default}",
+      "$type": "color"
+    },
+    "role": {
+      "$value": "{color.fg.soft}",
+      "$type": "color"
+    },
+    "bio": {
+      "$value": "{color.fg.soft}",
+      "$type": "color"
+    },
+    "name-type": {
+      "$value": "{typography.ui.label}",
+      "$type": "typography"
+    },
+    "role-type": {
+      "$value": "{typography.ui.caption}",
+      "$type": "typography"
+    }
+  },
+  "reading-time": {
+    "$description": "Tiempo estimado de lectura, calculado desde el número de palabras.",
+    "fg": {
+      "$value": "{color.fg.soft}",
+      "$type": "color"
+    },
+    "gap": {
+      "$value": "{space.4}",
+      "$type": "dimension"
+    },
+    "type": {
+      "$value": "{typography.ui.caption}",
+      "$type": "typography"
+    }
+  },
+  "embed": {
+    "$description": "Contenido incrustado (iframe) con título obligatorio, proporción fija y enlace de salida.",
+    "radius": {
+      "$value": "{radius.media}",
+      "$type": "dimension"
+    },
+    "bg": {
+      "$value": "{color.bg.sunken}",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "{color.border.strong}",
+      "$type": "color"
+    },
+    "border-width": {
+      "$value": "{borderWidth.hairline}",
+      "$type": "dimension"
+    },
+    "gap": {
+      "$value": "{space.12}",
+      "$type": "dimension"
+    },
+    "caption": {
+      "$value": "{color.fg.soft}",
+      "$type": "color"
+    },
+    "caption-type": {
+      "$value": "{typography.ui.caption}",
+      "$type": "typography"
+    },
+    "facade-fg": {
+      "$value": "{color.fg.default}",
+      "$type": "color"
+    },
+    "facade-gap": {
+      "$value": "{space.16}",
+      "$type": "dimension"
+    }
   }
 }

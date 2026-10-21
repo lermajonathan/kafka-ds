@@ -16,13 +16,13 @@ Kafka parte de la arquitectura de [Pance](https://github.com/lermajonathan/pance
 |---|---|---|
 | 🎨 | **Tokens**: 313 en tres niveles (primitivos → semánticos → componentes), formato W3C DTCG, claro y oscuro | [`tokens/`](tokens) · [referencia](docs/tokens.md) |
 | 🖨️ | **Tokens de impresión**: página, sangrado, márgenes, tipografía en puntos y rejilla de líneas base | [`tokens/`](tokens) (`physical.*`, `print.*`) |
-| 🧩 | **Librería React**: `@kafka/react`, con el primer componente ([Button](docs/components/button.md)) terminado según el criterio de «completo»; el resto llega por hitos | [`src/components/`](src/components) · [documentación](docs/components/README.md) |
+| 🧩 | **Librería React**: `@kafka/react`, con 15 componentes terminados según el criterio de «completo» ([Button](docs/components/button.md) y los 14 de lectura); el resto llega por hitos | [`src/components/`](src/components) · [documentación](docs/components/README.md) |
 | 📦 | **Paquetes** (sin publicar): `@kafka/tokens` y `@kafka/react`, probados instalándolos en un proyecto nuevo | [`packages/`](packages) |
 | 🧪 | **Pruebas**: contraste (129 pares), estructura de tokens, lint, teclado y ARIA, axe-core, ejemplos de la documentación, paquetes y diferencia visual | [`tests/`](tests) |
 | 📐 | **Figma**: variables (Primitives, Semantic, Components), estilos y 6 conjuntos de componentes | [archivo en Figma](https://www.figma.com/design/S3WoutgiyT1a5kwahRaKJ2) |
 | 📝 | **Decisiones de diseño** (DDR-KF) | [`docs/decisions/`](docs/decisions) |
 
-Falta el resto de los componentes (H2 a H5), el módulo de impresión (H6), el sitio de documentación y la documentación en Figma (H7) y el lanzamiento (H8).
+Falta el resto de los componentes (H3 a H5), el módulo de impresión (H6), el sitio de documentación y la documentación en Figma (H7) y el lanzamiento (H8).
 
 ## Empezar
 

@@ -26,3 +26,54 @@ mark {
     animation-duration: 2s;
   }
 }
+
+/* ── Prose: styles the elements inside a reading column. Only component tokens. ── */
+.kafka-prose {
+  color: var(--kafka-prose-text);
+  max-width: var(--kafka-reading-measure, var(--kafka-prose-measure));
+  font-family: var(--kafka-reading-family, var(--kafka-prose-body-type-font-family));
+  font-size: calc(var(--kafka-prose-body-type-font-size) * var(--kafka-reading-scale, 1));
+  font-weight: var(--kafka-prose-body-type-font-weight);
+  line-height: var(--kafka-prose-body-type-line-height);
+  letter-spacing: var(--kafka-prose-body-type-letter-spacing);
+}
+.kafka-prose.kafka-prose-wide { max-width: none; }
+.kafka-prose > * + * { margin-top: var(--kafka-prose-paragraph-gap); }
+.kafka-prose h2, .kafka-prose h3, .kafka-prose h4 { color: var(--kafka-prose-text); text-wrap: balance; }
+.kafka-prose h2 { font: inherit; font-family: var(--kafka-reading-family, var(--kafka-prose-h2-type-font-family)); font-size: calc(var(--kafka-prose-h2-type-font-size) * var(--kafka-reading-scale, 1)); font-weight: var(--kafka-prose-h2-type-font-weight); line-height: var(--kafka-prose-h2-type-line-height); letter-spacing: var(--kafka-prose-h2-type-letter-spacing); }
+.kafka-prose h3 { font: inherit; font-family: var(--kafka-reading-family, var(--kafka-prose-h3-type-font-family)); font-size: calc(var(--kafka-prose-h3-type-font-size) * var(--kafka-reading-scale, 1)); font-weight: var(--kafka-prose-h3-type-font-weight); line-height: var(--kafka-prose-h3-type-line-height); letter-spacing: var(--kafka-prose-h3-type-letter-spacing); }
+.kafka-prose h4 { font: inherit; font-family: var(--kafka-reading-family, var(--kafka-prose-h4-type-font-family)); font-size: calc(var(--kafka-prose-h4-type-font-size) * var(--kafka-reading-scale, 1)); font-weight: var(--kafka-prose-h4-type-font-weight); line-height: var(--kafka-prose-h4-type-line-height); letter-spacing: var(--kafka-prose-h4-type-letter-spacing); }
+.kafka-prose h2 { margin-top: var(--kafka-prose-section-gap); }
+.kafka-prose h3, .kafka-prose h4 { margin-top: var(--kafka-prose-paragraph-gap); }
+.kafka-prose h2 + *, .kafka-prose h3 + *, .kafka-prose h4 + * { margin-top: var(--kafka-prose-heading-gap); }
+.kafka-prose .kafka-prose-lead { font-size: calc(var(--kafka-prose-lead-type-font-size) * var(--kafka-reading-scale, 1)); line-height: var(--kafka-prose-lead-type-line-height); color: var(--kafka-prose-text-secondary); }
+.kafka-prose a { color: var(--kafka-prose-link); text-decoration: underline; text-underline-offset: 0.2em; }
+.kafka-prose a:hover { color: var(--kafka-prose-link-hover); }
+.kafka-prose a:visited { color: var(--kafka-prose-link-visited); }
+.kafka-prose ul, .kafka-prose ol { padding-left: var(--kafka-prose-list-indent); }
+.kafka-prose ul { list-style: disc; }
+.kafka-prose ol { list-style: decimal; }
+.kafka-prose li + li { margin-top: var(--kafka-prose-list-gap); }
+.kafka-prose > blockquote { border-left: var(--kafka-prose-quote-rule-width) solid var(--kafka-prose-quote-rule); padding-left: var(--kafka-prose-quote-padding); font-style: italic; }
+.kafka-prose hr { border: 0; border-top: var(--kafka-prose-rule-width) solid var(--kafka-prose-rule); margin-block: var(--kafka-prose-section-gap); }
+.kafka-prose em { font-style: italic; }
+.kafka-prose strong { font-weight: 700; }
+
+/* ── DropCap: ::first-letter keeps the paragraph a normal paragraph for assistive tech ── */
+.kafka-drop-cap::first-letter {
+  float: left;
+  color: var(--kafka-drop-cap-fg);
+  font-family: var(--kafka-drop-cap-type-font-family);
+  font-size: var(--kafka-drop-cap-type-font-size);
+  font-weight: var(--kafka-drop-cap-type-font-weight);
+  line-height: var(--kafka-drop-cap-type-line-height);
+  padding-right: var(--kafka-drop-cap-padding-right);
+}
+
+/* ── Footnote target: the note you jumped to is highlighted ── */
+.kafka-footnote-item:target { background: var(--kafka-footnote-target-bg); color: var(--kafka-footnote-target-fg); }
+.kafka-footnote-item:target a { color: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kafka-progress-fill { transition: none !important; }
+}
