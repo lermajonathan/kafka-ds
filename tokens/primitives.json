@@ -36,7 +36,7 @@
     }
   },
   "fontFamily": {
-    "reading": { "$type": "fontFamily", "$value": ["Literata", "Georgia", "serif"], "$description": "PROVISIONAL until DDR-KF-001 (specimen test with real text)." },
+    "reading": { "$type": "fontFamily", "$value": ["Literata", "Georgia", "serif"], "$description": "Literata (variable, OFL). One family for body and titles; see DDR-KF-001. Use font-optical-sizing: auto so titles get the large optical size." },
     "ui": { "$type": "fontFamily", "$value": ["system-ui", "-apple-system", "Segoe UI", "sans-serif"] },
     "mono": { "$type": "fontFamily", "$value": ["ui-monospace", "Menlo", "Consolas", "monospace"] }
   },

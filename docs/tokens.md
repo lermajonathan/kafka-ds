@@ -31,7 +31,7 @@ Raw values. Only referenced by semantic and component tokens.
 | `color.gold.600` | #8f6f14 |  |  |
 | `color.gold.700` | #715808 |  |  |
 | `color.gold.800` | #574306 |  |  |
-| `fontFamily.reading` | Literata, Georgia, serif |  | PROVISIONAL until DDR-KF-001 (specimen test with real text). |
+| `fontFamily.reading` | Literata, Georgia, serif |  | Literata (variable, OFL). One family for body and titles; see DDR-KF-001. Use font-optical-sizing: auto so titles get the large optical size. |
 | `fontFamily.ui` | system-ui, -apple-system, 'Segoe UI', sans-serif |  |  |
 | `fontFamily.mono` | ui-monospace, Menlo, Consolas, monospace |  |  |
 | `fontSize.14` | 0.875rem |  |  |
