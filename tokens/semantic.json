@@ -9,8 +9,8 @@
       "brand": {"$value": "{color.gold.400}", "$description": "Superficie de oro: botón primario, insignia de marca, mosaico de ícono. El texto encima va en fg.on-brand (8,3:1)."},
       "hover": {"$value": "{color.paper.100}", "$description": "Hover de superficies: filas de menú, chips, tarjetas interactivas.", "$extensions": {"kafka.modes": {"dark": "{color.ink.700}"}}},
       "active": {"$value": "{color.paper.200}", "$description": "Pulsado de superficies.", "$extensions": {"kafka.modes": {"dark": "{color.ink.600}"}}},
-      "sunken-hover": {"$value": "{color.ink.100}", "$description": "Hover de controles sobre bg.sunken (botón suave).", "$extensions": {"kafka.modes": {"dark": "{color.ink.900}"}}},
-      "sunken-active": {"$value": "{color.ink.200}", "$description": "Pulsado de controles sobre bg.sunken.", "$extensions": {"kafka.modes": {"dark": "{color.ink.800}"}}},
+      "sunken-hover": {"$value": "{color.ink.100}", "$description": "Hover de controles sobre bg.sunken (botón suave).", "$extensions": {"kafka.modes": {"dark": "{color.ink.700}"}}},
+      "sunken-active": {"$value": "{color.ink.200}", "$description": "Pulsado de controles sobre bg.sunken.", "$extensions": {"kafka.modes": {"dark": "{color.ink.600}"}}},
       "brand-hover": {"$value": "{color.gold.300}", "$description": "Hover del oro. El texto sigue siendo fg.on-brand."},
       "brand-active": {"$value": "{color.gold.500}", "$description": "Pulsado del oro. El texto sigue siendo fg.on-brand."}
     },

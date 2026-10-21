@@ -444,8 +444,8 @@
     --kafka-color-bg-inverse: var(--kafka-color-paper-50);
     --kafka-color-bg-hover: var(--kafka-color-ink-700);
     --kafka-color-bg-active: var(--kafka-color-ink-600);
-    --kafka-color-bg-sunken-hover: var(--kafka-color-ink-900);
-    --kafka-color-bg-sunken-active: var(--kafka-color-ink-800);
+    --kafka-color-bg-sunken-hover: var(--kafka-color-ink-700);
+    --kafka-color-bg-sunken-active: var(--kafka-color-ink-600);
     --kafka-color-fg-default: var(--kafka-color-paper-50);
     --kafka-color-fg-soft: var(--kafka-color-ink-100);
     --kafka-color-fg-muted: var(--kafka-color-ink-200);
@@ -470,8 +470,8 @@
   --kafka-color-bg-inverse: var(--kafka-color-paper-50);
   --kafka-color-bg-hover: var(--kafka-color-ink-700);
   --kafka-color-bg-active: var(--kafka-color-ink-600);
-  --kafka-color-bg-sunken-hover: var(--kafka-color-ink-900);
-  --kafka-color-bg-sunken-active: var(--kafka-color-ink-800);
+  --kafka-color-bg-sunken-hover: var(--kafka-color-ink-700);
+  --kafka-color-bg-sunken-active: var(--kafka-color-ink-600);
   --kafka-color-fg-default: var(--kafka-color-paper-50);
   --kafka-color-fg-soft: var(--kafka-color-ink-100);
   --kafka-color-fg-muted: var(--kafka-color-ink-200);

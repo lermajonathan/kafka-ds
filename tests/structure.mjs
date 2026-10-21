@@ -64,6 +64,19 @@ for (const [key, tok] of tokens) {
   const n = parseFloat(tok.value) / base
   if (Math.abs(n - Math.round(n)) > 1e-9) fail(`${key}: ${tok.value} is not a multiple of the ${base}pt baseline`)
 }
+// 5 · state tokens must be visible: a hover or pressed fill can never equal the fill it replaces or the surface it sits on
+const val = (k, mode) => String(resolve(`{${k}}`, mode, k)).toLowerCase()
+const STATES = [
+  ['color.bg.hover', ['color.bg.surface', 'color.bg.page']],
+  ['color.bg.active', ['color.bg.surface', 'color.bg.page', 'color.bg.hover']],
+  ['color.bg.sunken-hover', ['color.bg.sunken', 'color.bg.page', 'color.bg.surface']],
+  ['color.bg.sunken-active', ['color.bg.sunken', 'color.bg.page', 'color.bg.surface', 'color.bg.sunken-hover']],
+  ['color.bg.brand-hover', ['color.bg.brand']],
+  ['color.bg.brand-active', ['color.bg.brand', 'color.bg.brand-hover']],
+]
+for (const mode of ['light', 'dark']) for (const [state, others] of STATES) for (const o of others) {
+  if (val(state, mode) === val(o, mode)) fail(`${state} is identical to ${o} in ${mode} mode, so the state would be invisible`)
+}
 // touch target never below 44px, focus ring never below 2px
 if (num('size.touch') < 44) fail('size.touch must be at least 44px')
 if (num('borderWidth.thick') < 2) fail('focus ring (borderWidth.thick) must be at least 2px')

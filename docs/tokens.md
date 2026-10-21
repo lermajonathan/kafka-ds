@@ -156,8 +156,8 @@ Purpose-based aliases (surface, text, reading, typography roles). Use these in p
 | `color.bg.brand` | #d4af37 |  | Superficie de oro: botón primario, insignia de marca, mosaico de ícono. El texto encima va en fg.on-brand (8,3:1). |
 | `color.bg.hover` | #f6f1e6 | #36322d | Hover de superficies: filas de menú, chips, tarjetas interactivas. |
 | `color.bg.active` | #ece4d2 | #4a453e | Pulsado de superficies. |
-| `color.bg.sunken-hover` | #e6e2dc | #1a1a1a | Hover de controles sobre bg.sunken (botón suave). |
-| `color.bg.sunken-active` | #cfc9c0 | #26231f | Pulsado de controles sobre bg.sunken. |
+| `color.bg.sunken-hover` | #e6e2dc | #36322d | Hover de controles sobre bg.sunken (botón suave). |
+| `color.bg.sunken-active` | #cfc9c0 | #4a453e | Pulsado de controles sobre bg.sunken. |
 | `color.bg.brand-hover` | #e6c964 |  | Hover del oro. El texto sigue siendo fg.on-brand. |
 | `color.bg.brand-active` | #b8932a |  | Pulsado del oro. El texto sigue siendo fg.on-brand. |
 | `color.fg.default` | #1a1a1a | #fbf8f1 |  |
