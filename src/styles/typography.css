@@ -479,3 +479,87 @@
   line-height: var(--kafka-file-upload-item-type-line-height);
   letter-spacing: var(--kafka-file-upload-item-type-letter-spacing);
 }
+.kafka-type-tabs-tab-type {
+  font-family: var(--kafka-tabs-tab-type-font-family);
+  font-size: var(--kafka-tabs-tab-type-font-size);
+  font-weight: var(--kafka-tabs-tab-type-font-weight);
+  line-height: var(--kafka-tabs-tab-type-line-height);
+  letter-spacing: var(--kafka-tabs-tab-type-letter-spacing);
+}
+.kafka-type-accordion-trigger-type {
+  font-family: var(--kafka-accordion-trigger-type-font-family);
+  font-size: var(--kafka-accordion-trigger-type-font-size);
+  font-weight: var(--kafka-accordion-trigger-type-font-weight);
+  line-height: var(--kafka-accordion-trigger-type-line-height);
+  letter-spacing: var(--kafka-accordion-trigger-type-letter-spacing);
+}
+.kafka-type-breadcrumbs-type {
+  font-family: var(--kafka-breadcrumbs-type-font-family);
+  font-size: var(--kafka-breadcrumbs-type-font-size);
+  font-weight: var(--kafka-breadcrumbs-type-font-weight);
+  line-height: var(--kafka-breadcrumbs-type-line-height);
+  letter-spacing: var(--kafka-breadcrumbs-type-letter-spacing);
+}
+.kafka-type-pagination-type {
+  font-family: var(--kafka-pagination-type-font-family);
+  font-size: var(--kafka-pagination-type-font-size);
+  font-weight: var(--kafka-pagination-type-font-weight);
+  line-height: var(--kafka-pagination-type-line-height);
+  letter-spacing: var(--kafka-pagination-type-letter-spacing);
+}
+.kafka-type-stepper-label-type {
+  font-family: var(--kafka-stepper-label-type-font-family);
+  font-size: var(--kafka-stepper-label-type-font-size);
+  font-weight: var(--kafka-stepper-label-type-font-weight);
+  line-height: var(--kafka-stepper-label-type-line-height);
+  letter-spacing: var(--kafka-stepper-label-type-letter-spacing);
+}
+.kafka-type-stepper-description-type {
+  font-family: var(--kafka-stepper-description-type-font-family);
+  font-size: var(--kafka-stepper-description-type-font-size);
+  font-weight: var(--kafka-stepper-description-type-font-weight);
+  line-height: var(--kafka-stepper-description-type-line-height);
+  letter-spacing: var(--kafka-stepper-description-type-letter-spacing);
+}
+.kafka-type-menu-item-type {
+  font-family: var(--kafka-menu-item-type-font-family);
+  font-size: var(--kafka-menu-item-type-font-size);
+  font-weight: var(--kafka-menu-item-type-font-weight);
+  line-height: var(--kafka-menu-item-type-line-height);
+  letter-spacing: var(--kafka-menu-item-type-letter-spacing);
+}
+.kafka-type-combobox-option-type {
+  font-family: var(--kafka-combobox-option-type-font-family);
+  font-size: var(--kafka-combobox-option-type-font-size);
+  font-weight: var(--kafka-combobox-option-type-font-weight);
+  line-height: var(--kafka-combobox-option-type-line-height);
+  letter-spacing: var(--kafka-combobox-option-type-letter-spacing);
+}
+.kafka-type-tooltip-type {
+  font-family: var(--kafka-tooltip-type-font-family);
+  font-size: var(--kafka-tooltip-type-font-size);
+  font-weight: var(--kafka-tooltip-type-font-weight);
+  line-height: var(--kafka-tooltip-type-line-height);
+  letter-spacing: var(--kafka-tooltip-type-letter-spacing);
+}
+.kafka-type-modal-title-type {
+  font-family: var(--kafka-modal-title-type-font-family);
+  font-size: var(--kafka-modal-title-type-font-size);
+  font-weight: var(--kafka-modal-title-type-font-weight);
+  line-height: var(--kafka-modal-title-type-line-height);
+  letter-spacing: var(--kafka-modal-title-type-letter-spacing);
+}
+.kafka-type-calendar-weekday-type {
+  font-family: var(--kafka-calendar-weekday-type-font-family);
+  font-size: var(--kafka-calendar-weekday-type-font-size);
+  font-weight: var(--kafka-calendar-weekday-type-font-weight);
+  line-height: var(--kafka-calendar-weekday-type-line-height);
+  letter-spacing: var(--kafka-calendar-weekday-type-letter-spacing);
+}
+.kafka-type-calendar-title-type {
+  font-family: var(--kafka-calendar-title-type-font-family);
+  font-size: var(--kafka-calendar-title-type-font-size);
+  font-weight: var(--kafka-calendar-title-type-font-weight);
+  line-height: var(--kafka-calendar-title-type-line-height);
+  letter-spacing: var(--kafka-calendar-title-type-letter-spacing);
+}

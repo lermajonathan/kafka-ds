@@ -1,5 +1,5 @@
 /* Kafka · Button */
-import { type ButtonHTMLAttributes } from 'react'
+import { type ComponentPropsWithRef } from 'react'
 import { IconSpinner, type IconType } from '../icons'
 import { useLabels } from './labels'
 import { cx, focus } from './shared'
@@ -16,7 +16,7 @@ export const BUTTON_VARIANT: Record<ButtonVariant, string> = {
     'border-(length:--kafka-border-width-medium) border-(--kafka-button-outline-border) text-(--kafka-button-outline-fg) hover:bg-(--kafka-button-outline-bg-hover) active:bg-(--kafka-button-outline-bg-active)',
 }
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   /** How loud the button is. `primary` is the gold call to action; use one per view. */
   variant?: ButtonVariant
   /** Icon before the label (any Phosphor icon component). */

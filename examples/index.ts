@@ -17,6 +17,20 @@ import { examples as slider } from './slider'
 import { examples as pin_input } from './pin-input'
 import { examples as tag_input } from './tag-input'
 import { examples as file_upload } from './file-upload'
+import { examples as tabs } from './tabs'
+import { examples as accordion } from './accordion'
+import { examples as breadcrumbs } from './breadcrumbs'
+import { examples as pagination } from './pagination'
+import { examples as stepper } from './stepper'
+import { examples as popover } from './popover'
+import { examples as menu } from './menu'
+import { examples as tooltip } from './tooltip'
+import { examples as combobox } from './combobox'
+import { examples as modal } from './modal'
+import { examples as drawer } from './drawer'
+import { examples as confirm_dialog } from './confirm-dialog'
+import { examples as calendar } from './calendar'
+import { examples as date_picker } from './date-picker'
 import { examples as prose } from './prose'
 import { examples as pull_quote } from './pull-quote'
 import { examples as footnote } from './footnote'
@@ -58,6 +72,20 @@ export const registry: Record<string, ComponentEntry> = {
   'pin-input': { name: 'PinInput', file: 'pin-input.tsx', examples: pin_input },
   'tag-input': { name: 'TagInput', file: 'tag-input.tsx', examples: tag_input },
   'file-upload': { name: 'FileUpload', file: 'file-upload.tsx', examples: file_upload },
+  'tabs': { name: 'Tabs', file: 'tabs.tsx', examples: tabs },
+  'accordion': { name: 'Accordion', file: 'accordion.tsx', examples: accordion },
+  'breadcrumbs': { name: 'Breadcrumbs', file: 'breadcrumbs.tsx', examples: breadcrumbs },
+  'pagination': { name: 'Pagination', file: 'pagination.tsx', examples: pagination },
+  'stepper': { name: 'Stepper', file: 'stepper.tsx', examples: stepper },
+  'popover': { name: 'Popover', file: 'popover.tsx', examples: popover },
+  'menu': { name: 'Menu', file: 'menu.tsx', examples: menu },
+  'tooltip': { name: 'Tooltip', file: 'tooltip.tsx', examples: tooltip },
+  'combobox': { name: 'Combobox', file: 'combobox.tsx', examples: combobox },
+  'modal': { name: 'Modal', file: 'modal.tsx', examples: modal },
+  'drawer': { name: 'Drawer', file: 'drawer.tsx', examples: drawer },
+  'confirm-dialog': { name: 'ConfirmDialog', file: 'confirm-dialog.tsx', examples: confirm_dialog },
+  'calendar': { name: 'Calendar', file: 'calendar.tsx', examples: calendar },
+  'date-picker': { name: 'DatePicker', file: 'date-picker.tsx', examples: date_picker },
   'prose': { name: 'Prose', file: 'prose.tsx', examples: prose },
   'pull-quote': { name: 'PullQuote', file: 'pull-quote.tsx', examples: pull_quote },
   'footnote': { name: 'Footnote', file: 'footnote.tsx', examples: footnote },

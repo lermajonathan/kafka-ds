@@ -1,10 +1,10 @@
 /* Kafka · IconButton */
-import { type ButtonHTMLAttributes } from 'react'
+import { type ComponentPropsWithRef } from 'react'
 import { type IconType } from '../icons'
 import { BUTTON_VARIANT, type ButtonVariant } from './button'
 import { cx, focus } from './shared'
 
-export interface IconButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'aria-label'> {
+export interface IconButtonProps extends Omit<ComponentPropsWithRef<'button'>, 'children' | 'aria-label'> {
   /** The icon: any Phosphor icon component. */
   Icon: IconType
   /** What the button does, as a short phrase ("Cerrar", "Compartir"). It is the accessible name, because the icon has no text. */

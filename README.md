@@ -14,15 +14,15 @@ Kafka parte de la arquitectura de [Pance](https://github.com/lermajonathan/pance
 
 | | Qué | Dónde |
 |---|---|---|
-| 🎨 | **Tokens**: 313 en tres niveles (primitivos → semánticos → componentes), formato W3C DTCG, claro y oscuro | [`tokens/`](tokens) · [referencia](docs/tokens.md) |
+| 🎨 | **Tokens**: 819 en tres niveles (primitivos → semánticos → componentes), formato W3C DTCG, claro y oscuro | [`tokens/`](tokens) · [referencia](docs/tokens.md) |
 | 🖨️ | **Tokens de impresión**: página, sangrado, márgenes, tipografía en puntos y rejilla de líneas base | [`tokens/`](tokens) (`physical.*`, `print.*`) |
-| 🧩 | **Librería React**: `@kafka/react`, con 31 componentes terminados según el criterio de «completo» (14 de lectura y 17 de UI esencial, empezando por [Button](docs/components/button.md)); el resto llega por hitos | [`src/components/`](src/components) · [documentación](docs/components/README.md) |
+| 🧩 | **Librería React**: `@kafka/react`, con 45 componentes terminados según el criterio de «completo» (14 de lectura, 17 de UI esencial y 14 de navegación y capas, empezando por [Button](docs/components/button.md)); el resto llega por hitos | [`src/components/`](src/components) · [documentación](docs/components/README.md) |
 | 📦 | **Paquetes** (sin publicar): `@kafka/tokens` y `@kafka/react`, probados instalándolos en un proyecto nuevo | [`packages/`](packages) |
-| 🧪 | **Pruebas**: contraste (129 pares), estructura de tokens, lint, teclado y ARIA, axe-core, ejemplos de la documentación, paquetes y diferencia visual | [`tests/`](tests) |
+| 🧪 | **Pruebas**: contraste (226 pares), estructura de tokens, lint, teclado y ARIA, axe-core, ejemplos de la documentación, paquetes y diferencia visual | [`tests/`](tests) |
 | 📐 | **Figma**: variables (Primitives, Semantic, Components), estilos y 6 conjuntos de componentes | [archivo en Figma](https://www.figma.com/design/S3WoutgiyT1a5kwahRaKJ2) |
 | 📝 | **Decisiones de diseño** (DDR-KF) | [`docs/decisions/`](docs/decisions) |
 
-Falta el resto de los componentes (H4 y H5), el módulo de impresión (H6), el sitio de documentación y la documentación en Figma (H7) y el lanzamiento (H8).
+Falta el resto de los componentes (H5), el módulo de impresión (H6), el sitio de documentación y la documentación en Figma (H7) y el lanzamiento (H8).
 
 ## Empezar
 

@@ -4,6 +4,13 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H4 · Navegación y capas (21 oct 2026)
+- **14 componentes**: [Tabs](docs/components/tabs.md), [Accordion](docs/components/accordion.md), [Breadcrumbs](docs/components/breadcrumbs.md), [Pagination](docs/components/pagination.md), [Stepper](docs/components/stepper.md), [Popover](docs/components/popover.md), [Menu](docs/components/menu.md), [Tooltip](docs/components/tooltip.md), [Combobox](docs/components/combobox.md), [Modal](docs/components/modal.md), [Drawer](docs/components/drawer.md), [ConfirmDialog](docs/components/confirm-dialog.md), [Calendar](docs/components/calendar.md) y [DatePicker](docs/components/date-picker.md) ([DDR-KF-010](docs/decisions/DDR-KF-010-navegacion-y-capas.md)).
+- Capas con la API nativa `popover` y `<dialog>`; fechas como cadenas ISO; `Button` e `IconButton` aceptan `ref` como prop.
+- Tokens nuevos `color.bg.scrim`, `size.menu`, `size.listbox` y `size.dialog.*`; 819 tokens en total.
+- 226 pares de contraste en claro y 225 en oscuro; 278 comprobaciones de teclado y ARIA; axe-core sin violaciones en 45 componentes (212 páginas, incluidos los overlays abiertos).
+- Pendiente: la versión en Figma (H7).
+
 ### H3 · UI esencial (21 oct 2026)
 - **16 componentes**: [IconButton](docs/components/icon-button.md), [ButtonGroup](docs/components/button-group.md), [Link](docs/components/link.md), [Badge](docs/components/badge.md), [Chip](docs/components/chip.md), [Field](docs/components/field.md), [Input](docs/components/input.md), [Textarea](docs/components/textarea.md), [Select](docs/components/select.md), [Checkbox](docs/components/checkbox.md), [Radio](docs/components/radio.md), [Switch](docs/components/switch.md), [Slider](docs/components/slider.md), [PinInput](docs/components/pin-input.md), [TagInput](docs/components/tag-input.md) y [FileUpload](docs/components/file-upload.md) ([DDR-KF-009](docs/decisions/DDR-KF-009-ui-esencial-y-estados.md)).
 - **Colores de estado** `color.status.*` (peligro, éxito, aviso, info) con cuatro escalas primitivas, verificados en claro y oscuro. Rol tipográfico `typography.ui.input` (16 px).

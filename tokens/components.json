@@ -1560,5 +1560,692 @@
       "$type": "dimension",
       "$value": "{size.touch}"
     }
+  },
+  "tabs": {
+    "$description": "Pestañas con activación al enfocar, indicador dorado y panel enfocable.",
+    "list-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "list-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "tab-min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "tab-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "tab-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "tab-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "tab-fg-hover": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "tab-fg-selected": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "tab-hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "indicator": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "indicator-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thick}"
+    },
+    "panel-padding-top": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    }
+  },
+  "accordion": {
+    "$description": "Secciones que se abren y cierran. Cada título es un botón dentro de un encabezado.",
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "trigger-min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "trigger-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "trigger-padding-y": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "trigger-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "trigger-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "trigger-hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.md}"
+    },
+    "icon": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "panel-padding": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "panel-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "duration": {
+      "$value": "{motion.duration.fast}"
+    }
+  },
+  "breadcrumbs": {
+    "$description": "Ruta de la página dentro del sitio.",
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "fg-hover": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "current": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "separator": {
+      "$type": "color",
+      "$value": "{color.fg.muted}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    }
+  },
+  "pagination": {
+    "$description": "Navegación entre páginas de resultados. Cada destino mide 44 px.",
+    "item-size": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "current-bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "current-fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "ellipsis": {
+      "$type": "color",
+      "$value": "{color.fg.muted}"
+    },
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    }
+  },
+  "stepper": {
+    "$description": "Pasos de un proceso. Indica dónde está la persona; no navega.",
+    "marker-size": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "marker-bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "marker-border": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "marker-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "marker-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "current-bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "current-fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    },
+    "done-bg": {
+      "$type": "color",
+      "$value": "{color.bg.brand}"
+    },
+    "done-fg": {
+      "$type": "color",
+      "$value": "{color.fg.on-brand}"
+    },
+    "line": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "line-done": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "line-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "label": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "label-muted": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "done-border": {
+      "$value": "{color.border.strong}",
+      "$type": "color"
+    }
+  },
+  "popover": {
+    "$description": "Panel no modal anclado a un botón: se cierra con Esc o al hacer clic fuera.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.floating}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "max-width": {
+      "$type": "dimension",
+      "$value": "{size.floating}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    }
+  },
+  "menu": {
+    "$description": "Menú de acciones (`role=menu`) con navegación por flechas y búsqueda por letra.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.floating}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "min-width": {
+      "$type": "dimension",
+      "$value": "{size.menu}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "item-min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "item-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "item-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "item-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "item-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "item-hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "item-active-bg": {
+      "$type": "color",
+      "$value": "{color.bg.active}"
+    },
+    "item-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.md}"
+    },
+    "separator": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "danger-fg": {
+      "$type": "color",
+      "$value": "{color.status.danger.fg}"
+    },
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    }
+  },
+  "combobox": {
+    "$description": "Campo con lista de opciones que se filtra al escribir (patrón ARIA combobox con listbox).",
+    "list-bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "list-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "list-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "list-radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "list-shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.floating}"
+    },
+    "list-max-height": {
+      "$type": "dimension",
+      "$value": "{size.listbox}"
+    },
+    "list-padding": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "option-min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "option-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "option-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "option-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "option-active-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "option-selected-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "option-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "empty": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.md}"
+    },
+    "icon": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    }
+  },
+  "tooltip": {
+    "$description": "Descripción breve de un control. Aparece al enfocar o pasar el puntero; no contiene nada esencial.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "padding-y": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "max-width": {
+      "$type": "dimension",
+      "$value": "{size.menu}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.floating}"
+    }
+  },
+  "modal": {
+    "$description": "Diálogo modal sobre `<dialog>`: el resto de la página queda inerte, Esc cierra y el foco vuelve a quien lo abrió.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.floating}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "margin": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "scrim": {
+      "$type": "color",
+      "$value": "{color.bg.scrim}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-md}"
+    },
+    "description": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "width-sm": {
+      "$type": "dimension",
+      "$value": "{size.dialog.sm}"
+    },
+    "width-md": {
+      "$type": "dimension",
+      "$value": "{size.dialog.md}"
+    },
+    "width-lg": {
+      "$type": "dimension",
+      "$value": "{size.dialog.lg}"
+    },
+    "duration": {
+      "$value": "{motion.duration.base}"
+    },
+    "actions-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    }
+  },
+  "drawer": {
+    "$description": "Panel lateral o inferior modal, para filtros, carritos o formularios largos.",
+    "width": {
+      "$type": "dimension",
+      "$value": "{size.floating}"
+    },
+    "duration": {
+      "$value": "{motion.duration.slow}"
+    }
+  },
+  "confirm-dialog": {
+    "$description": "Confirmación de una acción. Si destruye algo, el foco empieza en «Cancelar».",
+    "icon": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "icon-danger": {
+      "$type": "color",
+      "$value": "{color.status.danger.fg}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.lg}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    }
+  },
+  "calendar": {
+    "$description": "Cuadrícula de un mes con navegación por flechas (patrón ARIA date grid).",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "cell-size": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "cell-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "selected-bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "selected-fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    },
+    "today-border": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "today-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "weekday": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "weekday-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-sm}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "disabled-opacity": {
+      "$value": "{opacity.disabled}"
+    }
+  },
+  "date-picker": {
+    "$description": "Campo de fecha con calendario en un popover. Se puede escribir o elegir.",
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.md}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    }
   }
 }

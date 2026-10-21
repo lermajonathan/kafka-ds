@@ -199,6 +199,17 @@
       "900": {
         "$value": "#0a2140"
       }
+    },
+    "overlay": {
+      "$type": "color",
+      "scrim": {
+        "$value": "#0f0f0e99",
+        "$description": "Velo detrás de un modal o cajón (ink.950 al 60 %)."
+      },
+      "scrim-dark": {
+        "$value": "#000000b3",
+        "$description": "Velo en oscuro: negro al 70 %, para separar el modal de una página ya oscura."
+      }
     }
   },
   "fontFamily": {
@@ -409,6 +420,23 @@
     "page": {
       "$value": "80rem",
       "$description": "Ancho máximo de página (1280 px)."
+    },
+    "menu": {
+      "$value": "240px"
+    },
+    "listbox": {
+      "$value": "280px"
+    },
+    "dialog": {
+      "sm": {
+        "$value": "400px"
+      },
+      "md": {
+        "$value": "560px"
+      },
+      "lg": {
+        "$value": "720px"
+      }
     }
   },
   "duration": {

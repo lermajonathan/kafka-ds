@@ -81,6 +81,15 @@
       "brand-active": {
         "$value": "{color.gold.500}",
         "$description": "Pulsado del oro. El texto sigue siendo fg.on-brand."
+      },
+      "scrim": {
+        "$value": "{color.overlay.scrim}",
+        "$extensions": {
+          "kafka.modes": {
+            "dark": "{color.overlay.scrim-dark}"
+          }
+        },
+        "$description": "Velo de modales y cajones."
       }
     },
     "fg": {

@@ -75,7 +75,7 @@ On small screens a primary action can span the width of its container.
 | `TrailingIcon` | `IconType` |  | Icon after the label, for example an arrow that moves forward. |
 | `loading` | `boolean` | `false` | Shows a spinner, disables the button and sets `aria-busy`. The label stays visible. |
 | `block` | `boolean` | `false` | Stretches the button to the full width of its container. |
-| …rest | `ButtonHTMLAttributes<HTMLButtonElement>` | | Everything else is passed to the underlying element. |
+| …rest | `ComponentPropsWithRef<'button'>` | | Everything else is passed to the underlying element. |
 
 ## Accessibility
 

@@ -127,3 +127,44 @@ mark {
 
 /* ── Dropzone while a file is dragged over it ── */
 .kafka-dropzone[data-dragging="true"] { border-color: var(--kafka-file-upload-drag-border); background: var(--kafka-file-upload-drag-bg); }
+
+/* ── Overlays: panels in the top layer (Popover API). Position is set by script; these reset the browser defaults. ── */
+.kafka-overlay { position: fixed; inset: auto; overflow: auto; color: inherit; }
+.kafka-overlay[role="tooltip"] { overflow: visible; }
+
+/* ── Dialogs: native <dialog>. Modal, Drawer and ConfirmDialog share these rules. ── */
+.kafka-dialog {
+  --kafka-dialog-w: var(--kafka-modal-width-md);
+  box-sizing: border-box;
+  width: min(var(--kafka-dialog-w), calc(100% - 2 * var(--kafka-modal-margin)));
+  max-height: calc(100dvh - 2 * var(--kafka-modal-margin));
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  color: var(--kafka-modal-fg);
+  background: var(--kafka-modal-bg);
+  border: var(--kafka-modal-border-width) solid var(--kafka-modal-border);
+  border-radius: var(--kafka-modal-radius);
+  box-shadow: var(--kafka-modal-shadow);
+}
+.kafka-dialog[open] { display: flex; }
+.kafka-dialog[data-size="sm"] { --kafka-dialog-w: var(--kafka-modal-width-sm); }
+.kafka-dialog[data-size="lg"] { --kafka-dialog-w: var(--kafka-modal-width-lg); }
+.kafka-dialog::backdrop { background: var(--kafka-modal-scrim); }
+.kafka-dialog[data-side="start"], .kafka-dialog[data-side="end"] {
+  --kafka-dialog-w: var(--kafka-drawer-width);
+  height: 100dvh; max-height: 100dvh; margin-block: 0; border-radius: 0;
+}
+.kafka-dialog[data-side="end"] { margin-inline: auto 0; border-inline-end: 0; }
+.kafka-dialog[data-side="start"] { margin-inline: 0 auto; border-inline-start: 0; }
+.kafka-dialog[data-side="bottom"] { width: 100%; max-width: 100%; margin: auto 0 0; border-radius: var(--kafka-modal-radius) var(--kafka-modal-radius) 0 0; }
+.kafka-dialog, .kafka-dialog::backdrop { transition: opacity var(--kafka-modal-duration), transform var(--kafka-modal-duration); }
+.kafka-dialog[data-side="end"], .kafka-dialog[data-side="start"], .kafka-dialog[data-side="bottom"] { transition-duration: var(--kafka-drawer-duration); }
+@starting-style {
+  .kafka-dialog[open] { opacity: 0; transform: translateY(var(--kafka-space-8)); }
+  .kafka-dialog[open][data-side="end"] { transform: translateX(var(--kafka-space-32)); }
+  .kafka-dialog[open][data-side="start"] { transform: translateX(calc(-1 * var(--kafka-space-32))); }
+  .kafka-dialog[open][data-side="bottom"] { transform: translateY(var(--kafka-space-32)); }
+  .kafka-dialog[open]::backdrop { opacity: 0; }
+}
+html:has(dialog.kafka-dialog[open]) { overflow: hidden; }

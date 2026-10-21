@@ -5,6 +5,30 @@ import { createContext, useContext, type ReactNode } from 'react'
 export interface Labels {
   /** Announced by screen readers while a button is busy. */
   loading: string
+  /** Close buttons of modals and drawers. */
+  close: string
+  /** Breadcrumbs. */
+  breadcrumb: string
+  /** Pagination. */
+  pagination: string
+  previousPage: string
+  nextPage: string
+  page: (n: number) => string
+  /** Stepper: text read after each step's name. */
+  stepDone: string
+  stepCurrent: string
+  stepOf: (n: number, total: number) => string
+  /** Combobox. */
+  noResults: string
+  resultsAvailable: (n: number) => string
+  /** Calendar. */
+  previousMonth: string
+  nextMonth: string
+  /** Date picker. */
+  openCalendar: string
+  /** Confirm dialog default buttons. */
+  confirm: string
+  cancel: string
   /** Appended to a link that opens in a new tab. */
   opensInNewTab: string
   /** Field marks. */
@@ -63,6 +87,22 @@ export interface Labels {
 
 export const labelsEn: Labels = {
   loading: 'Loading',
+  close: 'Close',
+  breadcrumb: 'Breadcrumb',
+  pagination: 'Pagination',
+  previousPage: 'Previous page',
+  nextPage: 'Next page',
+  page: (n) => `Page ${n}`,
+  stepDone: 'completed',
+  stepCurrent: 'current step',
+  stepOf: (n, t) => `Step ${n} of ${t}`,
+  noResults: 'No results',
+  resultsAvailable: (n) => (n === 1 ? '1 result available' : `${n} results available`),
+  previousMonth: 'Previous month',
+  nextMonth: 'Next month',
+  openCalendar: 'Open calendar',
+  confirm: 'Confirm',
+  cancel: 'Cancel',
   opensInNewTab: '(opens in a new tab)',
   required: 'required',
   optional: 'optional',
@@ -107,6 +147,22 @@ export const labelsEn: Labels = {
 
 export const labelsEs: Labels = {
   loading: 'Cargando',
+  close: 'Cerrar',
+  breadcrumb: 'Ruta de navegación',
+  pagination: 'Paginación',
+  previousPage: 'Página anterior',
+  nextPage: 'Página siguiente',
+  page: (n) => `Página ${n}`,
+  stepDone: 'completado',
+  stepCurrent: 'paso actual',
+  stepOf: (n, t) => `Paso ${n} de ${t}`,
+  noResults: 'Sin resultados',
+  resultsAvailable: (n) => (n === 1 ? '1 resultado disponible' : `${n} resultados disponibles`),
+  previousMonth: 'Mes anterior',
+  nextMonth: 'Mes siguiente',
+  openCalendar: 'Abrir calendario',
+  confirm: 'Confirmar',
+  cancel: 'Cancelar',
   opensInNewTab: '(se abre en una pestaña nueva)',
   required: 'obligatorio',
   optional: 'opcional',

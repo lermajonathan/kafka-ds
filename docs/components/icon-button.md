@@ -38,7 +38,7 @@ The same three variants as Button. The label is not shown, but it names the butt
 | `Icon` (required) | `IconType` |  | The icon: any Phosphor icon component. |
 | `label` (required) | `string` |  | What the button does, as a short phrase ("Cerrar", "Compartir"). It is the accessible name, because the icon has no text. |
 | `variant` | `ButtonVariant` | `'soft'` |  |
-| …rest | `ButtonHTMLAttributes<HTMLButtonElement>` | | Everything else is passed to the underlying element. |
+| …rest | `ComponentPropsWithRef<'button'>` | | Everything else is passed to the underlying element. |
 
 ## Accessibility
 
