@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "rootDir": "src",
+    "outDir": "packages/react/dist/types",
+    "types": []
+  },
+  "include": ["src/lib.ts", "src/components", "src/icons.tsx"]
+}

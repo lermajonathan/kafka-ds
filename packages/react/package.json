@@ -1,0 +1,26 @@
+{
+  "name": "@kafka/react",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Jonathan Lerma",
+  "homepage": "https://github.com/lermajonathan/kafka-ds",
+  "bugs": "https://github.com/lermajonathan/kafka-ds/issues",
+  "type": "module",
+  "publishConfig": { "access": "public", "provenance": true },
+  "description": "Kafka React components: accessible (WCAG 2.2 AA), token-driven, built for reading on screen.",
+  "keywords": ["react", "components", "design-system", "accessibility", "wcag", "tailwind", "reading", "typography", "kafka"],
+  "repository": { "type": "git", "url": "git+https://github.com/lermajonathan/kafka-ds.git", "directory": "packages/react" },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/lib.d.ts",
+  "exports": {
+    ".": { "types": "./dist/types/lib.d.ts", "import": "./dist/index.js" },
+    "./styles.css": "./dist/styles.css",
+    "./tailwind.css": "./dist/tailwind.css",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": ["*.css"],
+  "dependencies": { "@phosphor-icons/react": "^2.1.10" },
+  "peerDependencies": { "react": ">=19", "react-dom": ">=19" }
+}

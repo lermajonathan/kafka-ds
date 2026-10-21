@@ -1,0 +1,28 @@
+/* Kafka · rules that cannot be expressed as utilities. Hand-written; every value is a token. */
+
+/* The focus ring: shown for keyboard users only, never removed. */
+.kafka-focus:focus-visible {
+  outline: var(--kafka-focus-width) solid var(--kafka-color-border-focus);
+  outline-offset: var(--kafka-focus-offset);
+}
+
+::selection {
+  background: var(--kafka-color-selection-bg);
+  color: var(--kafka-color-selection-fg);
+}
+
+mark {
+  background: var(--kafka-color-highlight-bg);
+  color: var(--kafka-color-highlight-fg);
+}
+
+/* Reduced motion: a spinner is the only thing that may keep moving, and only slowly. */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animate-spin {
+    animation-duration: 2s;
+  }
+}

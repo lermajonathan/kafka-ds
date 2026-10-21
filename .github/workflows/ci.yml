@@ -13,18 +13,59 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the visual test compares against the base branch
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      # ── Tokens ──────────────────────────────────────────────────────────────
       - name: Build tokens
-        run: npm run tokens
-      - name: Generated token files are up to date
-        run: git diff --exit-code -- src/styles/tokens.css src/tokens.ts tokens/dist docs/tokens.md || (echo "::error::Run 'npm run tokens' and commit the generated files" && exit 1)
-      - name: Components only use tokens
-        run: npm run lint:tokens
-      - name: Lint catches what it promises
-        run: npm run test:lint
+        run: pnpm run tokens
+      - name: Generated files are up to date
+        run: git diff --exit-code -- src/styles src/tokens.ts tokens/dist docs/tokens.md || (echo "::error::Run 'pnpm run tokens' and commit the generated files" && exit 1)
       - name: Token structure (components read semantic tokens, scales are monotonic, print grid)
-        run: npm run test:structure
+        run: pnpm run test:structure
       - name: Token contrast (reading 7:1, UI 4.5:1, non-text 3:1; light + dark)
-        run: npm run test:contrast
+        run: pnpm run test:contrast
+
+      # ── Code ────────────────────────────────────────────────────────────────
+      - name: Lint catches what it promises
+        run: pnpm run test:lint
+      - name: Components only use tokens
+        run: pnpm run lint:tokens
+      - name: Types
+        run: pnpm run typecheck
+      - name: Build the playground
+        run: pnpm run build
+
+      # ── Documentation ───────────────────────────────────────────────────────
+      - name: Documentation pages are up to date
+        run: pnpm run docs:check
+      - name: Every documented example renders
+        run: pnpm run test:docs
+
+      # ── Behaviour in a real browser ─────────────────────────────────────────
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Keyboard and ARIA
+        run: pnpm run test:keyboard
+      - name: axe-core (every example, 2 viewports × 2 themes)
+        run: pnpm run test:axe
+
+      # ── Packages ────────────────────────────────────────────────────────────
+      - name: Build packages
+        run: pnpm run build:packages
+      - name: Packages install and work in a fresh project
+        run: pnpm run test:packages
+
+      # ── Visual regression: base branch vs this commit, same runner ──────────
+      - name: Visual diff against the base branch
+        if: github.event_name == 'pull_request'
+        env:
+          KAFKA_VISUAL_BASE: origin/${{ github.base_ref }}
+          KAFKA_VISUAL_ALLOW: ${{ contains(github.event.pull_request.labels.*.name, 'visual-change') && '1' || '' }}
+        run: pnpm run test:visual

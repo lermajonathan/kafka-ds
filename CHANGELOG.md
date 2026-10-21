@@ -4,6 +4,16 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H1 · Librería (21 oct 2026)
+- **Pila**: React 19, Tailwind v4, Vite 8, TypeScript 5.9 y pnpm 10 ([DDR-KF-007](docs/decisions/DDR-KF-007-pila-de-la-libreria.md)).
+- **Tema de Tailwind generado desde los tokens** (`src/styles/theme.css`) que desactiva paletas, tamaños, radios y sombras por defecto, más una clase por rol tipográfico (`typography.css`).
+- **Primer componente terminado: [Button](docs/components/button.md)**, con variantes primary, soft y outline, íconos, estado de carga y deshabilitado, anillo de foco desde tokens y 44 px de alto.
+- **Íconos**: selección nombrada de Phosphor (`src/icons.tsx`). **Textos**: `KafkaProvider`, `labelsEn` y `labelsEs`.
+- **Playground** con todos los ejemplos (`?theme=dark`, `?only=button`).
+- **Documentación generada** por componente (props desde los tipos, ejemplos ejecutables) y `docs:check` en CI.
+- **Paquetes** `@kafka/tokens` y `@kafka/react` (sin publicar), probados instalándolos como tarball en un proyecto nuevo (28 comprobaciones: archivos, hoja de estilos, render en servidor y tipos).
+- **Pruebas nuevas**: teclado y ARIA en navegador real (16 comprobaciones), axe-core (cada ejemplo × 2 tamaños × 2 temas, 0 violaciones), ejemplos de la documentación, diferencia visual contra la rama base. El lint ahora revisa componentes y ejemplos, y detecta colores de la paleta de Tailwind.
+
 ### H0 · Cimientos (21 oct 2026)
 - **Tokens**: de 184 a 313. Nuevos: estados (`bg.hover`, `bg.active`, `bg.sunken-hover/active`, `bg.brand-hover/active`), enlaces (`fg.link-hover`, `fg.link-visited`), `selection` y `highlight`, capas (`layer.*`), movimiento (`motion.*`), `opacity.disabled`, breakpoints, `layout.*`, pesos y espaciado de letra como primitivos, y los roles de lectura `quote`, `footnote` y `dropcap`.
 - **Módulo de impresión**: primitivos `physical.*` (páginas A5, A4 y Carta, sangrado, márgenes, tipografía en puntos, rejilla de 3,5 pt) y semánticos `print.*` para libro, revista y ficha.

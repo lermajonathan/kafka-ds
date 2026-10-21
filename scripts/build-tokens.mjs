@@ -116,6 +116,63 @@ const darkBlock = darkToks.map((t) => `  ${cssName(t.path)}: ${cssRef(t.dark)};`
 css += `\n/* ── dark: follows the system unless data-theme="light"; force with data-theme="dark" ── */\n@media (prefers-color-scheme: dark) {\n  :root:not([data-theme='light']) {\n${darkBlock.replace(/^/gm, '  ')}\n  }\n}\n:root[data-theme='dark'] {\n${darkBlock}\n}\n`
 write('src/styles/tokens.css', css)
 
+// ── typography.css: one class per typography token (e.g. .kafka-type-reading-body, .kafka-type-button-type) ──
+let typo = header('Kafka typography classes — one per typography token')
+for (const tok of tokens.values()) {
+  if (finalType(tok) !== 'typography') continue
+  const name = cssName(tok.path)
+  const parts = Object.entries(TYPO_PARTS).filter(([k]) => typoSource(tok).value[k] !== undefined)
+  typo += `.kafka-type-${tok.path.map(kebab).join('-')} {\n${parts.map(([, part]) => `  ${part}: var(${name}-${part});`).join('\n')}\n}\n`
+}
+write('src/styles/typography.css', typo)
+
+// ── theme.css: Tailwind v4 theme. Default palettes, sizes, radii and shadows are switched off on purpose,
+//    so the only utilities that exist are the ones backed by a Kafka token. ──
+const v = (p) => `var(${cssName(p)})`
+const px = (ref) => String(resolveValue(`{${ref}}`, ref)).replace(/^([\d.]+)rem$/, (_, n) => `${+n * 16}px`)
+const COLOR_UTILS = {
+  'color.bg.page': 'page', 'color.bg.surface': 'surface', 'color.bg.sunken': 'sunken', 'color.bg.inverse': 'inverse', 'color.bg.brand': 'brand',
+  'color.fg.default': 'ink', 'color.fg.soft': 'ink-soft', 'color.fg.muted': 'ink-muted', 'color.fg.brand': 'ink-brand', 'color.fg.link': 'link', 'color.fg.inverse': 'ink-inverse', 'color.fg.on-brand': 'on-brand',
+  'color.border.default': 'line', 'color.border.strong': 'line-strong', 'color.border.focus': 'line-focus', 'color.border.brand': 'line-brand',
+}
+const fam = ['reading', 'ui', 'mono'].map((f) => `  --font-${f}: ${v(`fontFamily.${f}`)};`)
+const sizes = [...tokens.keys()].filter((k) => /^fontSize\.\d+$/.test(k)).map((k) => `  --text-${k.split('.')[1]}: ${v(k)};`)
+const weights = ['regular', 'medium', 'semibold', 'bold'].map((w) => `  --font-weight-${w}: ${v(`fontWeight.${w}`)};`)
+const leadings = ['heading', 'ui', 'reading'].map((l) => `  --leading-${l}: ${v(`lineHeight.${l}`)};`)
+const tracks = ['tight', 'normal', 'wide', 'wider'].map((t) => `  --tracking-${t}: ${v(`letterSpacing.${t}`)};`)
+const radii = [...[4, 8, 12, 16, 20].map((r) => `  --radius-${r}: ${v(`radius.${r}`)};`), ...['control', 'card', 'media', 'pill'].map((r) => `  --radius-${r}: ${v(`radius.${r}`)};`), `  --radius-full: ${v('radius.full')};`]
+const shadows = ['sm', 'md', 'lg', 'glow'].map((x) => `  --shadow-${x}: ${v(`shadow.${x}`)};`)
+const bps = ['sm', 'md', 'lg', 'xl'].map((b) => `  --breakpoint-${b}: ${px(`breakpoint.${b}`)};`)
+const colors = Object.entries(COLOR_UTILS).map(([p, u]) => `  --color-${u}: ${v(p)};`)
+const theme = `${header('Kafka → Tailwind v4 theme')}@theme {
+  /* Switch off Tailwind's defaults: only token-backed utilities exist. */
+  --color-*: initial;
+  --text-*: initial;
+  --font-weight-*: initial;
+  --leading-*: initial;
+  --tracking-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --drop-shadow-*: initial;
+  --breakpoint-*: initial;
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+${colors.join('\n')}
+
+${fam.join('\n')}
+${sizes.join('\n')}
+${weights.join('\n')}
+${leadings.join('\n')}
+${tracks.join('\n')}
+
+${radii.join('\n')}
+${shadows.join('\n')}
+${bps.join('\n')}
+}
+`
+write('src/styles/theme.css', theme)
+
 const resolved = {}
 for (const [key, tok] of tokens) {
   let v = resolveValue(tok.value, key)

@@ -1,0 +1,26 @@
+{
+  "name": "@kafka/tokens",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Jonathan Lerma",
+  "homepage": "https://github.com/lermajonathan/kafka-ds",
+  "bugs": "https://github.com/lermajonathan/kafka-ds/issues",
+  "type": "module",
+  "publishConfig": { "access": "public", "provenance": true },
+  "description": "Kafka design tokens: CSS variables, Tailwind v4 theme, typed JS object and W3C DTCG JSON. Literary design system for screens, with print tokens.",
+  "keywords": ["design-tokens", "design-system", "dtcg", "css-variables", "typography", "reading", "kafka"],
+  "repository": { "type": "git", "url": "git+https://github.com/lermajonathan/kafka-ds.git", "directory": "packages/tokens" },
+  "main": "./dist/tokens.js",
+  "types": "./dist/tokens.d.ts",
+  "exports": {
+    ".": { "types": "./dist/tokens.d.ts", "import": "./dist/tokens.js" },
+    "./tokens.css": "./dist/tokens.css",
+    "./theme.css": "./dist/theme.css",
+    "./typography.css": "./dist/typography.css",
+    "./tokens.json": "./dist/tokens.json",
+    "./json/*": "./dist/json/*",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": ["*.css"]
+}

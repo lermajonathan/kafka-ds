@@ -1,0 +1,19 @@
+/* Kafka · compiled stylesheet entry (used by the playground and the @kafka/react build).
+   Apps that already run Tailwind v4 import '@kafka/react/tailwind.css' instead. */
+@import 'tailwindcss';
+/* Tailwind scans relative to the build root; point it at the sources explicitly. */
+@source '../components';
+@source '../../examples';
+@source '../../playground';
+@import './tokens.css';
+@import './theme.css';
+@import './typography.css';
+@import './components.css';
+
+@layer base {
+  html {
+    background: var(--kafka-color-bg-page);
+    color: var(--kafka-color-fg-default);
+    font-family: var(--kafka-font-family-ui);
+  }
+}

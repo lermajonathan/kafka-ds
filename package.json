@@ -9,11 +9,48 @@
     "tokens": "node scripts/build-tokens.mjs",
     "lint:tokens": "node scripts/check-token-usage.mjs",
     "test:contrast": "node tests/contrast.mjs",
-    "verify": "npm run tokens && npm run lint:tokens && npm run test:lint && npm run test:structure && npm run test:contrast",
+    "verify": "pnpm run tokens && pnpm run test:structure && pnpm run test:contrast && pnpm run test:lint && pnpm run lint:tokens && pnpm run typecheck && pnpm run build && pnpm run docs:check && pnpm run test:docs && pnpm run test:keyboard && pnpm run test:axe && pnpm run build:packages && pnpm run test:packages",
     "test:structure": "node tests/structure.mjs",
-    "test:lint": "node tests/lint-selftest.mjs"
+    "test:lint": "node tests/lint-selftest.mjs",
+    "dev": "vite",
+    "build": "pnpm run tokens && vite build",
+    "typecheck": "tsc --noEmit",
+    "test:keyboard": "node tests/keyboard.mjs",
+    "test:axe": "tsx tests/axe.mjs",
+    "build:packages": "node scripts/build-tokens.mjs && node scripts/build-packages.mjs",
+    "test:packages": "node tests/packages.mjs",
+    "docs": "node scripts/build-docs.mjs",
+    "docs:check": "node scripts/build-docs.mjs --check",
+    "test:docs": "node tests/docs-examples.mjs",
+    "test:visual": "node tests/visual.mjs"
   },
   "engines": {
     "node": ">=22"
+  },
+  "packageManager": "pnpm@10.28.0",
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "axe-core": "4.10.3",
+    "pixelmatch": "^8.0.0",
+    "playwright": "1.56.1",
+    "pngjs": "^7.0.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

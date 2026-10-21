@@ -1,16 +1,19 @@
-// Fails if a Kafka component uses a hex/rgb colour or a magic dimension instead of a token.
+// Fails if a Kafka component (or example) uses a hex/rgb colour, a Tailwind palette colour or a magic dimension instead of a token.
+//   node scripts/check-token-usage.mjs            → checks src/components and examples
+//   node scripts/check-token-usage.mjs <dir> ...  → checks the given directories (used by the self-test)
 import fs from 'node:fs'
 import path from 'node:path'
 
-const dir = process.argv[2] ?? 'src/components'
+const dirs = process.argv.length > 2 ? process.argv.slice(2) : ['src/components', 'examples']
 const rules = [
   [/#[0-9a-fA-F]{3,8}\b/g, 'hex colour'],
   [/rgba?\(/g, 'rgb() colour'],
-  [/\b(?:w|h|p[trblxy]?|gap|text|rounded|leading|tracking)-\[[0-9.]+(?:px|rem)\]/g, 'magic dimension'],
+  [/\b(?:w|h|p[trblxy]?|m[trblxy]?|gap|text|rounded|leading|tracking|size|min-h|min-w|max-w)-\[[0-9.]+(?:px|rem|em)\]/g, 'magic dimension'],
+  [/\b(?:bg|text|border|ring|fill|stroke|from|to|via|divide|outline|decoration|shadow|accent|caret)-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|white|black)(?:-\d{2,3})?\b/g, 'Tailwind palette colour'],
 ]
 let problems = 0
 let checked = 0
-if (fs.existsSync(dir)) {
+for (const dir of dirs.filter((d) => fs.existsSync(d))) {
   for (const file of fs.readdirSync(dir).filter((f) => /\.(tsx?|css|astro)$/.test(f))) {
     checked++
     fs.readFileSync(path.join(dir, file), 'utf8').split('\n').forEach((line, i) => {
