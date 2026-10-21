@@ -74,6 +74,31 @@ pairs.push(
   ['vip.fg', 'color.gold.300', TEXT, 'VIP text on gradient middle'],
   ['vip.fg', 'color.gold.500', TEXT, 'VIP text on gradient end'],
   ['vip.badge-fg', 'vip.badge-bg', TEXT, 'VIP badge'],
+  // Estados: hover y pulsado nunca bajan el contraste del texto
+  ['color.fg.default', 'color.bg.hover', TEXT, 'text on bg.hover'],
+  ['color.fg.default', 'color.bg.active', TEXT, 'text on bg.active'],
+  ['color.fg.default', 'color.bg.sunken-hover', TEXT, 'text on bg.sunken-hover'],
+  ['color.fg.default', 'color.bg.sunken-active', TEXT, 'text on bg.sunken-active'],
+  ['color.fg.on-brand', 'color.bg.brand-hover', TEXT, 'on-brand text on gold (hover)'],
+  ['color.fg.on-brand', 'color.bg.brand-active', TEXT, 'on-brand text on gold (active)'],
+  ['button.soft.fg', 'button.soft.bg-hover', TEXT, 'soft button label (hover)'],
+  ['button.soft.fg', 'button.soft.bg-active', TEXT, 'soft button label (active)'],
+  ['button.outline.fg', 'button.outline.bg-hover', TEXT, 'outline button label (hover)'],
+  ['button.primary.fg', 'button.primary.bg-active', TEXT, 'primary button label (active)'],
+  ['chip.fg', 'chip.bg-hover', TEXT, 'chip label (hover)'],
+  // Enlaces en todos sus estados
+  ...['page', 'surface'].flatMap((bg) => [
+    [`color.fg.link-hover`, `color.bg.${bg}`, TEXT, `link hover on bg.${bg}`],
+    [`color.fg.link-visited`, `color.bg.${bg}`, TEXT, `visited link on bg.${bg}`],
+  ]),
+  // Selección y marca de texto
+  ['color.selection.fg', 'color.selection.bg', READING, 'selected text'],
+  ['color.highlight.fg', 'color.highlight.bg', READING, 'highlighted text (mark)'],
+  // Lectura: progreso, cita y capitular
+  ['color.reading.progress-fill', 'color.bg.page', UI, 'progress fill on page'],
+  ['color.reading.progress-fill', 'color.bg.surface', UI, 'progress fill on surface'],
+  ['color.reading.quote-rule', 'color.bg.page', UI, 'pull-quote rule on page'],
+  ['color.reading.dropcap', 'color.bg.page', TEXT, 'drop cap on page'],
   // The brand gold itself is only a text colour on ink, never on paper
   ['color.gold.400', 'color.ink.900', READING, 'brand gold on ink (dark surfaces)'],
 )

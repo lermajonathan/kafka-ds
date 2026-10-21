@@ -1,101 +1,108 @@
 {
   "article": {
     "$description": "Artículo: contenedor de lectura larga.",
-    "measure": { "$type": "dimension", "$value": "{measure.reading}" },
-    "text": { "$type": "color", "$value": "{color.reading.text}" },
-    "bg": { "$type": "color", "$value": "{color.reading.bg}" },
-    "paragraph-gap": { "$type": "dimension", "$value": "{space.24}" },
-    "cover-radius": { "$type": "dimension", "$value": "{radius.media}" }
+    "measure": {"$type": "dimension", "$value": "{measure.reading}"},
+    "text": {"$type": "color", "$value": "{color.reading.text}"},
+    "bg": {"$type": "color", "$value": "{color.reading.bg}"},
+    "paragraph-gap": {"$type": "dimension", "$value": "{space.24}"},
+    "cover-radius": {"$type": "dimension", "$value": "{radius.media}"}
   },
   "button": {
     "$description": "Botón. Interfaz en sans; 44 px de alto mínimo.",
-    "radius": { "$type": "dimension", "$value": "{radius.control}" },
-    "padding-x": { "$type": "dimension", "$value": "{space.24}" },
-    "padding-y": { "$type": "dimension", "$value": "{space.12}" },
-    "gap": { "$type": "dimension", "$value": "{space.8}" },
-    "min-height": { "$type": "dimension", "$value": "{size.touch}" },
-    "type": { "$type": "typography", "$value": "{typography.ui.button}" },
+    "radius": {"$type": "dimension", "$value": "{radius.control}"},
+    "padding-x": {"$type": "dimension", "$value": "{space.24}"},
+    "padding-y": {"$type": "dimension", "$value": "{space.12}"},
+    "gap": {"$type": "dimension", "$value": "{space.8}"},
+    "min-height": {"$type": "dimension", "$value": "{size.touch}"},
+    "type": {"$type": "typography", "$value": "{typography.ui.button}"},
     "primary": {
-      "bg": { "$type": "color", "$value": "{color.bg.brand}" },
-      "bg-hover": { "$type": "color", "$value": "{color.gold.300}" },
-      "fg": { "$type": "color", "$value": "{color.fg.on-brand}" }
+      "bg": {"$type": "color", "$value": "{color.bg.brand}"},
+      "bg-hover": {"$type": "color", "$value": "{color.bg.brand-hover}"},
+      "fg": {"$type": "color", "$value": "{color.fg.on-brand}"},
+      "bg-active": {"$value": "{color.bg.brand-active}"}
     },
     "soft": {
-      "bg": { "$type": "color", "$value": "{color.bg.sunken}" },
-      "fg": { "$type": "color", "$value": "{color.fg.default}" }
+      "bg": {"$type": "color", "$value": "{color.bg.sunken}"},
+      "fg": {"$type": "color", "$value": "{color.fg.default}"},
+      "bg-hover": {"$value": "{color.bg.sunken-hover}"},
+      "bg-active": {"$value": "{color.bg.sunken-active}"}
     },
     "outline": {
-      "border": { "$type": "color", "$value": "{color.border.strong}" },
-      "fg": { "$type": "color", "$value": "{color.fg.default}" }
-    }
+      "border": {"$type": "color", "$value": "{color.border.strong}"},
+      "fg": {"$type": "color", "$value": "{color.fg.default}"},
+      "bg-hover": {"$value": "{color.bg.hover}"},
+      "bg-active": {"$value": "{color.bg.active}"}
+    },
+    "disabled-opacity": {"$value": "{opacity.disabled}"}
   },
   "badge": {
     "$description": "Insignia de estado o categoría.",
-    "radius": { "$type": "dimension", "$value": "{radius.pill}" },
-    "padding-x": { "$type": "dimension", "$value": "{space.12}" },
-    "padding-y": { "$type": "dimension", "$value": "{space.4}" },
-    "type": { "$type": "typography", "$value": "{typography.ui.caption}" },
+    "radius": {"$type": "dimension", "$value": "{radius.pill}"},
+    "padding-x": {"$type": "dimension", "$value": "{space.12}"},
+    "padding-y": {"$type": "dimension", "$value": "{space.4}"},
+    "type": {"$type": "typography", "$value": "{typography.ui.caption}"},
     "neutral": {
-      "bg": { "$type": "color", "$value": "{color.bg.inverse}" },
-      "fg": { "$type": "color", "$value": "{color.fg.inverse}" }
+      "bg": {"$type": "color", "$value": "{color.bg.inverse}"},
+      "fg": {"$type": "color", "$value": "{color.fg.inverse}"}
     },
     "brand": {
-      "bg": { "$type": "color", "$value": "{color.bg.brand}" },
-      "fg": { "$type": "color", "$value": "{color.fg.on-brand}" }
+      "bg": {"$type": "color", "$value": "{color.bg.brand}"},
+      "fg": {"$type": "color", "$value": "{color.fg.on-brand}"}
     }
   },
   "chip": {
     "$description": "Chip de filtro. Seleccionado = invertido.",
-    "radius": { "$type": "dimension", "$value": "{radius.pill}" },
-    "padding-x": { "$type": "dimension", "$value": "{space.16}" },
-    "padding-y": { "$type": "dimension", "$value": "{space.8}" },
-    "min-height": { "$type": "dimension", "$value": "{size.touch}" },
-    "type": { "$type": "typography", "$value": "{typography.ui.label}" },
-    "bg": { "$type": "color", "$value": "{color.bg.surface}" },
-    "border": { "$type": "color", "$value": "{color.border.default}" },
-    "fg": { "$type": "color", "$value": "{color.fg.soft}" },
-    "selected-bg": { "$type": "color", "$value": "{color.bg.inverse}" },
-    "selected-fg": { "$type": "color", "$value": "{color.fg.inverse}" }
+    "radius": {"$type": "dimension", "$value": "{radius.pill}"},
+    "padding-x": {"$type": "dimension", "$value": "{space.16}"},
+    "padding-y": {"$type": "dimension", "$value": "{space.8}"},
+    "min-height": {"$type": "dimension", "$value": "{size.touch}"},
+    "type": {"$type": "typography", "$value": "{typography.ui.label}"},
+    "bg": {"$type": "color", "$value": "{color.bg.surface}"},
+    "border": {"$type": "color", "$value": "{color.border.default}"},
+    "fg": {"$type": "color", "$value": "{color.fg.soft}"},
+    "selected-bg": {"$type": "color", "$value": "{color.bg.inverse}"},
+    "selected-fg": {"$type": "color", "$value": "{color.fg.inverse}"},
+    "bg-hover": {"$value": "{color.bg.hover}"}
   },
   "card": {
     "$description": "Tarjeta de programa. Destacada = borde dorado; VIP = ver vip.*",
-    "bg": { "$type": "color", "$value": "{color.bg.surface}" },
-    "border": { "$type": "color", "$value": "{color.border.default}" },
-    "border-width": { "$type": "dimension", "$value": "{borderWidth.hairline}" },
-    "radius": { "$type": "dimension", "$value": "{radius.card}" },
-    "padding": { "$type": "dimension", "$value": "{space.24}" },
-    "gap": { "$type": "dimension", "$value": "{space.12}" },
-    "shadow": { "$type": "shadow", "$value": "{elevation.card}" },
-    "title": { "$type": "typography", "$value": "{typography.reading.heading-sm}" },
+    "bg": {"$type": "color", "$value": "{color.bg.surface}"},
+    "border": {"$type": "color", "$value": "{color.border.default}"},
+    "border-width": {"$type": "dimension", "$value": "{borderWidth.hairline}"},
+    "radius": {"$type": "dimension", "$value": "{radius.card}"},
+    "padding": {"$type": "dimension", "$value": "{space.24}"},
+    "gap": {"$type": "dimension", "$value": "{space.12}"},
+    "shadow": {"$type": "shadow", "$value": "{elevation.card}"},
+    "title": {"$type": "typography", "$value": "{typography.reading.heading-sm}"},
     "featured": {
-      "border": { "$type": "color", "$value": "{color.border.brand}" },
-      "border-width": { "$type": "dimension", "$value": "{borderWidth.thin}" }
+      "border": {"$type": "color", "$value": "{color.border.brand}"},
+      "border-width": {"$type": "dimension", "$value": "{borderWidth.thin}"}
     }
   },
   "vip": {
     "$description": "Tarjeta VIP (membresía): oro, insignia y brillo animado en el borde. Texto fijo en ink 900.",
-    "bg": { "$type": "gradient", "$value": "{gradient.vip}" },
-    "fg": { "$type": "color", "$value": "{color.ink.900}" },
-    "shine": { "$type": "color", "$value": "{color.gold.50}" },
-    "shine-width": { "$type": "dimension", "$value": "{borderWidth.thick}" },
-    "shine-duration": { "$type": "duration", "$value": "{duration.shine}" },
-    "glow": { "$type": "shadow", "$value": "{elevation.glow}" },
-    "badge-bg": { "$type": "color", "$value": "{color.ink.900}" },
-    "badge-fg": { "$type": "color", "$value": "{color.gold.100}" }
+    "bg": {"$type": "gradient", "$value": "{gradient.vip}"},
+    "fg": {"$type": "color", "$value": "{color.vip.fg}"},
+    "shine": {"$type": "color", "$value": "{color.vip.shine}"},
+    "shine-width": {"$type": "dimension", "$value": "{borderWidth.thick}"},
+    "shine-duration": {"$type": "duration", "$value": "{motion.duration.shine}"},
+    "glow": {"$type": "shadow", "$value": "{elevation.glow}"},
+    "badge-bg": {"$type": "color", "$value": "{color.vip.badge-bg}"},
+    "badge-fg": {"$type": "color", "$value": "{color.vip.badge-fg}"}
   },
   "news": {
     "$description": "Caja flotante de noticias de la comunidad.",
-    "width": { "$type": "dimension", "$value": "{size.floating}" },
-    "bg": { "$type": "color", "$value": "{color.bg.surface}" },
-    "border": { "$type": "color", "$value": "{color.border.brand}" },
-    "border-width": { "$type": "dimension", "$value": "{borderWidth.thin}" },
-    "radius": { "$type": "dimension", "$value": "{radius.card}" },
-    "padding": { "$type": "dimension", "$value": "{space.20}" },
-    "shadow": { "$type": "shadow", "$value": "{elevation.floating}" },
-    "title": { "$type": "typography", "$value": "{typography.reading.heading-sm}" },
-    "kind-bg": { "$type": "color", "$value": "{color.bg.brand}" },
-    "kind-fg": { "$type": "color", "$value": "{color.fg.on-brand}" },
-    "kind-size": { "$type": "dimension", "$value": "{space.32}" },
-    "enter": { "$type": "duration", "$value": "{duration.slow}" }
+    "width": {"$type": "dimension", "$value": "{size.floating}"},
+    "bg": {"$type": "color", "$value": "{color.bg.surface}"},
+    "border": {"$type": "color", "$value": "{color.border.brand}"},
+    "border-width": {"$type": "dimension", "$value": "{borderWidth.thin}"},
+    "radius": {"$type": "dimension", "$value": "{radius.card}"},
+    "padding": {"$type": "dimension", "$value": "{space.20}"},
+    "shadow": {"$type": "shadow", "$value": "{elevation.floating}"},
+    "title": {"$type": "typography", "$value": "{typography.reading.heading-sm}"},
+    "kind-bg": {"$type": "color", "$value": "{color.bg.brand}"},
+    "kind-fg": {"$type": "color", "$value": "{color.fg.on-brand}"},
+    "kind-size": {"$type": "dimension", "$value": "{space.32}"},
+    "enter": {"$type": "duration", "$value": "{motion.duration.slow}"}
   }
 }

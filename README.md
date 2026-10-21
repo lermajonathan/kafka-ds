@@ -1,7 +1,69 @@
 # Kafka
 
-Sistema de diseño para la literatura en pantalla: legibilidad, contraste y tipografía editorial pensados para medios digitales, con un módulo para medios impresos.
+[![CI](https://github.com/lermajonathan/kafka-ds/actions/workflows/ci.yml/badge.svg)](https://github.com/lermajonathan/kafka-ds/actions/workflows/ci.yml)
+[![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-b8932a.svg)](LICENSE)
+[![WCAG 2.2 AA](https://img.shields.io/badge/WCAG-2.2%20AA-b8932a.svg)](#accesibilidad)
 
-Kafka parte de la arquitectura de [Pance](https://github.com/lermajonathan/pance-ds) (tokens en tres capas, geometría, lista de componentes y controles de calidad) con una identidad visual propia.
+Sistema de diseño para la literatura en pantalla: legibilidad, contraste y tipografía editorial pensados para medios digitales, con un módulo para medios impresos. Su primer uso es el sitio de [Altazor Taller de Escritura Creativa](https://altazorescrituracreativa.com), que es un tema de Kafka.
 
-> En construcción. El plan está en el proyecto «Altazor · Kafka DS · Refactor · CRM».
+Kafka parte de la arquitectura de [Pance](https://github.com/lermajonathan/pance-ds) (tokens en tres capas, geometría, lista de componentes y controles de calidad) con una identidad propia: papel cálido, tinta y oro, y tipografía de lectura Literata.
+
+> **Estado: pre-1.0, en construcción.** No hay versión en npm. Kafka se publica y se anuncia solo cuando cumple el criterio de «completo» de [DDR-KF-004](docs/decisions/DDR-KF-004-alcance-v1.md). El avance está en el [roadmap](docs/roadmap.md).
+
+## Qué hay hoy
+
+| | Qué | Dónde |
+|---|---|---|
+| 🎨 | **Tokens**: 313 en tres niveles (primitivos → semánticos → componentes), formato W3C DTCG, claro y oscuro | [`tokens/`](tokens) · [referencia](docs/tokens.md) |
+| 🖨️ | **Tokens de impresión**: página, sangrado, márgenes, tipografía en puntos y rejilla de líneas base | [`tokens/`](tokens) (`physical.*`, `print.*`) |
+| 🧪 | **Pruebas**: contraste (129 pares), estructura de tokens y lint | [`tests/`](tests) |
+| 📐 | **Figma**: variables (Primitives, Semantic, Components), estilos y 6 conjuntos de componentes | [archivo en Figma](https://www.figma.com/design/S3WoutgiyT1a5kwahRaKJ2) |
+| 📝 | **Decisiones de diseño** (DDR-KF) | [`docs/decisions/`](docs/decisions) |
+
+Todavía **no** hay librería de componentes, documentación por componente ni paquetes. Están planeados en los hitos H1 a H7.
+
+## Empezar
+
+```bash
+# Node 22+
+npm run tokens        # compila tokens/*.json → CSS, TypeScript y JSON plano
+npm run verify        # compila y pasa todas las pruebas
+```
+
+Los tokens salen como variables CSS (`--kafka-*`):
+
+```css
+.mi-tarjeta {
+  background: var(--kafka-color-bg-surface);
+  color: var(--kafka-color-fg-default);
+  border-radius: var(--kafka-radius-card);
+  box-shadow: var(--kafka-elevation-card);
+}
+```
+
+El modo oscuro sigue al sistema. Para forzarlo: `<html data-theme="dark">`; para forzar el claro: `data-theme="light"`.
+
+## Arquitectura de tokens
+
+```
+primitivos   valores en bruto (paper, ink, gold, escalas)        ← solo los leen los demás niveles
+semánticos   propósito: bg.surface, fg.link, reading.text…       ← lo que usa el producto
+componentes  decisiones por componente: button.primary.bg…       ← lo que lee el código del componente
+```
+
+Regla fija: **los componentes no leen colores, sombras, tipografía, radios, movimiento ni capas primitivos**; pasan por un token semántico. Las escalas (espacio, tamaño, ancho de borde, medida, breakpoints) sí se leen directas. La prueba [`tests/structure.mjs`](tests/structure.mjs) lo hace cumplir ([DDR-KF-006](docs/decisions/DDR-KF-006-cimientos-de-tokens.md)).
+
+## Accesibilidad
+
+- Texto de lectura a 7:1 (AAA), texto de interfaz a 4,5:1 y elementos no textuales a 3:1, en claro y en oscuro. Los 129 pares se prueban en cada cambio.
+- El oro de marca (`#d4af37`) mide 1,98:1 sobre el papel, así que **nunca** se usa como texto sobre papel: va como superficie con texto de tinta (8,3:1) o como texto sobre tinta.
+- Los enlaces siempre van subrayados; el color solo nunca los distingue.
+- Objetivo táctil mínimo de 44 px en controles principales.
+
+## Contribuir
+
+Lee [CONTRIBUTING.md](CONTRIBUTING.md) y [GOVERNANCE.md](GOVERNANCE.md). Kafka es de código abierto, pero toda propuesta que se implementa o se rechaza la aprueba su autor.
+
+## Licencia
+
+[MIT](LICENSE) © Jonathan Lerma.

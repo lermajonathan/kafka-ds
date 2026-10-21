@@ -9,7 +9,11 @@
     "tokens": "node scripts/build-tokens.mjs",
     "lint:tokens": "node scripts/check-token-usage.mjs",
     "test:contrast": "node tests/contrast.mjs",
-    "verify": "npm run tokens && npm run lint:tokens && npm run test:contrast"
+    "verify": "npm run tokens && npm run lint:tokens && npm run test:lint && npm run test:structure && npm run test:contrast",
+    "test:structure": "node tests/structure.mjs",
+    "test:lint": "node tests/lint-selftest.mjs"
   },
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": ">=22"
+  }
 }

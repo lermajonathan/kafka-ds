@@ -22,5 +22,9 @@ jobs:
         run: git diff --exit-code -- src/styles/tokens.css src/tokens.ts tokens/dist docs/tokens.md || (echo "::error::Run 'npm run tokens' and commit the generated files" && exit 1)
       - name: Components only use tokens
         run: npm run lint:tokens
+      - name: Lint catches what it promises
+        run: npm run test:lint
+      - name: Token structure (components read semantic tokens, scales are monotonic, print grid)
+        run: npm run test:structure
       - name: Token contrast (reading 7:1, UI 4.5:1, non-text 3:1; light + dark)
         run: npm run test:contrast
