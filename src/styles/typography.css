@@ -738,3 +738,17 @@
   line-height: var(--kafka-segmented-control-item-type-line-height);
   letter-spacing: var(--kafka-segmented-control-item-type-letter-spacing);
 }
+.kafka-type-radio-card-label-type {
+  font-family: var(--kafka-radio-card-label-type-font-family);
+  font-size: var(--kafka-radio-card-label-type-font-size);
+  font-weight: var(--kafka-radio-card-label-type-font-weight);
+  line-height: var(--kafka-radio-card-label-type-line-height);
+  letter-spacing: var(--kafka-radio-card-label-type-letter-spacing);
+}
+.kafka-type-radio-card-description-type {
+  font-family: var(--kafka-radio-card-description-type-font-family);
+  font-size: var(--kafka-radio-card-description-type-font-size);
+  font-weight: var(--kafka-radio-card-description-type-font-weight);
+  line-height: var(--kafka-radio-card-description-type-line-height);
+  letter-spacing: var(--kafka-radio-card-description-type-letter-spacing);
+}

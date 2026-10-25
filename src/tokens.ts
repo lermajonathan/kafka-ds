@@ -2628,6 +2628,54 @@ export const tokens = {
     "active-fg": "#1a1a1a",
     "active-border": "#8f6f14",
     "active-border-width": "1.5px"
+  },
+  "checkbox-group": {
+    "gap": "0.25rem",
+    "select-all-border": "#cfc9c0",
+    "select-all-border-width": "1px",
+    "select-all-padding-bottom": "0.5rem"
+  },
+  "radio-card": {
+    "bg": "#fffdf9",
+    "hover-bg": "#f6f1e6",
+    "border": "#615b52",
+    "checked-border": "#8f6f14",
+    "border-width": "2px",
+    "radius": "1rem",
+    "padding": "1rem",
+    "gap": "0.75rem",
+    "min-height": "2.75rem",
+    "label-fg": "#1a1a1a",
+    "label-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "description-fg": "#36322d",
+    "description-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "icon-bg": "#ece4d2",
+    "icon-fg": "#36322d",
+    "icon-size": "2rem",
+    "group-gap": "0.75rem",
+    "disabled-opacity": 0.45
   }
 } as const
 

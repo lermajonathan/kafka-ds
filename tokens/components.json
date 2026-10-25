@@ -3217,5 +3217,99 @@
       "$type": "dimension",
       "$value": "{borderWidth.thin}"
     }
+  },
+  "checkbox-group": {
+    "$description": "Lista de casillas con «seleccionar todos» (estado mixto) en un fieldset.",
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "select-all-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "select-all-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "select-all-padding-bottom": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    }
+  },
+  "radio-card": {
+    "$description": "Opción única presentada como tarjeta: radio nativo con borde, icono opcional e insignia.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "checked-border": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "label-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "description-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "icon-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "icon-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "group-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "disabled-opacity": {
+      "$type": "opacity",
+      "$value": "{opacity.disabled}"
+    }
   }
 }

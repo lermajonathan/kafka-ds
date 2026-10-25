@@ -17,6 +17,8 @@ import { examples as slider } from './slider'
 import { examples as pin_input } from './pin-input'
 import { examples as tag_input } from './tag-input'
 import { examples as file_upload } from './file-upload'
+import { examples as checkbox_group } from './checkbox-group'
+import { examples as radio_card } from './radio-card'
 import { examples as segmented_control } from './segmented-control'
 import { examples as tabs } from './tabs'
 import { examples as theme_toggle } from './theme-toggle'
@@ -88,6 +90,8 @@ export const registry: Record<string, ComponentEntry> = {
   'pin-input': { name: 'PinInput', file: 'pin-input.tsx', examples: pin_input },
   'tag-input': { name: 'TagInput', file: 'tag-input.tsx', examples: tag_input },
   'file-upload': { name: 'FileUpload', file: 'file-upload.tsx', examples: file_upload },
+  'checkbox-group': { name: 'CheckboxGroup', file: 'checkbox-group.tsx', examples: checkbox_group },
+  'radio-card': { name: 'RadioCardGroup', file: 'radio-card.tsx', examples: radio_card },
   'segmented-control': { name: 'SegmentedControl', file: 'segmented-control.tsx', examples: segmented_control },
   'theme-toggle': { name: 'ThemeToggle', file: 'theme.tsx', examples: theme_toggle },
   'tabs': { name: 'Tabs', file: 'tabs.tsx', examples: tabs },

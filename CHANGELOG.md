@@ -4,6 +4,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Paridad con Pance, corte 3b (25 oct 2026)
+- **[CheckboxGroup](docs/components/checkbox-group.md)** y **[RadioCard y RadioCardGroup](docs/components/radio-card.md)** ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)). `SwitchRow` no se construye: `Switch` ya es una fila completa.
+- 1074 tokens; 323 pares de contraste en claro y 322 en oscuro; 443 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Siguen: 3c (InputGroup, InlineEdit, SplitButton, ToggleButton) y 3d.
+
 ### H5 · Paridad con Pance, corte 3a (25 oct 2026)
 - **3 piezas**: [SegmentedControl](docs/components/segmented-control.md), `ThemeProvider` y [ThemeToggle](docs/components/theme-toggle.md) (con `useTheme` y `themeInitScript`) ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
 - 1052 tokens; 316 pares de contraste en claro y 315 en oscuro; 421 comprobaciones de teclado y ARIA; axe-core sin violaciones (ahora con movimiento reducido para no leer animaciones a medias).

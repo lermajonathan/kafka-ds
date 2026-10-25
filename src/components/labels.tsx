@@ -29,6 +29,8 @@ export interface Labels {
   newsGoTo: (n: number, total: number) => string
   dismissNews: (title: string) => string
   newsViewAll: string
+  /** The first checkbox of a `CheckboxGroup` with `selectAll`. */
+  selectAll: string
   /** Breadcrumbs. */
   breadcrumb: string
   /** Pagination. */
@@ -128,6 +130,7 @@ export const labelsEn: Labels = {
   newsGoTo: (n, total) => `Show news ${n} of ${total}`,
   dismissNews: (t) => `Close news: ${t}`,
   newsViewAll: 'View all',
+  selectAll: 'Select all',
   breadcrumb: 'Breadcrumb',
   pagination: 'Pagination',
   previousPage: 'Previous page',
@@ -206,6 +209,7 @@ export const labelsEs: Labels = {
   newsGoTo: (n, total) => `Ver noticia ${n} de ${total}`,
   dismissNews: (t) => `Cerrar noticia: ${t}`,
   newsViewAll: 'Ver todas',
+  selectAll: 'Seleccionar todos',
   breadcrumb: 'Ruta de navegación',
   pagination: 'Paginación',
   previousPage: 'Página anterior',
