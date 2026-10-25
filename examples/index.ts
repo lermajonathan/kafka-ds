@@ -49,6 +49,11 @@ import { examples as alert } from './alert'
 import { examples as divider } from './divider'
 import { examples as skeleton } from './skeleton'
 import { examples as empty_state } from './empty-state'
+import { examples as card } from './card'
+import { examples as panel } from './panel'
+import { examples as avatar } from './avatar'
+import { examples as progress } from './progress'
+import { examples as spinner } from './spinner'
 
 export interface ComponentEntry {
   /** Name as exported from the library. */
@@ -108,4 +113,9 @@ export const registry: Record<string, ComponentEntry> = {
   'divider': { name: 'Divider', file: 'divider.tsx', examples: divider },
   'skeleton': { name: 'Skeleton', file: 'skeleton.tsx', examples: skeleton },
   'empty-state': { name: 'EmptyState', file: 'empty-state.tsx', examples: empty_state },
+  'card': { name: 'Card', file: 'card.tsx', examples: card },
+  'panel': { name: 'Panel', file: 'panel.tsx', examples: panel },
+  'avatar': { name: 'Avatar', file: 'avatar.tsx', examples: avatar },
+  'progress': { name: 'Progress', file: 'progress.tsx', examples: progress },
+  'spinner': { name: 'Spinner', file: 'spinner.tsx', examples: spinner },
 }

@@ -2149,6 +2149,183 @@ export const tokens = {
       "letterSpacing": "0em"
     },
     "max-width": "240px"
+  },
+  "panel": {
+    "bg": "#fffdf9",
+    "border": "#cfc9c0",
+    "border-width": "1px",
+    "radius": "1rem",
+    "shadow": {
+      "offsetX": "0px",
+      "offsetY": "10px",
+      "blur": "28px",
+      "spread": "0px",
+      "color": "#0f0f0e1a"
+    },
+    "header-padding-x": "1.25rem",
+    "header-padding-y": "0.75rem",
+    "header-gap": "0.75rem",
+    "body-padding": "1.25rem",
+    "footer-padding-x": "1.25rem",
+    "footer-padding-y": "0.75rem",
+    "footer-gap": "0.75rem",
+    "rule": "#cfc9c0",
+    "title-fg": "#1a1a1a",
+    "title-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "description-fg": "#36322d",
+    "description-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "icon-box": "2rem",
+    "icon-radius": "0.75rem",
+    "icon": {
+      "brand": {
+        "bg": "#d4af37",
+        "fg": "#1a1a1a"
+      },
+      "info": {
+        "bg": "#eaf2fc",
+        "fg": "#184b8f"
+      },
+      "success": {
+        "bg": "#eef7ee",
+        "fg": "#1f5f23"
+      },
+      "warning": {
+        "bg": "#fff6e0",
+        "fg": "#7f4b00"
+      },
+      "danger": {
+        "bg": "#fdf0ee",
+        "fg": "#8f1d17"
+      }
+    },
+    "toggle-fg": "#36322d",
+    "toggle-hover-bg": "#f6f1e6"
+  },
+  "avatar": {
+    "size": {
+      "sm": "2rem",
+      "md": "3rem",
+      "lg": "4rem"
+    },
+    "radius-square": "0.75rem",
+    "bg": "#d4af37",
+    "fg": "#1a1a1a",
+    "type-sm": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "type-md": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "type-lg": {
+      "fontFamily": [
+        "Literata",
+        "Georgia",
+        "serif"
+      ],
+      "fontSize": "1.25rem",
+      "fontWeight": 700,
+      "lineHeight": 1.2,
+      "letterSpacing": "0em"
+    },
+    "ring": "#fbf8f1",
+    "ring-width": "2px",
+    "status-size": "0.75rem",
+    "status-online": "#2e7d32",
+    "status-away": "#a86400",
+    "status-busy": "#b3261e",
+    "status-offline": "#4a453e",
+    "overflow-bg": "#ece4d2",
+    "overflow-fg": "#1a1a1a",
+    "group-overlap": "0.5rem"
+  },
+  "progress": {
+    "height": "0.5rem",
+    "radius": "9999px",
+    "track": "#cfc9c0",
+    "fill": {
+      "brand": "#574306",
+      "success": "#1f5f23",
+      "warning": "#7f4b00",
+      "danger": "#8f1d17"
+    },
+    "gap": "0.75rem",
+    "value-fg": "#36322d",
+    "value-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "label-fg": "#1a1a1a",
+    "label-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "transition": "350ms"
+  },
+  "spinner": {
+    "size": {
+      "sm": "1rem",
+      "md": "1.5rem",
+      "lg": "2rem"
+    },
+    "stroke-width": "2px",
+    "arc": "#574306",
+    "track": "#cfc9c0"
   }
 } as const
 

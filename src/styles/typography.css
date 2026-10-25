@@ -598,3 +598,52 @@
   line-height: var(--kafka-empty-state-description-type-line-height);
   letter-spacing: var(--kafka-empty-state-description-type-letter-spacing);
 }
+.kafka-type-panel-title-type {
+  font-family: var(--kafka-panel-title-type-font-family);
+  font-size: var(--kafka-panel-title-type-font-size);
+  font-weight: var(--kafka-panel-title-type-font-weight);
+  line-height: var(--kafka-panel-title-type-line-height);
+  letter-spacing: var(--kafka-panel-title-type-letter-spacing);
+}
+.kafka-type-panel-description-type {
+  font-family: var(--kafka-panel-description-type-font-family);
+  font-size: var(--kafka-panel-description-type-font-size);
+  font-weight: var(--kafka-panel-description-type-font-weight);
+  line-height: var(--kafka-panel-description-type-line-height);
+  letter-spacing: var(--kafka-panel-description-type-letter-spacing);
+}
+.kafka-type-avatar-type-sm {
+  font-family: var(--kafka-avatar-type-sm-font-family);
+  font-size: var(--kafka-avatar-type-sm-font-size);
+  font-weight: var(--kafka-avatar-type-sm-font-weight);
+  line-height: var(--kafka-avatar-type-sm-line-height);
+  letter-spacing: var(--kafka-avatar-type-sm-letter-spacing);
+}
+.kafka-type-avatar-type-md {
+  font-family: var(--kafka-avatar-type-md-font-family);
+  font-size: var(--kafka-avatar-type-md-font-size);
+  font-weight: var(--kafka-avatar-type-md-font-weight);
+  line-height: var(--kafka-avatar-type-md-line-height);
+  letter-spacing: var(--kafka-avatar-type-md-letter-spacing);
+}
+.kafka-type-avatar-type-lg {
+  font-family: var(--kafka-avatar-type-lg-font-family);
+  font-size: var(--kafka-avatar-type-lg-font-size);
+  font-weight: var(--kafka-avatar-type-lg-font-weight);
+  line-height: var(--kafka-avatar-type-lg-line-height);
+  letter-spacing: var(--kafka-avatar-type-lg-letter-spacing);
+}
+.kafka-type-progress-value-type {
+  font-family: var(--kafka-progress-value-type-font-family);
+  font-size: var(--kafka-progress-value-type-font-size);
+  font-weight: var(--kafka-progress-value-type-font-weight);
+  line-height: var(--kafka-progress-value-type-line-height);
+  letter-spacing: var(--kafka-progress-value-type-letter-spacing);
+}
+.kafka-type-progress-label-type {
+  font-family: var(--kafka-progress-label-type-font-family);
+  font-size: var(--kafka-progress-label-type-font-size);
+  font-weight: var(--kafka-progress-label-type-font-weight);
+  line-height: var(--kafka-progress-label-type-line-height);
+  letter-spacing: var(--kafka-progress-label-type-letter-spacing);
+}

@@ -5,6 +5,12 @@ import { createContext, useContext, type ReactNode } from 'react'
 export interface Labels {
   /** Announced by screen readers while a button is busy. */
   loading: string
+  /** Avatar presence statuses and the "+N" chip of an avatar group. */
+  statusOnline: string
+  statusAway: string
+  statusBusy: string
+  statusOffline: string
+  moreCount: (n: number) => string
   /** Close buttons of modals and drawers. */
   close: string
   /** Breadcrumbs. */
@@ -87,6 +93,11 @@ export interface Labels {
 
 export const labelsEn: Labels = {
   loading: 'Loading',
+  statusOnline: 'Online',
+  statusAway: 'Away',
+  statusBusy: 'Busy',
+  statusOffline: 'Offline',
+  moreCount: (n) => `${n} more`,
   close: 'Close',
   breadcrumb: 'Breadcrumb',
   pagination: 'Pagination',
@@ -147,6 +158,11 @@ export const labelsEn: Labels = {
 
 export const labelsEs: Labels = {
   loading: 'Cargando',
+  statusOnline: 'En línea',
+  statusAway: 'Ausente',
+  statusBusy: 'Ocupado',
+  statusOffline: 'Desconectado',
+  moreCount: (n) => `${n} más`,
   close: 'Cerrar',
   breadcrumb: 'Ruta de navegación',
   pagination: 'Paginación',

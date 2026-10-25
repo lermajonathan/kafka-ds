@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Retroalimentación y superficies, corte 1b (25 oct 2026)
+- **5 componentes**: [Card](docs/components/card.md), [Panel](docs/components/panel.md), [Avatar y AvatarGroup](docs/components/avatar.md), [Progress](docs/components/progress.md) y [Spinner](docs/components/spinner.md) ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)). Revisados contra Pance antes de implementarlos.
+- `Progress` exige `label`; `Avatar` dice su estado en palabras; el colapso de `Panel` mide 44 px. Textos nuevos en `labelsEn` y `labelsEs` (estados de presencia y «+N»).
+- 929 tokens; 269 pares de contraste en claro y 268 en oscuro; 333 comprobaciones de teclado y ARIA; axe-core sin violaciones en 54 componentes (248 páginas). axe encontró un `aria-label` sin rol en el chip «+N» y se corrigió.
+- Pendiente de H5: Toast y notificaciones (1c) y las tarjetas VIP, de noticias y de programa (corte 2).
+
 ### H5 · Retroalimentación y superficies, corte 1a (25 oct 2026)
 - **4 componentes**: [Alert](docs/components/alert.md), [Divider](docs/components/divider.md), [Skeleton](docs/components/skeleton.md) y [EmptyState](docs/components/empty-state.md) ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)).
 - `Alert` informa sin interrumpir (`role="status"`; `urgent` usa `role="alert"`), con ícono y borde en cada tono. `Skeleton` anuncia «Cargando» una sola vez y se detiene con movimiento reducido.

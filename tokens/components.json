@@ -2431,5 +2431,311 @@
       "$type": "dimension",
       "$value": "{size.menu}"
     }
+  },
+  "panel": {
+    "$description": "Tarjeta con encabezado (título, descripción, ícono, acciones), cuerpo, pie y, si se pide, colapsable.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.card}"
+    },
+    "header-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.20}"
+    },
+    "header-padding-y": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "header-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "body-padding": {
+      "$type": "dimension",
+      "$value": "{space.20}"
+    },
+    "footer-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.20}"
+    },
+    "footer-padding-y": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "footer-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "rule": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "title-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "description-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "icon-box": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "icon-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "icon": {
+      "brand": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.bg.brand}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.fg.on-brand}"
+        }
+      },
+      "info": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.info.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.info.fg}"
+        }
+      },
+      "success": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.success.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.success.fg}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.warning.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.warning.fg}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.danger.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.danger.fg}"
+        }
+      }
+    },
+    "toggle-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "toggle-hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    }
+  },
+  "avatar": {
+    "$description": "Persona o entidad como imagen o iniciales, con estado de presencia opcional.",
+    "size": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{space.32}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{space.48}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{space.64}"
+      }
+    },
+    "radius-square": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.brand}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.on-brand}"
+    },
+    "type-sm": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "type-md": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "type-lg": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-sm}"
+    },
+    "ring": {
+      "$type": "color",
+      "$value": "{color.bg.page}"
+    },
+    "ring-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "status-size": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "status-online": {
+      "$type": "color",
+      "$value": "{color.status.success.border}"
+    },
+    "status-away": {
+      "$type": "color",
+      "$value": "{color.status.warning.border}"
+    },
+    "status-busy": {
+      "$type": "color",
+      "$value": "{color.status.danger.border}"
+    },
+    "status-offline": {
+      "$type": "color",
+      "$value": "{color.fg.muted}"
+    },
+    "overflow-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "overflow-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "group-overlap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    }
+  },
+  "progress": {
+    "$description": "Barra que muestra cuánto va de una tarea con porcentaje conocido.",
+    "height": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.pill}"
+    },
+    "track": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "fill": {
+      "brand": {
+        "$type": "color",
+        "$value": "{color.fg.brand}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.status.success.fg}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.status.warning.fg}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{color.status.danger.fg}"
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "value-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "value-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "label-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "transition": {
+      "$type": "duration",
+      "$value": "{motion.duration.slow}"
+    }
+  },
+  "spinner": {
+    "$description": "Progreso sin duración conocida.",
+    "size": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{size.icon.sm}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{size.icon.lg}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{space.32}"
+      }
+    },
+    "stroke-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "arc": {
+      "$type": "color",
+      "$value": "{color.fg.brand}"
+    },
+    "track": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    }
   }
 }
