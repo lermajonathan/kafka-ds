@@ -25,7 +25,7 @@
     "test:visual": "node tests/visual.mjs",
     "figma": "node scripts/build-figma.mjs",
     "figma:check": "node scripts/build-figma.mjs --check",
-    "test:figma": "node tests/figma-payload.mjs"
+    "test:figma": "node tests/figma-payload.mjs && node tests/figma-docs.mjs"
   },
   "engines": {
     "node": ">=22"
