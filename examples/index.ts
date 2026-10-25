@@ -19,6 +19,7 @@ import { examples as tag_input } from './tag-input'
 import { examples as file_upload } from './file-upload'
 import { examples as checkbox_group } from './checkbox-group'
 import { examples as radio_card } from './radio-card'
+import { examples as range_calendar } from './range-calendar'
 import { examples as segmented_control } from './segmented-control'
 import { examples as split_button } from './split-button'
 import { examples as tabs } from './tabs'
@@ -62,6 +63,7 @@ import { examples as progress } from './progress'
 import { examples as spinner } from './spinner'
 import { examples as toast } from './toast'
 import { examples as count_badge } from './count-badge'
+import { examples as date_range_picker } from './date-range-picker'
 import { examples as inline_edit } from './inline-edit'
 import { examples as input_group } from './input-group'
 import { examples as nav_menu } from './nav-menu'
@@ -97,6 +99,7 @@ export const registry: Record<string, ComponentEntry> = {
   'file-upload': { name: 'FileUpload', file: 'file-upload.tsx', examples: file_upload },
   'checkbox-group': { name: 'CheckboxGroup', file: 'checkbox-group.tsx', examples: checkbox_group },
   'radio-card': { name: 'RadioCardGroup', file: 'radio-card.tsx', examples: radio_card },
+  'range-calendar': { name: 'RangeCalendar', file: 'range-calendar.tsx', examples: range_calendar },
   'segmented-control': { name: 'SegmentedControl', file: 'segmented-control.tsx', examples: segmented_control },
   'theme-toggle': { name: 'ThemeToggle', file: 'theme.tsx', examples: theme_toggle },
   'split-button': { name: 'SplitButton', file: 'split-button.tsx', examples: split_button },
@@ -140,6 +143,7 @@ export const registry: Record<string, ComponentEntry> = {
   'spinner': { name: 'Spinner', file: 'spinner.tsx', examples: spinner },
   'toast': { name: 'Toast', file: 'toast.tsx', examples: toast },
   'count-badge': { name: 'CountBadge', file: 'count-badge.tsx', examples: count_badge },
+  'date-range-picker': { name: 'DateRangePicker', file: 'date-range-picker.tsx', examples: date_range_picker },
   'inline-edit': { name: 'InlineEdit', file: 'inline-edit.tsx', examples: inline_edit },
   'input-group': { name: 'InputGroup', file: 'input-group.tsx', examples: input_group },
   'nav-menu': { name: 'NavMenu', file: 'nav-menu.tsx', examples: nav_menu },

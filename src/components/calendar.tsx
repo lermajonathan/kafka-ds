@@ -1,5 +1,5 @@
 /* Kafka · Calendar */
-import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react'
+import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
 import { IconChevronLeft, IconChevronRight } from '../icons'
 import { IconButton } from './icon-button'
 import { useLabels } from './labels'
@@ -25,14 +25,24 @@ export interface CalendarProps {
   className?: string
 }
 
-/** A month grid. Arrow keys move by day and week, Home and End to the start and end of the week, Page Up and Down by month (Shift for year), Enter or Space chooses. Every day is a button named with its full date. */
-export function Calendar({ value, defaultValue = null, onValueChange, min, max, locale = 'es-CO', weekStartsOn = 1, className }: CalendarProps) {
+/** How a day looks and is named: the ends of a selection are `edge`, days between are `inRange`; `note` is added to the day's accessible name. */
+export interface DayState { edge?: boolean; inRange?: boolean; note?: string }
+
+export interface CalendarBaseProps extends Pick<CalendarProps, 'min' | 'max' | 'locale' | 'weekStartsOn' | 'className'> {
+  /** The date (`YYYY-MM-DD`) whose month is shown first. */
+  initial: string
+  state: (iso: string) => DayState
+  onChoose: (iso: string) => void
+  /** Rendered under the grid, inside the same border. */
+  footer?: ReactNode
+}
+
+/** The month grid shared by `Calendar` and `RangeCalendar`: keyboard, labels and layout live here once. */
+export function CalendarBase({ initial, state, onChoose, footer, min, max, locale = 'es-CO', weekStartsOn = 1, className }: CalendarBaseProps) {
   const labels = useLabels()
   const uid = useId()
-  const [inner, setInner] = useState<string | null>(defaultValue)
-  const selected = value !== undefined ? value : inner
   const today = toISO(new Date())
-  const [cursor, setCursor] = useState<Date>(() => fromISO(selected ?? today))
+  const [cursor, setCursor] = useState<Date>(() => fromISO(initial))
   const grid = useRef<HTMLTableElement | null>(null)
   const moved = useRef(false)
   const month = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(cursor)
@@ -48,7 +58,7 @@ export function Calendar({ value, defaultValue = null, onValueChange, min, max, 
   while (cells.length % 7) cells.push(null)
   const weeks = Array.from({ length: cells.length / 7 }, (_, i) => cells.slice(i * 7, i * 7 + 7))
   const disabled = (d: Date) => { const s = toISO(d); return (!!min && s < min) || (!!max && s > max) }
-  const choose = (d: Date) => { if (disabled(d)) return; const s = toISO(d); if (value === undefined) setInner(s); onValueChange?.(s) }
+  const choose = (d: Date) => { if (disabled(d)) return; onChoose(toISO(d)) }
   const go = (d: Date) => { moved.current = true; setCursor(d) }
   useEffect(() => {
     if (!moved.current) return
@@ -83,22 +93,27 @@ export function Calendar({ value, defaultValue = null, onValueChange, min, max, 
               {w.map((d, j) => {
                 if (!d) return <td key={j} />
                 const iso = toISO(d)
-                const isSel = iso === selected, isToday = iso === today, isFocus = iso === toISO(cursor)
+                const st = state(iso)
+                const isToday = iso === today, isFocus = iso === toISO(cursor)
                 return (
-                  <td key={j} role="gridcell" aria-selected={isSel} className="p-0 text-center">
+                  <td key={j} role="gridcell" aria-selected={!!(st.edge || st.inRange)} className="p-0 text-center">
                     <button
                       type="button"
                       data-iso={iso}
                       tabIndex={isFocus ? 0 : -1}
                       disabled={disabled(d)}
-                      aria-label={full.format(d)}
+                      aria-label={st.note ? `${full.format(d)}, ${st.note}` : full.format(d)}
                       aria-current={isToday ? 'date' : undefined}
                       onClick={() => { go(d); choose(d) }}
                       className={cx(
                         focus,
                         'kafka-type-calendar-weekday-type grid size-(--kafka-calendar-cell-size) cursor-pointer place-items-center rounded-(--kafka-calendar-cell-radius) text-base tabular-nums disabled:cursor-not-allowed disabled:opacity-(--kafka-calendar-disabled-opacity)',
-                        isSel ? 'bg-(--kafka-calendar-selected-bg) font-bold text-(--kafka-calendar-selected-fg)' : 'text-(--kafka-calendar-fg) hover:bg-(--kafka-calendar-hover-bg)',
-                        isToday && !isSel && 'border-(length:--kafka-calendar-today-border-width) border-(--kafka-calendar-today-border)',
+                        st.edge
+                          ? 'bg-(--kafka-calendar-selected-bg) font-bold text-(--kafka-calendar-selected-fg)'
+                          : st.inRange
+                            ? 'bg-(--kafka-calendar-range-bg) text-(--kafka-calendar-range-fg) hover:bg-(--kafka-calendar-hover-bg)'
+                            : 'text-(--kafka-calendar-fg) hover:bg-(--kafka-calendar-hover-bg)',
+                        isToday && !st.edge && !st.inRange && 'border-(length:--kafka-calendar-today-border-width) border-(--kafka-calendar-today-border)',
                       )}
                     >
                       <span aria-hidden="true">{d.getDate()}</span>
@@ -110,6 +125,25 @@ export function Calendar({ value, defaultValue = null, onValueChange, min, max, 
           ))}
         </tbody>
       </table>
+      {footer}
     </div>
+  )
+}
+
+/** A month grid. Arrow keys move by day and week, Home and End to the start and end of the week, Page Up and Down by month (Shift for year), Enter or Space chooses. Every day is a button named with its full date. */
+export function Calendar({ value, defaultValue = null, onValueChange, min, max, locale, weekStartsOn, className }: CalendarProps) {
+  const [inner, setInner] = useState<string | null>(defaultValue)
+  const selected = value !== undefined ? value : inner
+  return (
+    <CalendarBase
+      initial={selected ?? toISO(new Date())}
+      state={(iso) => ({ edge: iso === selected })}
+      onChoose={(iso) => { if (value === undefined) setInner(iso); onValueChange?.(iso) }}
+      min={min}
+      max={max}
+      locale={locale}
+      weekStartsOn={weekStartsOn}
+      className={className}
+    />
   )
 }

@@ -2298,6 +2298,14 @@
     },
     "disabled-opacity": {
       "$value": "{opacity.disabled}"
+    },
+    "range-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "range-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
     }
   },
   "date-picker": {
@@ -3450,6 +3458,29 @@
     "disabled-opacity": {
       "$type": "opacity",
       "$value": "{opacity.disabled}"
+    }
+  },
+  "date-range-picker": {
+    "$description": "Campo de rango de fechas: un botón con el rango elegido que abre el calendario en un popover.",
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "preset-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "footer-padding-top": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "footer-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "footer-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
     }
   }
 }

@@ -55,6 +55,14 @@ export interface Labels {
   resultsAvailable: (n: number) => string
   /** Calendar. */
   previousMonth: string
+  /** Range calendar: the status line and the day names at the ends of the range. */
+  rangePickStart: string
+  rangePickEnd: (start: string) => string
+  rangeValue: (start: string, end: string) => string
+  rangeStartDay: string
+  rangeEndDay: string
+  chooseDateRange: string
+  clearRange: string
   nextMonth: string
   /** Date picker. */
   openCalendar: string
@@ -154,6 +162,13 @@ export const labelsEn: Labels = {
   noResults: 'No results',
   resultsAvailable: (n) => (n === 1 ? '1 result available' : `${n} results available`),
   previousMonth: 'Previous month',
+  rangePickStart: 'Choose the first day',
+  rangePickEnd: (s) => `Start: ${s}. Choose the last day`,
+  rangeValue: (s, e) => `From ${s} to ${e}`,
+  rangeStartDay: 'start of the range',
+  rangeEndDay: 'end of the range',
+  chooseDateRange: 'Choose a date range',
+  clearRange: 'Clear dates',
   nextMonth: 'Next month',
   openCalendar: 'Open calendar',
   confirm: 'Confirm',
@@ -237,6 +252,13 @@ export const labelsEs: Labels = {
   noResults: 'Sin resultados',
   resultsAvailable: (n) => (n === 1 ? '1 resultado disponible' : `${n} resultados disponibles`),
   previousMonth: 'Mes anterior',
+  rangePickStart: 'Elige el primer día',
+  rangePickEnd: (s) => `Inicio: ${s}. Elige el último día`,
+  rangeValue: (s, e) => `Del ${s} al ${e}`,
+  rangeStartDay: 'inicio del rango',
+  rangeEndDay: 'fin del rango',
+  chooseDateRange: 'Elegir rango de fechas',
+  clearRange: 'Borrar fechas',
   nextMonth: 'Mes siguiente',
   openCalendar: 'Abrir calendario',
   confirm: 'Confirmar',

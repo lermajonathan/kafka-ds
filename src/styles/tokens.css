@@ -1186,6 +1186,8 @@
   --kafka-calendar-title-type-letter-spacing: var(--kafka-typography-reading-heading-sm-letter-spacing);
   --kafka-calendar-gap: var(--kafka-space-4);
   --kafka-calendar-disabled-opacity: var(--kafka-opacity-disabled);
+  --kafka-calendar-range-bg: var(--kafka-color-bg-sunken);
+  --kafka-calendar-range-fg: var(--kafka-color-fg-default);
   --kafka-date-picker-icon-size: var(--kafka-size-icon-md);
   --kafka-date-picker-gap: var(--kafka-space-8);
   --kafka-alert-radius: var(--kafka-radius-card);
@@ -1560,6 +1562,11 @@
   --kafka-nav-menu-child-border: var(--kafka-color-border-default);
   --kafka-nav-menu-child-border-width: var(--kafka-border-width-hairline);
   --kafka-nav-menu-disabled-opacity: var(--kafka-opacity-disabled);
+  --kafka-date-range-picker-gap: var(--kafka-space-12);
+  --kafka-date-range-picker-preset-gap: var(--kafka-space-8);
+  --kafka-date-range-picker-footer-padding-top: var(--kafka-space-8);
+  --kafka-date-range-picker-footer-border: var(--kafka-color-border-default);
+  --kafka-date-range-picker-footer-border-width: var(--kafka-border-width-hairline);
 }
 
 /* ── dark: follows the system unless data-theme="light"; force with data-theme="dark" ── */

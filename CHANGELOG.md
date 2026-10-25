@@ -4,6 +4,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Paridad con Pance, corte 3d-2 (25 oct 2026)
+- **[RangeCalendar](docs/components/range-calendar.md)** y **[DateRangePicker](docs/components/date-range-picker.md)**, sobre un `CalendarBase` compartido con `Calendar` ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)). Termina el corte 3.
+- 1113 tokens; 336 pares de contraste en claro y 335 en oscuro; 511 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Siguiente: sincronizar las variables de Figma y cerrar H5.
+
 ### H5 · Paridad con Pance, corte 3d-1 (25 oct 2026)
 - **[NavMenu](docs/components/nav-menu.md)**: navegación vertical con enlaces reales, grupos que se abren y modo compacto ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)). `RangeSlider` no se construye: `Slider` ya cubre el deslizador de un valor.
 - 1106 tokens; 333 pares de contraste en claro y 332 en oscuro; 489 comprobaciones de teclado y ARIA; axe-core sin violaciones.

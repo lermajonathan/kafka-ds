@@ -2086,7 +2086,9 @@ export const tokens = {
       "letterSpacing": "0em"
     },
     "gap": "0.25rem",
-    "disabled-opacity": 0.45
+    "disabled-opacity": 0.45,
+    "range-bg": "#ece4d2",
+    "range-fg": "#1a1a1a"
   },
   "date-picker": {
     "icon-size": "1.25rem",
@@ -2749,6 +2751,13 @@ export const tokens = {
     "child-border": "#cfc9c0",
     "child-border-width": "1px",
     "disabled-opacity": 0.45
+  },
+  "date-range-picker": {
+    "gap": "0.75rem",
+    "preset-gap": "0.5rem",
+    "footer-padding-top": "0.5rem",
+    "footer-border": "#cfc9c0",
+    "footer-border-width": "1px"
   }
 } as const
 
