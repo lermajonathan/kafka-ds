@@ -1,6 +1,7 @@
 const P = 'Components/pagination/'
 const comps = []
-const item = (t, kind) => ({ frame: true, name: kind === 'dis' ? 'Item Disabled' : 'Item', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 44, height: 44, wvar: P + 'item-size', hvar: P + 'item-size', radius: P + 'radius', fill: kind === 'cur' ? P + 'current-bg' : kind === 'hov' ? P + 'hover-bg' : null, children: [{ text: t, style: 'UI/Label', fill: kind === 'cur' ? P + 'current-fg' : kind === 'ell' ? P + 'ellipsis' : P + 'fg' }] })
+const GLYPH = { '‹': 'ChevronLeft', '›': 'ChevronRight', '…': 'More' }
+const item = (t, kind) => ({ frame: true, name: kind === 'dis' ? 'Item Disabled' : 'Item', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 44, height: 44, wvar: P + 'item-size', hvar: P + 'item-size', radius: P + 'radius', fill: kind === 'cur' ? P + 'current-bg' : kind === 'hov' ? P + 'hover-bg' : null, children: [GLYPH[t] ? { icon: GLYPH[t], size: 16, fill: kind === 'ell' ? P + 'ellipsis' : P + 'fg' } : { text: t, style: 'UI/Label', fill: kind === 'cur' ? P + 'current-fg' : P + 'fg' }] })
 for (const [name, list] of [
   ['Page=First', [['‹', 'dis'], ['1', 'cur'], ['2', 'n'], ['3', 'n'], ['…', 'ell'], ['6', 'n'], ['›', 'n']]],
   ['Page=Middle', [['‹', 'n'], ['1', 'n'], ['…', 'ell'], ['3', 'n'], ['4', 'cur'], ['5', 'n'], ['…', 'ell'], ['9', 'n'], ['›', 'n']]],

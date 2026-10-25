@@ -3,7 +3,7 @@ const R = 'Components/radio/'
 const comps = []
 for (const [name, bg, border, on, disabled] of [['State=Unselected', 'bg', 'border', false, false], ['State=Hover', 'hover-bg', 'border', false, false], ['State=Selected', 'bg', 'checked-border', true, false], ['State=Disabled', 'bg', 'border', false, true]]) {
   const c = await H.comp({ name, dir: 'HORIZONTAL', align: 'CENTER', gap: C + 'gap', p: C + 'padding', radius: C + 'radius', width: 360, minHeight: 44, minHeightVar: C + 'min-height', fill: C + bg, stroke: C + border, sw: 2, swvar: C + 'border-width', children: [
-    { frame: true, name: 'Icon', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 32, height: 32, wvar: C + 'icon-size', hvar: C + 'icon-size', radius: 'Semantic/radius/control', fill: C + 'icon-bg', children: [{ text: '✎', style: 'UI/Label', fill: C + 'icon-fg' }] },
+    { frame: true, name: 'Icon', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 32, height: 32, wvar: C + 'icon-size', hvar: C + 'icon-size', radius: 'Semantic/radius/control', fill: C + 'icon-bg', children: [{ icon: 'Pen', size: 20, fill: C + 'icon-fg' }] },
     { frame: true, name: 'Text', dir: 'VERTICAL', fillWidth: true, children: [
       { text: 'Taller', style: 'UI/Label', fill: C + 'label-fg' },
       { text: 'Diez sesiones en grupo.', style: 'UI/Caption', fill: C + 'description-fg' }] },

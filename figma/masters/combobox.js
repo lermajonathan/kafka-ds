@@ -3,7 +3,7 @@ const I = 'Components/input/'
 const comps = []
 const opt = (txt, kind) => ({ frame: true, name: 'Option', dir: 'HORIZONTAL', align: 'CENTER', px: B + 'option-padding-x', radius: B + 'option-radius', minHeight: 44, minHeightVar: B + 'option-min-height', fillWidth: true,
   fill: kind === 'active' ? B + 'option-active-bg' : kind === 'sel' ? B + 'option-selected-bg' : null,
-  children: [{ text: txt, style: 'UI/Input', fill: B + 'option-fg', fillWidth: true }, ...(kind === 'sel' ? [{ text: '✓', style: 'UI/Label', fill: B + 'icon' }] : [])] })
+  children: [{ text: txt, style: 'UI/Input', fill: B + 'option-fg', fillWidth: true }, ...(kind === 'sel' ? [{ icon: 'Check', size: 16, fill: B + 'icon' }] : [])] })
 const field = (txt, ph) => ({ frame: true, name: 'Field', dir: 'HORIZONTAL', align: 'CENTER', px: I + 'padding-x', py: I + 'padding-y', radius: I + 'radius', width: 320, minHeight: 44, minHeightVar: I + 'min-height', fill: I + 'bg', stroke: I + (ph ? 'border' : 'border-focus'), sw: 1, swvar: I + 'border-width', children: [{ text: txt, style: 'UI/Input', fill: I + (ph ? 'placeholder' : 'fg'), fillWidth: true }] })
 const list = (items) => ({ frame: true, name: 'List', dir: 'VERTICAL', p: B + 'list-padding', radius: B + 'list-radius', width: 320, fill: B + 'list-bg', stroke: B + 'list-border', sw: 1, swvar: B + 'list-border-width', children: items })
 for (const [name, kids] of [

@@ -3,7 +3,7 @@ const P = 'Components/popover/'
 const comps = []
 const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /^Shadow\/lg$/.test(s.name))
 const item = (title, body, time, tone, unread) => ({ frame: true, name: 'Item', dir: 'HORIZONTAL', gap: N + 'gap', px: N + 'padding-x', py: N + 'padding-y', fillWidth: true, fill: unread ? N + 'unread-bg' : null, children: [
-  { frame: true, name: 'Icon', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 32, height: 32, wvar: N + 'icon-box', hvar: N + 'icon-box', radius: 'Semantic/radius/pill', fill: N + 'icon/' + tone + '/bg', children: [{ text: tone === 'danger' ? '!' : '✓', style: 'UI/Label', fill: N + 'icon/' + tone + '/fg' }] },
+  { frame: true, name: 'Icon', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 32, height: 32, wvar: N + 'icon-box', hvar: N + 'icon-box', radius: 'Semantic/radius/pill', fill: N + 'icon/' + tone + '/bg', children: [{ icon: tone === 'danger' ? 'Warning' : tone === 'success' ? 'Check' : 'Info', size: 16, fill: N + 'icon/' + tone + '/fg' }] },
   { frame: true, name: 'Text', dir: 'VERTICAL', gap: 4, fillWidth: true, children: [
     { text: (unread ? 'Sin leer · ' : '') + title, style: 'UI/Label', fill: N + 'title-fg', fillWidth: true },
     { text: body, style: 'UI/Caption', fill: N + 'body-fg', fillWidth: true },

@@ -10,7 +10,7 @@ for (const [name, bg, border] of [['State=Default', 'bg', 'border'], ['State=Hov
 const item = await H.comp({ name: 'State=With file', dir: 'VERTICAL', gap: F + 'gap', width: 400, children: [
   { frame: true, name: 'Item', dir: 'HORIZONTAL', align: 'CENTER', gap: F + 'gap', p: F + 'item-padding', radius: F + 'item-radius', fill: F + 'item-bg', fillWidth: true, children: [
     { text: 'cuento-final.pdf', style: 'UI/Label', fill: 'Semantic/color/fg/default', fillWidth: true },
-    { frame: true, name: 'Remove', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 44, height: 44, wvar: F + 'remove-size', hvar: F + 'remove-size', children: [{ text: '×', style: 'UI/Label', fill: F + 'icon' }] }] },
+    { frame: true, name: 'Remove', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 44, height: 44, wvar: F + 'remove-size', hvar: F + 'remove-size', children: [{ icon: 'Close', size: 16, fill: F + 'icon' }] }] },
   { text: 'El archivo supera 5 MB.', style: 'UI/Caption', fill: F + 'error' }] }, host)
 comps.push(item)
 return [H.variants(comps, 'FileUpload', host)]

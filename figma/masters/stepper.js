@@ -5,7 +5,7 @@ const marker = (i, cur) => {
   const done = i < cur, now = i === cur
   return { frame: true, name: 'Marker', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 32, height: 32, wvar: S + 'marker-size', hvar: S + 'marker-size', radius: 'Semantic/radius/pill',
     fill: now ? S + 'current-bg' : done ? S + 'done-bg' : S + 'marker-bg', stroke: done ? S + 'done-border' : S + 'marker-border', sw: 2, swvar: S + 'marker-border-width',
-    children: [{ text: done ? '✓' : String(i + 1), style: 'UI/Label', fill: now ? S + 'current-fg' : done ? S + 'done-fg' : S + 'marker-fg' }] }
+    children: [done ? { icon: 'Check', weight: 'Bold', size: 16, fill: S + 'done-fg' } : { text: String(i + 1), style: 'UI/Label', fill: now ? S + 'current-fg' : S + 'marker-fg' }] }
 }
 for (let cur = 0; cur < 4; cur++) {
   const cols = steps.map(([l, d], i) => {

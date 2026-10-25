@@ -4,9 +4,9 @@ const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /^Shadow\/lg$/
 const dot = (active) => ({ frame: true, name: 'Dot', width: 12, height: 12, wvar: N + 'dot-size', hvar: N + 'dot-size', radius: 'Semantic/radius/pill', fill: active ? N + 'dot-active' : N + 'dot-bg', children: [] })
 const item = (kind, title, meta) => [
   { frame: true, name: 'Kind', dir: 'HORIZONTAL', align: 'CENTER', gap: N + 'meta-gap', fillWidth: true, children: [
-    { frame: true, name: 'Badge', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 32, height: 32, wvar: N + 'kind-size', hvar: N + 'kind-size', radius: 'Semantic/radius/pill', fill: N + 'kind-bg', children: [{ text: '★', style: 'UI/Label', fill: N + 'kind-fg' }] },
+    { frame: true, name: 'Badge', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 32, height: 32, wvar: N + 'kind-size', hvar: N + 'kind-size', radius: 'Semantic/radius/pill', fill: N + 'kind-bg', children: [{ icon: 'Megaphone', size: 16, fill: N + 'kind-fg' }] },
     { text: kind, style: 'UI/Label', fill: N + 'soft-fg', fillWidth: true },
-    { text: '×', style: 'UI/Label', fill: N + 'soft-fg' }] },
+    { icon: 'Close', size: 16, fill: N + 'soft-fg' }] },
   { text: title, style: 'Reading/Heading SM', fill: N + 'fg', fillWidth: true },
   { text: meta, style: 'UI/Caption', fill: N + 'soft-fg', fillWidth: true }]
 for (const [name, kids, dots] of [

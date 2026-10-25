@@ -1,6 +1,6 @@
 const G = 'Components/checkbox-group/'
 const K = 'Components/checkbox/'
-const box = (on) => ({ frame: true, name: 'Box', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 24, height: 24, wvar: K + 'size', hvar: K + 'size', radius: K + 'radius', fill: K + (on ? 'checked-bg' : 'bg'), stroke: K + 'border', sw: 2, swvar: K + 'border-width', children: on ? [{ text: '✓', style: 'UI/Caption', fill: K + 'checked-fg' }] : [] })
+const box = (on) => ({ frame: true, name: 'Box', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 24, height: 24, wvar: K + 'size', hvar: K + 'size', radius: K + 'radius', fill: K + (on ? 'checked-bg' : 'bg'), stroke: K + 'border', sw: 2, swvar: K + 'border-width', children: on ? [{ icon: 'Check', weight: 'Bold', size: 16, fill: K + 'checked-fg' }] : [] })
 const row = (txt, on) => ({ frame: true, name: 'Row', dir: 'HORIZONTAL', align: 'CENTER', gap: K + 'gap', minHeight: 44, minHeightVar: K + 'min-height', children: [box(on), { text: txt, style: 'UI/Input', fill: K + 'label' }] })
 const comps = []
 for (const [name, checks] of [['State=None', [false, false, false]], ['State=Some', [true, false, true]], ['State=All', [true, true, true]]]) {

@@ -3,7 +3,7 @@ const I = 'Components/input/'
 const comps = []
 const tag = (txt) => ({ frame: true, name: 'Tag', dir: 'HORIZONTAL', align: 'CENTER', pl: T + 'tag-padding-left', radius: T + 'tag-radius', minHeight: 44, minHeightVar: T + 'remove-size', fill: T + 'tag-bg', children: [
   { text: txt, style: 'UI/Label', fill: T + 'tag-fg' },
-  { frame: true, name: 'Remove', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 44, height: 44, wvar: T + 'remove-size', hvar: T + 'remove-size', children: [{ text: '×', style: 'UI/Label', fill: T + 'tag-fg' }] }] })
+  { frame: true, name: 'Remove', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 44, height: 44, wvar: T + 'remove-size', hvar: T + 'remove-size', children: [{ icon: 'Close', size: 16, fill: T + 'tag-fg' }] }] })
 for (const [name, tags, invalid] of [['State=Empty', [], false], ['State=Tags', ['poesía', 'cuento', 'ensayo'], false], ['State=Invalid', ['poesía'], true]]) {
   const kids = tags.map(tag)
   kids.push({ text: tags.length ? 'Añadir…' : 'Escribe y pulsa Enter', style: 'UI/Input', fill: I + 'placeholder' })
