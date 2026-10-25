@@ -4,6 +4,10 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 cerrado (25 oct 2026)
+- Retroalimentación y superficies, tarjetas de Altazor y paridad con Pance terminados: **70 componentes**, 1113 tokens, 336/335 pares de contraste, 511 comprobaciones de teclado y ARIA y axe-core sin violaciones ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md), [DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
+- Siguiente: **H5b**, Figma completo (fundaciones, páginas de componentes, patrones, decisiones), antes de H6 (impresión).
+
 ### H5 · Paridad con Pance, corte 3d-2 (25 oct 2026)
 - **[RangeCalendar](docs/components/range-calendar.md)** y **[DateRangePicker](docs/components/date-range-picker.md)**, sobre un `CalendarBase` compartido con `Calendar` ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)). Termina el corte 3.
 - 1113 tokens; 336 pares de contraste en claro y 335 en oscuro; 511 comprobaciones de teclado y ARIA; axe-core sin violaciones.

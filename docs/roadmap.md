@@ -20,11 +20,12 @@ Alcance: [DDR-KF-004](decisions/DDR-KF-004-alcance-v1.md) y [DDR-KF-005](decisio
 | H2 ✅ | Lectura (14), código y pruebas; Figma en H7 | Prosa, cita destacada, nota al pie, verso, epígrafe, capitular, progreso, tabla de contenidos, ajustes de lectura, anterior/siguiente, figura, autor, tiempo de lectura, incrustado | Cada uno cumple los 7 criterios de DDR-KF-004 |
 | H3 ✅ | UI esencial, código y pruebas; Figma en H7 | Botón, ícono-botón, grupo, enlace, insignia, chip, campo, entrada, área de texto, selección, casilla, radio, interruptor, deslizador, pin, etiquetas, archivo | Idem |
 | H4 ✅ | Navegación y capas, código y pruebas; Figma en H7 | Pestañas, acordeón, migas, paginación, pasos, menú, desplegable, popover, tooltip, modal, cajón, confirmar, calendarios | Idem |
-| H5 | Retroalimentación y superficies | Alerta, toast, progreso, esqueleto, estado vacío, tarjeta, panel, divisor, avatar, notificaciones, **tarjeta VIP, caja de noticias, tarjeta de programa** | Idem |
+| H5 ✅ | Retroalimentación y superficies | Alerta, toast, progreso, esqueleto, estado vacío, tarjeta, panel, divisor, avatar, notificaciones, **tarjeta VIP, caja de noticias, tarjeta de programa** | Idem |
+| H5b | Figma completo | Variables claro y oscuro, estilos, portada, inicio, fundamentos, una página por componente, patrones y decisiones, como el archivo de Pance | Figma refleja el repo componente por componente y tiene el mismo nivel de documentación que Pance |
 | H6 | Impresión | Tokens de página, `print.css`, plantillas libro, revista y ficha, prueba de PDF | PDF de ejemplo pasa la prueba de salida |
 | H7 | Figma y documentación | Una página por componente (cabecera, ejemplos, variantes, tokens), página DDR, guía de inicio, sitio publicado, Figma Community | Figma refleja el repo componente por componente |
 | H8 | Lanzamiento | Tema Altazor, autoalojar Literata, pruebas con lector de pantalla, versión 1.0.0 en npm | Criterio completo cumplido; sin versiones intermedias |
 
-**Figma (decisión del 25 oct 2026):** el código ya va por delante (1074 tokens y ~73 componentes frente a ~184 tokens y 6 conjuntos en Figma). Al terminar el corte 3 de H5 y antes de H6 se **sincronizan solo las variables** (generadas desde `tokens/dist/tokens.json`); los componentes y las páginas de documentación en Figma siguen en un solo lote en H7.
+**Figma (decisión del 25 oct 2026):** el código va por delante (1113 tokens y 70 componentes frente a ~184 tokens y 5 conjuntos en Figma). H5 se cierra en el repo y Figma pasa a ser un hito propio, **H5b**, antes de H6: primero fundaciones (variables, estilos, portada, inicio, fundamentos, decisiones), luego páginas de componentes por familias y al final patrones, iconos y revisión. Debe quedar visualmente actualizado y con el nivel de un sistema de diseño profesional, como el de Pance.
 
 Regla: no se publica en npm ni se anuncia hasta cerrar H8.
