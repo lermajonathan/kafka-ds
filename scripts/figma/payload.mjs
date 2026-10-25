@@ -102,7 +102,8 @@ export function buildPayload() {
       const valueFor = (raw) => {
         const m = typeof raw === 'string' && raw.match(REF)
         if (m) return { alias: ref(tokens.get(m[1])) }
-        return { value: literal(end.type, raw).value }
+        const value = literal(end.type, raw).value
+        return { value: end.path[0] === 'opacity' ? Math.round(value * 10000) / 100 : value } // Figma binds opacity as a percentage
       }
       const values = {}
       for (const mode of modes) values[mode] = valueFor(mode === 'Dark' && tok.dark !== undefined ? tok.dark : tok.value)

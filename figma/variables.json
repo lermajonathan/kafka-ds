@@ -1442,7 +1442,7 @@
           "syntax": "var(--kafka-opacity-45)",
           "values": {
             "Value": {
-              "value": 0.45
+              "value": 45
             }
           },
           "description": "Un solo valor para todos los controles deshabilitados (como Pance)."

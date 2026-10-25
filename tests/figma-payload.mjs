@@ -39,6 +39,10 @@ const darkCount = (sem.match(/"kafka\.modes"/g) || []).length
 const darkInPayload = cols.Semantic ? cols.Semantic.variables.filter((v) => JSON.stringify(v.values.Light) !== JSON.stringify(v.values.Dark)).length : 0
 if (darkInPayload < darkCount - 6) fail(`dark values lost: source ${darkCount}, payload differs in ${darkInPayload}`)
 
+// Figma reads a variable bound to a layer's opacity as a percentage (0.45 would render at 0.45 %)
+const op45 = cols.Primitives && cols.Primitives.variables.find((v) => v.name === 'opacity/45')
+if (!op45 || op45.values.Value.value !== 45) fail(`opacity/45 must be 45 (percent) in Figma, got ${op45 && JSON.stringify(op45.values.Value)}`)
+
 // Scale of the library: every colour, dimension, number, duration and opacity token is a variable
 if (names.size < 800) fail(`too few variables (${names.size}); typography, shadow and gradient are styles, everything else is a variable`)
 for (const must of ['Primitives/color/ink/900', 'Semantic/color/bg/page', 'Components/button/primary/bg', 'Components/program-card/body-gap'])
