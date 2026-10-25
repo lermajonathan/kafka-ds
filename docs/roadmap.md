@@ -25,4 +25,6 @@ Alcance: [DDR-KF-004](decisions/DDR-KF-004-alcance-v1.md) y [DDR-KF-005](decisio
 | H7 | Figma y documentación | Una página por componente (cabecera, ejemplos, variantes, tokens), página DDR, guía de inicio, sitio publicado, Figma Community | Figma refleja el repo componente por componente |
 | H8 | Lanzamiento | Tema Altazor, autoalojar Literata, pruebas con lector de pantalla, versión 1.0.0 en npm | Criterio completo cumplido; sin versiones intermedias |
 
+**Figma (decisión del 25 oct 2026):** el código ya va por delante (1074 tokens y ~73 componentes frente a ~184 tokens y 6 conjuntos en Figma). Al terminar el corte 3 de H5 y antes de H6 se **sincronizan solo las variables** (generadas desde `tokens/dist/tokens.json`); los componentes y las páginas de documentación en Figma siguen en un solo lote en H7.
+
 Regla: no se publica en npm ni se anuncia hasta cerrar H8.
