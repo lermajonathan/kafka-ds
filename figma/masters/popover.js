@@ -2,7 +2,7 @@ const P = 'Components/popover/'
 const I = 'Components/input/'
 const B = 'Components/button/'
 const comps = []
-const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /floating/i.test(s.name))
+const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /^Shadow\/lg$/.test(s.name))
 const trigger = { frame: true, name: 'Trigger', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', gap: B + 'gap', px: B + 'padding-x', radius: B + 'radius', minHeight: 44, minHeightVar: B + 'min-height', stroke: B + 'outline/border', sw: 1, children: [{ text: 'Filtrar', style: 'UI/Button', fill: B + 'outline/fg' }] }
 const panel = { frame: true, name: 'Panel', dir: 'VERTICAL', gap: 16, p: P + 'padding', radius: P + 'radius', width: 288, fill: P + 'bg', stroke: P + 'border', sw: 1, swvar: P + 'border-width', children: [
   { frame: true, name: 'Field', dir: 'VERTICAL', gap: 8, fillWidth: true, children: [

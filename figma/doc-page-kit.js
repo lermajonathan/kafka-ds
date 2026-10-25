@@ -44,6 +44,19 @@ const wrap = (p, t, w) => { p.appendChild(t); t.textAutoResize = 'HEIGHT'; if (w
 const H = { figma, V, ts, MODE, SC, solid, bindFill, bindStroke, fr, tx, code, place, wrap, FG, SOFT, MUTED, BRAND, MONO }
 
 { const AF0 = Object.getPrototypeOf(async function () {}).constructor; await new AF0('H', figma.root.getSharedPluginData('kafka.ds', 'dsl'))(H) }
+// ---- masters only: rebuild the specimens of an existing page ----
+if (DATA.mastersOnly) {
+  const pg = figma.root.children.find((p) => p.name === (DATA.pageName || DATA.name))
+  await pg.loadAsync(); await figma.setCurrentPageAsync(pg)
+  const hosts = pg.findAll((n) => n.type === 'FRAME' && n.name === 'Specimens')
+  for (const h of hosts) for (const c of [...h.children]) c.remove()
+  const AFm = Object.getPrototypeOf(async function () {}).constructor
+  const made = await new AFm('figma', 'H', 'host', MASTER.code)(figma, H, hosts[0])
+  for (const n of made || []) hosts[1].appendChild(n.type === 'COMPONENT_SET' ? n.defaultVariant.createInstance() : n.createInstance())
+  const texts = pg.findAll((n) => n.type === 'TEXT')
+  return { page: pg.id, texts: texts.length, collapsed: texts.filter((t) => t.height < 8 || t.width < 6).length, masters: (made || []).map((m) => m.id), hosts: hosts.length }
+}
+
 // ---- page ----
 const pageName = DATA.pageName || DATA.name
 let page = figma.root.children.find((p) => p.name === pageName)

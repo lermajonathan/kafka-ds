@@ -15,12 +15,13 @@ async function iconSet(name) {
 function frame(def, asComponent) {
   const n = asComponent ? figma.createComponent() : figma.createAutoLayout(def.dir || 'VERTICAL')
   if (asComponent) n.layoutMode = def.dir || 'VERTICAL'
-  n.name = def.name || 'Frame'; n.fills = []; n.clipsContent = false
+  n.name = def.name || 'Frame'; n.fills = []; n.clipsContent = !!def.clip
   n.primaryAxisSizingMode = 'AUTO'; n.counterAxisSizingMode = 'AUTO'
   if (def.align) n.counterAxisAlignItems = def.align
   if (def.justify) n.primaryAxisAlignItems = def.justify
   if (def.wrap) { n.layoutWrap = 'WRAP' }
-  const P = { paddingLeft: def.pl ?? def.px ?? def.pad, paddingRight: def.pr ?? def.px ?? def.pad, paddingTop: def.pt ?? def.py ?? def.pad, paddingBottom: def.pb ?? def.py ?? def.pad }
+  const pad = def.pad ?? def.p
+  const P = { paddingLeft: def.pl ?? def.px ?? pad, paddingRight: def.pr ?? def.px ?? pad, paddingTop: def.pt ?? def.py ?? pad, paddingBottom: def.pb ?? def.py ?? pad }
   for (const [k, v] of Object.entries(P)) if (v !== undefined) bindNum(n, k, v)
   if (def.gap !== undefined) bindNum(n, 'itemSpacing', def.gap)
   if (def.fill) n.fills = [paintOf(def.fill)]
@@ -31,14 +32,17 @@ function frame(def, asComponent) {
       for (const [s, f] of Object.entries(m)) { if (def.sw[s] === undefined) n[f] = 0; else bindNum(n, f, def.sw[s]) }
     } else if (def.sw) { for (const f of ['strokeLeftWeight', 'strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight']) bindNum(n, f, def.sw) }
     else n.strokeWeight = 1
+    if (def.swvar) for (const f of ['strokeLeftWeight', 'strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight']) bindNum(n, f, def.swvar)
   }
   if (def.radius) for (const k of ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius']) bindNum(n, k, def.radius)
   if (def.width) { n.layoutSizingHorizontal = 'FIXED'; n.resize(def.width, n.height) }
   if (def.minHeight) n.minHeight = def.minHeight
   if (def.height) { n.layoutSizingVertical = 'FIXED'; n.resize(n.width, def.height) }
-  if (def.wvar) n.setBoundVariable('width', V.get(def.wvar))
-  if (def.hvar) n.setBoundVariable('height', V.get(def.hvar))
-  if (def.minHeightVar) n.setBoundVariable('minHeight', V.get(def.minHeightVar))
+  if (def.minWidth) n.minWidth = def.minWidth
+  if (def.maxWidth) n.maxWidth = def.maxWidth
+  if (def.wvar) { if (!def.width) n.layoutSizingHorizontal = 'FIXED'; n.setBoundVariable('width', V.get(def.wvar)) }
+  if (def.hvar) { if (!def.height) n.layoutSizingVertical = 'FIXED'; n.setBoundVariable('height', V.get(def.hvar)) }
+  for (const f of ['minHeight', 'minWidth', 'maxWidth']) if (def[f + 'Var']) n.setBoundVariable(f, V.get(def[f + 'Var']))
   return n
 }
 async function fill(parent, children) {
@@ -51,8 +55,8 @@ async function fill(parent, children) {
       if (c.align) node.textAlignHorizontal = c.align
     } else if (c.frame) {
       node = frame(c.frame, false); parent.appendChild(node); await fill(node, c.frame.children)
-      if (c.fillW) node.layoutSizingHorizontal = 'FILL'
       if (c.frame.width) { node.layoutSizingHorizontal = 'FIXED'; node.resize(c.frame.width, node.height) }
+      if (c.fillW) node.layoutSizingHorizontal = 'FILL'
     } else if (c.rect) {
       node = figma.createRectangle(); node.name = c.name || 'Rect'; node.resize(c.w || 24, c.h || 24)
       node.fills = c.fill ? [paintOf(c.fill)] : []
@@ -66,8 +70,19 @@ async function fill(parent, children) {
     }
   }
 }
-H.comp = async (def, host) => { const n = frame(def, true); host.appendChild(n); await fill(n, def.children); return n }
-H.mk = async (def, host) => { const n = frame(def, false); host.appendChild(n); await fill(n, def.children); return n }
+// flat spec ({frame:true,name,...,fillWidth}) -> base DSL ({frame:{...},fillW}); nested frames pass through
+function normalize(def) {
+  const children = (def.children || []).map((c) => {
+    if (c.text !== undefined) { const { fillWidth, width, ...r } = c; return { ...r, ...(fillWidth ? { fillW: true } : {}), ...(width !== undefined ? { w: width } : {}) } }
+    if (c.frame === true) { const { frame, fillWidth, ...r } = c; return { frame: normalize(r), ...(fillWidth ? { fillW: true } : {}) } }
+    if (c.frame) return { ...c, frame: normalize(c.frame) }
+    return c
+  })
+  return { ...def, children }
+}
+H.normalize = normalize
+H.comp = async (def, host) => { def = normalize(def); const n = frame(def, true); host.appendChild(n); await fill(n, def.children); return n }
+H.mk = async (def, host) => { def = normalize(def); const n = frame(def, false); host.appendChild(n); await fill(n, def.children); return n }
 H.variants = (comps, name, host) => {
   const set = figma.combineAsVariants(comps, host); set.name = name
   set.layoutMode = 'HORIZONTAL'; set.itemSpacing = 24; set.layoutWrap = 'WRAP'; set.counterAxisSpacing = 24

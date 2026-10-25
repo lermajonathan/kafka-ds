@@ -1,6 +1,6 @@
 const T = 'Components/toast/'
 const comps = []
-const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /floating/i.test(s.name))
+const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /^Shadow\/lg$/.test(s.name))
 const icon = { info: 'i', success: '✓', warning: '!', danger: '!' }
 const content = { info: ['Nueva versión', 'Recarga para verla.', null], success: ['Cambios guardados', 'Tu inscripción quedó al día.', 'Deshacer'], warning: ['Sesión por vencer', 'Guarda tu trabajo.', null], danger: ['No se pudo enviar', 'Revisa tu conexión.', 'Reintentar'] }
 for (const tone of ['info', 'success', 'warning', 'danger']) {

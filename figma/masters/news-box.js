@@ -1,6 +1,6 @@
 const N = 'Components/news/'
 const comps = []
-const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /floating/i.test(s.name))
+const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /^Shadow\/lg$/.test(s.name))
 const dot = (active) => ({ frame: true, name: 'Dot', width: 12, height: 12, wvar: N + 'dot-size', hvar: N + 'dot-size', radius: 'Semantic/radius/pill', fill: active ? N + 'dot-active' : N + 'dot-bg', children: [] })
 const item = (kind, title, meta) => [
   { frame: true, name: 'Kind', dir: 'HORIZONTAL', align: 'CENTER', gap: N + 'meta-gap', fillWidth: true, children: [

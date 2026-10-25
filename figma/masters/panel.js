@@ -2,7 +2,7 @@ const P = 'Components/panel/'
 const B = 'Components/button/'
 const comps = []
 const styles = await figma.getLocalEffectStylesAsync()
-const eff = styles.find((s) => /card/i.test(s.name) && !/program/i.test(s.name)) || styles.find((s) => /elevation|shadow/i.test(s.name))
+const eff = styles.find((s) => /^Shadow\/md$/.test(s.name))
 const rule = { frame: true, name: 'Rule', height: 1, fillWidth: true, fill: P + 'rule', children: [] }
 const btn = (t, primary) => ({ frame: true, name: 'Button', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', px: B + 'padding-x', radius: B + 'radius', minHeight: 44, minHeightVar: B + 'min-height', fill: primary ? B + 'primary/bg' : null, stroke: primary ? null : B + 'outline/border', sw: 1, children: [{ text: t, style: 'UI/Button', fill: primary ? B + 'primary/fg' : B + 'outline/fg' }] })
 const header = (title, desc, tone, actions, toggle) => ({ frame: true, name: 'Header', dir: 'HORIZONTAL', align: 'CENTER', gap: P + 'header-gap', px: P + 'header-padding-x', py: P + 'header-padding-y', fillWidth: true, children: [

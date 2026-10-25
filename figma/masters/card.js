@@ -3,7 +3,7 @@ const B = 'Components/button/'
 const FG = 'Semantic/color/fg/default'
 const comps = []
 const styles = await figma.getLocalEffectStylesAsync()
-const eff = styles.find((s) => /card/i.test(s.name) && !/program/i.test(s.name)) || styles.find((s) => /elevation|shadow/i.test(s.name))
+const eff = styles.find((s) => /^Shadow\/md$/.test(s.name))
 for (const [name, hl, title, text] of [
   ['Highlight=None', 'none', 'Taller de poesía', 'Diez sesiones para escribir y revisar tus propios poemas.'],
   ['Highlight=Featured', 'featured', 'Taller de narrativa', 'Inscripciones abiertas hasta el viernes.'],

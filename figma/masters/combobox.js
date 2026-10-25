@@ -12,7 +12,7 @@ for (const [name, kids] of [
   ['State=Selected', [field('Colombia', false), list([opt('Colombia', 'sel'), opt('Costa Rica', 'n')])]],
   ['State=Empty', [field('zz', false), list([{ frame: true, name: 'Empty', dir: 'HORIZONTAL', align: 'CENTER', px: B + 'option-padding-x', minHeight: 44, minHeightVar: B + 'option-min-height', children: [{ text: 'Sin resultados', style: 'UI/Input', fill: B + 'empty' }] }])]]]) {
   const c = await H.comp({ name, dir: 'VERTICAL', gap: B + 'offset', children: kids }, host)
-  const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /floating/i.test(s.name))
+  const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /^Shadow\/lg$/.test(s.name))
   if (eff) c.findAll((n) => n.name === 'List').forEach((n) => n.setEffectStyleIdAsync(eff.id))
   comps.push(c)
 }

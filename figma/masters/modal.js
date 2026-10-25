@@ -1,7 +1,7 @@
 const M = 'Components/modal/'
 const B = 'Components/button/'
 const comps = []
-const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /floating/i.test(s.name))
+const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /^Shadow\/lg$/.test(s.name))
 const btn = (t, primary) => ({ frame: true, name: 'Action', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', px: B + 'padding-x', radius: B + 'radius', minHeight: 44, minHeightVar: B + 'min-height', fill: primary ? B + 'primary/bg' : null, stroke: primary ? null : B + 'outline/border', sw: 1, children: [{ text: t, style: 'UI/Button', fill: primary ? B + 'primary/fg' : B + 'outline/fg' }] })
 const dialog = (w) => ({ frame: true, name: 'Dialog', dir: 'VERTICAL', gap: M + 'gap', p: M + 'padding', radius: M + 'radius', width: w, fill: M + 'bg', stroke: M + 'border', sw: 1, swvar: M + 'border-width', children: [
   { text: 'Inscribirme al taller', style: 'Reading/Heading MD', fill: M + 'fg', fillWidth: true },

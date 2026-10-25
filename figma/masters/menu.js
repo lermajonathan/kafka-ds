@@ -1,6 +1,6 @@
 const M = 'Components/menu/'
 const comps = []
-const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /floating/i.test(s.name))
+const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /^Shadow\/lg$/.test(s.name))
 const item = (t, kind) => ({ frame: true, name: kind === 'dis' ? 'Item Disabled' : 'Item', dir: 'HORIZONTAL', align: 'CENTER', gap: M + 'item-gap', px: M + 'item-padding-x', radius: M + 'item-radius', minHeight: 44, minHeightVar: M + 'item-min-height', fillWidth: true,
   fill: kind === 'hov' ? M + 'item-hover-bg' : kind === 'act' ? M + 'item-active-bg' : null,
   children: [{ text: t, style: 'UI/Input', fill: kind === 'danger' ? M + 'danger-fg' : M + 'item-fg', fillWidth: true }] })

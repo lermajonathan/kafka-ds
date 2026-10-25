@@ -2,7 +2,7 @@ const C = 'Components/confirm-dialog/'
 const M = 'Components/modal/'
 const B = 'Components/button/'
 const comps = []
-const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /floating/i.test(s.name))
+const eff = (await figma.getLocalEffectStylesAsync()).find((s) => /^Shadow\/lg$/.test(s.name))
 const btn = (t, bg, fg, outline) => ({ frame: true, name: 'Action', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', px: B + 'padding-x', radius: B + 'radius', minHeight: 44, minHeightVar: B + 'min-height', fill: outline ? null : bg, stroke: outline ? B + 'outline/border' : null, sw: 1, children: [{ text: t, style: 'UI/Button', fill: fg }] })
 for (const [name, danger] of [['Tone=Default', false], ['Tone=Danger', true]]) {
   const c = await H.comp({ name, dir: 'VERTICAL', gap: M + 'gap', p: M + 'padding', radius: M + 'radius', width: 448, fill: M + 'bg', stroke: M + 'border', sw: 1, swvar: M + 'border-width', children: [
