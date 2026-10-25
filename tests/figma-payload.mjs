@@ -3,6 +3,7 @@
 // aliases that resolve, Light/Dark values for every token that has a dark value, and nothing that is not a variable.
 import fs from 'node:fs'
 import { buildPayload } from '../scripts/figma/payload.mjs'
+import { buildIcons, WEIGHTS } from '../scripts/figma/icons.mjs'
 
 const errors = []
 const fail = (m) => errors.push(m)
@@ -43,5 +44,16 @@ if (names.size < 800) fail(`too few variables (${names.size}); typography, shado
 for (const must of ['Primitives/color/ink/900', 'Semantic/color/bg/page', 'Components/button/primary/bg', 'Components/program-card/body-gap'])
   if (!names.has(must)) fail(`missing ${must}`)
 
+// Icons: every Kafka icon (src/icons.tsx) becomes a component with one variant per Phosphor weight
+const iconSrc = fs.readFileSync(new URL('../src/icons.tsx', import.meta.url), 'utf8')
+const exported = [...iconSrc.matchAll(/export const (Icon[A-Za-z]+): IconType/g)].map((m) => m[1])
+const icons = buildIcons()
+if (icons.length !== exported.length) fail(`icons: ${icons.length} in the payload, ${exported.length} in src/icons.tsx`)
+for (const i of icons) {
+  if (!exported.includes(i.name)) fail(`icons: ${i.name} is not exported by src/icons.tsx`)
+  for (const w of WEIGHTS) if (!i.weights[w] || !i.weights[w].includes('<path')) fail(`icons: ${i.name} has no ${w} paths`)
+  if (i.weights.duotone && !i.weights.duotone.includes('opacity')) fail(`icons: ${i.name} duotone lost its 20 % layer`)
+}
+
 if (errors.length) { console.error(errors.slice(0, 40).join('\n')); console.error(`\n✗ ${errors.length} figma payload problems`); process.exit(1) }
-console.log(`✓ figma payload: ${names.size} variables in ${p.collections.length} collections, scoped, aliased, code-syntaxed`)
+console.log(`✓ figma payload: ${names.size} variables in ${p.collections.length} collections, scoped, aliased, code-syntaxed · ${icons.length} icons × ${WEIGHTS.length} weights`)

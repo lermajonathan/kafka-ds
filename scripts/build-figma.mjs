@@ -5,6 +5,7 @@
  *   node scripts/build-figma.mjs --check  fails if they are out of date (part of `pnpm verify`)
  *
  * figma/variables.json  the full payload (collections → variables → per-mode values, scopes, WEB code syntax)
+ * figma/chunks/4-icons-*.json  the Phosphor icons, inner SVG paths for each weight
  * figma/chunks/*.json   the same data in compact rows, sized to be applied with figma/apply-variables.js
  *                       in one `use_figma` call each (see docs/figma.md).
  * Row: [name, "C"|"F"|"S", "SCOPE,SCOPE", light-or-only value, dark value | null, description?]; an alias is "@Collection/name".
@@ -13,6 +14,7 @@ import fs from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { buildPayload } from './figma/payload.mjs'
+import { buildIcons, WEIGHTS } from './figma/icons.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const check = process.argv.includes('--check')
@@ -36,6 +38,14 @@ payload.collections.forEach((c, ci) => {
     files.set(name, JSON.stringify({ collection: c.name, modes: c.modes, rows: rows.slice(i * CHUNK, (i + 1) * CHUNK) }) + '\n')
   }
 })
+
+// Icons: inner SVG paths per weight (24 px, viewBox 256), 6 icons per chunk
+const icons = buildIcons()
+const ICONS_PER_CHUNK = 6
+for (let i = 0; i < icons.length; i += ICONS_PER_CHUNK) {
+  const rows = icons.slice(i, i + ICONS_PER_CHUNK).map((ic) => [ic.name.replace(/^Icon/, ''), ic.phosphor, WEIGHTS.map((w) => ic.weights[w])])
+  files.set(`figma/chunks/4-icons-${i / ICONS_PER_CHUNK + 1}.json`, JSON.stringify({ weights: WEIGHTS, rows }) + '\n')
+}
 
 let stale = 0
 for (const [f, content] of files) {
