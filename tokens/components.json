@@ -3311,5 +3311,74 @@
       "$type": "opacity",
       "$value": "{opacity.disabled}"
     }
+  },
+  "input-group": {
+    "$description": "Campo con complementos pegados: texto o icono antes o después, y una acción al final.",
+    "addon-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "addon-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "addon-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "addon-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "addon-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    }
+  },
+  "inline-edit": {
+    "$description": "Texto que se edita en su lugar: un botón que se vuelve campo.",
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "icon": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    }
+  },
+  "split-button": {
+    "$description": "Acción principal más un botón de flecha que abre un menú de acciones relacionadas.",
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.2}"
+    },
+    "toggle-width": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    }
   }
 }

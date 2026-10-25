@@ -237,3 +237,14 @@ html:has(dialog.kafka-dialog[open]) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .kafka-news { animation: none; }
 }
+
+/* ── InputGroup: parts share one edge; only the outer corners are round; the focused part rises above its neighbours ── */
+.kafka-input-group > * + * { margin-inline-start: calc(-1 * var(--kafka-input-border-width)); }
+.kafka-input-group > *, .kafka-input-group-field input, .kafka-input-group-action > * { border-radius: 0; }
+.kafka-input-group > :first-child,
+.kafka-input-group > :first-child input,
+.kafka-input-group > :first-child > * { border-start-start-radius: var(--kafka-input-radius); border-end-start-radius: var(--kafka-input-radius); }
+.kafka-input-group > :last-child,
+.kafka-input-group > :last-child > *,
+.kafka-input-group > :last-child input { border-start-end-radius: var(--kafka-input-radius); border-end-end-radius: var(--kafka-input-radius); }
+.kafka-input-group :is(input, button):focus-visible { position: relative; z-index: 1; }

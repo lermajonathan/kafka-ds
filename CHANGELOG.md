@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Paridad con Pance, corte 3c (25 oct 2026)
+- **4 componentes**: [InputGroup](docs/components/input-group.md), [InlineEdit](docs/components/inline-edit.md), [SplitButton](docs/components/split-button.md) y [ToggleButton](docs/components/toggle-button.md) ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
+- `ToggleButton` no cambia su etiqueta con el estado; el lápiz de `InlineEdit` siempre es visible.
+- 1089 tokens; 328 pares de contraste en claro y 327 en oscuro; 475 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Sigue 3d (NavMenu, RangeSlider, RangeCalendar, DateRangePicker); después, variables de Figma.
+
 ### H5 · Paridad con Pance, corte 3b (25 oct 2026)
 - **[CheckboxGroup](docs/components/checkbox-group.md)** y **[RadioCard y RadioCardGroup](docs/components/radio-card.md)** ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)). `SwitchRow` no se construye: `Switch` ya es una fila completa.
 - 1074 tokens; 323 pares de contraste en claro y 322 en oscuro; 443 comprobaciones de teclado y ARIA; axe-core sin violaciones.

@@ -2676,6 +2676,49 @@ export const tokens = {
     "icon-size": "2rem",
     "group-gap": "0.75rem",
     "disabled-opacity": 0.45
+  },
+  "input-group": {
+    "addon-bg": "#ece4d2",
+    "addon-fg": "#36322d",
+    "addon-padding-x": "0.75rem",
+    "addon-gap": "0.5rem",
+    "addon-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    }
+  },
+  "inline-edit": {
+    "min-height": "2.75rem",
+    "padding-x": "0.5rem",
+    "gap": "0.5rem",
+    "radius": "0.75rem",
+    "fg": "#1a1a1a",
+    "hover-bg": "#f6f1e6",
+    "icon": "#36322d",
+    "type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    }
+  },
+  "split-button": {
+    "gap": "0.125rem",
+    "toggle-width": "2.75rem"
   }
 } as const
 

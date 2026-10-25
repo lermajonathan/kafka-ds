@@ -752,3 +752,17 @@
   line-height: var(--kafka-radio-card-description-type-line-height);
   letter-spacing: var(--kafka-radio-card-description-type-letter-spacing);
 }
+.kafka-type-input-group-addon-type {
+  font-family: var(--kafka-input-group-addon-type-font-family);
+  font-size: var(--kafka-input-group-addon-type-font-size);
+  font-weight: var(--kafka-input-group-addon-type-font-weight);
+  line-height: var(--kafka-input-group-addon-type-line-height);
+  letter-spacing: var(--kafka-input-group-addon-type-letter-spacing);
+}
+.kafka-type-inline-edit-type {
+  font-family: var(--kafka-inline-edit-type-font-family);
+  font-size: var(--kafka-inline-edit-type-font-size);
+  font-weight: var(--kafka-inline-edit-type-font-weight);
+  line-height: var(--kafka-inline-edit-type-line-height);
+  letter-spacing: var(--kafka-inline-edit-type-letter-spacing);
+}

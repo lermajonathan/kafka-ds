@@ -20,7 +20,9 @@ import { examples as file_upload } from './file-upload'
 import { examples as checkbox_group } from './checkbox-group'
 import { examples as radio_card } from './radio-card'
 import { examples as segmented_control } from './segmented-control'
+import { examples as split_button } from './split-button'
 import { examples as tabs } from './tabs'
+import { examples as toggle_button } from './toggle-button'
 import { examples as theme_toggle } from './theme-toggle'
 import { examples as accordion } from './accordion'
 import { examples as breadcrumbs } from './breadcrumbs'
@@ -60,6 +62,8 @@ import { examples as progress } from './progress'
 import { examples as spinner } from './spinner'
 import { examples as toast } from './toast'
 import { examples as count_badge } from './count-badge'
+import { examples as inline_edit } from './inline-edit'
+import { examples as input_group } from './input-group'
 import { examples as news_box } from './news-box'
 import { examples as notification_center } from './notification-center'
 import { examples as program_card } from './program-card'
@@ -94,6 +98,8 @@ export const registry: Record<string, ComponentEntry> = {
   'radio-card': { name: 'RadioCardGroup', file: 'radio-card.tsx', examples: radio_card },
   'segmented-control': { name: 'SegmentedControl', file: 'segmented-control.tsx', examples: segmented_control },
   'theme-toggle': { name: 'ThemeToggle', file: 'theme.tsx', examples: theme_toggle },
+  'split-button': { name: 'SplitButton', file: 'split-button.tsx', examples: split_button },
+  'toggle-button': { name: 'ToggleButton', file: 'toggle-button.tsx', examples: toggle_button },
   'tabs': { name: 'Tabs', file: 'tabs.tsx', examples: tabs },
   'accordion': { name: 'Accordion', file: 'accordion.tsx', examples: accordion },
   'breadcrumbs': { name: 'Breadcrumbs', file: 'breadcrumbs.tsx', examples: breadcrumbs },
@@ -133,6 +139,8 @@ export const registry: Record<string, ComponentEntry> = {
   'spinner': { name: 'Spinner', file: 'spinner.tsx', examples: spinner },
   'toast': { name: 'Toast', file: 'toast.tsx', examples: toast },
   'count-badge': { name: 'CountBadge', file: 'count-badge.tsx', examples: count_badge },
+  'inline-edit': { name: 'InlineEdit', file: 'inline-edit.tsx', examples: inline_edit },
+  'input-group': { name: 'InputGroup', file: 'input-group.tsx', examples: input_group },
   'news-box': { name: 'NewsBox', file: 'news-box.tsx', examples: news_box },
   'notification-center': { name: 'NotificationCenter', file: 'notification-center.tsx', examples: notification_center },
   'program-card': { name: 'ProgramCard', file: 'program-card.tsx', examples: program_card },

@@ -31,6 +31,12 @@ export interface Labels {
   newsViewAll: string
   /** The first checkbox of a `CheckboxGroup` with `selectAll`. */
   selectAll: string
+  /** The arrow of a `SplitButton`. */
+  moreActions: string
+  /** Hidden hint on an `InlineEdit` button: "Editar Título". */
+  editField: (field: string) => string
+  /** Shown by an `InlineEdit` that has no value. */
+  clickToEdit: string
   /** Breadcrumbs. */
   breadcrumb: string
   /** Pagination. */
@@ -131,6 +137,9 @@ export const labelsEn: Labels = {
   dismissNews: (t) => `Close news: ${t}`,
   newsViewAll: 'View all',
   selectAll: 'Select all',
+  moreActions: 'More actions',
+  editField: (f) => `Edit ${f}`,
+  clickToEdit: 'Click to edit',
   breadcrumb: 'Breadcrumb',
   pagination: 'Pagination',
   previousPage: 'Previous page',
@@ -210,6 +219,9 @@ export const labelsEs: Labels = {
   dismissNews: (t) => `Cerrar noticia: ${t}`,
   newsViewAll: 'Ver todas',
   selectAll: 'Seleccionar todos',
+  moreActions: 'Más acciones',
+  editField: (f) => `Editar ${f}`,
+  clickToEdit: 'Haz clic para editar',
   breadcrumb: 'Ruta de navegación',
   pagination: 'Paginación',
   previousPage: 'Página anterior',

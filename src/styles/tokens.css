@@ -1516,6 +1516,29 @@
   --kafka-radio-card-icon-size: var(--kafka-space-32);
   --kafka-radio-card-group-gap: var(--kafka-space-12);
   --kafka-radio-card-disabled-opacity: var(--kafka-opacity-disabled);
+  --kafka-input-group-addon-bg: var(--kafka-color-bg-sunken);
+  --kafka-input-group-addon-fg: var(--kafka-color-fg-soft);
+  --kafka-input-group-addon-padding-x: var(--kafka-space-12);
+  --kafka-input-group-addon-gap: var(--kafka-space-8);
+  --kafka-input-group-addon-type-font-family: var(--kafka-typography-ui-input-font-family);
+  --kafka-input-group-addon-type-font-size: var(--kafka-typography-ui-input-font-size);
+  --kafka-input-group-addon-type-font-weight: var(--kafka-typography-ui-input-font-weight);
+  --kafka-input-group-addon-type-line-height: var(--kafka-typography-ui-input-line-height);
+  --kafka-input-group-addon-type-letter-spacing: var(--kafka-typography-ui-input-letter-spacing);
+  --kafka-inline-edit-min-height: var(--kafka-size-touch);
+  --kafka-inline-edit-padding-x: var(--kafka-space-8);
+  --kafka-inline-edit-gap: var(--kafka-space-8);
+  --kafka-inline-edit-radius: var(--kafka-radius-control);
+  --kafka-inline-edit-fg: var(--kafka-color-fg-default);
+  --kafka-inline-edit-hover-bg: var(--kafka-color-bg-hover);
+  --kafka-inline-edit-icon: var(--kafka-color-fg-soft);
+  --kafka-inline-edit-type-font-family: var(--kafka-typography-ui-input-font-family);
+  --kafka-inline-edit-type-font-size: var(--kafka-typography-ui-input-font-size);
+  --kafka-inline-edit-type-font-weight: var(--kafka-typography-ui-input-font-weight);
+  --kafka-inline-edit-type-line-height: var(--kafka-typography-ui-input-line-height);
+  --kafka-inline-edit-type-letter-spacing: var(--kafka-typography-ui-input-letter-spacing);
+  --kafka-split-button-gap: var(--kafka-space-2);
+  --kafka-split-button-toggle-width: var(--kafka-size-touch);
 }
 
 /* ── dark: follows the system unless data-theme="light"; force with data-theme="dark" ── */
