@@ -34,3 +34,10 @@ assert.ok(call.length < 2500, 'masters-only call must stay small, got ' + call.l
 const kit = readFileSync(new URL('../figma/doc-page-kit.js', import.meta.url), 'utf8')
 assert.match(kit, /DATA\.mastersOnly/)
 console.log('figma-call: ok')
+
+// every documented component has its master source, so any page can be rebuilt from the repo
+import { existsSync } from 'node:fs'
+import { buildDocs } from '../scripts/figma/docs.mjs'
+const missing = buildDocs().map((d) => d.id).filter((id) => !existsSync(new URL(`../figma/masters/${id}.js`, import.meta.url)))
+assert.deepEqual(missing, [], 'components without a Figma master: ' + missing.join(', '))
+console.log('figma-masters: ok')
