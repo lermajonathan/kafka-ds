@@ -197,6 +197,20 @@
   line-height: var(--kafka-news-title-line-height);
   letter-spacing: var(--kafka-news-title-letter-spacing);
 }
+.kafka-type-news-kind-type {
+  font-family: var(--kafka-news-kind-type-font-family);
+  font-size: var(--kafka-news-kind-type-font-size);
+  font-weight: var(--kafka-news-kind-type-font-weight);
+  line-height: var(--kafka-news-kind-type-line-height);
+  letter-spacing: var(--kafka-news-kind-type-letter-spacing);
+}
+.kafka-type-news-meta-type {
+  font-family: var(--kafka-news-meta-type-font-family);
+  font-size: var(--kafka-news-meta-type-font-size);
+  font-weight: var(--kafka-news-meta-type-font-weight);
+  line-height: var(--kafka-news-meta-type-line-height);
+  letter-spacing: var(--kafka-news-meta-type-letter-spacing);
+}
 .kafka-type-prose-body-type {
   font-family: var(--kafka-prose-body-type-font-family);
   font-size: var(--kafka-prose-body-type-font-size);

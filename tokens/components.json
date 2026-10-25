@@ -398,6 +398,50 @@
     "enter": {
       "$type": "duration",
       "$value": "{motion.duration.slow}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "soft-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "kind-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "meta-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "meta-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "dot-size": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "dot-hit": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "dot-bg": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "dot-active": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{space.24}"
     }
   },
   "prose": {

@@ -55,6 +55,14 @@ Revisado contra Pance (`feedback.tsx`, `notifications.tsx`). Pance deja el Toast
 - **Paleta de portada en la capa semántica** (`color.cover.*`, `color.vip.button-*`): el chequeo de estructura impide que los componentes apunten a primitivos.
 - La elevación al pasar el puntero (6 px) y el zoom de la imagen se anulan con movimiento reducido.
 
+## Decisiones del corte 2b (caja de noticias)
+
+- **`NewsBox` es una región con nombre (`section`), no un diálogo ni un `aside`:** axe rechaza un `aside` dentro de `main`, y un diálogo bloquearía la página. No atrapa el foco.
+- **Controlado y sin rotación automática:** la página es dueña de la lista y recibe `onDismiss`. Muestra hasta tres noticias; los puntos (botones de 24 px con `aria-current`) cambian la noticia y el cambio se anuncia con `aria-live="polite"`. Cerrar quita la noticia y la siguiente ocupa su lugar.
+- **Cuatro tipos** (`evento`, `felicitacion`, `aviso`, `convocatoria`) con icono y nombre en palabras. `href` convierte el título en enlace; `viewAllHref` muestra «Ver todas».
+- **`floating`** la fija abajo a la derecha (ancho completo menos margen en móvil). `label` evita duplicar el nombre del landmark si hubiera más de una caja.
+- El punto activo usa `border.brand`: con `bg.brand` daba 2,07:1 en claro. La entrada animada se quita con movimiento reducido.
+
 ## Consecuencias
 
 - Los tonos de `Alert` reutilizan `color.status.*`, ya verificados en claro y oscuro con `Badge`; igual se prueban los pares nuevos (título sobre su fondo y cuerpo sobre su fondo).

@@ -4,6 +4,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Retroalimentación y superficies, corte 2b (25 oct 2026)
+- **[NewsBox](docs/components/news-box.md)**: caja de noticias con cuatro tipos, hasta tres noticias a la vez, puntos de navegación, cierre de 44 px y modo `floating` ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)). Sin rotación automática y sin trampa de foco.
+- 1035 tokens; 312 pares de contraste en claro y 311 en oscuro; 402 comprobaciones de teclado y ARIA (la ausencia de rotación se prueba con reloj simulado); axe-core sin violaciones.
+- Pendiente de H5: auditoría de paridad con Pance.
+
 ### H5 · Retroalimentación y superficies, corte 2a (25 oct 2026)
 - **[ProgramCard](docs/components/program-card.md)**, **Card `highlight`** (`featured` | `vip`, reemplaza el booleano `featured`) y **Button `vip`** ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)).
 - Portada con imagen (con `alt` obligatorio) o generada; la imagen rota cae a la generada. El brillo VIP y la elevación al pasar el puntero se detienen con movimiento reducido.

@@ -23,6 +23,12 @@ export interface Labels {
   vipBadge: string
   /** Close buttons of modals and drawers. */
   close: string
+  /** The news box: its region name, kind names, dot navigation, close and "view all". */
+  news: string
+  newsKinds: { evento: string; felicitacion: string; aviso: string; convocatoria: string }
+  newsGoTo: (n: number, total: number) => string
+  dismissNews: (title: string) => string
+  newsViewAll: string
   /** Breadcrumbs. */
   breadcrumb: string
   /** Pagination. */
@@ -117,6 +123,11 @@ export const labelsEn: Labels = {
   markRead: (t) => `Mark as read: ${t}`,
   dismissNotification: (t) => `Dismiss: ${t}`,
   close: 'Close',
+  news: 'News',
+  newsKinds: { evento: 'Event', felicitacion: 'Congratulations', aviso: 'Notice', convocatoria: 'Open call' },
+  newsGoTo: (n, total) => `Show news ${n} of ${total}`,
+  dismissNews: (t) => `Close news: ${t}`,
+  newsViewAll: 'View all',
   breadcrumb: 'Breadcrumb',
   pagination: 'Pagination',
   previousPage: 'Previous page',
@@ -190,6 +201,11 @@ export const labelsEs: Labels = {
   markRead: (t) => `Marcar como leída: ${t}`,
   dismissNotification: (t) => `Descartar: ${t}`,
   close: 'Cerrar',
+  news: 'Novedades',
+  newsKinds: { evento: 'Evento', felicitacion: 'Felicitación', aviso: 'Aviso', convocatoria: 'Convocatoria' },
+  newsGoTo: (n, total) => `Ver noticia ${n} de ${total}`,
+  dismissNews: (t) => `Cerrar noticia: ${t}`,
+  newsViewAll: 'Ver todas',
   breadcrumb: 'Ruta de navegación',
   pagination: 'Paginación',
   previousPage: 'Página anterior',

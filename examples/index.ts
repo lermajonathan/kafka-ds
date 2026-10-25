@@ -56,6 +56,7 @@ import { examples as progress } from './progress'
 import { examples as spinner } from './spinner'
 import { examples as toast } from './toast'
 import { examples as count_badge } from './count-badge'
+import { examples as news_box } from './news-box'
 import { examples as notification_center } from './notification-center'
 import { examples as program_card } from './program-card'
 
@@ -124,6 +125,7 @@ export const registry: Record<string, ComponentEntry> = {
   'spinner': { name: 'Spinner', file: 'spinner.tsx', examples: spinner },
   'toast': { name: 'Toast', file: 'toast.tsx', examples: toast },
   'count-badge': { name: 'CountBadge', file: 'count-badge.tsx', examples: count_badge },
+  'news-box': { name: 'NewsBox', file: 'news-box.tsx', examples: news_box },
   'notification-center': { name: 'NotificationCenter', file: 'notification-center.tsx', examples: notification_center },
   'program-card': { name: 'ProgramCard', file: 'program-card.tsx', examples: program_card },
 }

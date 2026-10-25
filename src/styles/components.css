@@ -229,3 +229,11 @@ html:has(dialog.kafka-dialog[open]) { overflow: hidden; }
   .kafka-program-card, .kafka-program-media img { transition: none; }
   .kafka-program-card:hover, .kafka-program-card:hover .kafka-program-media img { transform: none; }
 }
+
+/* ── NewsBox: as wide as the news token allows, and an entrance that stops under reduced motion ── */
+.kafka-news { width: min(100%, var(--kafka-news-width)); animation: kafka-news-in var(--kafka-news-enter) ease-out; }
+.kafka-news.fixed { width: min(var(--kafka-news-width), calc(100vw - 2 * var(--kafka-space-16))); }
+@keyframes kafka-news-in { from { opacity: 0; transform: translateY(var(--kafka-space-8)); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .kafka-news { animation: none; }
+}

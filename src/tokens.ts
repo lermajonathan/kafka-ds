@@ -945,7 +945,40 @@ export const tokens = {
     "kind-bg": "#d4af37",
     "kind-fg": "#1a1a1a",
     "kind-size": "2rem",
-    "enter": "350ms"
+    "enter": "350ms",
+    "fg": "#1a1a1a",
+    "soft-fg": "#36322d",
+    "kind-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "meta-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "gap": "0.75rem",
+    "meta-gap": "0.5rem",
+    "dot-size": "0.75rem",
+    "dot-hit": "1.5rem",
+    "dot-bg": "#615b52",
+    "dot-active": "#8f6f14",
+    "offset": "1.5rem"
   },
   "prose": {
     "measure": "66ch",

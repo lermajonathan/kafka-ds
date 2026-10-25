@@ -69,6 +69,10 @@ pairs.push(
   ['chip.selected-fg', 'chip.selected-bg', TEXT, 'selected chip label'],
   ['news.kind-fg', 'news.kind-bg', TEXT, 'news kind tile'],
   ['news.border', 'news.bg', UI, 'news border'],
+  ['news.fg', 'news.bg', TEXT, 'news title'],
+  ['news.soft-fg', 'news.bg', TEXT, 'news kind label and details'],
+  ['news.dot-bg', 'news.bg', UI, 'news inactive dot'],
+  ['news.dot-active', 'news.bg', UI, 'news active dot'],
   // VIP: texto fijo sobre los tres puntos del degradado y la insignia
   ['vip.fg', 'color.gold.100', TEXT, 'VIP text on gradient start'],
   ['vip.fg', 'color.gold.300', TEXT, 'VIP text on gradient middle'],
