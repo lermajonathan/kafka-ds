@@ -4,6 +4,9 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Auditoría de paridad con Pance (25 oct 2026)
+- Comparados los 72 componentes exportados de Pance con los de Kafka: 8 equivalentes con otro nombre, 12 de datos fuera de alcance y **14 faltantes**. Decisión: construirlos todos en el corte 3 (3a–3d) antes de cerrar H5 ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
+
 ### H5 · Retroalimentación y superficies, corte 2b (25 oct 2026)
 - **[NewsBox](docs/components/news-box.md)**: caja de noticias con cuatro tipos, hasta tres noticias a la vez, puntos de navegación, cierre de 44 px y modo `floating` ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)). Sin rotación automática y sin trampa de foco.
 - 1035 tokens; 312 pares de contraste en claro y 311 en oscuro; 402 comprobaciones de teclado y ARIA (la ausencia de rotación se prueba con reloj simulado); axe-core sin violaciones.
