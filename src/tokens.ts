@@ -2598,6 +2598,36 @@ export const tokens = {
     "cover-green": "#4ba857",
     "lift": "0.375rem",
     "lift-duration": "250ms"
+  },
+  "segmented-control": {
+    "track-bg": "#ece4d2",
+    "track-border": "#cfc9c0",
+    "track-border-width": "1px",
+    "track-padding": "0.25rem",
+    "track-radius": "1rem",
+    "item-radius": "0.75rem",
+    "item-padding-x": "1rem",
+    "item-gap": "0.5rem",
+    "item-min-height": "2.75rem",
+    "item-min-height-sm": "2rem",
+    "item-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "fg": "#36322d",
+    "fg-hover": "#1a1a1a",
+    "active-bg": "#fffdf9",
+    "active-fg": "#1a1a1a",
+    "active-border": "#8f6f14",
+    "active-border-width": "1.5px"
   }
 } as const
 

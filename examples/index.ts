@@ -17,7 +17,9 @@ import { examples as slider } from './slider'
 import { examples as pin_input } from './pin-input'
 import { examples as tag_input } from './tag-input'
 import { examples as file_upload } from './file-upload'
+import { examples as segmented_control } from './segmented-control'
 import { examples as tabs } from './tabs'
+import { examples as theme_toggle } from './theme-toggle'
 import { examples as accordion } from './accordion'
 import { examples as breadcrumbs } from './breadcrumbs'
 import { examples as pagination } from './pagination'
@@ -86,6 +88,8 @@ export const registry: Record<string, ComponentEntry> = {
   'pin-input': { name: 'PinInput', file: 'pin-input.tsx', examples: pin_input },
   'tag-input': { name: 'TagInput', file: 'tag-input.tsx', examples: tag_input },
   'file-upload': { name: 'FileUpload', file: 'file-upload.tsx', examples: file_upload },
+  'segmented-control': { name: 'SegmentedControl', file: 'segmented-control.tsx', examples: segmented_control },
+  'theme-toggle': { name: 'ThemeToggle', file: 'theme.tsx', examples: theme_toggle },
   'tabs': { name: 'Tabs', file: 'tabs.tsx', examples: tabs },
   'accordion': { name: 'Accordion', file: 'accordion.tsx', examples: accordion },
   'breadcrumbs': { name: 'Breadcrumbs', file: 'breadcrumbs.tsx', examples: breadcrumbs },

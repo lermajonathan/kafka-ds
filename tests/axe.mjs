@@ -10,7 +10,7 @@ let pages = 0, violations = 0
 
 await withBrowser(async (browser) => {
   for (const id of Object.keys(registry)) for (const vp of viewports) for (const theme of themes) {
-    const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } })
+    const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height }, reducedMotion: 'reduce' }) // entrance animations would be scanned half-faded
     await page.goto(url({ only: id, theme }))
     await page.waitForSelector('main')
     await page.addScriptTag({ content: axeSource })

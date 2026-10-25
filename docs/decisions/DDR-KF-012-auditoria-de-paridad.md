@@ -40,3 +40,9 @@ Los 14 de lectura (Prose, PullQuote, Footnote, Verse, Epigraph, DropCap, Reading
 ## Consecuencias
 - El alcance de v1 sube de 59 a 73 componentes heredados; H5 no cierra hasta el corte 3d.
 - Sigue sin publicarse en npm antes de H8.
+
+## Corte 3a (SegmentedControl, ThemeProvider, ThemeToggle)
+- **SegmentedControl** es un `radiogroup` con una sola parada de Tab y flechas que mueven y seleccionan (con vuelta al extremo, Home y End). Mide 44 px (`md`) o 32 px (`sm`, para barras densas). La opción activa se distingue por superficie y borde de marca, no solo por color.
+- **ThemeProvider** pone `data-theme` en `<html>`, recuerda la elección en `localStorage` (`kafka-theme`; `storageKey={null}` lo apaga) y sigue el dispositivo con «Sistema», incluso si este cambia. `themeInitScript()` evita el parpadeo del primer pintado. La clave de almacenamiento es `kafka-theme`, no la de Pance.
+- **ThemeToggle** es un SegmentedControl con icono y texto (Claro, Oscuro, Sistema). `ReadingSettings` conserva su propio control de tema.
+- **Pruebas de axe:** se escanean con movimiento reducido; sin eso, la entrada animada de NewsBox se leía a medio desvanecer y daba un falso fallo de contraste.

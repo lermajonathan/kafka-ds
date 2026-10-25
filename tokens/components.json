@@ -3146,5 +3146,76 @@
       "$type": "duration",
       "$value": "{motion.duration.base}"
     }
+  },
+  "segmented-control": {
+    "$description": "Tira de opciones excluyentes (radiogroup): una sola activa, con flechas.",
+    "track-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "track-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "track-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "track-padding": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "track-radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "item-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "item-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "item-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "item-min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "item-min-height-sm": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "item-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "fg-hover": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "active-bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "active-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "active-border": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "active-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thin}"
+    }
   }
 }

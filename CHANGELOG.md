@@ -4,6 +4,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Paridad con Pance, corte 3a (25 oct 2026)
+- **3 piezas**: [SegmentedControl](docs/components/segmented-control.md), `ThemeProvider` y [ThemeToggle](docs/components/theme-toggle.md) (con `useTheme` y `themeInitScript`) ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
+- 1052 tokens; 316 pares de contraste en claro y 315 en oscuro; 421 comprobaciones de teclado y ARIA; axe-core sin violaciones (ahora con movimiento reducido para no leer animaciones a medias).
+- Siguen: 3b (CheckboxGroup, SwitchRow, RadioCard), 3c y 3d.
+
 ### H5 · Auditoría de paridad con Pance (25 oct 2026)
 - Comparados los 72 componentes exportados de Pance con los de Kafka: 8 equivalentes con otro nombre, 12 de datos fuera de alcance y **14 faltantes**. Decisión: construirlos todos en el corte 3 (3a–3d) antes de cerrar H5 ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
 

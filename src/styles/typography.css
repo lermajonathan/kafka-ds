@@ -731,3 +731,10 @@
   line-height: var(--kafka-program-card-meta-type-line-height);
   letter-spacing: var(--kafka-program-card-meta-type-letter-spacing);
 }
+.kafka-type-segmented-control-item-type {
+  font-family: var(--kafka-segmented-control-item-type-font-family);
+  font-size: var(--kafka-segmented-control-item-type-font-size);
+  font-weight: var(--kafka-segmented-control-item-type-font-weight);
+  line-height: var(--kafka-segmented-control-item-type-line-height);
+  letter-spacing: var(--kafka-segmented-control-item-type-letter-spacing);
+}
