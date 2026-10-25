@@ -168,3 +168,14 @@ mark {
   .kafka-dialog[open]::backdrop { opacity: 0; }
 }
 html:has(dialog.kafka-dialog[open]) { overflow: hidden; }
+
+/* ── Skeleton: a soft shimmer that stops under reduced motion ── */
+.kafka-skeleton {
+  background: linear-gradient(90deg, var(--kafka-skeleton-bg) 0%, var(--kafka-skeleton-shimmer) 50%, var(--kafka-skeleton-bg) 100%);
+  background-size: 200% 100%;
+  animation: kafka-shimmer var(--kafka-skeleton-duration) linear infinite;
+}
+@keyframes kafka-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .kafka-skeleton { animation: none; background: var(--kafka-skeleton-bg); }
+}

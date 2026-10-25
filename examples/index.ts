@@ -45,6 +45,10 @@ import { examples as figure } from './figure'
 import { examples as author } from './author'
 import { examples as reading_time } from './reading-time'
 import { examples as embed } from './embed'
+import { examples as alert } from './alert'
+import { examples as divider } from './divider'
+import { examples as skeleton } from './skeleton'
+import { examples as empty_state } from './empty-state'
 
 export interface ComponentEntry {
   /** Name as exported from the library. */
@@ -100,4 +104,8 @@ export const registry: Record<string, ComponentEntry> = {
   'author': { name: 'Author', file: 'author.tsx', examples: author },
   'reading-time': { name: 'ReadingTime', file: 'reading-time.tsx', examples: reading_time },
   'embed': { name: 'Embed', file: 'embed.tsx', examples: embed },
+  'alert': { name: 'Alert', file: 'alert.tsx', examples: alert },
+  'divider': { name: 'Divider', file: 'divider.tsx', examples: divider },
+  'skeleton': { name: 'Skeleton', file: 'skeleton.tsx', examples: skeleton },
+  'empty-state': { name: 'EmptyState', file: 'empty-state.tsx', examples: empty_state },
 }

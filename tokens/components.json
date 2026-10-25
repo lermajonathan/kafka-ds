@@ -2247,5 +2247,189 @@
       "$type": "dimension",
       "$value": "{space.8}"
     }
+  },
+  "alert": {
+    "$description": "Mensaje en la página que informa, confirma, avisa o advierte; no interrumpe.",
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thin}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "body-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "info": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.info.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.info.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.info.border}"
+      }
+    },
+    "success": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.success.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.success.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.success.border}"
+      }
+    },
+    "warning": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.warning.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.warning.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.warning.border}"
+      }
+    },
+    "danger": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.danger.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.danger.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.danger.border}"
+      }
+    }
+  },
+  "divider": {
+    "$description": "Línea que separa contenido, con o sin texto.",
+    "color": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "label-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    }
+  },
+  "skeleton": {
+    "$description": "Marcador de lugar mientras el contenido carga.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "shimmer": {
+      "$type": "color",
+      "$value": "{color.bg.sunken-hover}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "line-height": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "block-height": {
+      "$type": "dimension",
+      "$value": "{space.96}"
+    },
+    "circle-size": {
+      "$type": "dimension",
+      "$value": "{space.48}"
+    },
+    "duration": {
+      "$type": "duration",
+      "$value": "{motion.duration.shine}"
+    }
+  },
+  "empty-state": {
+    "$description": "Lo que se muestra cuando no hay nada que mostrar todavía.",
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.48}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.lg}"
+    },
+    "icon-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "title-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-sm}"
+    },
+    "description-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "max-width": {
+      "$type": "dimension",
+      "$value": "{size.menu}"
+    }
   }
 }

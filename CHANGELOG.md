@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Retroalimentación y superficies, corte 1a (25 oct 2026)
+- **4 componentes**: [Alert](docs/components/alert.md), [Divider](docs/components/divider.md), [Skeleton](docs/components/skeleton.md) y [EmptyState](docs/components/empty-state.md) ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)).
+- `Alert` informa sin interrumpir (`role="status"`; `urgent` usa `role="alert"`), con ícono y borde en cada tono. `Skeleton` anuncia «Cargando» una sola vez y se detiene con movimiento reducido.
+- 860 tokens; 244 pares de contraste en claro y 243 en oscuro; 302 comprobaciones de teclado y ARIA; axe-core sin violaciones en 49 componentes (228 páginas).
+- Pendiente de H5: Card, Panel, Avatar, Progress (1b), Toast y notificaciones (1c), y las tarjetas VIP, de noticias y de programa (corte 2).
+
 ### H4 · Navegación y capas (21 oct 2026)
 - **14 componentes**: [Tabs](docs/components/tabs.md), [Accordion](docs/components/accordion.md), [Breadcrumbs](docs/components/breadcrumbs.md), [Pagination](docs/components/pagination.md), [Stepper](docs/components/stepper.md), [Popover](docs/components/popover.md), [Menu](docs/components/menu.md), [Tooltip](docs/components/tooltip.md), [Combobox](docs/components/combobox.md), [Modal](docs/components/modal.md), [Drawer](docs/components/drawer.md), [ConfirmDialog](docs/components/confirm-dialog.md), [Calendar](docs/components/calendar.md) y [DatePicker](docs/components/date-picker.md) ([DDR-KF-010](docs/decisions/DDR-KF-010-navegacion-y-capas.md)).
 - Capas con la API nativa `popover` y `<dialog>`; fechas como cadenas ISO; `Button` e `IconButton` aceptan `ref` como prop.

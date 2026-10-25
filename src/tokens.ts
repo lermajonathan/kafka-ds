@@ -2038,6 +2038,117 @@ export const tokens = {
   "date-picker": {
     "icon-size": "1.25rem",
     "gap": "0.5rem"
+  },
+  "alert": {
+    "radius": "1rem",
+    "padding": "1rem",
+    "gap": "0.75rem",
+    "border-width": "1.5px",
+    "fg": "#1a1a1a",
+    "title-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "body-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "info": {
+      "bg": "#eaf2fc",
+      "fg": "#184b8f",
+      "border": "#1f5fb4"
+    },
+    "success": {
+      "bg": "#eef7ee",
+      "fg": "#1f5f23",
+      "border": "#2e7d32"
+    },
+    "warning": {
+      "bg": "#fff6e0",
+      "fg": "#7f4b00",
+      "border": "#a86400"
+    },
+    "danger": {
+      "bg": "#fdf0ee",
+      "fg": "#8f1d17",
+      "border": "#b3261e"
+    }
+  },
+  "divider": {
+    "color": "#cfc9c0",
+    "width": "1px",
+    "gap": "0.75rem",
+    "label-fg": "#36322d",
+    "label-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    }
+  },
+  "skeleton": {
+    "bg": "#ece4d2",
+    "shimmer": "#e6e2dc",
+    "radius": "0.75rem",
+    "line-height": "0.75rem",
+    "gap": "0.5rem",
+    "block-height": "6rem",
+    "circle-size": "3rem",
+    "duration": "3600ms"
+  },
+  "empty-state": {
+    "padding": "3rem",
+    "gap": "0.75rem",
+    "icon-size": "1.5rem",
+    "icon-fg": "#36322d",
+    "title-fg": "#1a1a1a",
+    "title-type": {
+      "fontFamily": [
+        "Literata",
+        "Georgia",
+        "serif"
+      ],
+      "fontSize": "1.25rem",
+      "fontWeight": 700,
+      "lineHeight": 1.2,
+      "letterSpacing": "0em"
+    },
+    "description-fg": "#36322d",
+    "description-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "max-width": "240px"
   }
 } as const
 
