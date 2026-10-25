@@ -33,6 +33,8 @@ export interface Labels {
   selectAll: string
   /** The arrow of a `SplitButton`. */
   moreActions: string
+  /** Name of an app's side navigation. */
+  mainNavigation: string
   /** Hidden hint on an `InlineEdit` button: "Editar Título". */
   editField: (field: string) => string
   /** Shown by an `InlineEdit` that has no value. */
@@ -138,6 +140,7 @@ export const labelsEn: Labels = {
   newsViewAll: 'View all',
   selectAll: 'Select all',
   moreActions: 'More actions',
+  mainNavigation: 'Main navigation',
   editField: (f) => `Edit ${f}`,
   clickToEdit: 'Click to edit',
   breadcrumb: 'Breadcrumb',
@@ -220,6 +223,7 @@ export const labelsEs: Labels = {
   newsViewAll: 'Ver todas',
   selectAll: 'Seleccionar todos',
   moreActions: 'Más acciones',
+  mainNavigation: 'Navegación principal',
   editField: (f) => `Editar ${f}`,
   clickToEdit: 'Haz clic para editar',
   breadcrumb: 'Ruta de navegación',

@@ -4,6 +4,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Paridad con Pance, corte 3d-1 (25 oct 2026)
+- **[NavMenu](docs/components/nav-menu.md)**: navegación vertical con enlaces reales, grupos que se abren y modo compacto ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)). `RangeSlider` no se construye: `Slider` ya cubre el deslizador de un valor.
+- 1106 tokens; 333 pares de contraste en claro y 332 en oscuro; 489 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Sigue 3d-2 (RangeCalendar y DateRangePicker); después, variables de Figma.
+
 ### H5 · Paridad con Pance, corte 3c (25 oct 2026)
 - **4 componentes**: [InputGroup](docs/components/input-group.md), [InlineEdit](docs/components/inline-edit.md), [SplitButton](docs/components/split-button.md) y [ToggleButton](docs/components/toggle-button.md) ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
 - `ToggleButton` no cambia su etiqueta con el estado; el lápiz de `InlineEdit` siempre es visible.

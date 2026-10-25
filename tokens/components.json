@@ -3380,5 +3380,76 @@
       "$type": "dimension",
       "$value": "{size.touch}"
     }
+  },
+  "nav-menu": {
+    "$description": "Navegación vertical de una app: enlaces con icono, grupos que se abren y la página actual marcada.",
+    "item-min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "item-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "item-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "item-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "item-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "fg-hover": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "active-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "active-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "indicator": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "indicator-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thick}"
+    },
+    "list-gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "child-indent": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "child-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "child-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "disabled-opacity": {
+      "$type": "opacity",
+      "$value": "{opacity.disabled}"
+    }
   }
 }

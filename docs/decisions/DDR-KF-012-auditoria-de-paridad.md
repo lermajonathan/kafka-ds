@@ -58,3 +58,9 @@ Los 14 de lectura (Prose, PullQuote, Footnote, Verse, Epigraph, DropCap, Reading
 - **SplitButton** compone `Button` y `Menu`: dos botones de 44 px separados por un espacio pequeño para que cada uno conserve su anillo de foco completo. La flecha se llama «Más acciones» y lleva `aria-haspopup="menu"`.
 - **ToggleButton** conserva siempre la misma etiqueta y deja el estado a `aria-pressed`, a diferencia de Pance, que cambiaba el texto («Seguir» / «Dejar de seguir») y a la vez `aria-pressed`, lo que se lee doble. El estado pulsado se ve por la variante rellena y, si se pasa `PressedIcon`, también por el icono.
 - `IconSearch` se añade a los iconos.
+
+## Corte 3d-1 (NavMenu; RangeSlider ya existe)
+- **RangeSlider no se construye: `Slider` ya es esa pieza.** El `RangeSlider` de Pance es un deslizador de un solo valor sobre `input type="range"` (con color de severidad), igual que el `Slider` de Kafka, que además muestra el valor como texto. Un deslizador de dos extremos (mínimo y máximo) sería un componente distinto y no está en Pance; queda fuera de v1.
+- **NavMenu usa enlaces reales** (`href`), no botones con `onChange` como en Pance: así funcionan el clic medio, Ctrl+clic y el historial. `onNavigate` permite a una app de una sola página manejar el clic, y deja pasar los clics con modificadores. La página actual lleva `aria-current="page"`, relleno y una marca de color de marca a la izquierda.
+- Los grupos son botones de divulgación (`aria-expanded`, `aria-controls`) con Tab normal; no hay foco itinerante que aprender. Un solo nivel de hijos. Un elemento deshabilitado es texto con `aria-disabled`, fuera del orden de Tab.
+- **`collapsed`** deja solo los iconos: los nombres siguen en la página (`sr-only`) y se muestran como `title`. Un grupo sin `href` propio no tiene a dónde ir y se omite. En Pance los nombres desaparecían y se reemplazaban por `aria-label`.

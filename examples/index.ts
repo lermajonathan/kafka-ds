@@ -64,6 +64,7 @@ import { examples as toast } from './toast'
 import { examples as count_badge } from './count-badge'
 import { examples as inline_edit } from './inline-edit'
 import { examples as input_group } from './input-group'
+import { examples as nav_menu } from './nav-menu'
 import { examples as news_box } from './news-box'
 import { examples as notification_center } from './notification-center'
 import { examples as program_card } from './program-card'
@@ -141,6 +142,7 @@ export const registry: Record<string, ComponentEntry> = {
   'count-badge': { name: 'CountBadge', file: 'count-badge.tsx', examples: count_badge },
   'inline-edit': { name: 'InlineEdit', file: 'inline-edit.tsx', examples: inline_edit },
   'input-group': { name: 'InputGroup', file: 'input-group.tsx', examples: input_group },
+  'nav-menu': { name: 'NavMenu', file: 'nav-menu.tsx', examples: nav_menu },
   'news-box': { name: 'NewsBox', file: 'news-box.tsx', examples: news_box },
   'notification-center': { name: 'NotificationCenter', file: 'notification-center.tsx', examples: notification_center },
   'program-card': { name: 'ProgramCard', file: 'program-card.tsx', examples: program_card },

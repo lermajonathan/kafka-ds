@@ -766,3 +766,10 @@
   line-height: var(--kafka-inline-edit-type-line-height);
   letter-spacing: var(--kafka-inline-edit-type-letter-spacing);
 }
+.kafka-type-nav-menu-item-type {
+  font-family: var(--kafka-nav-menu-item-type-font-family);
+  font-size: var(--kafka-nav-menu-item-type-font-size);
+  font-weight: var(--kafka-nav-menu-item-type-font-weight);
+  line-height: var(--kafka-nav-menu-item-type-line-height);
+  letter-spacing: var(--kafka-nav-menu-item-type-letter-spacing);
+}

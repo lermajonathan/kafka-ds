@@ -2719,6 +2719,36 @@ export const tokens = {
   "split-button": {
     "gap": "0.125rem",
     "toggle-width": "2.75rem"
+  },
+  "nav-menu": {
+    "item-min-height": "2.75rem",
+    "item-padding-x": "0.75rem",
+    "item-gap": "0.75rem",
+    "item-radius": "0.75rem",
+    "item-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "fg": "#36322d",
+    "fg-hover": "#1a1a1a",
+    "hover-bg": "#f6f1e6",
+    "active-fg": "#1a1a1a",
+    "active-bg": "#ece4d2",
+    "indicator": "#8f6f14",
+    "indicator-width": "3px",
+    "list-gap": "0.25rem",
+    "child-indent": "1rem",
+    "child-border": "#cfc9c0",
+    "child-border-width": "1px",
+    "disabled-opacity": 0.45
   }
 } as const
 
