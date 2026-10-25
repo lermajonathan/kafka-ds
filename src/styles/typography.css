@@ -647,3 +647,38 @@
   line-height: var(--kafka-progress-label-type-line-height);
   letter-spacing: var(--kafka-progress-label-type-letter-spacing);
 }
+.kafka-type-toast-title-type {
+  font-family: var(--kafka-toast-title-type-font-family);
+  font-size: var(--kafka-toast-title-type-font-size);
+  font-weight: var(--kafka-toast-title-type-font-weight);
+  line-height: var(--kafka-toast-title-type-line-height);
+  letter-spacing: var(--kafka-toast-title-type-letter-spacing);
+}
+.kafka-type-toast-body-type {
+  font-family: var(--kafka-toast-body-type-font-family);
+  font-size: var(--kafka-toast-body-type-font-size);
+  font-weight: var(--kafka-toast-body-type-font-weight);
+  line-height: var(--kafka-toast-body-type-line-height);
+  letter-spacing: var(--kafka-toast-body-type-letter-spacing);
+}
+.kafka-type-count-badge-type {
+  font-family: var(--kafka-count-badge-type-font-family);
+  font-size: var(--kafka-count-badge-type-font-size);
+  font-weight: var(--kafka-count-badge-type-font-weight);
+  line-height: var(--kafka-count-badge-type-line-height);
+  letter-spacing: var(--kafka-count-badge-type-letter-spacing);
+}
+.kafka-type-notification-center-title-type {
+  font-family: var(--kafka-notification-center-title-type-font-family);
+  font-size: var(--kafka-notification-center-title-type-font-size);
+  font-weight: var(--kafka-notification-center-title-type-font-weight);
+  line-height: var(--kafka-notification-center-title-type-line-height);
+  letter-spacing: var(--kafka-notification-center-title-type-letter-spacing);
+}
+.kafka-type-notification-center-body-type {
+  font-family: var(--kafka-notification-center-body-type-font-family);
+  font-size: var(--kafka-notification-center-body-type-font-size);
+  font-weight: var(--kafka-notification-center-body-type-font-weight);
+  line-height: var(--kafka-notification-center-body-type-line-height);
+  letter-spacing: var(--kafka-notification-center-body-type-letter-spacing);
+}

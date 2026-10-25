@@ -2326,6 +2326,145 @@ export const tokens = {
     "stroke-width": "2px",
     "arc": "#574306",
     "track": "#cfc9c0"
+  },
+  "toast": {
+    "width": "24.25rem",
+    "radius": "1rem",
+    "padding": "1rem",
+    "gap": "0.75rem",
+    "border-width": "1.5px",
+    "shadow": {
+      "offsetX": "0px",
+      "offsetY": "18px",
+      "blur": "44px",
+      "spread": "0px",
+      "color": "#0f0f0e38"
+    },
+    "offset": "1.5rem",
+    "stack-gap": "0.5rem",
+    "fg": "#1a1a1a",
+    "action": "#574306",
+    "title-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "body-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "enter": "250ms",
+    "info": {
+      "bg": "#eaf2fc",
+      "fg": "#184b8f",
+      "border": "#1f5fb4"
+    },
+    "success": {
+      "bg": "#eef7ee",
+      "fg": "#1f5f23",
+      "border": "#2e7d32"
+    },
+    "warning": {
+      "bg": "#fff6e0",
+      "fg": "#7f4b00",
+      "border": "#a86400"
+    },
+    "danger": {
+      "bg": "#fdf0ee",
+      "fg": "#8f1d17",
+      "border": "#b3261e"
+    }
+  },
+  "count-badge": {
+    "bg": "#1a1a1a",
+    "fg": "#fbf8f1",
+    "radius": "9999px",
+    "min-size": "1.25rem",
+    "padding-x": "0.25rem",
+    "type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    }
+  },
+  "notification-center": {
+    "width": "24.25rem",
+    "max-height": "280px",
+    "padding-x": "0.75rem",
+    "padding-y": "0.75rem",
+    "gap": "0.75rem",
+    "rule": "#cfc9c0",
+    "unread-bg": "#ece4d2",
+    "title-fg": "#1a1a1a",
+    "title-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "body-fg": "#36322d",
+    "body-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "time-fg": "#36322d",
+    "icon-box": "2rem",
+    "empty-fg": "#36322d",
+    "action": "#574306",
+    "icon": {
+      "brand": {
+        "bg": "#d4af37",
+        "fg": "#1a1a1a"
+      },
+      "success": {
+        "bg": "#eef7ee",
+        "fg": "#1f5f23"
+      },
+      "warning": {
+        "bg": "#fff6e0",
+        "fg": "#7f4b00"
+      },
+      "danger": {
+        "bg": "#fdf0ee",
+        "fg": "#8f1d17"
+      }
+    }
   }
 } as const
 

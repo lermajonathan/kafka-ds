@@ -2737,5 +2737,248 @@
       "$type": "color",
       "$value": "{color.border.default}"
     }
+  },
+  "toast": {
+    "$description": "Aviso breve que aparece sin quitar al lector de lo que hace; se cierra a mano, o solo si se pide una duración.",
+    "width": {
+      "$type": "dimension",
+      "$value": "{size.floating}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thin}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.floating}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "stack-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "action": {
+      "$type": "color",
+      "$value": "{color.fg.link}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "body-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "enter": {
+      "$type": "duration",
+      "$value": "{motion.duration.base}"
+    },
+    "info": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.info.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.info.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.info.border}"
+      }
+    },
+    "success": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.success.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.success.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.success.border}"
+      }
+    },
+    "warning": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.warning.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.warning.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.warning.border}"
+      }
+    },
+    "danger": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.danger.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.danger.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.danger.border}"
+      }
+    }
+  },
+  "count-badge": {
+    "$description": "Contador pequeño de elementos pendientes (por ejemplo, notificaciones sin leer).",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.pill}"
+    },
+    "min-size": {
+      "$type": "dimension",
+      "$value": "{space.20}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    }
+  },
+  "notification-center": {
+    "$description": "Campana con contador que abre la lista de notificaciones para revisarlas después.",
+    "width": {
+      "$type": "dimension",
+      "$value": "{size.floating}"
+    },
+    "max-height": {
+      "$type": "dimension",
+      "$value": "{size.listbox}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "padding-y": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "rule": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "unread-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "title-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "body-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "body-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "time-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "icon-box": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "empty-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "action": {
+      "$type": "color",
+      "$value": "{color.fg.link}"
+    },
+    "icon": {
+      "brand": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.bg.brand}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.fg.on-brand}"
+        }
+      },
+      "success": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.success.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.success.fg}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.warning.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.warning.fg}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.danger.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.danger.fg}"
+        }
+      }
+    }
   }
 }

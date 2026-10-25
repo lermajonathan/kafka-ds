@@ -179,3 +179,10 @@ html:has(dialog.kafka-dialog[open]) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .kafka-skeleton { animation: none; background: var(--kafka-skeleton-bg); }
 }
+
+/* ── Toast: enters with a short fade and rise; none of it under reduced motion ── */
+.kafka-toast { animation: kafka-toast-in var(--kafka-toast-enter) ease-out; }
+@keyframes kafka-toast-in { from { opacity: 0; transform: translateY(0.5rem); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .kafka-toast { animation: none; }
+}

@@ -11,6 +11,14 @@ export interface Labels {
   statusBusy: string
   statusOffline: string
   moreCount: (n: number) => string
+  /** Notifications: the toast region, the bell and its list. */
+  notifications: string
+  notificationsUnread: (n: number) => string
+  markAllRead: string
+  noNotifications: string
+  unread: string
+  markRead: (title: string) => string
+  dismissNotification: (title: string) => string
   /** Close buttons of modals and drawers. */
   close: string
   /** Breadcrumbs. */
@@ -98,6 +106,13 @@ export const labelsEn: Labels = {
   statusBusy: 'Busy',
   statusOffline: 'Offline',
   moreCount: (n) => `${n} more`,
+  notifications: 'Notifications',
+  notificationsUnread: (n) => `Notifications, ${n} unread`,
+  markAllRead: 'Mark all as read',
+  noNotifications: 'You have no notifications',
+  unread: 'Unread',
+  markRead: (t) => `Mark as read: ${t}`,
+  dismissNotification: (t) => `Dismiss: ${t}`,
   close: 'Close',
   breadcrumb: 'Breadcrumb',
   pagination: 'Pagination',
@@ -163,6 +178,13 @@ export const labelsEs: Labels = {
   statusBusy: 'Ocupado',
   statusOffline: 'Desconectado',
   moreCount: (n) => `${n} más`,
+  notifications: 'Notificaciones',
+  notificationsUnread: (n) => `Notificaciones, ${n} sin leer`,
+  markAllRead: 'Marcar todo como leído',
+  noNotifications: 'No tienes notificaciones',
+  unread: 'Sin leer',
+  markRead: (t) => `Marcar como leída: ${t}`,
+  dismissNotification: (t) => `Descartar: ${t}`,
   close: 'Cerrar',
   breadcrumb: 'Ruta de navegación',
   pagination: 'Paginación',

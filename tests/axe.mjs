@@ -33,6 +33,8 @@ const opened = {
   'confirm-dialog': async (p) => { await p.getByRole('button', { name: 'Eliminar relato' }).click() },
   tooltip: async (p) => { await p.keyboard.press('Tab') },
   'date-picker': async (p) => { await p.getByRole('button', { name: 'Abrir calendario' }).click() },
+  toast: async (p) => { await p.getByRole('button', { name: 'Guardar cambios' }).click(); await p.getByRole('button', { name: 'Simular error' }).click() },
+  'notification-center': async (p) => { await p.getByRole('button', { name: /^Notificaciones/ }).first().click() },
 }
 await withBrowser(async (browser) => {
   for (const [id, open] of Object.entries(opened)) for (const vp of viewports) for (const theme of themes) {

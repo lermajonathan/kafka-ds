@@ -11,7 +11,7 @@ H5 cierra la paridad de Kafka con Pance en mensajes, contenedores y estados de c
 |---|---|
 | 1a | Alert, Divider, Skeleton, EmptyState |
 | 1b | Card, Panel, Avatar (con AvatarGroup), Progress, Spinner |
-| 1c | Toast y notificaciones |
+| 1c | Toast/ToastStack, CountBadge, NotificationCenter |
 | 2 | Tarjeta VIP, caja de noticias, tarjeta de programa y auditoría de paridad con Pance |
 
 ## Decisiones del corte 1a
@@ -33,6 +33,18 @@ Se revisó primero cómo los resuelve Pance (`layout.tsx`, `avatar.tsx`, `feedba
 4. **`Progress` exige `label`.** Pance lo deja opcional; una barra sin nombre es solo un número (WCAG 4.1.2). El relleno cumple 3:1 contra la pista en los cuatro tonos y en ambos modos. `valueText` sustituye el porcentaje en lo que oyen los lectores de pantalla.
 5. **`Spinner` entra en H5** aunque no estaba en la lista original: Pance lo tiene y la auditoría de paridad lo habría pedido. Es `role="status"` con texto; con movimiento reducido gira despacio, como el botón en carga.
 6. **Tokens:** `panel`, `avatar`, `progress` y `spinner` (69 nuevos; 929 en total). `card` ya existía desde DDR-KF-003 y es la base de las tarjetas VIP y de programa del corte 2.
+
+## Decisiones del corte 1c
+
+Revisado contra Pance (`feedback.tsx`, `notifications.tsx`). Pance deja el Toast controlado y sin temporizador; Kafka mantiene eso por defecto y añade un cierre automático opcional.
+
+1. **`Toast` es controlado y se cierra a mano por defecto.** La página guarda la lista y quita el aviso en `onDismiss`. Así nadie pierde un mensaje por leer despacio (WCAG 2.2.1).
+2. **`duration` es opcional** (milisegundos) para avisos de bajo riesgo. El temporizador se pausa mientras el puntero está encima o el foco está dentro, y al reanudar usa el tiempo que quedaba, no empieza de cero. **Un toast `danger` ignora `duration`** y no se cierra solo.
+3. **Cada toast se anuncia por sí mismo:** `role="status"` atómico, y `role="alert"` para `danger`. `ToastStack` es solo una región con nombre («Notificaciones», configurable con `label`), fija abajo y con `z-index` del token `layer.toast`. Una sola pila por página (axe lo exige: dos regiones con el mismo nombre fallan `landmark-unique`).
+4. **Una acción de seguimiento por toast** (por ejemplo Deshacer); al pulsarla también lo cierra. Cierre y acción miden 44 px. La entrada con desvanecimiento se quita con movimiento reducido.
+5. **`NotificationCenter` se apoya en `Popover`** (no modal, Esc cierra y devuelve el foco a la campana). El nombre de la campana incluye el contador («Notificaciones, 2 sin leer»). Los ítems sin leer lo dicen con texto («Sin leer: …»), no solo con peso y fondo. Al marcar o descartar un ítem el foco pasa a un elemento que permanece (el propio ítem o el diálogo), para que nunca se pierda hacia la página.
+6. **`CountBadge` entra con él** (Pance lo tiene aparte): «9+» sobre el máximo, nada en cero y `label` opcional para decir qué cuenta el número. Sobre un botón, el número va en el nombre del botón y la insignia se oculta.
+7. **Tonos de las notificaciones:** `brand`, `success`, `warning`, `danger` (Pance usa `primary`). Textos nuevos en `labelsEn` y `labelsEs`. Tokens: `toast`, `count-badge`, `notification-center` (54 nuevos; 983 en total).
 
 ## Consecuencias
 

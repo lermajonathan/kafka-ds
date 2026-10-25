@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Retroalimentación y superficies, corte 1c (25 oct 2026)
+- **3 componentes**: [Toast y ToastStack](docs/components/toast.md), [CountBadge](docs/components/count-badge.md) y [NotificationCenter](docs/components/notification-center.md) ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)). Con esto termina el corte 1 de H5.
+- `Toast` es controlado y se cierra a mano; `duration` opcional que se pausa con puntero y foco y que `danger` ignora. `NotificationCenter` conserva el foco dentro del panel al marcar o descartar.
+- 983 tokens; 298 pares de contraste en claro y 297 en oscuro; 362 comprobaciones de teclado y ARIA (el temporizador se prueba con reloj simulado); axe-core sin violaciones en 57 componentes (268 páginas, con Toast y NotificationCenter también abiertos). axe obligó a dejar una sola pila de toasts por página.
+- Pendiente de H5: tarjetas VIP, de noticias y de programa, y la auditoría de paridad con Pance (corte 2).
+
 ### H5 · Retroalimentación y superficies, corte 1b (25 oct 2026)
 - **5 componentes**: [Card](docs/components/card.md), [Panel](docs/components/panel.md), [Avatar y AvatarGroup](docs/components/avatar.md), [Progress](docs/components/progress.md) y [Spinner](docs/components/spinner.md) ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)). Revisados contra Pance antes de implementarlos.
 - `Progress` exige `label`; `Avatar` dice su estado en palabras; el colapso de `Panel` mide 44 px. Textos nuevos en `labelsEn` y `labelsEs` (estados de presencia y «+N»).
