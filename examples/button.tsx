@@ -1,4 +1,4 @@
-import { Button, IconArrowRight, IconCrown } from '../src/components'
+import { Button, Card, IconArrowRight, IconCrown } from '../src/components'
 import type { Example } from './types'
 
 export const examples: Example[] = [
@@ -46,6 +46,16 @@ export const examples: Example[] = [
       <div className="w-full max-w-sm">
         <Button block>Pagar ahora</Button>
       </div>
+    ),
+  },
+  {
+    id: 'vip',
+    title: 'On the VIP card',
+    description: 'The `vip` variant is fixed ink in both modes, because the gold of the VIP card does not change either. Use it only inside that card.',
+    render: () => (
+      <Card highlight="vip" className="max-w-xs">
+        <Button variant="vip" block>Hacerme miembro</Button>
+      </Card>
     ),
   },
 ]

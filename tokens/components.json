@@ -99,6 +99,25 @@
     },
     "disabled-opacity": {
       "$value": "{opacity.disabled}"
+    },
+    "vip": {
+      "$description": "Botón para la tarjeta VIP: tinta fija en ambos modos, porque el fondo dorado de la tarjeta tampoco cambia.",
+      "bg": {
+        "$type": "color",
+        "$value": "{color.vip.button-bg}"
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{color.vip.button-bg-hover}"
+      },
+      "bg-active": {
+        "$type": "color",
+        "$value": "{color.vip.button-bg-active}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.vip.badge-fg}"
+      }
     }
   },
   "badge": {
@@ -2979,6 +2998,109 @@
           "$value": "{color.status.danger.fg}"
         }
       }
+    }
+  },
+  "program-card": {
+    "$description": "Tarjeta de programa: portada con insignias, precio y título; debajo descripción, datos y una acción.",
+    "media-bg": {
+      "$type": "color",
+      "$value": "{color.cover.bg}"
+    },
+    "scrim": {
+      "$type": "color",
+      "$value": "{color.cover.bg}"
+    },
+    "media-padding": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "badge-offset": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "badge-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "title-fg": {
+      "$type": "color",
+      "$value": "{color.cover.fg}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-sm}"
+    },
+    "subtitle-fg": {
+      "$type": "color",
+      "$value": "{color.cover.fg-soft}"
+    },
+    "subtitle-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "price-bg": {
+      "$type": "color",
+      "$value": "{color.cover.price-bg}"
+    },
+    "price-fg": {
+      "$type": "color",
+      "$value": "{color.cover.price-fg}"
+    },
+    "price-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "price-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "price-padding-y": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "body-padding": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "body-gap": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.reading.body}"
+    },
+    "meta-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "meta-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "cover-gold": {
+      "$type": "color",
+      "$value": "{color.cover.tone-gold}"
+    },
+    "cover-amber": {
+      "$type": "color",
+      "$value": "{color.cover.tone-amber}"
+    },
+    "cover-blue": {
+      "$type": "color",
+      "$value": "{color.cover.tone-blue}"
+    },
+    "cover-green": {
+      "$type": "color",
+      "$value": "{color.cover.tone-green}"
+    },
+    "lift": {
+      "$type": "dimension",
+      "$value": "{space.6}"
+    },
+    "lift-duration": {
+      "$type": "duration",
+      "$value": "{motion.duration.base}"
     }
   }
 }

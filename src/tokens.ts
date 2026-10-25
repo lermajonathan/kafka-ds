@@ -134,7 +134,10 @@ export const tokens = {
       "fg": "#1a1a1a",
       "shine": "#fff6cf",
       "badge-bg": "#1a1a1a",
-      "badge-fg": "#f7ecc4"
+      "badge-fg": "#f7ecc4",
+      "button-bg": "#1a1a1a",
+      "button-bg-hover": "#26231f",
+      "button-bg-active": "#36322d"
     },
     "status": {
       "danger": {
@@ -157,6 +160,17 @@ export const tokens = {
         "bg": "#eaf2fc",
         "border": "#1f5fb4"
       }
+    },
+    "cover": {
+      "bg": "#1a1a1a",
+      "fg": "#fffdf9",
+      "fg-soft": "#f7ecc4",
+      "price-bg": "#fbf8f1",
+      "price-fg": "#1a1a1a",
+      "tone-gold": "#d4af37",
+      "tone-amber": "#e89e10",
+      "tone-blue": "#4a8fe0",
+      "tone-green": "#4ba857"
     }
   },
   "fontFamily": {
@@ -762,7 +776,13 @@ export const tokens = {
       "bg-hover": "#f6f1e6",
       "bg-active": "#ece4d2"
     },
-    "disabled-opacity": 0.45
+    "disabled-opacity": 0.45,
+    "vip": {
+      "bg": "#1a1a1a",
+      "bg-hover": "#26231f",
+      "bg-active": "#36322d",
+      "fg": "#f7ecc4"
+    }
   },
   "badge": {
     "radius": "9999px",
@@ -2465,6 +2485,86 @@ export const tokens = {
         "fg": "#8f1d17"
       }
     }
+  },
+  "program-card": {
+    "media-bg": "#1a1a1a",
+    "scrim": "#1a1a1a",
+    "media-padding": "1.5rem",
+    "badge-offset": "1rem",
+    "badge-gap": "0.5rem",
+    "title-fg": "#fffdf9",
+    "title-type": {
+      "fontFamily": [
+        "Literata",
+        "Georgia",
+        "serif"
+      ],
+      "fontSize": "1.25rem",
+      "fontWeight": 700,
+      "lineHeight": 1.2,
+      "letterSpacing": "0em"
+    },
+    "subtitle-fg": "#f7ecc4",
+    "subtitle-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "price-bg": "#fbf8f1",
+    "price-fg": "#1a1a1a",
+    "price-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.875rem",
+      "fontWeight": 500,
+      "lineHeight": 1.4,
+      "letterSpacing": "0em"
+    },
+    "price-padding-x": "0.75rem",
+    "price-padding-y": "0.25rem",
+    "body-padding": "1.5rem",
+    "body-gap": "1rem",
+    "description-type": {
+      "fontFamily": [
+        "Literata",
+        "Georgia",
+        "serif"
+      ],
+      "fontSize": "1.125rem",
+      "fontWeight": 400,
+      "lineHeight": 1.6,
+      "letterSpacing": "0em"
+    },
+    "meta-type": {
+      "fontFamily": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "sans-serif"
+      ],
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "lineHeight": 1.4,
+      "letterSpacing": "0.04em"
+    },
+    "meta-gap": "0.5rem",
+    "cover-gold": "#d4af37",
+    "cover-amber": "#e89e10",
+    "cover-blue": "#4a8fe0",
+    "cover-green": "#4ba857",
+    "lift": "0.375rem",
+    "lift-duration": "250ms"
   }
 } as const
 

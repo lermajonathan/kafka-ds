@@ -1,4 +1,4 @@
-import { Card } from '../src/components'
+import { Button, Card } from '../src/components'
 import type { Example } from './types'
 
 export const examples: Example[] = [
@@ -16,11 +16,23 @@ export const examples: Example[] = [
   {
     id: 'featured',
     title: 'Featured',
-    description: 'A brand-coloured border for the one card that should stand out. The border is the cue, not just a colour change.',
+    description: 'A brand-coloured border for the one card that should stand out. It only adds emphasis; nothing depends on it.',
     render: () => (
-      <Card featured className="max-w-md">
+      <Card highlight="featured" className="max-w-md">
+        <h3 className="kafka-type-reading-heading-sm">Taller de narrativa</h3>
+        <p>Inscripciones abiertas hasta el viernes.</p>
+      </Card>
+    ),
+  },
+  {
+    id: 'vip',
+    title: 'VIP',
+    description: 'The membership card: gold background, dark text and a gold edge that shines. The shine is CSS only and stands still under reduced motion.',
+    render: () => (
+      <Card highlight="vip" className="max-w-md">
         <h3 className="kafka-type-reading-heading-sm">Membresía anual</h3>
         <p>Acceso a todos los talleres y laboratorios del año.</p>
+        <Button variant="vip" block>Hacerme miembro</Button>
       </Card>
     ),
   },

@@ -186,3 +186,46 @@ html:has(dialog.kafka-dialog[open]) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .kafka-toast { animation: none; }
 }
+
+/* ── Card VIP: gold surface with a conic shine that travels around the edge ── */
+@property --kafka-ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.kafka-card[data-highlight="vip"] { box-shadow: var(--kafka-vip-glow); border-color: transparent; }
+.kafka-card[data-highlight="vip"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--kafka-vip-shine-width);
+  background: conic-gradient(from var(--kafka-ang), transparent 0%, var(--kafka-vip-shine) 12%, transparent 30%);
+  -webkit-mask: linear-gradient(black 0 0) content-box, linear-gradient(black 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(black 0 0) content-box exclude, linear-gradient(black 0 0);
+  pointer-events: none;
+  animation: kafka-vip-shine var(--kafka-vip-shine-duration) linear infinite;
+}
+@keyframes kafka-vip-shine { to { --kafka-ang: 360deg; } }
+@media (prefers-reduced-motion: reduce) {
+  .kafka-card[data-highlight="vip"]::before { animation: none; --kafka-ang: 135deg; }
+}
+
+/* ── ProgramCard: generated cover, scrim under the title, lift on hover ── */
+.kafka-program-scrim { background: linear-gradient(180deg, transparent 35%, var(--kafka-program-card-scrim) 94%); }
+.kafka-cover {
+  color: var(--kafka-program-card-title-fg);
+  background:
+    repeating-linear-gradient(135deg, transparent 0 1.5rem, color-mix(in srgb, currentColor 6%, transparent) 1.5rem 3rem),
+    radial-gradient(circle at 30% 20%, var(--kafka-cover-tone) 0%, transparent 65%),
+    var(--kafka-program-card-media-bg);
+}
+.kafka-cover-gold { --kafka-cover-tone: var(--kafka-program-card-cover-gold); }
+.kafka-cover-amber { --kafka-cover-tone: var(--kafka-program-card-cover-amber); }
+.kafka-cover-blue { --kafka-cover-tone: var(--kafka-program-card-cover-blue); }
+.kafka-cover-green { --kafka-cover-tone: var(--kafka-program-card-cover-green); }
+.kafka-program-card { transition: transform var(--kafka-program-card-lift-duration) ease-out; }
+.kafka-program-card:hover { transform: translateY(calc(-1 * var(--kafka-program-card-lift))); }
+.kafka-program-media img { transition: transform var(--kafka-program-card-lift-duration) ease-out; }
+.kafka-program-card:hover .kafka-program-media img { transform: scale(1.05); }
+@media (prefers-reduced-motion: reduce) {
+  .kafka-program-card, .kafka-program-media img { transition: none; }
+  .kafka-program-card:hover, .kafka-program-card:hover .kafka-program-media img { transform: none; }
+}

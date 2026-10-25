@@ -57,6 +57,7 @@ import { examples as spinner } from './spinner'
 import { examples as toast } from './toast'
 import { examples as count_badge } from './count-badge'
 import { examples as notification_center } from './notification-center'
+import { examples as program_card } from './program-card'
 
 export interface ComponentEntry {
   /** Name as exported from the library. */
@@ -124,4 +125,5 @@ export const registry: Record<string, ComponentEntry> = {
   'toast': { name: 'Toast', file: 'toast.tsx', examples: toast },
   'count-badge': { name: 'CountBadge', file: 'count-badge.tsx', examples: count_badge },
   'notification-center': { name: 'NotificationCenter', file: 'notification-center.tsx', examples: notification_center },
+  'program-card': { name: 'ProgramCard', file: 'program-card.tsx', examples: program_card },
 }

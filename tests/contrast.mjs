@@ -316,6 +316,16 @@ pairs.push(
   ['notification-center.icon.success.fg', 'notification-center.icon.success.bg', UI, 'notification icon (success)'],
   ['notification-center.icon.warning.fg', 'notification-center.icon.warning.bg', UI, 'notification icon (warning)'],
   ['notification-center.icon.danger.fg', 'notification-center.icon.danger.bg', UI, 'notification icon (danger)'],
+  ['button.vip.fg', 'button.vip.bg', TEXT, 'VIP button label'],
+  ['button.vip.fg', 'button.vip.bg-hover', TEXT, 'VIP button label on hover'],
+  ['button.vip.fg', 'button.vip.bg-active', TEXT, 'VIP button label when pressed'],
+  ['button.vip.bg', 'color.gold.500', UI, 'VIP button on the darkest gold of the card'],
+  ['button.vip.bg', 'color.gold.100', UI, 'VIP button on the lightest gold of the card'],
+  ['program-card.title-fg', 'program-card.scrim', TEXT, 'program title over the scrim'],
+  ['program-card.subtitle-fg', 'program-card.scrim', TEXT, 'program subtitle over the scrim'],
+  ['program-card.price-fg', 'program-card.price-bg', TEXT, 'price pill'],
+  ['program-card.price-bg', 'program-card.media-bg', UI, 'price pill over the cover'],
+  ['color.fg.on-brand', 'color.bg.brand', TEXT, 'program badge on gold'],
   // The brand gold itself is only a text colour on ink, never on paper
   ['color.gold.400', 'color.ink.900', READING, 'brand gold on ink (dark surfaces)'],
 )

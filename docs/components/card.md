@@ -10,7 +10,7 @@ import { Card } from '@kafka/react'
 ## When to use it
 
 - To group related content that sits on the page background: a program, an announcement, a profile.
-- `featured` for the one card that should stand out.
+- `highlight="featured"` for the one card that should stand out; `highlight="vip"` for the membership card.
 
 ## When not to
 
@@ -33,12 +33,24 @@ A plain surface with a border and a resting shadow. Put a heading inside so the 
 
 ### Featured
 
-A brand-coloured border for the one card that should stand out. The border is the cue, not just a colour change.
+A brand-coloured border for the one card that should stand out. It only adds emphasis; nothing depends on it.
 
 ```tsx
-<Card featured className="max-w-md">
+<Card highlight="featured" className="max-w-md">
+  <h3 className="kafka-type-reading-heading-sm">Taller de narrativa</h3>
+  <p>Inscripciones abiertas hasta el viernes.</p>
+</Card>
+```
+
+### VIP
+
+The membership card: gold background, dark text and a gold edge that shines. The shine is CSS only and stands still under reduced motion.
+
+```tsx
+<Card highlight="vip" className="max-w-md">
   <h3 className="kafka-type-reading-heading-sm">Membresía anual</h3>
   <p>Acceso a todos los talleres y laboratorios del año.</p>
+  <Button variant="vip" block>Hacerme miembro</Button>
 </Card>
 ```
 
@@ -46,13 +58,16 @@ A brand-coloured border for the one card that should stand out. The border is th
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `featured` | `boolean` | `false` | A brand-coloured, thicker border for the one card that should stand out. |
-| …rest | `HTMLAttributes<HTMLDivElement>` | | Everything else is passed to the underlying element. |
+| `highlight` | `CardHighlight` | `'none'` | `featured`: a brand-coloured, thicker border for the one card that should stand out. `vip`: the membership card, gold with a shining edge. |
+| `as` | `'div' \| 'article' \| 'li' \| 'section'` | `'div'` | The element to render. Use `article` for a self-standing item and `li` inside a list. |
+| `padded` | `boolean` | `true` | Set to false when the content (a cover image, say) must reach the edges of the card. |
+| …rest | `HTMLAttributes<HTMLElement>` | | Everything else is passed to the underlying element. |
 
 ## Accessibility
 
 - **Presentational:** the card has no role and is not focusable. Put a heading inside so the section has a name.
 - `featured` uses the brand-coloured border (1.5 px instead of 1 px); it only adds emphasis, so no meaning depends on it.
+- **VIP:** gold background with dark text. Its edge shine is CSS only and stands still under reduced motion.
 - The border is decorative against the page; the content (text 4.5:1) is what has to be readable.
 
 ## Content

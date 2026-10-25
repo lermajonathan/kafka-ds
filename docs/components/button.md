@@ -66,6 +66,16 @@ On small screens a primary action can span the width of its container.
 </div>
 ```
 
+### On the VIP card
+
+The `vip` variant is fixed ink in both modes, because the gold of the VIP card does not change either. Use it only inside that card.
+
+```tsx
+<Card highlight="vip" className="max-w-xs">
+  <Button variant="vip" block>Hacerme miembro</Button>
+</Card>
+```
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -119,3 +129,7 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 | `button.outline.bg-hover` | `{color.bg.hover}` |
 | `button.outline.bg-active` | `{color.bg.active}` |
 | `button.disabled-opacity` | `{opacity.disabled}` |
+| `button.vip.bg` | `{color.vip.button-bg}` |
+| `button.vip.bg-hover` | `{color.vip.button-bg-hover}` |
+| `button.vip.bg-active` | `{color.vip.button-bg-active}` |
+| `button.vip.fg` | `{color.vip.badge-fg}` |

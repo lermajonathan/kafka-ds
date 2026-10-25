@@ -682,3 +682,38 @@
   line-height: var(--kafka-notification-center-body-type-line-height);
   letter-spacing: var(--kafka-notification-center-body-type-letter-spacing);
 }
+.kafka-type-program-card-title-type {
+  font-family: var(--kafka-program-card-title-type-font-family);
+  font-size: var(--kafka-program-card-title-type-font-size);
+  font-weight: var(--kafka-program-card-title-type-font-weight);
+  line-height: var(--kafka-program-card-title-type-line-height);
+  letter-spacing: var(--kafka-program-card-title-type-letter-spacing);
+}
+.kafka-type-program-card-subtitle-type {
+  font-family: var(--kafka-program-card-subtitle-type-font-family);
+  font-size: var(--kafka-program-card-subtitle-type-font-size);
+  font-weight: var(--kafka-program-card-subtitle-type-font-weight);
+  line-height: var(--kafka-program-card-subtitle-type-line-height);
+  letter-spacing: var(--kafka-program-card-subtitle-type-letter-spacing);
+}
+.kafka-type-program-card-price-type {
+  font-family: var(--kafka-program-card-price-type-font-family);
+  font-size: var(--kafka-program-card-price-type-font-size);
+  font-weight: var(--kafka-program-card-price-type-font-weight);
+  line-height: var(--kafka-program-card-price-type-line-height);
+  letter-spacing: var(--kafka-program-card-price-type-letter-spacing);
+}
+.kafka-type-program-card-description-type {
+  font-family: var(--kafka-program-card-description-type-font-family);
+  font-size: var(--kafka-program-card-description-type-font-size);
+  font-weight: var(--kafka-program-card-description-type-font-weight);
+  line-height: var(--kafka-program-card-description-type-line-height);
+  letter-spacing: var(--kafka-program-card-description-type-letter-spacing);
+}
+.kafka-type-program-card-meta-type {
+  font-family: var(--kafka-program-card-meta-type-font-family);
+  font-size: var(--kafka-program-card-meta-type-font-size);
+  font-weight: var(--kafka-program-card-meta-type-font-weight);
+  line-height: var(--kafka-program-card-meta-type-line-height);
+  letter-spacing: var(--kafka-program-card-meta-type-letter-spacing);
+}

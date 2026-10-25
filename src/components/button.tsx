@@ -4,7 +4,7 @@ import { IconSpinner, type IconType } from '../icons'
 import { useLabels } from './labels'
 import { cx, focus } from './shared'
 
-export type ButtonVariant = 'primary' | 'soft' | 'outline'
+export type ButtonVariant = 'primary' | 'soft' | 'outline' | 'vip'
 
 // Every value is a component token (tokens/components.json → button.*). Class strings are written out in full
 // so Tailwind can see them. Hover and active come from tokens too; none of them lowers the label contrast.
@@ -14,6 +14,8 @@ export const BUTTON_VARIANT: Record<ButtonVariant, string> = {
   soft: 'bg-(--kafka-button-soft-bg) text-(--kafka-button-soft-fg) hover:bg-(--kafka-button-soft-bg-hover) active:bg-(--kafka-button-soft-bg-active)',
   outline:
     'border-(length:--kafka-border-width-medium) border-(--kafka-button-outline-border) text-(--kafka-button-outline-fg) hover:bg-(--kafka-button-outline-bg-hover) active:bg-(--kafka-button-outline-bg-active)',
+  /** Fixed ink in both modes: only for use on the gold VIP card. */
+  vip: 'bg-(--kafka-button-vip-bg) text-(--kafka-button-vip-fg) hover:bg-(--kafka-button-vip-bg-hover) active:bg-(--kafka-button-vip-bg-active)',
 }
 
 export interface ButtonProps extends ComponentPropsWithRef<'button'> {

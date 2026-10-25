@@ -19,6 +19,8 @@ export interface Labels {
   unread: string
   markRead: (title: string) => string
   dismissNotification: (title: string) => string
+  /** The crown badge on a VIP card. */
+  vipBadge: string
   /** Close buttons of modals and drawers. */
   close: string
   /** Breadcrumbs. */
@@ -101,6 +103,7 @@ export interface Labels {
 
 export const labelsEn: Labels = {
   loading: 'Loading',
+  vipBadge: 'Members',
   statusOnline: 'Online',
   statusAway: 'Away',
   statusBusy: 'Busy',
@@ -173,6 +176,7 @@ export const labelsEn: Labels = {
 
 export const labelsEs: Labels = {
   loading: 'Cargando',
+  vipBadge: 'Miembros',
   statusOnline: 'En línea',
   statusAway: 'Ausente',
   statusBusy: 'Ocupado',

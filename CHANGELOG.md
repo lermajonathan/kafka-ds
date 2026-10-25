@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H5 · Retroalimentación y superficies, corte 2a (25 oct 2026)
+- **[ProgramCard](docs/components/program-card.md)**, **Card `highlight`** (`featured` | `vip`, reemplaza el booleano `featured`) y **Button `vip`** ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)).
+- Portada con imagen (con `alt` obligatorio) o generada; la imagen rota cae a la generada. El brillo VIP y la elevación al pasar el puntero se detienen con movimiento reducido.
+- 1024 tokens (nuevos grupos semánticos `color.cover.*` y `color.vip.button-*`); 308 pares de contraste en claro y 307 en oscuro; 382 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Pendiente de H5: caja de noticias (2b) y auditoría de paridad con Pance.
+
 ### H5 · Retroalimentación y superficies, corte 1c (25 oct 2026)
 - **3 componentes**: [Toast y ToastStack](docs/components/toast.md), [CountBadge](docs/components/count-badge.md) y [NotificationCenter](docs/components/notification-center.md) ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)). Con esto termina el corte 1 de H5.
 - `Toast` es controlado y se cierra a mano; `duration` opcional que se pausa con puntero y foco y que `danger` ignora. `NotificationCenter` conserva el foco dentro del panel al marcar o descartar.

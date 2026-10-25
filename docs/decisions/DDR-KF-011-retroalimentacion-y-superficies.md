@@ -46,6 +46,15 @@ Revisado contra Pance (`feedback.tsx`, `notifications.tsx`). Pance deja el Toast
 6. **`CountBadge` entra con él** (Pance lo tiene aparte): «9+» sobre el máximo, nada en cero y `label` opcional para decir qué cuenta el número. Sobre un botón, el número va en el nombre del botón y la insignia se oculta.
 7. **Tonos de las notificaciones:** `brand`, `success`, `warning`, `danger` (Pance usa `primary`). Textos nuevos en `labelsEn` y `labelsEs`. Tokens: `toast`, `count-badge`, `notification-center` (54 nuevos; 983 en total).
 
+## Decisiones del corte 2a (tarjeta de programa y VIP)
+
+- **`Card.featured` pasa a `highlight: 'none' | 'featured' | 'vip'`.** Un solo eje en lugar de dos booleanos que podrían combinarse; `as` permite `article` o `li`, y `padded={false}` deja que la portada llegue al borde.
+- **VIP es CSS puro:** fondo dorado, texto en ink 900 fijo en ambos modos (el oro no cambia) y un borde con brillo cónico (`@property --kafka-ang`). Con `prefers-reduced-motion` el brillo queda quieto en un ángulo fijo. El estado se dice con palabras: la insignia con corona dice «Miembros».
+- **Botón `vip`:** tinta fija, solo para usar sobre la tarjeta VIP. Una variante `inverse` falló el contraste oscuro (1,02:1 contra el borde dorado), por eso no existe.
+- **`ProgramCard`:** `article` con portada 16:10, título sobre un velo que llega a ink 900 (se lee sobre cualquier imagen), insignias arriba a la izquierda, precio arriba a la derecha, descripción, lista de detalles y una sola acción. La imagen exige `alt`; si falla, cae a una portada generada decorativa (`aria-hidden`).
+- **Paleta de portada en la capa semántica** (`color.cover.*`, `color.vip.button-*`): el chequeo de estructura impide que los componentes apunten a primitivos.
+- La elevación al pasar el puntero (6 px) y el zoom de la imagen se anulan con movimiento reducido.
+
 ## Consecuencias
 
 - Los tonos de `Alert` reutilizan `color.status.*`, ya verificados en claro y oscuro con `Badge`; igual se prueban los pares nuevos (título sobre su fondo y cuerpo sobre su fondo).
