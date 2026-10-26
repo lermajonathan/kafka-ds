@@ -53,6 +53,17 @@ for (const id of PAGES) assert.doesNotMatch(src(id).replace(/const paint = [^\n]
   assert.match(x, /DATA\.newDdrs/, 'the new DDRs come from the data')
   assert.match(x, /setEffectStyleIdAsync/)
 }
+// the editorial frame (running head, gold rule under the title, colophon) goes on every documentation page except the cover
+{ const f = readFileSync(new URL('../figma/page-frame.js', import.meta.url), 'utf8')
+  for (const n of ['Running head', 'Gold rule', 'Colophon']) assert.match(f, new RegExp(n), 'page-frame builds ' + n)
+  assert.match(f, /Cover/, 'page-frame skips the cover')
+  assert.match(f, /Getting started/, 'page-frame skips Getting started (it already has the frame by construction)')
+  assert.match(f, /remove\(\)/, 'page-frame is idempotent: it removes what it added before')
+  assert.doesNotMatch(f.replace(/const paint = [^\n]*\n/, ''), /color:\s*\{\s*r:/, 'page-frame binds every colour to a variable')
+  const { frameCall } = await import('../scripts/figma/pages.mjs')
+  const call = frameCall(['Button', 'Tabs'])
+  assert.match(call, /"Button","Tabs"|\["Button","Tabs"\]/); assert.ok(call.length < 20000)
+}
 // every call is self-contained
 for (const id of PAGES) { const call = pageCall(id); assert.match(call, /return /); assert.ok(call.length < 45000, id + ' call too long: ' + call.length) }
 console.log('figma-pages: ok')

@@ -51,3 +51,9 @@ export function pageCall(id) {
 const AF = Object.getPrototypeOf(async function () {}).constructor
 return await new AF('figma', 'DATA', ${JSON.stringify(code)})(figma, DATA)`
 }
+
+// Pages that carry the editorial frame (everything with a documentation root except Cover): names come from the file, passed in by the caller.
+export function frameCall(pages) {
+  const { version, components, tokens } = buildPageData()
+  return `const DATA = ${JSON.stringify({ pages, version, components, tokens })}\n` + readFileSync(new URL('../../figma/page-frame.js', import.meta.url), 'utf8')
+}

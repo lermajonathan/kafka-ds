@@ -9,7 +9,7 @@ export function auditCall() {
   return `const GLYPHS = ${JSON.stringify(GLYPHS)}
 const SKIP = /^(Archive|Legacy)/
 const names = figma.root.children.map((p) => p.name)
-const out = { pages: names.length, dupPages: names.filter((n, i) => names.indexOf(n) !== i), empty: 0, unboundFills: 0, glyphs: 0, collapsed: 0, unstyled: 0, docPages: 0, patternPages: 0, pagesWithoutMaster: [], pagesWithoutSections: [], wrongCanvas: [], darkParity: [], clippedSets: [], shadowClipped: [] }
+const out = { pages: names.length, dupPages: names.filter((n, i) => names.indexOf(n) !== i), empty: 0, unboundFills: 0, glyphs: 0, collapsed: 0, unstyled: 0, docPages: 0, patternPages: 0, pagesWithoutMaster: [], pagesWithoutSections: [], wrongCanvas: [], darkParity: [], clippedSets: [], shadowClipped: [], unframed: [] }
 const CANVAS = '#635841'
 const hex = (c) => '#' + [c.r, c.g, c.b].map((v) => Math.round(v * 255).toString(16).padStart(2, '0')).join('')
 const SECTIONS = ['§01', '§02', '§04', '§05', '§06', '§07']
@@ -21,6 +21,10 @@ for (const p of figma.root.children) {
   if (SKIP.test(p.name)) continue
   for (const root of p.children.filter((c) => c.type === 'FRAME' && /^(Kafka|Pattern) · /.test(c.name))) {
     const pattern = root.name.startsWith('Pattern')
+    if (p.name !== 'Cover') { // every page but the cover carries the editorial frame: running head, gold rule under the title, colophon
+      const lacking = ['Running head', 'Gold rule', 'Colophon'].filter((n) => !root.findOne((x) => x.name === n))
+      if (lacking.length) out.unframed.push(p.name + ' (' + lacking.join(', ') + ')')
+    }
     const component = !pattern && root.children.some((c) => c.name.startsWith('§01'))
     if (pattern) out.patternPages++
     if (component) {
@@ -70,6 +74,7 @@ export function judge(r) {
   if (r.darkParity?.length) failures.push('light and dark show different specimens: ' + r.darkParity.join(', '))
   if (r.clippedSets?.length) failures.push('component sets that clip their shadows: ' + r.clippedSets.join(', '))
   if (r.shadowClipped?.length) failures.push('shadows cut by a clipping frame: ' + r.shadowClipped.join(', '))
+  if (r.unframed?.length) failures.push('pages without the editorial frame: ' + r.unframed.join(', '))
   if (r.disabledOpacity !== undefined && r.disabledOpacity !== 45) failures.push(`opacity/45 is ${r.disabledOpacity}; Figma binds opacity as a percentage`)
   return { ok: failures.length === 0, failures }
 }

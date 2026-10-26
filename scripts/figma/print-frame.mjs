@@ -1,0 +1,3 @@
+// Prints the use_figma body that (re)applies the editorial frame to the given pages:  node scripts/figma/print-frame.mjs "Button" "Tabs" …
+import { frameCall } from './pages.mjs'
+console.log(frameCall(process.argv.slice(2)))
