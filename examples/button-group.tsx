@@ -14,4 +14,16 @@ export const examples: Example[] = [
       </ButtonGroup>
     ),
   },
+  {
+    id: 'joined',
+    title: 'Joined',
+    description: 'For options that act on the same thing, such as text format. One shape with a line between the buttons; the focus ring stays inside each one.',
+    render: () => (
+      <ButtonGroup label="Formato del texto" joined>
+        <Button variant="outline">Negrita</Button>
+        <Button variant="outline">Cursiva</Button>
+        <Button variant="outline">Subrayado</Button>
+      </ButtonGroup>
+    ),
+  },
 ]

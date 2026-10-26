@@ -524,10 +524,10 @@
       "$value": "0em"
     },
     "wide": {
-      "$value": "0.04em"
+      "$value": "0.01em"
     },
     "wider": {
-      "$value": "0.1em"
+      "$value": "0.02em"
     }
   },
   "opacity": {

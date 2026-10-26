@@ -99,6 +99,39 @@
     },
     "disabled-opacity": {
       "$value": "{opacity.disabled}"
+    },
+    "vip": {
+      "$description": "Botón para la tarjeta VIP: tinta fija en ambos modos, porque el fondo dorado de la tarjeta tampoco cambia.",
+      "bg": {
+        "$type": "color",
+        "$value": "{color.vip.button-bg}"
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{color.vip.button-bg-hover}"
+      },
+      "bg-active": {
+        "$type": "color",
+        "$value": "{color.vip.button-bg-active}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.vip.badge-fg}"
+      }
+    },
+    "link": {
+      "fg": {
+        "$type": "color",
+        "$value": "{color.fg.link}"
+      },
+      "fg-hover": {
+        "$type": "color",
+        "$value": "{color.fg.link-hover}"
+      },
+      "padding-x": {
+        "$type": "dimension",
+        "$value": "{space.4}"
+      }
     }
   },
   "badge": {
@@ -379,6 +412,50 @@
     "enter": {
       "$type": "duration",
       "$value": "{motion.duration.slow}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "soft-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "kind-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "meta-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "meta-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "dot-size": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "dot-hit": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "dot-bg": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "dot-active": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{space.24}"
     }
   },
   "prose": {
@@ -1001,10 +1078,18 @@
     }
   },
   "button-group": {
-    "$description": "Agrupa botones relacionados bajo un nombre.",
+    "$description": "Agrupa botones relacionados bajo un nombre; unidos, comparten una sola forma con una línea entre ellos.",
     "gap": {
       "$type": "dimension",
       "$value": "{space.8}"
+    },
+    "divider": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "divider-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
     }
   },
   "link": {
@@ -1444,7 +1529,7 @@
     }
   },
   "tag-input": {
-    "$description": "Lista de etiquetas que se escriben y se quitan. Cada etiqueta mide 44 px y su botón de quitar también.",
+    "$description": "Lista de etiquetas dentro del campo. Cada etiqueta mide 32 px y su botón de quitar es de 32 × 32 px, de modo que el campo no crece en altura (DDR-KF-015).",
     "gap": {
       "$type": "dimension",
       "$value": "{space.8}"
@@ -1463,7 +1548,7 @@
     },
     "tag-padding-left": {
       "$type": "dimension",
-      "$value": "{space.16}"
+      "$value": "{space.12}"
     },
     "tag-type": {
       "$type": "typography",
@@ -1471,7 +1556,7 @@
     },
     "remove-size": {
       "$type": "dimension",
-      "$value": "{size.touch}"
+      "$value": "{space.32}"
     },
     "remove-hover-bg": {
       "$type": "color",
@@ -1480,6 +1565,18 @@
     "remove-icon": {
       "$type": "dimension",
       "$value": "{size.icon.sm}"
+    },
+    "tag-height": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "field-padding-y": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "input-min-width": {
+      "$type": "dimension",
+      "$value": "{space.96}"
     }
   },
   "file-upload": {
@@ -2057,11 +2154,15 @@
     },
     "offset": {
       "$type": "dimension",
-      "$value": "{space.8}"
+      "$value": "{space.12}"
     },
     "shadow": {
       "$type": "shadow",
       "$value": "{elevation.floating}"
+    },
+    "arrow-size": {
+      "$type": "dimension",
+      "$value": "{space.8}"
     }
   },
   "modal": {
@@ -2142,6 +2243,10 @@
     },
     "duration": {
       "$value": "{motion.duration.slow}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
     }
   },
   "confirm-dialog": {
@@ -2235,6 +2340,14 @@
     },
     "disabled-opacity": {
       "$value": "{opacity.disabled}"
+    },
+    "range-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "range-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
     }
   },
   "date-picker": {
@@ -2246,6 +2359,1186 @@
     "gap": {
       "$type": "dimension",
       "$value": "{space.8}"
+    }
+  },
+  "alert": {
+    "$description": "Mensaje en la página que informa, confirma, avisa o advierte; no interrumpe.",
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thin}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "body-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "info": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.info.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.info.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.info.border}"
+      }
+    },
+    "success": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.success.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.success.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.success.border}"
+      }
+    },
+    "warning": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.warning.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.warning.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.warning.border}"
+      }
+    },
+    "danger": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.danger.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.danger.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.danger.border}"
+      }
+    }
+  },
+  "divider": {
+    "$description": "Línea que separa contenido, con o sin texto.",
+    "color": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "label-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    }
+  },
+  "skeleton": {
+    "$description": "Marcador de lugar mientras el contenido carga.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.placeholder}"
+    },
+    "shimmer": {
+      "$type": "color",
+      "$value": "{color.bg.sunken-hover}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "line-height": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "block-height": {
+      "$type": "dimension",
+      "$value": "{space.96}"
+    },
+    "circle-size": {
+      "$type": "dimension",
+      "$value": "{space.48}"
+    },
+    "duration": {
+      "$type": "duration",
+      "$value": "{motion.duration.shine}"
+    }
+  },
+  "empty-state": {
+    "$description": "Lo que se muestra cuando no hay nada que mostrar todavía.",
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.48}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{size.icon.lg}"
+    },
+    "icon-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "title-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-sm}"
+    },
+    "description-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    },
+    "max-width": {
+      "$type": "dimension",
+      "$value": "{size.menu}"
+    }
+  },
+  "panel": {
+    "$description": "Tarjeta con encabezado (título, descripción, ícono, acciones), cuerpo, pie y, si se pide, colapsable.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.card}"
+    },
+    "header-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.20}"
+    },
+    "header-padding-y": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "header-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "body-padding": {
+      "$type": "dimension",
+      "$value": "{space.20}"
+    },
+    "footer-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.20}"
+    },
+    "footer-padding-y": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "footer-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "rule": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "title-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "description-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "icon-box": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "icon-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "icon": {
+      "brand": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.bg.brand}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.fg.on-brand}"
+        }
+      },
+      "info": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.info.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.info.fg}"
+        }
+      },
+      "success": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.success.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.success.fg}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.warning.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.warning.fg}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.danger.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.danger.fg}"
+        }
+      }
+    },
+    "toggle-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "toggle-hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    }
+  },
+  "avatar": {
+    "$description": "Persona o entidad como imagen o iniciales, con estado de presencia opcional.",
+    "size": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{space.32}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{space.48}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{space.64}"
+      }
+    },
+    "radius-square": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.brand}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.on-brand}"
+    },
+    "type-sm": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "type-md": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "type-lg": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-sm}"
+    },
+    "ring": {
+      "$type": "color",
+      "$value": "{color.bg.page}"
+    },
+    "ring-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "status-size": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "status-online": {
+      "$type": "color",
+      "$value": "{color.status.success.border}"
+    },
+    "status-away": {
+      "$type": "color",
+      "$value": "{color.status.warning.border}"
+    },
+    "status-busy": {
+      "$type": "color",
+      "$value": "{color.status.danger.border}"
+    },
+    "status-offline": {
+      "$type": "color",
+      "$value": "{color.fg.muted}"
+    },
+    "overflow-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "overflow-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "group-overlap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    }
+  },
+  "progress": {
+    "$description": "Barra que muestra cuánto va de una tarea con porcentaje conocido.",
+    "height": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.pill}"
+    },
+    "track": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "fill": {
+      "brand": {
+        "$type": "color",
+        "$value": "{color.fg.brand}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.status.success.fg}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.status.warning.fg}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{color.status.danger.fg}"
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "value-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "value-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "label-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "transition": {
+      "$type": "duration",
+      "$value": "{motion.duration.slow}"
+    }
+  },
+  "spinner": {
+    "$description": "Progreso sin duración conocida.",
+    "size": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{size.icon.sm}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{size.icon.lg}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{space.32}"
+      }
+    },
+    "stroke-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "arc": {
+      "$type": "color",
+      "$value": "{color.fg.brand}"
+    },
+    "track": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    }
+  },
+  "toast": {
+    "$description": "Aviso breve que aparece sin quitar al lector de lo que hace; se cierra a mano, o solo si se pide una duración.",
+    "width": {
+      "$type": "dimension",
+      "$value": "{size.floating}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thin}"
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$value": "{elevation.floating}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "stack-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "action": {
+      "$type": "color",
+      "$value": "{color.fg.link}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "body-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "enter": {
+      "$type": "duration",
+      "$value": "{motion.duration.base}"
+    },
+    "info": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.info.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.info.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.info.border}"
+      }
+    },
+    "success": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.success.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.success.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.success.border}"
+      }
+    },
+    "warning": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.warning.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.warning.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.warning.border}"
+      }
+    },
+    "danger": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.status.danger.bg}"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{color.status.danger.fg}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.status.danger.border}"
+      }
+    }
+  },
+  "count-badge": {
+    "$description": "Contador pequeño de elementos pendientes (por ejemplo, notificaciones sin leer).",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.inverse}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.pill}"
+    },
+    "min-size": {
+      "$type": "dimension",
+      "$value": "{space.20}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "danger-bg": {
+      "$type": "color",
+      "$value": "{color.status.danger.fg}"
+    },
+    "danger-fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
+    }
+  },
+  "notification-center": {
+    "$description": "Campana con contador que abre la lista de notificaciones para revisarlas después.",
+    "inset": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "item-radius": {
+      "$type": "dimension",
+      "$value": "{radius.tile}"
+    },
+    "width": {
+      "$type": "dimension",
+      "$value": "{size.floating}"
+    },
+    "max-height": {
+      "$type": "dimension",
+      "$value": "{size.listbox}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "padding-y": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "rule": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "unread-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "title-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "body-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "body-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "time-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "icon-box": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "empty-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "action": {
+      "$type": "color",
+      "$value": "{color.fg.link}"
+    },
+    "icon": {
+      "brand": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.bg.brand}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.fg.on-brand}"
+        }
+      },
+      "success": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.success.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.success.fg}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.warning.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.warning.fg}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.status.danger.bg}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.status.danger.fg}"
+        }
+      }
+    }
+  },
+  "program-card": {
+    "$description": "Tarjeta de programa: portada con insignias, precio y título; debajo descripción, datos y una acción.",
+    "media-bg": {
+      "$type": "color",
+      "$value": "{color.cover.bg}"
+    },
+    "scrim": {
+      "$type": "color",
+      "$value": "{color.cover.bg}"
+    },
+    "media-padding": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "badge-offset": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "badge-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "title-fg": {
+      "$type": "color",
+      "$value": "{color.cover.fg}"
+    },
+    "title-type": {
+      "$type": "typography",
+      "$value": "{typography.reading.heading-sm}"
+    },
+    "subtitle-fg": {
+      "$type": "color",
+      "$value": "{color.cover.fg-soft}"
+    },
+    "subtitle-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "price-bg": {
+      "$type": "color",
+      "$value": "{color.cover.price-bg}"
+    },
+    "price-fg": {
+      "$type": "color",
+      "$value": "{color.cover.price-fg}"
+    },
+    "price-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "price-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "price-padding-y": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "body-padding": {
+      "$type": "dimension",
+      "$value": "{space.24}"
+    },
+    "body-gap": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.reading.body}"
+    },
+    "meta-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "meta-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "cover-gold": {
+      "$type": "color",
+      "$value": "{color.cover.tone-gold}"
+    },
+    "cover-amber": {
+      "$type": "color",
+      "$value": "{color.cover.tone-amber}"
+    },
+    "cover-blue": {
+      "$type": "color",
+      "$value": "{color.cover.tone-blue}"
+    },
+    "cover-green": {
+      "$type": "color",
+      "$value": "{color.cover.tone-green}"
+    },
+    "lift": {
+      "$type": "dimension",
+      "$value": "{space.6}"
+    },
+    "lift-duration": {
+      "$type": "duration",
+      "$value": "{motion.duration.base}"
+    }
+  },
+  "segmented-control": {
+    "$description": "Tira de opciones excluyentes (radiogroup): una sola activa, con flechas.",
+    "track-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "track-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "track-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "track-padding": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "track-radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "item-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "item-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "item-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "item-min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "item-min-height-sm": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "item-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "fg-hover": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "active-bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "active-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "active-border": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "active-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thin}"
+    }
+  },
+  "checkbox-group": {
+    "$description": "Lista de casillas con «seleccionar todos» (estado mixto) en un fieldset.",
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "select-all-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "select-all-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "select-all-padding-bottom": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    }
+  },
+  "radio-card": {
+    "$description": "Opción única presentada como tarjeta: radio nativo con borde, icono opcional e insignia.",
+    "bg": {
+      "$type": "color",
+      "$value": "{color.bg.surface}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "checked-border": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.medium}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "label-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "label-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "description-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "description-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.caption}"
+    },
+    "icon-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "icon-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "icon-size": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "group-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "disabled-opacity": {
+      "$type": "opacity",
+      "$value": "{opacity.disabled}"
+    },
+    "icon-radius": {
+      "$type": "dimension",
+      "$value": "{radius.tile}"
+    }
+  },
+  "input-group": {
+    "$description": "Campo con complementos pegados: texto o icono antes o después, y una acción al final.",
+    "addon-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "addon-fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "addon-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "addon-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "addon-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    }
+  },
+  "inline-edit": {
+    "$description": "Texto que se edita en su lugar: un botón que se vuelve campo.",
+    "min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "icon": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "type": {
+      "$type": "typography",
+      "$value": "{typography.ui.input}"
+    }
+  },
+  "split-button": {
+    "$description": "Un solo elemento: acción principal, una línea divisoria interna y un botón de flecha que abre un menú de acciones relacionadas.",
+    "toggle-width": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    }
+  },
+  "nav-menu": {
+    "$description": "Navegación vertical de una app: enlaces con icono, grupos que se abren y la página actual marcada.",
+    "item-min-height": {
+      "$type": "dimension",
+      "$value": "{size.touch}"
+    },
+    "item-padding-x": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "item-gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "item-radius": {
+      "$type": "dimension",
+      "$value": "{radius.control}"
+    },
+    "item-type": {
+      "$type": "typography",
+      "$value": "{typography.ui.label}"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.fg.soft}"
+    },
+    "fg-hover": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "hover-bg": {
+      "$type": "color",
+      "$value": "{color.bg.hover}"
+    },
+    "active-fg": {
+      "$type": "color",
+      "$value": "{color.fg.default}"
+    },
+    "active-bg": {
+      "$type": "color",
+      "$value": "{color.bg.sunken}"
+    },
+    "indicator": {
+      "$type": "color",
+      "$value": "{color.border.brand}"
+    },
+    "indicator-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.thick}"
+    },
+    "list-gap": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "child-indent": {
+      "$type": "dimension",
+      "$value": "{space.16}"
+    },
+    "child-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "child-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
+    },
+    "disabled-opacity": {
+      "$type": "opacity",
+      "$value": "{opacity.disabled}"
+    }
+  },
+  "date-range-picker": {
+    "$description": "Campo de rango de fechas: un botón con el rango elegido que abre el calendario en un popover.",
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    },
+    "preset-gap": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "footer-padding-top": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "footer-border": {
+      "$type": "color",
+      "$value": "{color.border.default}"
+    },
+    "footer-border-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
     }
   }
 }

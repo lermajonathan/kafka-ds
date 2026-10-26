@@ -11,7 +11,7 @@ export default {
   "accessibility": [
     "**Keyboard:** Enter or comma adds, Backspace on an empty field removes the last, Tab reaches each remove button.",
     "**Announcements:** additions and removals are read through a polite live region.",
-    "**Targets:** each tag and its remove button are 44 px tall.",
+    "**Targets:** the field is 44 px tall; each tag is 32 px and its remove button is 32 × 32 px, above the 24 px minimum of WCAG 2.5.8. The whole field focuses the text box when clicked.",
     "**Names:** remove buttons say \"Quitar poesía\", not just \"Quitar\"."
   ],
   "content": [

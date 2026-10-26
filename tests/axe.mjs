@@ -10,7 +10,7 @@ let pages = 0, violations = 0
 
 await withBrowser(async (browser) => {
   for (const id of Object.keys(registry)) for (const vp of viewports) for (const theme of themes) {
-    const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } })
+    const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height }, reducedMotion: 'reduce' }) // entrance animations would be scanned half-faded
     await page.goto(url({ only: id, theme }))
     await page.waitForSelector('main')
     await page.addScriptTag({ content: axeSource })
@@ -33,6 +33,8 @@ const opened = {
   'confirm-dialog': async (p) => { await p.getByRole('button', { name: 'Eliminar relato' }).click() },
   tooltip: async (p) => { await p.keyboard.press('Tab') },
   'date-picker': async (p) => { await p.getByRole('button', { name: 'Abrir calendario' }).click() },
+  toast: async (p) => { await p.getByRole('button', { name: 'Guardar cambios' }).click(); await p.getByRole('button', { name: 'Simular error' }).click() },
+  'notification-center': async (p) => { await p.getByRole('button', { name: /^Notificaciones/ }).first().click() },
 }
 await withBrowser(async (browser) => {
   for (const [id, open] of Object.entries(opened)) for (const vp of viewports) for (const theme of themes) {

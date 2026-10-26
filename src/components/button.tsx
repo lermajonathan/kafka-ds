@@ -4,7 +4,7 @@ import { IconSpinner, type IconType } from '../icons'
 import { useLabels } from './labels'
 import { cx, focus } from './shared'
 
-export type ButtonVariant = 'primary' | 'soft' | 'outline'
+export type ButtonVariant = 'primary' | 'soft' | 'outline' | 'link' | 'vip'
 
 // Every value is a component token (tokens/components.json → button.*). Class strings are written out in full
 // so Tailwind can see them. Hover and active come from tokens too; none of them lowers the label contrast.
@@ -14,6 +14,10 @@ export const BUTTON_VARIANT: Record<ButtonVariant, string> = {
   soft: 'bg-(--kafka-button-soft-bg) text-(--kafka-button-soft-fg) hover:bg-(--kafka-button-soft-bg-hover) active:bg-(--kafka-button-soft-bg-active)',
   outline:
     'border-(length:--kafka-border-width-medium) border-(--kafka-button-outline-border) text-(--kafka-button-outline-fg) hover:bg-(--kafka-button-outline-bg-hover) active:bg-(--kafka-button-outline-bg-active)',
+  /** Text only, always underlined: for a quiet action that still does something on the page (it is a button, not navigation). */
+  link: 'text-(--kafka-button-link-fg) underline underline-offset-4 hover:text-(--kafka-button-link-fg-hover)',
+  /** Fixed ink in both modes: only for use on the gold VIP card. */
+  vip: 'bg-(--kafka-button-vip-bg) text-(--kafka-button-vip-fg) hover:bg-(--kafka-button-vip-bg-hover) active:bg-(--kafka-button-vip-bg-active)',
 }
 
 export interface ButtonProps extends ComponentPropsWithRef<'button'> {
@@ -29,7 +33,7 @@ export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   block?: boolean
 }
 
-/** A button with a gold primary, a soft and an outline variant. Always at least 44 px tall. */
+/** A button with a gold primary, a soft and an outline variant, and a text-only link variant. Always at least 44 px tall. */
 export function Button({ variant = 'primary', Icon, TrailingIcon, loading = false, block = false, disabled, className, children, type = 'button', ...rest }: ButtonProps) {
   const labels = useLabels()
   const Lead = loading ? IconSpinner : Icon
@@ -38,9 +42,11 @@ export function Button({ variant = 'primary', Icon, TrailingIcon, loading = fals
       type={type}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
+      data-variant={variant}
       className={cx(
         focus,
-        'kafka-type-button-type inline-flex min-h-(--kafka-button-min-height) cursor-pointer items-center justify-center gap-(--kafka-button-gap) rounded-(--kafka-button-radius) px-(--kafka-button-padding-x) py-(--kafka-button-padding-y) no-underline',
+        'kafka-type-button-type inline-flex min-h-(--kafka-button-min-height) cursor-pointer items-center justify-center gap-(--kafka-button-gap) rounded-(--kafka-button-radius) py-(--kafka-button-padding-y)',
+        variant === 'link' ? 'px-(--kafka-button-link-padding-x)' : 'px-(--kafka-button-padding-x) no-underline',
         'disabled:cursor-not-allowed disabled:opacity-(--kafka-button-disabled-opacity)',
         block && 'w-full',
         BUTTON_VARIANT[variant],

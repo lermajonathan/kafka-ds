@@ -74,6 +74,10 @@
           }
         }
       },
+      "placeholder": {
+        "$value": "{color.border.default}",
+        "$description": "Marcadores de lugar, como los esqueletos de carga: se distinguen de la página y de las tarjetas en ambos modos."
+      },
       "brand-hover": {
         "$value": "{color.gold.300}",
         "$description": "Hover del oro. El texto sigue siendo fg.on-brand."
@@ -282,6 +286,15 @@
       },
       "badge-fg": {
         "$value": "{color.gold.100}"
+      },
+      "button-bg": {
+        "$value": "{color.ink.900}"
+      },
+      "button-bg-hover": {
+        "$value": "{color.ink.800}"
+      },
+      "button-bg-active": {
+        "$value": "{color.ink.700}"
       }
     },
     "status": {
@@ -391,10 +404,45 @@
           }
         }
       }
+    },
+    "cover": {
+      "$type": "color",
+      "$description": "Portada de programa: siempre oscura en ambos modos, para que el título se lea sobre cualquier imagen.",
+      "bg": {
+        "$value": "{color.ink.900}"
+      },
+      "fg": {
+        "$value": "{color.paper.0}"
+      },
+      "fg-soft": {
+        "$value": "{color.gold.100}"
+      },
+      "price-bg": {
+        "$value": "{color.paper.50}"
+      },
+      "price-fg": {
+        "$value": "{color.ink.900}"
+      },
+      "tone-gold": {
+        "$value": "{color.gold.400}"
+      },
+      "tone-amber": {
+        "$value": "{color.amber.400}"
+      },
+      "tone-blue": {
+        "$value": "{color.blue.400}"
+      },
+      "tone-green": {
+        "$value": "{color.green.400}"
+      }
     }
   },
   "radius": {
     "$type": "dimension",
+    "tile": {
+      "$value": "{radius.8}",
+      "$description": "Iconos y miniaturas cuadradas pequeñas, que conservan su forma de cuadrado."
+    },
     "control": {
       "$value": "{radius.12}",
       "$description": "Botones, campos y chips rectangulares."

@@ -4,6 +4,75 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H7 · Sitio de documentación (26 oct 2026)
+- **Sitio de documentación** en Vite y React (`site/`): inicio, primeros pasos, 70 páginas de componentes con ejemplos que corren encima de su código, 19 decisiones y la referencia de tokens. Claro y oscuro, navegable con teclado, sin peticiones fuera de su origen ([DDR-KF-019](docs/decisions/DDR-KF-019-sitio-de-documentacion.md)).
+- `pnpm run dev:site`, `pnpm run build:site` y `pnpm run test:site` (datos, rutas, foco, tema, axe-core en dos tamaños y dos temas, sin desborde en 390 px). Se publica en GitHub Pages cuando `main` cambia (`.github/workflows/pages.yml`).
+- Nueva guía [Primeros pasos](docs/getting-started.md).
+- Pulido del sitio: **Literata autoalojada**, **buscador** (componentes, decisiones y páginas; atajo `/`) y **JavaScript dividido por página** (primera carga ≈120 kB comprimidos, antes 218 kB; `tests/site-size.mjs`).
+- Figma: marco editorial (cabecera, línea dorada y colofón) en todas las páginas menos la portada; la página Decisions suma DDR-KF-019.
+
+### H5 cerrado (25 oct 2026)
+- Retroalimentación y superficies, tarjetas de Altazor y paridad con Pance terminados: **70 componentes**, 1113 tokens, 336/335 pares de contraste, 511 comprobaciones de teclado y ARIA y axe-core sin violaciones ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md), [DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
+- Siguiente: **H5b**, Figma completo (fundaciones, páginas de componentes, patrones, decisiones), antes de H6 (impresión).
+
+### H5 · Paridad con Pance, corte 3d-2 (25 oct 2026)
+- **[RangeCalendar](docs/components/range-calendar.md)** y **[DateRangePicker](docs/components/date-range-picker.md)**, sobre un `CalendarBase` compartido con `Calendar` ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)). Termina el corte 3.
+- 1113 tokens; 336 pares de contraste en claro y 335 en oscuro; 511 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Siguiente: sincronizar las variables de Figma y cerrar H5.
+
+### H5 · Paridad con Pance, corte 3d-1 (25 oct 2026)
+- **[NavMenu](docs/components/nav-menu.md)**: navegación vertical con enlaces reales, grupos que se abren y modo compacto ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)). `RangeSlider` no se construye: `Slider` ya cubre el deslizador de un valor.
+- 1106 tokens; 333 pares de contraste en claro y 332 en oscuro; 489 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Sigue 3d-2 (RangeCalendar y DateRangePicker); después, variables de Figma.
+
+### H5 · Paridad con Pance, corte 3c (25 oct 2026)
+- **4 componentes**: [InputGroup](docs/components/input-group.md), [InlineEdit](docs/components/inline-edit.md), [SplitButton](docs/components/split-button.md) y [ToggleButton](docs/components/toggle-button.md) ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
+- `ToggleButton` no cambia su etiqueta con el estado; el lápiz de `InlineEdit` siempre es visible.
+- 1089 tokens; 328 pares de contraste en claro y 327 en oscuro; 475 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Sigue 3d (NavMenu, RangeSlider, RangeCalendar, DateRangePicker); después, variables de Figma.
+
+### H5 · Paridad con Pance, corte 3b (25 oct 2026)
+- **[CheckboxGroup](docs/components/checkbox-group.md)** y **[RadioCard y RadioCardGroup](docs/components/radio-card.md)** ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)). `SwitchRow` no se construye: `Switch` ya es una fila completa.
+- 1074 tokens; 323 pares de contraste en claro y 322 en oscuro; 443 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Siguen: 3c (InputGroup, InlineEdit, SplitButton, ToggleButton) y 3d.
+
+### H5 · Paridad con Pance, corte 3a (25 oct 2026)
+- **3 piezas**: [SegmentedControl](docs/components/segmented-control.md), `ThemeProvider` y [ThemeToggle](docs/components/theme-toggle.md) (con `useTheme` y `themeInitScript`) ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
+- 1052 tokens; 316 pares de contraste en claro y 315 en oscuro; 421 comprobaciones de teclado y ARIA; axe-core sin violaciones (ahora con movimiento reducido para no leer animaciones a medias).
+- Siguen: 3b (CheckboxGroup, SwitchRow, RadioCard), 3c y 3d.
+
+### H5 · Auditoría de paridad con Pance (25 oct 2026)
+- Comparados los 72 componentes exportados de Pance con los de Kafka: 8 equivalentes con otro nombre, 12 de datos fuera de alcance y **14 faltantes**. Decisión: construirlos todos en el corte 3 (3a–3d) antes de cerrar H5 ([DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
+
+### H5 · Retroalimentación y superficies, corte 2b (25 oct 2026)
+- **[NewsBox](docs/components/news-box.md)**: caja de noticias con cuatro tipos, hasta tres noticias a la vez, puntos de navegación, cierre de 44 px y modo `floating` ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)). Sin rotación automática y sin trampa de foco.
+- 1035 tokens; 312 pares de contraste en claro y 311 en oscuro; 402 comprobaciones de teclado y ARIA (la ausencia de rotación se prueba con reloj simulado); axe-core sin violaciones.
+- Pendiente de H5: auditoría de paridad con Pance.
+
+### H5 · Retroalimentación y superficies, corte 2a (25 oct 2026)
+- **[ProgramCard](docs/components/program-card.md)**, **Card `highlight`** (`featured` | `vip`, reemplaza el booleano `featured`) y **Button `vip`** ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)).
+- Portada con imagen (con `alt` obligatorio) o generada; la imagen rota cae a la generada. El brillo VIP y la elevación al pasar el puntero se detienen con movimiento reducido.
+- 1024 tokens (nuevos grupos semánticos `color.cover.*` y `color.vip.button-*`); 308 pares de contraste en claro y 307 en oscuro; 382 comprobaciones de teclado y ARIA; axe-core sin violaciones.
+- Pendiente de H5: caja de noticias (2b) y auditoría de paridad con Pance.
+
+### H5 · Retroalimentación y superficies, corte 1c (25 oct 2026)
+- **3 componentes**: [Toast y ToastStack](docs/components/toast.md), [CountBadge](docs/components/count-badge.md) y [NotificationCenter](docs/components/notification-center.md) ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)). Con esto termina el corte 1 de H5.
+- `Toast` es controlado y se cierra a mano; `duration` opcional que se pausa con puntero y foco y que `danger` ignora. `NotificationCenter` conserva el foco dentro del panel al marcar o descartar.
+- 983 tokens; 298 pares de contraste en claro y 297 en oscuro; 362 comprobaciones de teclado y ARIA (el temporizador se prueba con reloj simulado); axe-core sin violaciones en 57 componentes (268 páginas, con Toast y NotificationCenter también abiertos). axe obligó a dejar una sola pila de toasts por página.
+- Pendiente de H5: tarjetas VIP, de noticias y de programa, y la auditoría de paridad con Pance (corte 2).
+
+### H5 · Retroalimentación y superficies, corte 1b (25 oct 2026)
+- **5 componentes**: [Card](docs/components/card.md), [Panel](docs/components/panel.md), [Avatar y AvatarGroup](docs/components/avatar.md), [Progress](docs/components/progress.md) y [Spinner](docs/components/spinner.md) ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)). Revisados contra Pance antes de implementarlos.
+- `Progress` exige `label`; `Avatar` dice su estado en palabras; el colapso de `Panel` mide 44 px. Textos nuevos en `labelsEn` y `labelsEs` (estados de presencia y «+N»).
+- 929 tokens; 269 pares de contraste en claro y 268 en oscuro; 333 comprobaciones de teclado y ARIA; axe-core sin violaciones en 54 componentes (248 páginas). axe encontró un `aria-label` sin rol en el chip «+N» y se corrigió.
+- Pendiente de H5: Toast y notificaciones (1c) y las tarjetas VIP, de noticias y de programa (corte 2).
+
+### H5 · Retroalimentación y superficies, corte 1a (25 oct 2026)
+- **4 componentes**: [Alert](docs/components/alert.md), [Divider](docs/components/divider.md), [Skeleton](docs/components/skeleton.md) y [EmptyState](docs/components/empty-state.md) ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md)).
+- `Alert` informa sin interrumpir (`role="status"`; `urgent` usa `role="alert"`), con ícono y borde en cada tono. `Skeleton` anuncia «Cargando» una sola vez y se detiene con movimiento reducido.
+- 860 tokens; 244 pares de contraste en claro y 243 en oscuro; 302 comprobaciones de teclado y ARIA; axe-core sin violaciones en 49 componentes (228 páginas).
+- Pendiente de H5: Card, Panel, Avatar, Progress (1b), Toast y notificaciones (1c), y las tarjetas VIP, de noticias y de programa (corte 2).
+
 ### H4 · Navegación y capas (21 oct 2026)
 - **14 componentes**: [Tabs](docs/components/tabs.md), [Accordion](docs/components/accordion.md), [Breadcrumbs](docs/components/breadcrumbs.md), [Pagination](docs/components/pagination.md), [Stepper](docs/components/stepper.md), [Popover](docs/components/popover.md), [Menu](docs/components/menu.md), [Tooltip](docs/components/tooltip.md), [Combobox](docs/components/combobox.md), [Modal](docs/components/modal.md), [Drawer](docs/components/drawer.md), [ConfirmDialog](docs/components/confirm-dialog.md), [Calendar](docs/components/calendar.md) y [DatePicker](docs/components/date-picker.md) ([DDR-KF-010](docs/decisions/DDR-KF-010-navegacion-y-capas.md)).
 - Capas con la API nativa `popover` y `<dialog>`; fechas como cadenas ISO; `Button` e `IconButton` aceptan `ref` como prop.

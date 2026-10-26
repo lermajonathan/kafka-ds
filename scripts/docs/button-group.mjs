@@ -12,7 +12,7 @@ export default {
   "accessibility": [
     "**Role:** `group` with a required `aria-label`, so screen readers announce what the buttons share.",
     "Tab order follows the DOM; each button keeps its own focus ring.",
-    "Wraps instead of overflowing on narrow screens."
+    "Wraps instead of overflowing on narrow screens. A joined group does not wrap: keep it to two to four short labels."
   ],
   "content": [
     "Name the group by what it does: \"Acciones de la inscripción\"."

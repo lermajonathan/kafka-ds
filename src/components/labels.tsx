@@ -5,8 +5,40 @@ import { createContext, useContext, type ReactNode } from 'react'
 export interface Labels {
   /** Announced by screen readers while a button is busy. */
   loading: string
+  /** Avatar presence statuses and the "+N" chip of an avatar group. */
+  statusOnline: string
+  statusAway: string
+  statusBusy: string
+  statusOffline: string
+  moreCount: (n: number) => string
+  /** Notifications: the toast region, the bell and its list. */
+  notifications: string
+  notificationsUnread: (n: number) => string
+  markAllRead: string
+  noNotifications: string
+  unread: string
+  markRead: (title: string) => string
+  dismissNotification: (title: string) => string
+  /** The crown badge on a VIP card. */
+  vipBadge: string
   /** Close buttons of modals and drawers. */
   close: string
+  /** The news box: its region name, kind names, dot navigation, close and "view all". */
+  news: string
+  newsKinds: { evento: string; felicitacion: string; aviso: string; convocatoria: string }
+  newsGoTo: (n: number, total: number) => string
+  dismissNews: (title: string) => string
+  newsViewAll: string
+  /** The first checkbox of a `CheckboxGroup` with `selectAll`. */
+  selectAll: string
+  /** The arrow of a `SplitButton`. */
+  moreActions: string
+  /** Name of an app's side navigation. */
+  mainNavigation: string
+  /** Hidden hint on an `InlineEdit` button: "Editar Título". */
+  editField: (field: string) => string
+  /** Shown by an `InlineEdit` that has no value. */
+  clickToEdit: string
   /** Breadcrumbs. */
   breadcrumb: string
   /** Pagination. */
@@ -23,6 +55,14 @@ export interface Labels {
   resultsAvailable: (n: number) => string
   /** Calendar. */
   previousMonth: string
+  /** Range calendar: the status line and the day names at the ends of the range. */
+  rangePickStart: string
+  rangePickEnd: (start: string) => string
+  rangeValue: (start: string, end: string) => string
+  rangeStartDay: string
+  rangeEndDay: string
+  chooseDateRange: string
+  clearRange: string
   nextMonth: string
   /** Date picker. */
   openCalendar: string
@@ -87,7 +127,30 @@ export interface Labels {
 
 export const labelsEn: Labels = {
   loading: 'Loading',
+  vipBadge: 'Members',
+  statusOnline: 'Online',
+  statusAway: 'Away',
+  statusBusy: 'Busy',
+  statusOffline: 'Offline',
+  moreCount: (n) => `${n} more`,
+  notifications: 'Notifications',
+  notificationsUnread: (n) => `Notifications, ${n} unread`,
+  markAllRead: 'Mark all as read',
+  noNotifications: 'You have no notifications',
+  unread: 'Unread',
+  markRead: (t) => `Mark as read: ${t}`,
+  dismissNotification: (t) => `Dismiss: ${t}`,
   close: 'Close',
+  news: 'News',
+  newsKinds: { evento: 'Event', felicitacion: 'Congratulations', aviso: 'Notice', convocatoria: 'Open call' },
+  newsGoTo: (n, total) => `Show news ${n} of ${total}`,
+  dismissNews: (t) => `Close news: ${t}`,
+  newsViewAll: 'View all',
+  selectAll: 'Select all',
+  moreActions: 'More actions',
+  mainNavigation: 'Main navigation',
+  editField: (f) => `Edit ${f}`,
+  clickToEdit: 'Click to edit',
   breadcrumb: 'Breadcrumb',
   pagination: 'Pagination',
   previousPage: 'Previous page',
@@ -99,6 +162,13 @@ export const labelsEn: Labels = {
   noResults: 'No results',
   resultsAvailable: (n) => (n === 1 ? '1 result available' : `${n} results available`),
   previousMonth: 'Previous month',
+  rangePickStart: 'Choose the first day',
+  rangePickEnd: (s) => `Start: ${s}. Choose the last day`,
+  rangeValue: (s, e) => `From ${s} to ${e}`,
+  rangeStartDay: 'start of the range',
+  rangeEndDay: 'end of the range',
+  chooseDateRange: 'Choose a date range',
+  clearRange: 'Clear dates',
   nextMonth: 'Next month',
   openCalendar: 'Open calendar',
   confirm: 'Confirm',
@@ -147,7 +217,30 @@ export const labelsEn: Labels = {
 
 export const labelsEs: Labels = {
   loading: 'Cargando',
+  vipBadge: 'Miembros',
+  statusOnline: 'En línea',
+  statusAway: 'Ausente',
+  statusBusy: 'Ocupado',
+  statusOffline: 'Desconectado',
+  moreCount: (n) => `${n} más`,
+  notifications: 'Notificaciones',
+  notificationsUnread: (n) => `Notificaciones, ${n} sin leer`,
+  markAllRead: 'Marcar todo como leído',
+  noNotifications: 'No tienes notificaciones',
+  unread: 'Sin leer',
+  markRead: (t) => `Marcar como leída: ${t}`,
+  dismissNotification: (t) => `Descartar: ${t}`,
   close: 'Cerrar',
+  news: 'Novedades',
+  newsKinds: { evento: 'Evento', felicitacion: 'Felicitación', aviso: 'Aviso', convocatoria: 'Convocatoria' },
+  newsGoTo: (n, total) => `Ver noticia ${n} de ${total}`,
+  dismissNews: (t) => `Cerrar noticia: ${t}`,
+  newsViewAll: 'Ver todas',
+  selectAll: 'Seleccionar todos',
+  moreActions: 'Más acciones',
+  mainNavigation: 'Navegación principal',
+  editField: (f) => `Editar ${f}`,
+  clickToEdit: 'Haz clic para editar',
   breadcrumb: 'Ruta de navegación',
   pagination: 'Paginación',
   previousPage: 'Página anterior',
@@ -159,6 +252,13 @@ export const labelsEs: Labels = {
   noResults: 'Sin resultados',
   resultsAvailable: (n) => (n === 1 ? '1 resultado disponible' : `${n} resultados disponibles`),
   previousMonth: 'Mes anterior',
+  rangePickStart: 'Elige el primer día',
+  rangePickEnd: (s) => `Inicio: ${s}. Elige el último día`,
+  rangeValue: (s, e) => `Del ${s} al ${e}`,
+  rangeStartDay: 'inicio del rango',
+  rangeEndDay: 'fin del rango',
+  chooseDateRange: 'Elegir rango de fechas',
+  clearRange: 'Borrar fechas',
   nextMonth: 'Mes siguiente',
   openCalendar: 'Abrir calendario',
   confirm: 'Confirmar',

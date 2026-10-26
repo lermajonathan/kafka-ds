@@ -197,6 +197,20 @@
   line-height: var(--kafka-news-title-line-height);
   letter-spacing: var(--kafka-news-title-letter-spacing);
 }
+.kafka-type-news-kind-type {
+  font-family: var(--kafka-news-kind-type-font-family);
+  font-size: var(--kafka-news-kind-type-font-size);
+  font-weight: var(--kafka-news-kind-type-font-weight);
+  line-height: var(--kafka-news-kind-type-line-height);
+  letter-spacing: var(--kafka-news-kind-type-letter-spacing);
+}
+.kafka-type-news-meta-type {
+  font-family: var(--kafka-news-meta-type-font-family);
+  font-size: var(--kafka-news-meta-type-font-size);
+  font-weight: var(--kafka-news-meta-type-font-weight);
+  line-height: var(--kafka-news-meta-type-line-height);
+  letter-spacing: var(--kafka-news-meta-type-letter-spacing);
+}
 .kafka-type-prose-body-type {
   font-family: var(--kafka-prose-body-type-font-family);
   font-size: var(--kafka-prose-body-type-font-size);
@@ -562,4 +576,200 @@
   font-weight: var(--kafka-calendar-title-type-font-weight);
   line-height: var(--kafka-calendar-title-type-line-height);
   letter-spacing: var(--kafka-calendar-title-type-letter-spacing);
+}
+.kafka-type-alert-title-type {
+  font-family: var(--kafka-alert-title-type-font-family);
+  font-size: var(--kafka-alert-title-type-font-size);
+  font-weight: var(--kafka-alert-title-type-font-weight);
+  line-height: var(--kafka-alert-title-type-line-height);
+  letter-spacing: var(--kafka-alert-title-type-letter-spacing);
+}
+.kafka-type-alert-body-type {
+  font-family: var(--kafka-alert-body-type-font-family);
+  font-size: var(--kafka-alert-body-type-font-size);
+  font-weight: var(--kafka-alert-body-type-font-weight);
+  line-height: var(--kafka-alert-body-type-line-height);
+  letter-spacing: var(--kafka-alert-body-type-letter-spacing);
+}
+.kafka-type-divider-label-type {
+  font-family: var(--kafka-divider-label-type-font-family);
+  font-size: var(--kafka-divider-label-type-font-size);
+  font-weight: var(--kafka-divider-label-type-font-weight);
+  line-height: var(--kafka-divider-label-type-line-height);
+  letter-spacing: var(--kafka-divider-label-type-letter-spacing);
+}
+.kafka-type-empty-state-title-type {
+  font-family: var(--kafka-empty-state-title-type-font-family);
+  font-size: var(--kafka-empty-state-title-type-font-size);
+  font-weight: var(--kafka-empty-state-title-type-font-weight);
+  line-height: var(--kafka-empty-state-title-type-line-height);
+  letter-spacing: var(--kafka-empty-state-title-type-letter-spacing);
+}
+.kafka-type-empty-state-description-type {
+  font-family: var(--kafka-empty-state-description-type-font-family);
+  font-size: var(--kafka-empty-state-description-type-font-size);
+  font-weight: var(--kafka-empty-state-description-type-font-weight);
+  line-height: var(--kafka-empty-state-description-type-line-height);
+  letter-spacing: var(--kafka-empty-state-description-type-letter-spacing);
+}
+.kafka-type-panel-title-type {
+  font-family: var(--kafka-panel-title-type-font-family);
+  font-size: var(--kafka-panel-title-type-font-size);
+  font-weight: var(--kafka-panel-title-type-font-weight);
+  line-height: var(--kafka-panel-title-type-line-height);
+  letter-spacing: var(--kafka-panel-title-type-letter-spacing);
+}
+.kafka-type-panel-description-type {
+  font-family: var(--kafka-panel-description-type-font-family);
+  font-size: var(--kafka-panel-description-type-font-size);
+  font-weight: var(--kafka-panel-description-type-font-weight);
+  line-height: var(--kafka-panel-description-type-line-height);
+  letter-spacing: var(--kafka-panel-description-type-letter-spacing);
+}
+.kafka-type-avatar-type-sm {
+  font-family: var(--kafka-avatar-type-sm-font-family);
+  font-size: var(--kafka-avatar-type-sm-font-size);
+  font-weight: var(--kafka-avatar-type-sm-font-weight);
+  line-height: var(--kafka-avatar-type-sm-line-height);
+  letter-spacing: var(--kafka-avatar-type-sm-letter-spacing);
+}
+.kafka-type-avatar-type-md {
+  font-family: var(--kafka-avatar-type-md-font-family);
+  font-size: var(--kafka-avatar-type-md-font-size);
+  font-weight: var(--kafka-avatar-type-md-font-weight);
+  line-height: var(--kafka-avatar-type-md-line-height);
+  letter-spacing: var(--kafka-avatar-type-md-letter-spacing);
+}
+.kafka-type-avatar-type-lg {
+  font-family: var(--kafka-avatar-type-lg-font-family);
+  font-size: var(--kafka-avatar-type-lg-font-size);
+  font-weight: var(--kafka-avatar-type-lg-font-weight);
+  line-height: var(--kafka-avatar-type-lg-line-height);
+  letter-spacing: var(--kafka-avatar-type-lg-letter-spacing);
+}
+.kafka-type-progress-value-type {
+  font-family: var(--kafka-progress-value-type-font-family);
+  font-size: var(--kafka-progress-value-type-font-size);
+  font-weight: var(--kafka-progress-value-type-font-weight);
+  line-height: var(--kafka-progress-value-type-line-height);
+  letter-spacing: var(--kafka-progress-value-type-letter-spacing);
+}
+.kafka-type-progress-label-type {
+  font-family: var(--kafka-progress-label-type-font-family);
+  font-size: var(--kafka-progress-label-type-font-size);
+  font-weight: var(--kafka-progress-label-type-font-weight);
+  line-height: var(--kafka-progress-label-type-line-height);
+  letter-spacing: var(--kafka-progress-label-type-letter-spacing);
+}
+.kafka-type-toast-title-type {
+  font-family: var(--kafka-toast-title-type-font-family);
+  font-size: var(--kafka-toast-title-type-font-size);
+  font-weight: var(--kafka-toast-title-type-font-weight);
+  line-height: var(--kafka-toast-title-type-line-height);
+  letter-spacing: var(--kafka-toast-title-type-letter-spacing);
+}
+.kafka-type-toast-body-type {
+  font-family: var(--kafka-toast-body-type-font-family);
+  font-size: var(--kafka-toast-body-type-font-size);
+  font-weight: var(--kafka-toast-body-type-font-weight);
+  line-height: var(--kafka-toast-body-type-line-height);
+  letter-spacing: var(--kafka-toast-body-type-letter-spacing);
+}
+.kafka-type-count-badge-type {
+  font-family: var(--kafka-count-badge-type-font-family);
+  font-size: var(--kafka-count-badge-type-font-size);
+  font-weight: var(--kafka-count-badge-type-font-weight);
+  line-height: var(--kafka-count-badge-type-line-height);
+  letter-spacing: var(--kafka-count-badge-type-letter-spacing);
+}
+.kafka-type-notification-center-title-type {
+  font-family: var(--kafka-notification-center-title-type-font-family);
+  font-size: var(--kafka-notification-center-title-type-font-size);
+  font-weight: var(--kafka-notification-center-title-type-font-weight);
+  line-height: var(--kafka-notification-center-title-type-line-height);
+  letter-spacing: var(--kafka-notification-center-title-type-letter-spacing);
+}
+.kafka-type-notification-center-body-type {
+  font-family: var(--kafka-notification-center-body-type-font-family);
+  font-size: var(--kafka-notification-center-body-type-font-size);
+  font-weight: var(--kafka-notification-center-body-type-font-weight);
+  line-height: var(--kafka-notification-center-body-type-line-height);
+  letter-spacing: var(--kafka-notification-center-body-type-letter-spacing);
+}
+.kafka-type-program-card-title-type {
+  font-family: var(--kafka-program-card-title-type-font-family);
+  font-size: var(--kafka-program-card-title-type-font-size);
+  font-weight: var(--kafka-program-card-title-type-font-weight);
+  line-height: var(--kafka-program-card-title-type-line-height);
+  letter-spacing: var(--kafka-program-card-title-type-letter-spacing);
+}
+.kafka-type-program-card-subtitle-type {
+  font-family: var(--kafka-program-card-subtitle-type-font-family);
+  font-size: var(--kafka-program-card-subtitle-type-font-size);
+  font-weight: var(--kafka-program-card-subtitle-type-font-weight);
+  line-height: var(--kafka-program-card-subtitle-type-line-height);
+  letter-spacing: var(--kafka-program-card-subtitle-type-letter-spacing);
+}
+.kafka-type-program-card-price-type {
+  font-family: var(--kafka-program-card-price-type-font-family);
+  font-size: var(--kafka-program-card-price-type-font-size);
+  font-weight: var(--kafka-program-card-price-type-font-weight);
+  line-height: var(--kafka-program-card-price-type-line-height);
+  letter-spacing: var(--kafka-program-card-price-type-letter-spacing);
+}
+.kafka-type-program-card-description-type {
+  font-family: var(--kafka-program-card-description-type-font-family);
+  font-size: var(--kafka-program-card-description-type-font-size);
+  font-weight: var(--kafka-program-card-description-type-font-weight);
+  line-height: var(--kafka-program-card-description-type-line-height);
+  letter-spacing: var(--kafka-program-card-description-type-letter-spacing);
+}
+.kafka-type-program-card-meta-type {
+  font-family: var(--kafka-program-card-meta-type-font-family);
+  font-size: var(--kafka-program-card-meta-type-font-size);
+  font-weight: var(--kafka-program-card-meta-type-font-weight);
+  line-height: var(--kafka-program-card-meta-type-line-height);
+  letter-spacing: var(--kafka-program-card-meta-type-letter-spacing);
+}
+.kafka-type-segmented-control-item-type {
+  font-family: var(--kafka-segmented-control-item-type-font-family);
+  font-size: var(--kafka-segmented-control-item-type-font-size);
+  font-weight: var(--kafka-segmented-control-item-type-font-weight);
+  line-height: var(--kafka-segmented-control-item-type-line-height);
+  letter-spacing: var(--kafka-segmented-control-item-type-letter-spacing);
+}
+.kafka-type-radio-card-label-type {
+  font-family: var(--kafka-radio-card-label-type-font-family);
+  font-size: var(--kafka-radio-card-label-type-font-size);
+  font-weight: var(--kafka-radio-card-label-type-font-weight);
+  line-height: var(--kafka-radio-card-label-type-line-height);
+  letter-spacing: var(--kafka-radio-card-label-type-letter-spacing);
+}
+.kafka-type-radio-card-description-type {
+  font-family: var(--kafka-radio-card-description-type-font-family);
+  font-size: var(--kafka-radio-card-description-type-font-size);
+  font-weight: var(--kafka-radio-card-description-type-font-weight);
+  line-height: var(--kafka-radio-card-description-type-line-height);
+  letter-spacing: var(--kafka-radio-card-description-type-letter-spacing);
+}
+.kafka-type-input-group-addon-type {
+  font-family: var(--kafka-input-group-addon-type-font-family);
+  font-size: var(--kafka-input-group-addon-type-font-size);
+  font-weight: var(--kafka-input-group-addon-type-font-weight);
+  line-height: var(--kafka-input-group-addon-type-line-height);
+  letter-spacing: var(--kafka-input-group-addon-type-letter-spacing);
+}
+.kafka-type-inline-edit-type {
+  font-family: var(--kafka-inline-edit-type-font-family);
+  font-size: var(--kafka-inline-edit-type-font-size);
+  font-weight: var(--kafka-inline-edit-type-font-weight);
+  line-height: var(--kafka-inline-edit-type-line-height);
+  letter-spacing: var(--kafka-inline-edit-type-letter-spacing);
+}
+.kafka-type-nav-menu-item-type {
+  font-family: var(--kafka-nav-menu-item-type-font-family);
+  font-size: var(--kafka-nav-menu-item-type-font-size);
+  font-weight: var(--kafka-nav-menu-item-type-font-weight);
+  line-height: var(--kafka-nav-menu-item-type-line-height);
+  letter-spacing: var(--kafka-nav-menu-item-type-letter-spacing);
 }

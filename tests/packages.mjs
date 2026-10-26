@@ -24,7 +24,7 @@ sh(`npm install --no-audit --no-fund --silent ${tarballs.join(' ')} react@19 rea
 const kr = path.join(app, 'node_modules/@kafka/react'), kt = path.join(app, 'node_modules/@kafka/tokens')
 // 1 · files
 for (const f of ['dist/index.js', 'dist/styles.css', 'dist/tailwind.css', 'dist/types/lib.d.ts', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(kr, f)), `@kafka/react ships ${f}`)
-for (const f of ['dist/tokens.css', 'dist/theme.css', 'dist/typography.css', 'dist/tokens.json', 'dist/tokens.js', 'dist/tokens.d.ts', 'dist/json/semantic.json', 'LICENSE']) check(fs.existsSync(path.join(kt, f)), `@kafka/tokens ships ${f}`)
+for (const f of ['dist/tokens.css', 'dist/theme.css', 'dist/typography.css', 'dist/print.css', 'dist/tokens.json', 'dist/tokens.js', 'dist/tokens.d.ts', 'dist/json/semantic.json', 'LICENSE']) check(fs.existsSync(path.join(kt, f)), `@kafka/tokens ships ${f}`)
 check(!fs.readFileSync(path.join(kr, 'dist/types/lib.d.ts'), 'utf8').includes('.css'), 'type entry does not import CSS')
 // 2 · stylesheets
 const css = fs.readFileSync(path.join(kr, 'dist/styles.css'), 'utf8')

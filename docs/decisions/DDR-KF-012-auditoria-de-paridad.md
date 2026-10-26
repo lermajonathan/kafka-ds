@@ -1,0 +1,73 @@
+---
+id: DDR-KF-012
+title: Auditoría de paridad con Pance
+status: aceptada
+date: 2026-10-25
+---
+
+# DDR-KF-012 · Auditoría de paridad con Pance
+
+## Método
+Se compararon los componentes exportados por `src/components` de Pance (72) y de Kafka (67). Doce de Pance son de visualización de datos y quedan fuera por [DDR-KF-004](DDR-KF-004-alcance-v1.md). Los demás se clasificaron como equivalentes, faltantes o propios de Kafka.
+
+## Equivalentes con otro nombre o forma
+| Pance | Kafka | Nota |
+|---|---|---|
+| Breadcrumb | Breadcrumbs | |
+| DropdownMenu | Menu | |
+| FileDropzone | FileUpload | |
+| Steps | Stepper | |
+| Toggle | Switch | |
+| TabPanel | Tabs | Los paneles viajan dentro de `items`, no como pieza aparte |
+| PanceProvider | KafkaProvider | |
+| Divider | Divider | Pance usa `div role="separator"`; Kafka usa `<hr>`, que ya tiene el rol |
+
+## Faltantes (14) y decisión
+Jonathan decidió construirlos todos antes de cerrar H5, en un corte 3 dividido en cuatro partes. Cada uno sigue TDD y los criterios de DDR-KF-004.
+
+| Corte | Componentes | Motivo |
+|---|---|---|
+| 3a | SegmentedControl, ThemeProvider, ThemeToggle | Tema claro, oscuro o sistema para lectores; hoy solo existe dentro de ReadingSettings |
+| 3b | CheckboxGroup, SwitchRow, RadioCard | Formularios: seleccionar todos, filas de ajuste, inscripción a talleres |
+| 3c | InputGroup, InlineEdit, SplitButton, ToggleButton | Formularios y acciones del CRM |
+| 3d | NavMenu, RangeSlider, RangeCalendar, DateRangePicker | Navegación de app y rangos |
+
+DDR-KF-009 había pospuesto varios de estos «a la auditoría de H5»; esta DDR cierra esa revisión.
+
+## Propios de Kafka (sin equivalente en Pance)
+Los 14 de lectura (Prose, PullQuote, Footnote, Verse, Epigraph, DropCap, ReadingProgress, TableOfContents, ReadingSettings, PrevNext, Figure, Author, ReadingTime, Embed), más Chip, NewsBox y ProgramCard.
+
+## Consecuencias
+- El alcance de v1 sube de 59 a 73 componentes heredados; H5 no cierra hasta el corte 3d.
+- Sigue sin publicarse en npm antes de H8.
+
+## Corte 3a (SegmentedControl, ThemeProvider, ThemeToggle)
+- **SegmentedControl** es un `radiogroup` con una sola parada de Tab y flechas que mueven y seleccionan (con vuelta al extremo, Home y End). Mide 44 px (`md`) o 32 px (`sm`, para barras densas). La opción activa se distingue por superficie y borde de marca, no solo por color.
+- **ThemeProvider** pone `data-theme` en `<html>`, recuerda la elección en `localStorage` (`kafka-theme`; `storageKey={null}` lo apaga) y sigue el dispositivo con «Sistema», incluso si este cambia. `themeInitScript()` evita el parpadeo del primer pintado. La clave de almacenamiento es `kafka-theme`, no la de Pance.
+- **ThemeToggle** es un SegmentedControl con icono y texto (Claro, Oscuro, Sistema). `ReadingSettings` conserva su propio control de tema.
+- **Pruebas de axe:** se escanean con movimiento reducido; sin eso, la entrada animada de NewsBox se leía a medio desvanecer y daba un falso fallo de contraste.
+
+## Corte 3b (CheckboxGroup, RadioCard; SwitchRow ya existe)
+- **SwitchRow no se construye: `Switch` ya es esa fila.** `Switch` de Kafka es una fila completa (texto y descripción a la izquierda, interruptor a la derecha, toda la fila clicable, 44 px) y la prueba existente la cubre. Crear otro componente sería duplicarlo. Queda como equivalente en la tabla de la auditoría.
+- **CheckboxGroup** es un `fieldset` con `legend` (no `role="group"` suelto), controlado con un arreglo de valores en lugar del `Set` de Pance. «Seleccionar todos» es un `Checkbox` real con estado mixto y omite las opciones deshabilitadas. Lleva pista y error como `RadioGroup`.
+- **RadioCard** es un radio nativo mostrado como tarjeta, no un `button role="radio"` como en Pance: así las flechas, el Tab y el envío de formularios funcionan sin código propio. Se acompaña de **`RadioCardGroup`** (fieldset, legend, nombre compartido, pista y error), que Pance no tiene. El nombre accesible es el título y la descripción va con `aria-describedby`. La tarjeta elegida se distingue por borde de marca y punto relleno, no solo por color.
+
+## Corte 3c (InputGroup, InlineEdit, SplitButton, ToggleButton)
+- **InputGroup** recibe el `Input` como hijo y pega a sus lados texto, iconos o un botón de acción; solo las esquinas exteriores son redondas y la parte enfocada sube sobre sus vecinas para que el anillo no se recorte. Los complementos no nombran el campo: lo nombra el `Field`. Pance lo lograba con selectores `!important` sobre el input; aquí es CSS propio de la familia.
+- **InlineEdit** exige `label` (nombra el campo y se lee como «Editar {campo}»). Enter guarda y devuelve el foco al botón, Escape cancela, salir del campo guarda, y un valor vacío no se guarda. El lápiz está siempre visible (en Pance solo al pasar el puntero, lo que dejaba sin pista a quien usa táctil o teclado).
+- **SplitButton** compone `Button` y `Menu`: dos botones de 44 px separados por un espacio pequeño para que cada uno conserve su anillo de foco completo. La flecha se llama «Más acciones» y lleva `aria-haspopup="menu"`.
+- **ToggleButton** conserva siempre la misma etiqueta y deja el estado a `aria-pressed`, a diferencia de Pance, que cambiaba el texto («Seguir» / «Dejar de seguir») y a la vez `aria-pressed`, lo que se lee doble. El estado pulsado se ve por la variante rellena y, si se pasa `PressedIcon`, también por el icono.
+- `IconSearch` se añade a los iconos.
+
+## Corte 3d-1 (NavMenu; RangeSlider ya existe)
+- **RangeSlider no se construye: `Slider` ya es esa pieza.** El `RangeSlider` de Pance es un deslizador de un solo valor sobre `input type="range"` (con color de severidad), igual que el `Slider` de Kafka, que además muestra el valor como texto. Un deslizador de dos extremos (mínimo y máximo) sería un componente distinto y no está en Pance; queda fuera de v1.
+- **NavMenu usa enlaces reales** (`href`), no botones con `onChange` como en Pance: así funcionan el clic medio, Ctrl+clic y el historial. `onNavigate` permite a una app de una sola página manejar el clic, y deja pasar los clics con modificadores. La página actual lleva `aria-current="page"`, relleno y una marca de color de marca a la izquierda.
+- Los grupos son botones de divulgación (`aria-expanded`, `aria-controls`) con Tab normal; no hay foco itinerante que aprender. Un solo nivel de hijos. Un elemento deshabilitado es texto con `aria-disabled`, fuera del orden de Tab.
+- **`collapsed`** deja solo los iconos: los nombres siguen en la página (`sr-only`) y se muestran como `title`. Un grupo sin `href` propio no tiene a dónde ir y se omite. En Pance los nombres desaparecían y se reemplazaban por `aria-label`.
+
+## Corte 3d-2 (RangeCalendar, DateRangePicker)
+- **Un solo motor de calendario.** `Calendar` se refactorizó en `CalendarBase` (teclado, nombres y diseño en un solo lugar) y `Calendar` y `RangeCalendar` son dos usos de él. Las pruebas de `Calendar` no cambiaron y siguen pasando. Pance hacía lo mismo con `CalendarEngine`.
+- **RangeCalendar** es controlado (`value: { start, end }`, fechas `YYYY-MM-DD`). Primer clic fija el inicio, el segundo el final (si es anterior, se intercambian) y el tercero empieza de nuevo. Una línea de estado con `role="status"` dice qué hacer a continuación y el rango elegido. Los extremos llevan «inicio del rango» y «fin del rango» en su nombre accesible, y todos los días del rango son `aria-selected`; los extremos usan el relleno fuerte y negrita, los intermedios una banda suave.
+- **DateRangePicker** es un botón con `aria-haspopup="dialog"` que abre un `Popover` con el calendario, atajos (`presets`) y «Borrar fechas». Mantiene un borrador interno: `onValueChange` recibe un rango completo o uno vacío, nunca uno a medias. Su nombre accesible incluye la etiqueta del `Field` y el valor. Se muestra un solo mes (Pance mostraba dos en pantallas anchas).
+- Las fechas del estado y del botón usan `día mes-corto año` ("10 de nov de 2026"); el formato `medium` de `es-CO` daba `10/11/2026`, ambiguo entre día y mes.
+- Con esto se cierra el corte 3: de los 14 faltantes se construyeron 12 (SwitchRow y RangeSlider ya existían como `Switch` y `Slider`).

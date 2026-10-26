@@ -1,4 +1,4 @@
-import { Button, IconArrowRight, IconCrown } from '../src/components'
+import { Button, Card, IconArrowRight, IconCrown } from '../src/components'
 import type { Example } from './types'
 
 export const examples: Example[] = [
@@ -17,13 +17,20 @@ export const examples: Example[] = [
   {
     id: 'icons',
     title: 'With icons',
-    description: 'A leading icon names the action; a trailing arrow suggests moving forward.',
+    description: 'A leading icon names the action; a trailing arrow suggests moving forward; both can go together.',
     render: () => (
       <div className="flex flex-wrap items-center gap-4">
         <Button Icon={IconCrown}>Hazte miembro</Button>
         <Button variant="outline" TrailingIcon={IconArrowRight}>Continuar</Button>
+        <Button variant="soft" Icon={IconCrown} TrailingIcon={IconArrowRight}>Ver membresías</Button>
       </div>
     ),
+  },
+  {
+    id: 'link',
+    title: 'Link variant',
+    description: 'Text only and always underlined, for a quiet action that runs on the page. It is still 44 px tall. For navigation use a Link.',
+    render: () => <Button variant="link">Ver el reglamento</Button>,
   },
   {
     id: 'states',
@@ -46,6 +53,16 @@ export const examples: Example[] = [
       <div className="w-full max-w-sm">
         <Button block>Pagar ahora</Button>
       </div>
+    ),
+  },
+  {
+    id: 'vip',
+    title: 'On the VIP card',
+    description: 'The `vip` variant is fixed ink in both modes, because the gold of the VIP card does not change either. Use it only inside that card.',
+    render: () => (
+      <Card highlight="vip" className="max-w-xs">
+        <Button variant="vip" block>Hacerme miembro</Button>
+      </Card>
     ),
   },
 ]

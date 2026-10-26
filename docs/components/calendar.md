@@ -34,8 +34,8 @@ Arrow keys move by day and week, Page Up and Down by month. Days outside `min` a
 | `onValueChange` | `(iso: string) => void` |  |  |
 | `min` | `string` |  | Earliest and latest selectable dates, as `YYYY-MM-DD`. |
 | `max` | `string` |  |  |
-| `locale` | `string` | `'es-CO'` | BCP 47 language for month and day names. |
-| `weekStartsOn` | `0 \| 1` | `1` | First day of the week: 0 is Sunday, 1 is Monday. |
+| `locale` | `string` |  | BCP 47 language for month and day names. |
+| `weekStartsOn` | `0 \| 1` |  | First day of the week: 0 is Sunday, 1 is Monday. |
 | `className` | `string` |  |  |
 
 ## Accessibility
@@ -73,6 +73,8 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 | `calendar.title-type` | `{typography.reading.heading-sm}` |
 | `calendar.gap` | `{space.4}` |
 | `calendar.disabled-opacity` | `{opacity.disabled}` |
+| `calendar.range-bg` | `{color.bg.sunken}` |
+| `calendar.range-fg` | `{color.fg.default}` |
 
 ## Related
 

@@ -17,7 +17,14 @@ import { examples as slider } from './slider'
 import { examples as pin_input } from './pin-input'
 import { examples as tag_input } from './tag-input'
 import { examples as file_upload } from './file-upload'
+import { examples as checkbox_group } from './checkbox-group'
+import { examples as radio_card } from './radio-card'
+import { examples as range_calendar } from './range-calendar'
+import { examples as segmented_control } from './segmented-control'
+import { examples as split_button } from './split-button'
 import { examples as tabs } from './tabs'
+import { examples as toggle_button } from './toggle-button'
+import { examples as theme_toggle } from './theme-toggle'
 import { examples as accordion } from './accordion'
 import { examples as breadcrumbs } from './breadcrumbs'
 import { examples as pagination } from './pagination'
@@ -45,6 +52,24 @@ import { examples as figure } from './figure'
 import { examples as author } from './author'
 import { examples as reading_time } from './reading-time'
 import { examples as embed } from './embed'
+import { examples as alert } from './alert'
+import { examples as divider } from './divider'
+import { examples as skeleton } from './skeleton'
+import { examples as empty_state } from './empty-state'
+import { examples as card } from './card'
+import { examples as panel } from './panel'
+import { examples as avatar } from './avatar'
+import { examples as progress } from './progress'
+import { examples as spinner } from './spinner'
+import { examples as toast } from './toast'
+import { examples as count_badge } from './count-badge'
+import { examples as date_range_picker } from './date-range-picker'
+import { examples as inline_edit } from './inline-edit'
+import { examples as input_group } from './input-group'
+import { examples as nav_menu } from './nav-menu'
+import { examples as news_box } from './news-box'
+import { examples as notification_center } from './notification-center'
+import { examples as program_card } from './program-card'
 
 export interface ComponentEntry {
   /** Name as exported from the library. */
@@ -72,6 +97,13 @@ export const registry: Record<string, ComponentEntry> = {
   'pin-input': { name: 'PinInput', file: 'pin-input.tsx', examples: pin_input },
   'tag-input': { name: 'TagInput', file: 'tag-input.tsx', examples: tag_input },
   'file-upload': { name: 'FileUpload', file: 'file-upload.tsx', examples: file_upload },
+  'checkbox-group': { name: 'CheckboxGroup', file: 'checkbox-group.tsx', examples: checkbox_group },
+  'radio-card': { name: 'RadioCardGroup', file: 'radio-card.tsx', examples: radio_card },
+  'range-calendar': { name: 'RangeCalendar', file: 'range-calendar.tsx', examples: range_calendar },
+  'segmented-control': { name: 'SegmentedControl', file: 'segmented-control.tsx', examples: segmented_control },
+  'theme-toggle': { name: 'ThemeToggle', file: 'theme.tsx', examples: theme_toggle },
+  'split-button': { name: 'SplitButton', file: 'split-button.tsx', examples: split_button },
+  'toggle-button': { name: 'ToggleButton', file: 'toggle-button.tsx', examples: toggle_button },
   'tabs': { name: 'Tabs', file: 'tabs.tsx', examples: tabs },
   'accordion': { name: 'Accordion', file: 'accordion.tsx', examples: accordion },
   'breadcrumbs': { name: 'Breadcrumbs', file: 'breadcrumbs.tsx', examples: breadcrumbs },
@@ -100,4 +132,22 @@ export const registry: Record<string, ComponentEntry> = {
   'author': { name: 'Author', file: 'author.tsx', examples: author },
   'reading-time': { name: 'ReadingTime', file: 'reading-time.tsx', examples: reading_time },
   'embed': { name: 'Embed', file: 'embed.tsx', examples: embed },
+  'alert': { name: 'Alert', file: 'alert.tsx', examples: alert },
+  'divider': { name: 'Divider', file: 'divider.tsx', examples: divider },
+  'skeleton': { name: 'Skeleton', file: 'skeleton.tsx', examples: skeleton },
+  'empty-state': { name: 'EmptyState', file: 'empty-state.tsx', examples: empty_state },
+  'card': { name: 'Card', file: 'card.tsx', examples: card },
+  'panel': { name: 'Panel', file: 'panel.tsx', examples: panel },
+  'avatar': { name: 'Avatar', file: 'avatar.tsx', examples: avatar },
+  'progress': { name: 'Progress', file: 'progress.tsx', examples: progress },
+  'spinner': { name: 'Spinner', file: 'spinner.tsx', examples: spinner },
+  'toast': { name: 'Toast', file: 'toast.tsx', examples: toast },
+  'count-badge': { name: 'CountBadge', file: 'count-badge.tsx', examples: count_badge },
+  'date-range-picker': { name: 'DateRangePicker', file: 'date-range-picker.tsx', examples: date_range_picker },
+  'inline-edit': { name: 'InlineEdit', file: 'inline-edit.tsx', examples: inline_edit },
+  'input-group': { name: 'InputGroup', file: 'input-group.tsx', examples: input_group },
+  'nav-menu': { name: 'NavMenu', file: 'nav-menu.tsx', examples: nav_menu },
+  'news-box': { name: 'NewsBox', file: 'news-box.tsx', examples: news_box },
+  'notification-center': { name: 'NotificationCenter', file: 'notification-center.tsx', examples: notification_center },
+  'program-card': { name: 'ProgramCard', file: 'program-card.tsx', examples: program_card },
 }

@@ -3,7 +3,7 @@
    ancestor's overflow. Dismissal (Escape, click outside) is handled here so every overlay behaves the same. */
 import { useEffect, useLayoutEffect, type RefObject } from 'react'
 
-export type Placement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end' | 'top' | 'bottom'
+export type Placement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end' | 'top' | 'bottom' | 'left' | 'right'
 
 /** Opens and closes a `popover="manual"` element from state. */
 export function usePopoverState(panel: RefObject<HTMLElement | null>, open: boolean) {
@@ -33,13 +33,30 @@ export function useAnchoredPosition(
       if (matchWidth) p.style.width = `${ar.width}px`
       const pr = p.getBoundingClientRect()
       const vw = document.documentElement.clientWidth, vh = document.documentElement.clientHeight
-      const below = placement.startsWith('bottom')
-      let top = below ? ar.bottom + offset : ar.top - pr.height - offset
-      if (below && top + pr.height > vh && ar.top - pr.height - offset >= 0) top = ar.top - pr.height - offset
-      else if (!below && top < 0 && ar.bottom + pr.height + offset <= vh) top = ar.bottom + offset
-      let left = placement.endsWith('end') ? ar.right - pr.width : placement === 'top' || placement === 'bottom' ? ar.left + (ar.width - pr.width) / 2 : ar.left
-      left = Math.max(8, Math.min(left, vw - pr.width - 8))
+      const sideways = placement === 'left' || placement === 'right'
+      let top: number, left: number, side: 'top' | 'bottom' | 'left' | 'right'
+      if (sideways) {
+        let toRight = placement === 'right'
+        if (toRight && ar.right + offset + pr.width > vw - 8 && ar.left - pr.width - offset >= 8) toRight = false
+        else if (!toRight && ar.left - pr.width - offset < 8 && ar.right + offset + pr.width <= vw - 8) toRight = true
+        side = toRight ? 'right' : 'left'
+        left = toRight ? ar.right + offset : ar.left - pr.width - offset
+        top = Math.max(8, Math.min(ar.top + (ar.height - pr.height) / 2, vh - pr.height - 8))
+      } else {
+        const below = placement.startsWith('bottom')
+        top = below ? ar.bottom + offset : ar.top - pr.height - offset
+        if (below && top + pr.height > vh && ar.top - pr.height - offset >= 0) top = ar.top - pr.height - offset
+        else if (!below && top < 0 && ar.bottom + pr.height + offset <= vh) top = ar.bottom + offset
+        side = top >= ar.bottom ? 'bottom' : 'top'
+        left = placement.endsWith('end') ? ar.right - pr.width : placement === 'top' || placement === 'bottom' ? ar.left + (ar.width - pr.width) / 2 : ar.left
+        left = Math.max(8, Math.min(left, vw - pr.width - 8))
+      }
       p.style.top = `${Math.max(0, top)}px`; p.style.left = `${left}px`
+      // Tell the panel which side it is on and where the anchor's centre falls along it, so an arrow can point at it
+      p.dataset.side = side
+      const along = (pos: number, size: number, c: number) => Math.max(12, Math.min(size - 12, c - pos))
+      p.style.setProperty('--kafka-arrow-x', `${along(left, pr.width, ar.left + ar.width / 2)}px`)
+      p.style.setProperty('--kafka-arrow-y', `${along(Math.max(0, top), pr.height, ar.top + ar.height / 2)}px`)
     }
     place()
     window.addEventListener('resize', place); window.addEventListener('scroll', place, true)

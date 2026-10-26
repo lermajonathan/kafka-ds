@@ -15,7 +15,7 @@ export interface PullQuoteProps extends HTMLAttributes<HTMLElement> {
 export function PullQuote({ children, attribution, cite, className, ...rest }: PullQuoteProps) {
   return (
     <figure
-      className={cx('flex flex-col gap-(--kafka-pull-quote-gap) border-l-(length:--kafka-pull-quote-rule-width) border-(--kafka-pull-quote-rule) pl-(--kafka-pull-quote-padding)', className)}
+      className={cx('kafka-pull-quote flex flex-col gap-(--kafka-pull-quote-gap) border-l-(length:--kafka-pull-quote-rule-width) border-(--kafka-pull-quote-rule) pl-(--kafka-pull-quote-padding)', className)}
       {...rest}
     >
       <blockquote cite={cite} className="kafka-type-pull-quote-type text-(--kafka-pull-quote-text) italic">

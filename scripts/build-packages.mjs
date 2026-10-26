@@ -15,7 +15,7 @@ const write = (p, s) => { fs.mkdirSync(path.dirname(rel(p)), { recursive: true }
 
 /* ── @kafka/tokens ── */
 fs.rmSync(rel('packages/tokens/dist'), { recursive: true, force: true })
-for (const f of ['tokens.css', 'theme.css', 'typography.css']) copy(`src/styles/${f}`, `packages/tokens/dist/${f}`)
+for (const f of ['tokens.css', 'theme.css', 'typography.css', 'print.css']) copy(`src/styles/${f}`, `packages/tokens/dist/${f}`)
 copy('tokens/dist/tokens.json', 'packages/tokens/dist/tokens.json')
 for (const f of ['primitives', 'semantic', 'components']) copy(`tokens/${f}.json`, `packages/tokens/dist/json/${f}.json`)
 run('pnpm exec tsc src/tokens.ts --declaration --module esnext --target es2020 --skipLibCheck --outDir packages/tokens/dist')
