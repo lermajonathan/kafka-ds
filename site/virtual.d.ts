@@ -1,8 +1,9 @@
 /// <reference types="vite/client" />
 declare module 'virtual:kafka-site' {
-  interface Page { path: string; title: string; html: string }
-  interface Component { id: string; path: string; name: string; summary: string; html: string }
-  interface Decision { id: string; path: string; title: string; status: string; html: string }
+  import type { Example } from '../examples/types'
+  interface Page { path: string; title: string }
+  interface Component { id: string; path: string; name: string; summary: string }
+  interface Decision { id: string; path: string; title: string; status: string }
   const data: {
     version: string
     counts: { components: number; tokens: number; decisions: number }
@@ -13,4 +14,8 @@ declare module 'virtual:kafka-site' {
     repo: string
   }
   export default data
+  /** The html of a page, fetched when it opens. */
+  export const pageLoaders: Record<string, () => Promise<string>>
+  /** The runnable examples of a component, fetched when its page opens. */
+  export const exampleLoaders: Record<string, () => Promise<Example[]>>
 }

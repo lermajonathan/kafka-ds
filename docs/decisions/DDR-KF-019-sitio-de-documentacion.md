@@ -25,5 +25,7 @@ H7 pide un sitio de documentación publicado. La documentación ya existe como M
 ## Consecuencias
 
 - Cualquier cambio en un componente, un ejemplo o una decisión llega al sitio sin tocar nada más.
-- Literata se autoaloja en H8; hasta entonces el sitio usa la tipografía de reserva.
-- El paquete de JavaScript pesa cerca de 1 MB (223 kB comprimido): se puede dividir por página si hace falta.
+- **Literata autoalojada** en el sitio (variable, con tamaño óptico, subconjuntos latino y latino extendido; licencia OFL en `site/fonts/`). El sitio no pide nada a terceros. En H8 falta llevarla a la librería y a la impresión.
+- **Carga por página.** La primera carga trae solo el esqueleto (≈120 kB comprimidos); el contenido y los ejemplos de cada página llegan cuando se abre. `tests/site-size.mjs` fija el presupuesto.
+- **Buscador** en la cabecera, hecho con el `Combobox` de Kafka: busca componentes (con su familia), decisiones y páginas, ignora tildes y se enfoca con `/`.
+- Los ejemplos usan rutas como `/portada.svg`; bajo `/kafka-ds/` el sitio las prefija al crear cada elemento (`site/jsx-runtime.ts`, solo para el sitio).

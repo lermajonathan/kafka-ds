@@ -2,6 +2,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '../src/styles/kafka.css'
+import './fonts.css'
 import './site.css'
 import { App } from './app'
 

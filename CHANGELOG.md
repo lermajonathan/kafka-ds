@@ -8,6 +8,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 - **Sitio de documentación** en Vite y React (`site/`): inicio, primeros pasos, 70 páginas de componentes con ejemplos que corren encima de su código, 19 decisiones y la referencia de tokens. Claro y oscuro, navegable con teclado, sin peticiones fuera de su origen ([DDR-KF-019](docs/decisions/DDR-KF-019-sitio-de-documentacion.md)).
 - `pnpm run dev:site`, `pnpm run build:site` y `pnpm run test:site` (datos, rutas, foco, tema, axe-core en dos tamaños y dos temas, sin desborde en 390 px). Se publica en GitHub Pages cuando `main` cambia (`.github/workflows/pages.yml`).
 - Nueva guía [Primeros pasos](docs/getting-started.md).
+- Pulido del sitio: **Literata autoalojada**, **buscador** (componentes, decisiones y páginas; atajo `/`) y **JavaScript dividido por página** (primera carga ≈120 kB comprimidos, antes 218 kB; `tests/site-size.mjs`).
 - Figma: marco editorial (cabecera, línea dorada y colofón) en todas las páginas menos la portada; la página Decisions suma DDR-KF-019.
 
 ### H5 cerrado (25 oct 2026)

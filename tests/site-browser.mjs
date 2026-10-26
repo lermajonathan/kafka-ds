@@ -24,7 +24,8 @@ try {
   const page = await ctx.newPage()
   const errors = [], foreign = []
   page.on('pageerror', (e) => errors.push(e.message))
-  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()) })
+  page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errors.push(m.text()) }) // failed loads are reported by the response listener
+  page.on('response', (r) => { if (r.status() >= 400 && !r.url().endsWith('/kafka-ds/no-existe.jpg')) errors.push(`${r.status()} ${r.url()}`) })
   page.on('request', (r) => { if (!r.url().startsWith(ORIGIN) && !r.url().startsWith('data:')) foreign.push(r.url()) })
   const go = async (hash) => { await page.goto(BASE + (hash ? '#' + hash : '')); await page.waitForSelector('main h1') }
 
@@ -40,6 +41,33 @@ try {
   check((await page.evaluate(() => document.activeElement?.textContent ?? '')).match(/saltar al contenido/i) !== null, 'first Tab must reach the skip link')
   await page.keyboard.press('Enter')
   check(await page.evaluate(() => document.activeElement?.id === 'contenido'), 'the skip link must move focus to #contenido')
+
+  // Literata is served by the site itself, not a fallback and not a CDN
+  const loaded = await page.evaluate(async () => { await document.fonts.ready; return [...document.fonts].filter((f) => f.family.replace(/"/g, '') === 'Literata' && f.status === 'loaded').map((f) => f.style) })
+  check(loaded.includes('normal'), `Literata (normal) must be loaded from the site, loaded: ${JSON.stringify(loaded)}`)
+  await go('/getting-started')
+  check((await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('italic 16px Literata') })), 'Literata italic must be available')
+
+  // Search: type, choose with the keyboard, land on the page; "/" focuses the field from anywhere
+  await go('')
+  const search = page.getByRole('combobox', { name: /buscar/i })
+  check(await search.count() === 1, 'search: the header needs one combobox named "Buscar"')
+  await page.locator('main h1').click()
+  await page.keyboard.press('/')
+  check(await page.evaluate(() => document.activeElement?.getAttribute('role') === 'combobox'), 'search: "/" must focus the search field')
+  await page.keyboard.type('chip')
+  check(await page.getByRole('option', { name: /^Chip/ }).count() >= 1, 'search: "chip" must offer the Chip component')
+  await page.keyboard.press('Enter')
+  await page.waitForFunction(() => document.body.dataset.route === 'components/chip')
+  check((await search.inputValue()) === '', 'search: the field must clear after choosing')
+  await search.fill('015')
+  await page.getByRole('option', { name: /DDR-KF-015/ }).click()
+  await page.waitForFunction(() => document.body.dataset.route === 'decisions/DDR-KF-015')
+  await search.fill('navegacion')
+  check(await page.getByRole('option', { name: /Tabs/ }).count() >= 1, 'search: it finds by family and ignores accents ("navegacion" → Tabs · Navegación)')
+  await search.fill('zzzz')
+  check(await page.getByText(/sin resultados/i).count() > 0, 'search: needs an empty state')
+  await page.keyboard.press('Escape')
 
   // Components index: families and every component
   await go('/components')
@@ -83,6 +111,8 @@ try {
   for (const route of ids) {
     await page.evaluate((r) => { location.hash = '#/' + r }, route)
     await page.waitForFunction((r) => document.body.dataset.route === r, route)
+    await page.waitForSelector('main h1', { timeout: 10000 }).catch(() => {}) // content is fetched when the page opens
+    await page.waitForSelector('[data-live-example]', { timeout: 10000 }).catch(() => {})
     const live = await page.locator('[data-live-example]').count()
     check(live > 0, `${route}: needs at least one live example`)
     check((await page.locator('main h1').innerText()).trim().length > 0, `${route}: needs an h1`)

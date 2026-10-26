@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { KafkaProvider, NavMenu, Prose, ThemeProvider, ThemeToggle, labelsEs, type NavMenuItem } from '../src/components'
-import { registry } from '../examples'
-import data from 'virtual:kafka-site'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { Combobox, Field, KafkaProvider, NavMenu, Prose, ThemeProvider, ThemeToggle, labelsEs, type NavMenuItem } from '../src/components'
+import data, { exampleLoaders, pageLoaders } from 'virtual:kafka-site'
+import type { Example } from '../examples/types'
 import { href, navigate, useRoute } from './router'
 import { LiveExample } from './live'
 
@@ -35,21 +35,78 @@ const nav: NavMenuItem[] = [
 ]
 
 /** Generated documentation as a reading column. The html comes from our own markdown at build time. */
+/** Everything a reader can look for: components (with their family), decisions and the fixed pages. */
+const searchOptions = [
+  ...data.pages.map((p) => ({ value: p.path, label: p.title })),
+  ...data.families.flatMap((f) => f.ids.map((id) => ({ value: 'components/' + id, label: `${byId.get(id)!.name} · ${familyName(f.name)}` }))),
+  ...data.decisions.map((d) => ({ value: d.path, label: `${d.id} · ${d.title}` })),
+]
+
+function Search() {
+  // "/" jumps to the field from anywhere that is not already a text field, as on most documentation sites.
+  useEffect(() => {
+    const on = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null
+      if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey || t?.closest('input, textarea, select, [contenteditable="true"]')) return
+      e.preventDefault()
+      document.querySelector<HTMLInputElement>('.search input')?.focus()
+    }
+    document.addEventListener('keydown', on)
+    return () => document.removeEventListener('keydown', on)
+  }, [])
+  return (
+    <div className="search">
+      <Field label="Buscar en la documentación">
+        <Combobox options={searchOptions} value={null} placeholder="Buscar componentes y decisiones" onValueChange={(route) => route !== null && navigate(route)} />
+      </Field>
+    </div>
+  )
+}
+
 function Html({ html }: { html: string }) {
   return <Prose as="div" fullWidth className="doc" dangerouslySetInnerHTML={{ __html: html }} />
 }
 
-/** A component page: the generated documentation with each example running above its code. */
+/** Runs `load` when `key` changes and keeps the latest result; a stale answer never replaces a newer one. */
+function useLoaded<T>(key: string, load: (() => Promise<T>) | undefined): { value: T | null; failed: boolean } {
+  const [state, setState] = useState<{ key: string; value: T | null; failed: boolean }>({ key, value: null, failed: false })
+  useEffect(() => {
+    let live = true
+    if (!load) return
+    load().then((value) => live && setState({ key, value, failed: false }), () => live && setState({ key, value: null, failed: true }))
+    return () => { live = false }
+  }, [key, load])
+  return state.key === key ? state : { value: null, failed: false }
+}
+
+function Loading() {
+  return <p role="status" className="loading">Cargando…</p>
+}
+function LoadFailed() {
+  return <p role="alert" className="loading">No se pudo cargar esta página. Revisa tu conexión y vuelve a intentarlo.</p>
+}
+
+/** A page whose html is fetched on demand. */
+function DocPage({ route }: { route: string }) {
+  const { value, failed } = useLoaded(route, pageLoaders[route])
+  if (failed) return <LoadFailed />
+  return value === null ? <Loading /> : <Html html={value} />
+}
+
+/** A component page: the generated documentation with each example running above its code. Both arrive on demand. */
 function ComponentPage({ id }: { id: string }) {
-  const c = byId.get(id)!
-  const examples = registry[id]?.examples ?? []
-  const parts = c.html.split(/<!--live:(\d+)-->/)
+  const route = 'components/' + id
+  const doc = useLoaded(route, pageLoaders[route])
+  const ex = useLoaded<Example[]>(id, exampleLoaders[id])
+  if (doc.failed || ex.failed) return <LoadFailed />
+  if (doc.value === null || ex.value === null) return <Loading />
+  const examples = ex.value
   return (
     <>
-      {parts.map((part, i) => {
+      {doc.value.split(/<!--live:(\d+)-->/).map((part, i) => {
         if (i % 2 === 0) return <Html key={i} html={part} />
-        const ex = examples[Number(part)]
-        return ex ? <LiveExample key={i} title={ex.title}>{ex.render()}</LiveExample> : null
+        const e = examples[Number(part)]
+        return e ? <LiveExample key={i} title={e.title}>{e.render()}</LiveExample> : null
       })}
     </>
   )
@@ -127,19 +184,16 @@ function NotFound() {
   )
 }
 
-interface Resolved { title: string; node: React.ReactNode; wide?: boolean }
+interface Resolved { title: string; node: ReactNode }
 function resolve(route: string): Resolved {
   if (route === '') return { title: `${SITE} · Sistema de diseño`, node: <Home /> }
   if (route === 'components') return { title: `Componentes · ${SITE}`, node: <ComponentsIndex /> }
   if (route === 'decisions') return { title: `Decisiones · ${SITE}`, node: <DecisionsIndex /> }
   let m: RegExpMatchArray | null
-  if ((m = route.match(/^components\/([a-z0-9-]+)$/)) && byId.has(m[1]!)) return { title: `${byId.get(m[1]!)!.name} · ${SITE}`, node: <ComponentPage id={m[1]!} /> }
-  if ((m = route.match(/^decisions\/(DDR-KF-\d+)$/)) && decisionById.has(m[1]!)) {
-    const d = decisionById.get(m[1]!)!
-    return { title: `${d.id} · ${SITE}`, node: <Html html={d.html} /> }
-  }
+  if ((m = route.match(/^components\/([a-z0-9-]+)$/)) && byId.has(m[1]!)) return { title: `${byId.get(m[1]!)!.name} · ${SITE}`, node: <ComponentPage key={route} id={m[1]!} /> }
+  if ((m = route.match(/^decisions\/(DDR-KF-\d+)$/)) && decisionById.has(m[1]!)) return { title: `${m[1]} · ${SITE}`, node: <DocPage key={route} route={route} /> }
   const page = data.pages.find((p) => p.path === route)
-  if (page) return { title: `${page.title} · ${SITE}`, node: <Html html={page.html} /> }
+  if (page) return { title: `${page.title} · ${SITE}`, node: <DocPage key={route} route={route} /> }
   return { title: `No encontrada · ${SITE}`, node: <NotFound /> }
 }
 
@@ -166,6 +220,7 @@ export function App() {
         <header className="top">
           <a className="brand" href={href('')}>Kafka</a>
           <button type="button" className="menu-button" aria-expanded={menu} aria-controls="documentacion" onClick={() => setMenu((v) => !v)}>Menú</button>
+          <Search />
           <ThemeToggle size="sm" />
         </header>
         <div className="shell">

@@ -24,7 +24,7 @@
     "test:docs": "node tests/docs-examples.mjs",
     "build:site": "vite build --config vite.site.config.ts",
     "dev:site": "vite --config vite.site.config.ts",
-    "test:site": "node tests/site-data.mjs && pnpm run build:site && node tests/site-browser.mjs",
+    "test:site": "node tests/site-data.mjs && pnpm run build:site && node tests/site-size.mjs && node tests/site-browser.mjs",
     "test:visual": "node tests/visual.mjs",
     "test:print": "node tests/print-pdf.mjs && node tests/print-book.mjs && node tests/print-magazine.mjs && node tests/print-sheet.mjs",
     "figma": "node scripts/build-figma.mjs",
