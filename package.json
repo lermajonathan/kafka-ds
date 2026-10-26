@@ -9,7 +9,7 @@
     "tokens": "node scripts/build-tokens.mjs",
     "lint:tokens": "node scripts/check-token-usage.mjs",
     "test:contrast": "node tests/contrast.mjs",
-    "verify": "pnpm run tokens && pnpm run test:structure && pnpm run test:figma && pnpm run figma:check && pnpm run test:contrast && pnpm run test:lint && pnpm run lint:tokens && pnpm run typecheck && pnpm run build && pnpm run docs:check && pnpm run test:docs && pnpm run test:keyboard && pnpm run test:axe && pnpm run build:packages && pnpm run test:packages",
+    "verify": "pnpm run tokens && pnpm run test:structure && pnpm run test:figma && pnpm run figma:check && pnpm run test:contrast && pnpm run test:lint && pnpm run lint:tokens && pnpm run typecheck && pnpm run build && pnpm run docs:check && pnpm run test:docs && pnpm run test:keyboard && pnpm run test:axe && pnpm run build:packages && pnpm run test:packages && pnpm run test:print",
     "test:structure": "node tests/structure.mjs",
     "test:lint": "node tests/lint-selftest.mjs",
     "dev": "vite",

@@ -1,0 +1,120 @@
+/* Kafka · print stylesheet (DDR-KF-005). Reads only tokens from tokens.css; load it after tokens.css.
+   Book format (A5) is the default; magazine and sheet formats arrive with their templates.
+   Running head: set --kafka-running-head on :root, e.g. :root { --kafka-running-head: "Título del libro"; } */
+
+@page {
+  size: var(--kafka-print-book-width) var(--kafka-print-book-height);
+  margin-top: var(--kafka-print-book-margin-top);
+  margin-bottom: var(--kafka-print-book-margin-bottom);
+}
+
+/* Facing pages: the wider margin sits on the binding (inner) side. */
+@page :left {
+  margin-left: var(--kafka-print-book-margin-outer);
+  margin-right: var(--kafka-print-book-margin-inner);
+
+  @top-left {
+    content: var(--kafka-running-head, '');
+    font: var(--kafka-typography-print-running-head-font-weight) var(--kafka-typography-print-running-head-font-size) / var(--kafka-typography-print-running-head-line-height) var(--kafka-typography-print-running-head-font-family);
+    letter-spacing: var(--kafka-typography-print-running-head-letter-spacing);
+    color: var(--kafka-color-fg-muted);
+  }
+  @bottom-left {
+    content: counter(page);
+    font: var(--kafka-typography-print-folio-font-weight) var(--kafka-typography-print-folio-font-size) / var(--kafka-typography-print-folio-line-height) var(--kafka-typography-print-folio-font-family);
+    letter-spacing: var(--kafka-typography-print-folio-letter-spacing);
+    color: var(--kafka-color-fg-muted);
+  }
+}
+
+@page :right {
+  margin-left: var(--kafka-print-book-margin-inner);
+  margin-right: var(--kafka-print-book-margin-outer);
+
+  @top-right {
+    content: var(--kafka-running-head, '');
+    font: var(--kafka-typography-print-running-head-font-weight) var(--kafka-typography-print-running-head-font-size) / var(--kafka-typography-print-running-head-line-height) var(--kafka-typography-print-running-head-font-family);
+    letter-spacing: var(--kafka-typography-print-running-head-letter-spacing);
+    color: var(--kafka-color-fg-muted);
+  }
+  @bottom-right {
+    content: counter(page);
+    font: var(--kafka-typography-print-folio-font-weight) var(--kafka-typography-print-folio-font-size) / var(--kafka-typography-print-folio-line-height) var(--kafka-typography-print-folio-font-family);
+    letter-spacing: var(--kafka-typography-print-folio-letter-spacing);
+    color: var(--kafka-color-fg-muted);
+  }
+}
+
+/* The first page of a chapter carries no running head. */
+@page :first {
+  @top-left { content: none; }
+  @top-right { content: none; }
+}
+
+.kafka-print {
+  margin: 0;
+  background: none;
+  color: var(--kafka-color-fg-default);
+  font-family: var(--kafka-typography-print-body-font-family);
+  font-size: var(--kafka-typography-print-body-font-size);
+  font-weight: var(--kafka-typography-print-body-font-weight);
+  line-height: var(--kafka-typography-print-body-line-height);
+  letter-spacing: var(--kafka-typography-print-body-letter-spacing);
+  orphans: var(--kafka-print-orphans);
+  widows: var(--kafka-print-widows);
+  hyphens: auto;
+  text-rendering: optimizeLegibility;
+  print-color-adjust: exact;
+}
+
+.kafka-print p {
+  margin: 0;
+  orphans: var(--kafka-print-orphans);
+  widows: var(--kafka-print-widows);
+  text-align: justify;
+}
+
+/* Book prose: paragraphs are told apart by an indent, not by a gap, so the baseline grid stays unbroken. */
+.kafka-print--book p + p {
+  text-indent: 1.5em;
+}
+
+.kafka-print h1,
+.kafka-print h2,
+.kafka-print h3 {
+  margin: 0;
+  break-after: avoid;
+  break-inside: avoid;
+  font-family: var(--kafka-typography-print-heading-font-family);
+  font-weight: var(--kafka-typography-print-heading-font-weight);
+  hyphens: manual;
+  text-align: left;
+}
+
+.kafka-print h1 {
+  font-size: var(--kafka-typography-print-title-font-size);
+  line-height: var(--kafka-typography-print-title-line-height);
+  font-weight: var(--kafka-typography-print-title-font-weight);
+  letter-spacing: var(--kafka-typography-print-title-letter-spacing);
+  margin-bottom: var(--kafka-typography-print-title-line-height);
+}
+
+.kafka-print h2 {
+  font-size: var(--kafka-typography-print-heading-lg-font-size);
+  line-height: var(--kafka-typography-print-heading-lg-line-height);
+  letter-spacing: var(--kafka-typography-print-heading-lg-letter-spacing);
+  margin-top: var(--kafka-typography-print-heading-lg-line-height);
+}
+
+.kafka-print h3 {
+  font-size: var(--kafka-typography-print-heading-font-size);
+  line-height: var(--kafka-typography-print-heading-line-height);
+  margin-top: var(--kafka-typography-print-heading-line-height);
+}
+
+.kafka-print figure,
+.kafka-print blockquote,
+.kafka-print pre,
+.kafka-print table {
+  break-inside: avoid;
+}

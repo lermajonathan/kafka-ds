@@ -1,7 +1,7 @@
 // Print output test (DDR-KF-005). Renders a sample book chapter with src/styles/print.css through Playwright's PDF
 // engine and checks what a printer would care about: page size, page count, embedded fonts and text that is not
 // cut off. Needs poppler-utils (pdfinfo, pdffonts, pdftotext).
-//   node tests/print-pdf.mjs
+//   node tests/print-pdf.mjs            (KAFKA_PRINT_OUT=file.pdf keeps the sample PDF)
 import { execFileSync } from 'node:child_process'
 import fs from 'node:fs'
 import os from 'node:os'
@@ -26,9 +26,11 @@ const tool = (cmd, ...args) => execFileSync(cmd, args, { encoding: 'utf8' })
 const sentence = 'La tinta se seca despacio sobre el papel y la página guarda la voz de quien escribe, aunque nadie la lea todavía.'
 const paragraph = (n) => `<p>${Array.from({ length: 5 }, (_, i) => `${sentence} (${n}.${i + 1})`).join(' ')}</p>`
 const LAST_MARKER = 'FINALDELCAPITULO'
+const RUNNING_HEAD = 'Muestra de libro'
 const html = (cssHrefs) => `<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><title>Muestra de libro</title>
 ${cssHrefs.map((href) => `<link rel="stylesheet" href="${href}">`).join('\n')}
+<style>:root { --kafka-running-head: "${RUNNING_HEAD}"; }</style>
 </head><body class="kafka-print kafka-print--book">
 <h1>Capítulo primero</h1>
 ${Array.from({ length: 24 }, (_, i) => paragraph(i + 1)).join('\n')}
@@ -45,9 +47,12 @@ const browser = await chromium.launch()
 const page = await browser.newPage()
 await page.goto(pathToFileURL(htmlFile).href)
 await page.evaluate(() => document.fonts.ready)
+await page.emulateMedia({ media: 'print' })
+const bodyStyle = await page.evaluate(() => { const s = getComputedStyle(document.querySelector('p')); return { widows: s.widows, orphans: s.orphans } })
 const pdfFile = path.join(tmp, 'book.pdf')
 await page.pdf({ path: pdfFile, preferCSSPageSize: true, printBackground: true })
 await browser.close()
+if (process.env.KAFKA_PRINT_OUT) fs.copyFileSync(pdfFile, process.env.KAFKA_PRINT_OUT) // inspect the sample by eye
 
 // 1 · Page size: every page is A5 (taken from the physical.page.a5 tokens, the single source of truth)
 const info = tool('pdfinfo', '-f', '1', '-l', '999', pdfFile)
@@ -87,6 +92,24 @@ for (const pg of bbox.split('<page ').slice(1)) {
       break
     }
   }
+}
+
+// 5 · Typesetting: widows/orphans from the tokens, a folio on every page, the running head from page 2 on
+check(bodyStyle.widows === '2' && bodyStyle.orphans === '2', `paragraphs need widows 2 / orphans 2, got ${bodyStyle.widows} / ${bodyStyle.orphans}`)
+for (let n = 1; n <= pages; n++) {
+  const pageText = tool('pdftotext', '-f', String(n), '-l', String(n), pdfFile, '-')
+  check(new RegExp(`^\\s*${n}\\s*$`, 'm').test(pageText), `page ${n} has no folio "${n}"`)
+  check(n === 1 || pageText.includes(RUNNING_HEAD), `page ${n} has no running head "${RUNNING_HEAD}"`)
+}
+// Book margins (tokens): inner 20 mm, outer 15 mm. Body text may not come closer to the trim edge than the outer margin.
+const outer = mm(primitives.physical.margin['15']) * MM_TO_PT
+for (const pg of bbox.split('<page ').slice(1)) {
+  const [, w, h] = /width="([\d.]+)" height="([\d.]+)"/.exec(pg).map(Number)
+  const words = [...pg.matchAll(/<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)">([^<]*)</g)]
+    .map((m) => ({ x0: +m[1], y0: +m[2], x1: +m[3], y1: +m[4], t: m[5] }))
+    .filter((x) => x.y0 > 0.1 * h && x.y1 < 0.9 * h) // body block, excluding head and folio
+  const left = Math.min(...words.map((x) => x.x0)), right = Math.max(...words.map((x) => x.x1))
+  check(Math.min(left, w - right) >= outer - 1, `body text closer than 15 mm to the edge (left ${(left / MM_TO_PT).toFixed(1)} mm, right ${((w - right) / MM_TO_PT).toFixed(1)} mm)`)
 }
 
 if (failures.length) {
