@@ -51,7 +51,7 @@ Compose circle, block and line to mirror the layout that is loading.
 
 - **One announcement:** the group is `role="status"` with `aria-busy="true"` and reads "Cargando" once; the shapes are hidden from assistive technology.
 - **Reduced motion:** the shimmer stops and the shapes stay still.
-- The shapes are decorative placeholders, not content; they have no contrast requirement beyond not looking like text.
+- The shapes are decorative placeholders, not content, so they have no text-contrast requirement. They still have to be seen: tests hold them at 1.4:1 against the page and against a card, in light and dark.
 
 ## Content
 
@@ -63,7 +63,7 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 
 | Token | Value |
 |---|---|
-| `skeleton.bg` | `{color.bg.sunken}` |
+| `skeleton.bg` | `{color.bg.placeholder}` |
 | `skeleton.shimmer` | `{color.bg.sunken-hover}` |
 | `skeleton.radius` | `{radius.control}` |
 | `skeleton.line-height` | `{space.12}` |

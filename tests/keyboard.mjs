@@ -674,6 +674,8 @@ await withBrowser(async (browser) => {
   check((await drw.getAttribute('data-side')) === 'end', 'drawer: anchored to the end by default')
   const dbox = await drw.boundingBox()
   check(dbox && dbox.x + dbox.width >= 899 && dbox.height >= 790, 'drawer: fills the edge of the screen')
+  const dRad = await drw.evaluate((e) => { const c = getComputedStyle(e); return [c.borderTopLeftRadius, c.borderTopRightRadius, c.borderBottomRightRadius, c.borderBottomLeftRadius].map(parseFloat) })
+  check(dRad[0] > 0 && dRad[3] > 0 && dRad[1] === 0 && dRad[2] === 0, `drawer: the corners that face the page are rounded and the ones on the screen edge are flush (got ${dRad.join(' / ')})`)
   await press('Escape')
   check(!(await drw.isVisible()) && await dBtn.evaluate((el) => el === document.activeElement), 'drawer: Esc closes and returns focus')
 
@@ -684,6 +686,13 @@ await withBrowser(async (browser) => {
   const cd = page.getByRole('alertdialog').or(page.getByRole('dialog', { name: '¿Eliminar el relato?' }))
   await cd.first().waitFor()
   check(await page.getByRole('button', { name: 'Cancelar' }).evaluate((el) => el === document.activeElement), 'confirm dialog: danger focuses Cancel first')
+  const cdAlign = await cd.first().evaluate((d) => {
+    const svg = d.querySelector('svg[aria-hidden="true"]'), text = svg?.nextElementSibling
+    if (!svg || !text) return null
+    const s = svg.getBoundingClientRect(), t = text.getBoundingClientRect(), lh = parseFloat(getComputedStyle(text).lineHeight)
+    return { icon: s.top + s.height / 2, line: t.top + lh / 2 }
+  })
+  check(cdAlign && Math.abs(cdAlign.icon - cdAlign.line) <= 1, `confirm dialog: the icon is centred on the first line of the message (off by ${cdAlign ? Math.abs(cdAlign.icon - cdAlign.line).toFixed(1) : '?'} px)`)
   await page.mouse.click(5, 5)
   check(await cd.first().isVisible(), 'confirm dialog: danger does not close on backdrop click')
   await page.getByRole('button', { name: 'Eliminar relato' }).last().click()

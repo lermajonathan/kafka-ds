@@ -14,7 +14,7 @@ export default {
   "accessibility": [
     "**One announcement:** the group is `role=\"status\"` with `aria-busy=\"true\"` and reads \"Cargando\" once; the shapes are hidden from assistive technology.",
     "**Reduced motion:** the shimmer stops and the shapes stay still.",
-    "The shapes are decorative placeholders, not content; they have no contrast requirement beyond not looking like text."
+    "The shapes are decorative placeholders, not content, so they have no text-contrast requirement. They still have to be seen: tests hold them at 1.4:1 against the page and against a card, in light and dark."
   ],
   "content": [
     "Replace the whole group when the content loads; never leave it next to the real content."

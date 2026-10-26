@@ -2047,6 +2047,24 @@
           "description": "Pulsado de controles sobre bg.sunken."
         },
         {
+          "name": "color/bg/placeholder",
+          "type": "COLOR",
+          "scopes": [
+            "TEXT_FILL",
+            "SHAPE_FILL"
+          ],
+          "syntax": "var(--kafka-color-bg-placeholder)",
+          "values": {
+            "Light": {
+              "alias": "Semantic/color/border/default"
+            },
+            "Dark": {
+              "alias": "Semantic/color/border/default"
+            }
+          },
+          "description": "Marcadores de lugar, como los esqueletos de carga: se distinguen de la página y de las tarjetas en ambos modos."
+        },
+        {
           "name": "color/bg/brand-hover",
           "type": "COLOR",
           "scopes": [
@@ -9805,6 +9823,19 @@
           }
         },
         {
+          "name": "drawer/radius",
+          "type": "FLOAT",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "syntax": "var(--kafka-drawer-radius)",
+          "values": {
+            "Default": {
+              "alias": "Semantic/radius/card"
+            }
+          }
+        },
+        {
           "name": "confirm-dialog/icon",
           "type": "COLOR",
           "scopes": [
@@ -10419,7 +10450,7 @@
           "syntax": "var(--kafka-skeleton-bg)",
           "values": {
             "Default": {
-              "alias": "Semantic/color/bg/sunken"
+              "alias": "Semantic/color/bg/placeholder"
             }
           }
         },

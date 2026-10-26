@@ -161,3 +161,15 @@ console.log('figma-calendar-header: ok')
   assert.match(d, /Components\/tooltip\//, 'the truncated state uses the tooltip tokens')
 }
 console.log('figma-drp: ok')
+
+// C5: Drawer is tall and rounded on the corners that face the page; ConfirmDialog reads like the component (title, then icon + message)
+{
+  const dr = master('drawer')
+  assert.match(dr, /topLeftRadius/, 'Drawer rounds its corners')
+  assert.match(dr, /388, 800/, 'Drawer is as tall as a desktop screen, not a small box')
+  assert.match(dr, /D \+ 'radius'/, 'Drawer radius comes from its token')
+  const cd = master('confirm-dialog')
+  assert.match(cd, /name: 'Message'/, 'ConfirmDialog has a message row (icon + text)')
+  assert.doesNotMatch(cd, /name: 'Header'/, 'ConfirmDialog no longer puts the icon beside the title')
+}
+console.log('figma-c5: ok')

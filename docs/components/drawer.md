@@ -49,6 +49,7 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 |---|---|
 | `drawer.width` | `{size.floating}` |
 | `drawer.duration` | `{motion.duration.slow}` |
+| `drawer.radius` | `{radius.card}` |
 
 ## Related
 

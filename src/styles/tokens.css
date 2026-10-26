@@ -188,6 +188,7 @@
   --kafka-color-bg-active: var(--kafka-color-paper-200);
   --kafka-color-bg-sunken-hover: var(--kafka-color-ink-100);
   --kafka-color-bg-sunken-active: var(--kafka-color-ink-200);
+  --kafka-color-bg-placeholder: var(--kafka-color-border-default);
   --kafka-color-bg-brand-hover: var(--kafka-color-gold-300);
   --kafka-color-bg-brand-active: var(--kafka-color-gold-500);
   --kafka-color-bg-scrim: var(--kafka-color-overlay-scrim);
@@ -1166,6 +1167,7 @@
   --kafka-modal-actions-gap: var(--kafka-space-12);
   --kafka-drawer-width: var(--kafka-size-floating);
   --kafka-drawer-duration: var(--kafka-motion-duration-slow);
+  --kafka-drawer-radius: var(--kafka-radius-card);
   --kafka-confirm-dialog-icon: var(--kafka-color-fg-soft);
   --kafka-confirm-dialog-icon-danger: var(--kafka-color-status-danger-fg);
   --kafka-confirm-dialog-icon-size: var(--kafka-size-icon-lg);
@@ -1236,7 +1238,7 @@
   --kafka-divider-label-type-font-weight: var(--kafka-typography-ui-caption-font-weight);
   --kafka-divider-label-type-line-height: var(--kafka-typography-ui-caption-line-height);
   --kafka-divider-label-type-letter-spacing: var(--kafka-typography-ui-caption-letter-spacing);
-  --kafka-skeleton-bg: var(--kafka-color-bg-sunken);
+  --kafka-skeleton-bg: var(--kafka-color-bg-placeholder);
   --kafka-skeleton-shimmer: var(--kafka-color-bg-sunken-hover);
   --kafka-skeleton-radius: var(--kafka-radius-control);
   --kafka-skeleton-line-height: var(--kafka-space-12);

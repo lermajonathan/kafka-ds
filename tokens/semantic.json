@@ -74,6 +74,10 @@
           }
         }
       },
+      "placeholder": {
+        "$value": "{color.border.default}",
+        "$description": "Marcadores de lugar, como los esqueletos de carga: se distinguen de la página y de las tarjetas en ambos modos."
+      },
       "brand-hover": {
         "$value": "{color.gold.300}",
         "$description": "Hover del oro. El texto sigue siendo fg.on-brand."

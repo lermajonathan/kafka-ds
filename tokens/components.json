@@ -2243,6 +2243,10 @@
     },
     "duration": {
       "$value": "{motion.duration.slow}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.card}"
     }
   },
   "confirm-dialog": {
@@ -2471,7 +2475,7 @@
     "$description": "Marcador de lugar mientras el contenido carga.",
     "bg": {
       "$type": "color",
-      "$value": "{color.bg.sunken}"
+      "$value": "{color.bg.placeholder}"
     },
     "shimmer": {
       "$type": "color",

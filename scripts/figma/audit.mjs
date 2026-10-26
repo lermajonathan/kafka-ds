@@ -9,7 +9,7 @@ export function auditCall() {
   return `const GLYPHS = ${JSON.stringify(GLYPHS)}
 const SKIP = /^(Archive|Legacy)/
 const names = figma.root.children.map((p) => p.name)
-const out = { pages: names.length, dupPages: names.filter((n, i) => names.indexOf(n) !== i), empty: 0, unboundFills: 0, glyphs: 0, collapsed: 0, unstyled: 0, docPages: 0, patternPages: 0, pagesWithoutMaster: [], pagesWithoutSections: [], wrongCanvas: [], darkParity: [], clippedSets: [] }
+const out = { pages: names.length, dupPages: names.filter((n, i) => names.indexOf(n) !== i), empty: 0, unboundFills: 0, glyphs: 0, collapsed: 0, unstyled: 0, docPages: 0, patternPages: 0, pagesWithoutMaster: [], pagesWithoutSections: [], wrongCanvas: [], darkParity: [], clippedSets: [], shadowClipped: [] }
 const CANVAS = '#635841'
 const hex = (c) => '#' + [c.r, c.g, c.b].map((v) => Math.round(v * 255).toString(16).padStart(2, '0')).join('')
 const SECTIONS = ['§01', '§02', '§04', '§05', '§06', '§07']
@@ -36,6 +36,14 @@ for (const p of figma.root.children) {
       }
       for (const set of p.findAll((n) => n.type === 'COMPONENT_SET')) if (set.clipsContent) { out.clippedSets.push(p.name); break }
     }
+    // a shadow that reaches past a frame that clips is cut: measure every shadowed node against each clipping ancestor
+    for (const n of root.findAll((x) => 'effects' in x && x.effects.some((e) => e.type === 'DROP_SHADOW' && e.visible !== false))) {
+      const rb = n.absoluteRenderBounds
+      for (let a = rb && n.parent; a && a.type !== 'PAGE'; a = a.parent) {
+        const b = 'clipsContent' in a && a.clipsContent && a.absoluteBoundingBox
+        if (b && (rb.x < b.x - 0.5 || rb.y < b.y - 0.5 || rb.x + rb.width > b.x + b.width + 0.5 || rb.y + rb.height > b.y + b.height + 0.5)) { out.shadowClipped.push(p.name + ': ' + a.name + ' for ' + n.name); break }
+      }
+    }
     const texts = root.findAll((n) => n.type === 'TEXT')
     out.collapsed += texts.filter((t) => t.height < 8 || t.width < 6).length
     out.glyphs += texts.filter((t) => [...t.characters].some((ch) => GLYPHS.includes(ch)) || t.characters.trim() === '×').length
@@ -61,6 +69,7 @@ export function judge(r) {
   if (r.wrongCanvas?.length) failures.push(`${r.wrongCanvas.length} page(s) without the canvas colour #635841: ` + r.wrongCanvas.join(', '))
   if (r.darkParity?.length) failures.push('light and dark show different specimens: ' + r.darkParity.join(', '))
   if (r.clippedSets?.length) failures.push('component sets that clip their shadows: ' + r.clippedSets.join(', '))
+  if (r.shadowClipped?.length) failures.push('shadows cut by a clipping frame: ' + r.shadowClipped.join(', '))
   if (r.disabledOpacity !== undefined && r.disabledOpacity !== 45) failures.push(`opacity/45 is ${r.disabledOpacity}; Figma binds opacity as a percentage`)
   return { ok: failures.length === 0, failures }
 }

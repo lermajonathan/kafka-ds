@@ -91,6 +91,7 @@ export const tokens = {
       "active": "#ece4d2",
       "sunken-hover": "#e6e2dc",
       "sunken-active": "#cfc9c0",
+      "placeholder": "#cfc9c0",
       "brand-hover": "#e6c964",
       "brand-active": "#b8932a",
       "scrim": "#0f0f0e99"
@@ -2051,7 +2052,8 @@ export const tokens = {
   },
   "drawer": {
     "width": "24.25rem",
-    "duration": "350ms"
+    "duration": "350ms",
+    "radius": "1rem"
   },
   "confirm-dialog": {
     "icon": "#36322d",
@@ -2176,7 +2178,7 @@ export const tokens = {
     }
   },
   "skeleton": {
-    "bg": "#ece4d2",
+    "bg": "#cfc9c0",
     "shimmer": "#e6e2dc",
     "radius": "0.75rem",
     "line-height": "0.75rem",
