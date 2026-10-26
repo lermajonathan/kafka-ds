@@ -1405,6 +1405,8 @@
   --kafka-count-badge-type-letter-spacing: var(--kafka-typography-ui-caption-letter-spacing);
   --kafka-count-badge-danger-bg: var(--kafka-color-status-danger-fg);
   --kafka-count-badge-danger-fg: var(--kafka-color-fg-inverse);
+  --kafka-notification-center-inset: var(--kafka-space-4);
+  --kafka-notification-center-item-radius: var(--kafka-radius-tile);
   --kafka-notification-center-width: var(--kafka-size-floating);
   --kafka-notification-center-max-height: var(--kafka-size-listbox);
   --kafka-notification-center-padding-x: var(--kafka-space-12);

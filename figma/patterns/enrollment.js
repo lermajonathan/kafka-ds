@@ -12,7 +12,7 @@ const kids = [
       { inst: 'ButtonGroup', variant: 'Orientation=Horizontal' }] },
     { frame: true, name: 'Recap', dir: 'VERTICAL', gap: 24, children: [
       { text: 'Tu taller', style: 'Reading/Heading SM', fill: 'Semantic/color/fg/default' },
-      { inst: 'ProgramCard', variant: 'Highlight=Featured' }] }] },
+      { inst: 'ProgramCard', variant: 'Highlight=Featured, Status=Last spots' }] }] },
   { frame: true, name: 'Feedback', dir: 'HORIZONTAL', gap: 32, align: 'MIN', children: [
     { frame: true, name: 'Toast', dir: 'VERTICAL', gap: 12, children: [{ text: 'Al guardar un paso', style: 'UI/Label', fill: 'Semantic/color/fg/muted' }, { inst: 'Toast', variant: 'Tone=Success' }] },
     { frame: true, name: 'Confirm', dir: 'VERTICAL', gap: 12, children: [{ text: 'Antes de enviar', style: 'UI/Label', fill: 'Semantic/color/fg/muted' }, { inst: 'ConfirmDialog', variant: 'Tone=Default' }] }] }]

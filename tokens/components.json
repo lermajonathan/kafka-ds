@@ -2999,6 +2999,14 @@
   },
   "notification-center": {
     "$description": "Campana con contador que abre la lista de notificaciones para revisarlas después.",
+    "inset": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "item-radius": {
+      "$type": "dimension",
+      "$value": "{radius.tile}"
+    },
     "width": {
       "$type": "dimension",
       "$value": "{size.floating}"

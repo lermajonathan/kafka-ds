@@ -173,3 +173,32 @@ console.log('figma-drp: ok')
   assert.doesNotMatch(cd, /name: 'Header'/, 'ConfirmDialog no longer puts the icon beside the title')
 }
 console.log('figma-c5: ok')
+
+// C6: patterns — the ProgramCard master is the whole card (cover with badge + price, full-width body, details, action),
+// and an unread notification is its own piece, so two backgrounds never read as one
+{
+  const pc = master('program-card')
+  assert.match(pc, /name: 'Body'[^\n]*fillWidth: true/, 'ProgramCard body fills the card (it was 191 px inside 360)')
+  assert.match(pc, /inst: 'Badge'/, 'the status badge sits on the cover, inside the card')
+  assert.match(pc, /P \+ 'price-bg'/, 'ProgramCard shows its price pill')
+  assert.match(pc, /icon: 'Calendar'/, 'ProgramCard meta row has its icon')
+  assert.match(pc, /primary\/bg/, 'ProgramCard has its single action')
+  assert.match(pc, /height: 225/, 'the cover keeps the 16:10 ratio of the code (225 px at 360 wide)')
+  assert.match(pc, /Status=' \+ status[\s\S]*'Last spots'|'Last spots'[\s\S]*Status=' \+ status/, 'ProgramCard shows its statuses')
+  for (const id of ['enrollment', 'catalog']) {
+    const src = readFileSync(new URL(`../figma/patterns/${id}.js`, import.meta.url), 'utf8')
+    assert.doesNotMatch(src, /inst: 'Badge'/, id + ': a badge belongs on the card cover, not above the card')
+    for (const m of src.matchAll(/variant: '(Highlight=[^']*)'/g)) assert.match(m[1], /Status=/, id + ': ProgramCard variant names a status')
+  }
+  const nc = master('notification-center')
+  assert.match(nc, /N \+ 'inset'/, 'NotificationCenter items are inset')
+  assert.match(nc, /N \+ 'item-radius'/, 'NotificationCenter items are rounded pieces')
+  assert.doesNotMatch(nc, /rule, item/, 'no rule between items: spacing and the rounded background separate them')
+  const comp = JSON.parse(readFileSync(new URL('../tokens/components.json', import.meta.url), 'utf8'))['notification-center']
+  assert.equal(comp.inset?.$value, '{space.4}', 'token notification-center.inset')
+  assert.equal(comp['item-radius']?.$value, '{radius.tile}', 'token notification-center.item-radius')
+  const code = readFileSync(new URL('../src/components/notification-center.tsx', import.meta.url), 'utf8')
+  assert.match(code, /kafka-notification-center-inset/, 'the component uses the inset token')
+  assert.match(code, /kafka-notification-center-item-radius/, 'the component uses the item radius token')
+}
+console.log('figma-c6: ok')

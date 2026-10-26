@@ -64,6 +64,8 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 
 | Token | Value |
 |---|---|
+| `notification-center.inset` | `{space.4}` |
+| `notification-center.item-radius` | `{radius.tile}` |
 | `notification-center.width` | `{size.floating}` |
 | `notification-center.max-height` | `{size.listbox}` |
 | `notification-center.padding-x` | `{space.12}` |

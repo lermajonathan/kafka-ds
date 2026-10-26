@@ -2481,6 +2481,8 @@ export const tokens = {
     "danger-fg": "#fbf8f1"
   },
   "notification-center": {
+    "inset": "0.25rem",
+    "item-radius": "0.5rem",
     "width": "24.25rem",
     "max-height": "280px",
     "padding-x": "0.75rem",

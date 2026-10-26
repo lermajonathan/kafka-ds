@@ -11866,6 +11866,33 @@
           }
         },
         {
+          "name": "notification-center/inset",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "syntax": "var(--kafka-notification-center-inset)",
+          "values": {
+            "Default": {
+              "alias": "Primitives/space/4"
+            }
+          }
+        },
+        {
+          "name": "notification-center/item-radius",
+          "type": "FLOAT",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "syntax": "var(--kafka-notification-center-item-radius)",
+          "values": {
+            "Default": {
+              "alias": "Semantic/radius/tile"
+            }
+          }
+        },
+        {
           "name": "notification-center/width",
           "type": "FLOAT",
           "scopes": [

@@ -79,14 +79,14 @@ export function NotificationCenter({ items, onRead, onReadAll, onDismiss, footer
         {items.length === 0 ? (
           <p className="kafka-type-notification-center-body-type px-2 py-6 text-center text-(--kafka-notification-center-empty-fg)">{labels.noNotifications}</p>
         ) : (
-          <ul id={listId} className="m-0 max-h-(--kafka-notification-center-max-height) list-none overflow-y-auto p-0">
+          <ul id={listId} className="m-0 flex max-h-(--kafka-notification-center-max-height) list-none flex-col gap-(--kafka-notification-center-inset) overflow-y-auto p-(--kafka-notification-center-inset)">
             {items.map((n) => {
               const tone = n.tone ?? 'brand'
               return (
                 <li
                   key={n.id}
                   tabIndex={-1}
-                  className={cx('flex items-start gap-(--kafka-notification-center-gap) border-t border-(--kafka-notification-center-rule) px-(--kafka-notification-center-padding-x) py-(--kafka-notification-center-padding-y) first:border-t-0 outline-none', !n.read && 'bg-(--kafka-notification-center-unread-bg)')}
+                  className={cx('flex items-start gap-(--kafka-notification-center-gap) rounded-(--kafka-notification-center-item-radius) px-(--kafka-notification-center-padding-x) py-(--kafka-notification-center-padding-y) outline-none', !n.read && 'bg-(--kafka-notification-center-unread-bg)')}
                 >
                   {createElement(ICON[tone], { 'aria-hidden': true, className: cx('size-(--kafka-notification-center-icon-box) shrink-0 rounded-full p-1.5', TONE[tone]) })}
                   <div className="min-w-0 flex-1">
