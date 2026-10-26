@@ -24,17 +24,19 @@ export function InlineEdit({ label, value, onChange, placeholder, className }: I
   const input = useRef<HTMLInputElement>(null)
   const button = useRef<HTMLButtonElement>(null)
   const done = useRef(false)
+  const returnFocus = useRef(false)
 
   useEffect(() => {
     if (editing) { done.current = false; input.current?.select() }
+    else if (returnFocus.current) { returnFocus.current = false; button.current?.focus() } // right after the button is back, not a frame later
   }, [editing])
 
-  const finish = (save: boolean, returnFocus: boolean) => {
+  const finish = (save: boolean, focusButton: boolean) => {
     if (done.current) return
     done.current = true
     if (save && draft.trim() !== '') onChange(draft)
+    returnFocus.current = focusButton
     setEditing(false)
-    if (returnFocus) requestAnimationFrame(() => button.current?.focus())
   }
 
   if (editing) {
