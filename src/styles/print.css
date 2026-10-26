@@ -1,6 +1,6 @@
 /* Kafka · print stylesheet (DDR-KF-005). Reads only tokens from tokens.css; load it after tokens.css.
    Ink colours are primitives, not semantic tokens: paper is always light, whatever theme the screen is in.
-   Book format (A5) is the default; magazine and sheet formats arrive with their templates.
+   Formats: book (A5, default), .kafka-print--magazine (A4) and .kafka-print--sheet (A4, one page, no head or folio).
    Running head: set --kafka-running-head on :root, e.g. :root { --kafka-running-head: "Título del libro"; } */
 
 /* Paper is the page: the screen background (and the dark theme) must never print. */
@@ -8,19 +8,49 @@ html {
   background: none;
 }
 
+/* Format: book (A5) unless the document says otherwise. @page cannot see the body, so the format is read from :root. */
+:root {
+  --kafka-print-page-width: var(--kafka-print-book-width);
+  --kafka-print-page-height: var(--kafka-print-book-height);
+  --kafka-print-page-margin-top: var(--kafka-print-book-margin-top);
+  --kafka-print-page-margin-bottom: var(--kafka-print-book-margin-bottom);
+  --kafka-print-page-margin-inner: var(--kafka-print-book-margin-inner);
+  --kafka-print-page-margin-outer: var(--kafka-print-book-margin-outer);
+}
+
+:root:has(.kafka-print--magazine) {
+  --kafka-print-page-width: var(--kafka-print-magazine-width);
+  --kafka-print-page-height: var(--kafka-print-magazine-height);
+  --kafka-print-page-margin-top: var(--kafka-print-magazine-margin-top);
+  --kafka-print-page-margin-bottom: var(--kafka-print-magazine-margin-bottom);
+  --kafka-print-page-margin-inner: var(--kafka-print-magazine-margin-inner);
+  --kafka-print-page-margin-outer: var(--kafka-print-magazine-margin-outer);
+}
+
+:root:has(.kafka-print--sheet) {
+  --kafka-print-page-width: var(--kafka-print-sheet-width);
+  --kafka-print-page-height: var(--kafka-print-sheet-height);
+  --kafka-print-page-margin-top: var(--kafka-print-sheet-margin);
+  --kafka-print-page-margin-bottom: var(--kafka-print-sheet-margin);
+  --kafka-print-page-margin-inner: var(--kafka-print-sheet-margin);
+  --kafka-print-page-margin-outer: var(--kafka-print-sheet-margin);
+}
+
 @page {
-  size: var(--kafka-print-book-width) var(--kafka-print-book-height);
-  margin-top: var(--kafka-print-book-margin-top);
-  margin-bottom: var(--kafka-print-book-margin-bottom);
+  size: var(--kafka-print-page-width) var(--kafka-print-page-height);
+  margin-top: var(--kafka-print-page-margin-top);
+  margin-bottom: var(--kafka-print-page-margin-bottom);
 }
 
 /* Facing pages: the wider margin sits on the binding (inner) side. */
 @page :left {
-  margin-left: var(--kafka-print-book-margin-outer);
-  margin-right: var(--kafka-print-book-margin-inner);
+  margin-left: var(--kafka-print-page-margin-outer);
+  margin-right: var(--kafka-print-page-margin-inner);
 
   @top-left {
     content: var(--kafka-running-head, '');
+    vertical-align: bottom; /* one line above the text block, never against the trim edge */
+    padding-bottom: var(--kafka-physical-leading-body);
     font: var(--kafka-typography-print-running-head-font-weight) var(--kafka-typography-print-running-head-font-size) / var(--kafka-typography-print-running-head-line-height) var(--kafka-typography-print-running-head-font-family);
     letter-spacing: var(--kafka-typography-print-running-head-letter-spacing);
     color: var(--kafka-color-ink-600);
@@ -34,11 +64,13 @@ html {
 }
 
 @page :right {
-  margin-left: var(--kafka-print-book-margin-inner);
-  margin-right: var(--kafka-print-book-margin-outer);
+  margin-left: var(--kafka-print-page-margin-inner);
+  margin-right: var(--kafka-print-page-margin-outer);
 
   @top-right {
     content: var(--kafka-running-head, '');
+    vertical-align: bottom; /* one line above the text block, never against the trim edge */
+    padding-bottom: var(--kafka-physical-leading-body);
     font: var(--kafka-typography-print-running-head-font-weight) var(--kafka-typography-print-running-head-font-size) / var(--kafka-typography-print-running-head-line-height) var(--kafka-typography-print-running-head-font-family);
     letter-spacing: var(--kafka-typography-print-running-head-letter-spacing);
     color: var(--kafka-color-ink-600);
@@ -82,7 +114,8 @@ html {
 }
 
 /* Book prose: paragraphs are told apart by an indent, not by a gap, so the baseline grid stays unbroken. */
-.kafka-print--book p + p {
+.kafka-print--book p + p,
+.kafka-print--magazine p + p {
   text-indent: 1.5em;
 }
 
@@ -267,7 +300,7 @@ html {
   display: flex;
   flex-direction: column;
   /* the text block of the page, minus a hair so rounding never spills onto a second page */
-  height: calc(var(--kafka-print-book-height) - var(--kafka-print-book-margin-top) - var(--kafka-print-book-margin-bottom) - 1mm);
+  height: calc(var(--kafka-print-page-height) - var(--kafka-print-page-margin-top) - var(--kafka-print-page-margin-bottom) - 1mm);
   break-after: page;
 }
 
@@ -343,4 +376,202 @@ html {
   display: block;
   padding-left: 1.5em;
   text-indent: -1.5em;
+}
+
+/* ── Magazine template (templates/print/magazine.html) ───────────────────────────────────────────────
+   A4, a cover, then pieces that each open a fresh page. Prose runs in two columns under a title block that spans both. */
+.kafka-print__piece {
+  break-before: page;
+}
+
+.kafka-print__piece-head {
+  column-span: all;
+  margin-bottom: calc(var(--kafka-physical-leading-body) * 2);
+  break-after: avoid;
+}
+
+.kafka-print .kafka-print__kicker {
+  margin: 0 0 var(--kafka-physical-leading-body);
+  text-align: left;
+  text-indent: 0;
+  font-family: var(--kafka-typography-print-folio-font-family);
+  font-size: var(--kafka-typography-print-caption-font-size);
+  line-height: var(--kafka-typography-print-caption-line-height);
+  letter-spacing: var(--kafka-typography-print-running-head-letter-spacing);
+  color: var(--kafka-color-gold-800);
+}
+
+.kafka-print .kafka-print__piece-head h2 {
+  margin: 0;
+  font-size: var(--kafka-typography-print-title-font-size);
+  line-height: var(--kafka-typography-print-title-line-height);
+  font-weight: var(--kafka-typography-print-title-font-weight);
+  letter-spacing: var(--kafka-typography-print-title-letter-spacing);
+}
+
+.kafka-print .kafka-print__byline,
+.kafka-print .kafka-print__standfirst {
+  margin: var(--kafka-physical-leading-body) 0 0;
+  text-align: left;
+  text-indent: 0;
+}
+
+.kafka-print .kafka-print__standfirst {
+  font-size: var(--kafka-typography-print-lead-font-size);
+  line-height: var(--kafka-typography-print-lead-line-height);
+}
+
+.kafka-print .kafka-print__byline {
+  font-size: var(--kafka-typography-print-caption-font-size);
+  line-height: var(--kafka-typography-print-caption-line-height);
+  color: var(--kafka-color-ink-600);
+}
+
+.kafka-print--magazine .kafka-print__piece-body {
+  column-count: 2;
+  column-gap: calc(var(--kafka-physical-baseline) * 4);
+}
+
+/* A poem is one column, set well down the page. */
+.kafka-print--magazine .kafka-print__piece--poem .kafka-print__piece-body {
+  column-count: auto;
+  padding-top: calc(var(--kafka-physical-leading-body) * 4);
+}
+
+.kafka-print__piece--poem .kafka-verse {
+  padding-left: 0;
+  margin: 0 auto;
+  width: max-content;
+}
+
+.kafka-print .kafka-pull-quote {
+  column-span: all;
+  margin: calc(var(--kafka-physical-leading-body) * 2) 0;
+  padding: var(--kafka-physical-leading-body) 0;
+  border: 0;
+  border-top: 0.5pt solid var(--kafka-color-ink-600);
+  border-bottom: 0.5pt solid var(--kafka-color-ink-600);
+  text-align: center;
+  break-inside: avoid;
+}
+
+.kafka-print .kafka-pull-quote blockquote {
+  margin: 0;
+  padding: 0;
+  font-size: var(--kafka-typography-print-lead-font-size);
+  line-height: var(--kafka-typography-print-lead-line-height);
+  font-style: italic;
+}
+
+.kafka-print .kafka-pull-quote figcaption {
+  margin-top: var(--kafka-physical-baseline);
+  font-size: var(--kafka-typography-print-caption-font-size);
+  line-height: var(--kafka-typography-print-caption-line-height);
+  color: var(--kafka-color-ink-600);
+}
+
+.kafka-print--magazine [role='doc-endnotes'] {
+  column-span: all;
+}
+
+/* ── Sheet template (templates/print/sheet.html) ─────────────────────────────────────────────────────
+   One A4 page on the unnumbered named page: no running head, no folio. The contact block sits at the foot. */
+.kafka-print--sheet {
+  page: front;
+}
+
+.kafka-print__sheet {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(var(--kafka-print-page-height) - var(--kafka-print-page-margin-top) - var(--kafka-print-page-margin-bottom) - 1mm);
+}
+
+.kafka-print__sheet-head {
+  padding-bottom: var(--kafka-physical-leading-body);
+  border-bottom: 0.5pt solid var(--kafka-color-ink-900);
+}
+
+.kafka-print .kafka-print__sheet-head h1 {
+  margin: 0;
+}
+
+.kafka-print .kafka-print__sheet-head .kafka-print__subtitle {
+  margin: var(--kafka-physical-leading-body) 0 0;
+  text-align: left;
+}
+
+.kafka-print__facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: calc(var(--kafka-physical-baseline) * 4);
+  row-gap: var(--kafka-physical-baseline);
+  margin: calc(var(--kafka-physical-leading-body) * 2) 0 0;
+}
+
+.kafka-print__facts dt {
+  font-family: var(--kafka-typography-print-folio-font-family);
+  font-size: var(--kafka-typography-print-caption-font-size);
+  line-height: var(--kafka-typography-print-body-line-height);
+  color: var(--kafka-color-gold-800);
+}
+
+.kafka-print__facts dd {
+  margin: 0;
+}
+
+.kafka-print .kafka-print__sheet h2 {
+  margin-top: calc(var(--kafka-physical-leading-body) * 2);
+  margin-bottom: var(--kafka-physical-leading-body);
+}
+
+.kafka-print__schedule {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--kafka-typography-print-body-font-size);
+}
+
+.kafka-print__schedule th,
+.kafka-print__schedule td {
+  padding: var(--kafka-physical-baseline) 0;
+  border-bottom: 0.5pt solid var(--kafka-color-ink-300);
+  line-height: var(--kafka-typography-print-body-line-height);
+  text-align: left;
+  vertical-align: baseline;
+  hyphens: manual;
+}
+
+.kafka-print__schedule th {
+  font-family: var(--kafka-typography-print-folio-font-family);
+  font-size: var(--kafka-typography-print-caption-font-size);
+  font-weight: var(--kafka-typography-print-folio-font-weight);
+  color: var(--kafka-color-ink-600);
+}
+
+.kafka-print__schedule th:first-child,
+.kafka-print__schedule td:first-child {
+  width: 22%;
+}
+
+.kafka-print__schedule th:nth-child(2),
+.kafka-print__schedule td:nth-child(2) {
+  width: 30%;
+}
+
+.kafka-print__sheet ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.kafka-print__sheet li {
+  line-height: var(--kafka-typography-print-body-line-height);
+}
+
+.kafka-print .kafka-print__sheet-foot {
+  margin-top: auto;
+  padding-top: var(--kafka-physical-leading-body);
+  border-top: 0.5pt solid var(--kafka-color-ink-900);
+  font-size: var(--kafka-typography-print-footnote-font-size);
+  line-height: var(--kafka-typography-print-footnote-line-height);
+  text-align: left;
+  text-indent: 0;
 }

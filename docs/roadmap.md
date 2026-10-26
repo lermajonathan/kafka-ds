@@ -22,7 +22,7 @@ Alcance: [DDR-KF-004](decisions/DDR-KF-004-alcance-v1.md) y [DDR-KF-005](decisio
 | H4 ✅ | Navegación y capas, código y pruebas; Figma en H7 | Pestañas, acordeón, migas, paginación, pasos, menú, desplegable, popover, tooltip, modal, cajón, confirmar, calendarios | Idem |
 | H5 ✅ | Retroalimentación y superficies | Alerta, toast, progreso, esqueleto, estado vacío, tarjeta, panel, divisor, avatar, notificaciones, **tarjeta VIP, caja de noticias, tarjeta de programa** | Idem |
 | H5b | Figma completo | Variables claro y oscuro, estilos, portada, inicio, fundamentos, una página por componente, patrones y decisiones, como el archivo de Pance | Figma refleja el repo componente por componente y tiene el mismo nivel de documentación que Pance |
-| H6 | Impresión | Tokens de página, `print.css`, plantillas libro, revista y ficha, prueba de PDF | PDF de ejemplo pasa la prueba de salida |
+| H6 ✅ | Impresión | Tokens de página, `print.css`, plantillas libro, revista y ficha, prueba de PDF | PDF de ejemplo pasa la prueba de salida |
 | H7 | Figma y documentación | Una página por componente (cabecera, ejemplos, variantes, tokens), página DDR, guía de inicio, sitio publicado, Figma Community | Figma refleja el repo componente por componente |
 | H8 | Lanzamiento | Tema Altazor, autoalojar Literata, pruebas con lector de pantalla, versión 1.0.0 en npm | Criterio completo cumplido; sin versiones intermedias |
 
