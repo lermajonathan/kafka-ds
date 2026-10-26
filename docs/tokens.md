@@ -139,8 +139,8 @@ Raw values. Only referenced by semantic and component tokens.
 | `fontWeight.bold` | 700 |  |  |
 | `letterSpacing.tight` | -0.01em |  |  |
 | `letterSpacing.normal` | 0em |  |  |
-| `letterSpacing.wide` | 0.04em |  |  |
-| `letterSpacing.wider` | 0.1em |  |  |
+| `letterSpacing.wide` | 0.01em |  |  |
+| `letterSpacing.wider` | 0.02em |  |  |
 | `opacity.45` | 0.45 |  | Un solo valor para todos los controles deshabilitados (como Pance). |
 | `zIndex.base` | 0 |  |  |
 | `zIndex.sticky` | 100 |  |  |
@@ -273,8 +273,8 @@ Purpose-based aliases (surface, text, reading, typography roles). Use these in p
 | `typography.reading.dropcap` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"4rem","fontWeight":700,"lineHeight":0.8,"letterSpacing":"0em"} |  |  |
 | `typography.ui.button` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"1rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `typography.ui.label` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
-| `typography.ui.caption` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
-| `typography.ui.overline` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":700,"lineHeight":1.4,"letterSpacing":"0.1em"} |  |  |
+| `typography.ui.caption` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
+| `typography.ui.overline` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":700,"lineHeight":1.4,"letterSpacing":"0.02em"} |  |  |
 | `typography.ui.input` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"1rem","fontWeight":400,"lineHeight":1.4,"letterSpacing":"0em"} |  | Texto dentro de campos y etiquetas de controles. 16 px: por debajo, iOS amplía la página al enfocar. |
 | `typography.print.body` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"10.5pt","fontWeight":400,"lineHeight":"14pt","letterSpacing":"0em"} |  |  |
 | `typography.print.lead` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"12pt","fontWeight":400,"lineHeight":"17.5pt","letterSpacing":"0em"} |  |  |
@@ -283,8 +283,8 @@ Purpose-based aliases (surface, text, reading, typography roles). Use these in p
 | `typography.print.heading` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"13pt","fontWeight":700,"lineHeight":"14pt","letterSpacing":"0em"} |  |  |
 | `typography.print.heading-lg` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"18pt","fontWeight":700,"lineHeight":"21pt","letterSpacing":"-0.01em"} |  |  |
 | `typography.print.title` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"28pt","fontWeight":700,"lineHeight":"28pt","letterSpacing":"-0.01em"} |  |  |
-| `typography.print.folio` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"8pt","fontWeight":500,"lineHeight":"10.5pt","letterSpacing":"0.04em"} |  |  |
-| `typography.print.running-head` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"8pt","fontWeight":600,"lineHeight":"10.5pt","letterSpacing":"0.1em"} |  |  |
+| `typography.print.folio` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"8pt","fontWeight":500,"lineHeight":"10.5pt","letterSpacing":"0.01em"} |  |  |
+| `typography.print.running-head` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"8pt","fontWeight":600,"lineHeight":"10.5pt","letterSpacing":"0.02em"} |  |  |
 | `gradient.vip` | {"angle":"140deg","stops":[{"color":"#f7ecc4","position":"0%"},{"color":"#e6c964","position":"42%"},{"color":"#b8932a","position":"100%"}]} |  | Fondo de la tarjeta VIP. El texto va en ink 900 (5,9:1 o más en todo el degradado). |
 | `opacity.disabled` | 0.45 |  |  |
 | `motion.duration.fast` | 150ms |  |  |
@@ -359,7 +359,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `badge.radius` | 9999px |  |  |
 | `badge.padding-x` | 0.75rem |  |  |
 | `badge.padding-y` | 0.25rem |  |  |
-| `badge.type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `badge.type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `badge.neutral.bg` | #1a1a1a |  |  |
 | `badge.neutral.fg` | #fbf8f1 |  |  |
 | `badge.brand.bg` | #d4af37 |  |  |
@@ -422,7 +422,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `news.fg` | #1a1a1a |  |  |
 | `news.soft-fg` | #36322d |  |  |
 | `news.kind-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
-| `news.meta-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `news.meta-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `news.gap` | 0.75rem |  |  |
 | `news.meta-gap` | 0.5rem |  |  |
 | `news.dot-size` | 0.75rem |  |  |
@@ -487,7 +487,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `epigraph.offset` | 3rem |  |  |
 | `epigraph.gap` | 0.5rem |  |  |
 | `epigraph.type` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"1.25rem","fontWeight":400,"lineHeight":1.6,"letterSpacing":"0em","fontStyle":"italic"} |  |  |
-| `epigraph.attribution-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `epigraph.attribution-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `drop-cap.fg` | #574306 |  |  |
 | `drop-cap.padding-right` | 0.5rem |  |  |
 | `drop-cap.type` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"4rem","fontWeight":700,"lineHeight":0.8,"letterSpacing":"0em"} |  |  |
@@ -506,7 +506,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `toc.indent` | 1rem |  |  |
 | `toc.min-height` | 2.75rem |  |  |
 | `toc.title` | #4a453e |  |  |
-| `toc.title-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":700,"lineHeight":1.4,"letterSpacing":"0.1em"} |  |  |
+| `toc.title-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":700,"lineHeight":1.4,"letterSpacing":"0.02em"} |  |  |
 | `toc.type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `toc.hover-bg` | #f6f1e6 |  |  |
 | `toc.radius` | 0.75rem |  |  |
@@ -518,7 +518,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `reading-settings.gap` | 1.25rem |  |  |
 | `reading-settings.group-gap` | 0.5rem |  |  |
 | `reading-settings.legend` | #4a453e |  |  |
-| `reading-settings.legend-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":700,"lineHeight":1.4,"letterSpacing":"0.1em"} |  |  |
+| `reading-settings.legend-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":700,"lineHeight":1.4,"letterSpacing":"0.02em"} |  |  |
 | `reading-settings.option-bg` | #fffdf9 |  |  |
 | `reading-settings.option-border` | #615b52 |  |  |
 | `reading-settings.option-fg` | #36322d |  |  |
@@ -540,7 +540,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `prev-next.radius` | 1rem |  |  |
 | `prev-next.min-height` | 2.75rem |  |  |
 | `prev-next.direction` | #4a453e |  |  |
-| `prev-next.direction-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":700,"lineHeight":1.4,"letterSpacing":"0.1em"} |  |  |
+| `prev-next.direction-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":700,"lineHeight":1.4,"letterSpacing":"0.02em"} |  |  |
 | `prev-next.title` | #1a1a1a |  |  |
 | `prev-next.title-type` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"1.25rem","fontWeight":700,"lineHeight":1.2,"letterSpacing":"0em"} |  |  |
 | `figure.radius` | 1.25rem |  |  |
@@ -548,7 +548,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `figure.caption` | #36322d |  |  |
 | `figure.credit` | #4a453e |  |  |
 | `figure.gap` | 0.75rem |  |  |
-| `figure.caption-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `figure.caption-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `author.avatar-size` | 3rem |  |  |
 | `author.avatar-bg` | #ece4d2 |  |  |
 | `author.avatar-fg` | #1a1a1a |  |  |
@@ -558,17 +558,17 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `author.role` | #36322d |  |  |
 | `author.bio` | #36322d |  |  |
 | `author.name-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
-| `author.role-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `author.role-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `reading-time.fg` | #36322d |  |  |
 | `reading-time.gap` | 0.25rem |  |  |
-| `reading-time.type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `reading-time.type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `embed.radius` | 1.25rem |  |  |
 | `embed.bg` | #ece4d2 |  |  |
 | `embed.border` | #615b52 |  |  |
 | `embed.border-width` | 1px |  |  |
 | `embed.gap` | 0.75rem |  |  |
 | `embed.caption` | #36322d |  |  |
-| `embed.caption-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `embed.caption-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `embed.facade-fg` | #1a1a1a |  |  |
 | `embed.facade-gap` | 1rem |  |  |
 | `icon-button.size` | 2.75rem |  |  |
@@ -584,9 +584,9 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `field.label` | #1a1a1a |  |  |
 | `field.label-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `field.hint` | #36322d |  |  |
-| `field.hint-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `field.hint-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `field.error` | #8f1d17 |  |  |
-| `field.error-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `field.error-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `field.required` | #36322d |  |  |
 | `input.radius` | 0.75rem |  |  |
 | `input.min-height` | 2.75rem |  |  |
@@ -621,7 +621,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `checkbox.label-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"1rem","fontWeight":400,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `checkbox.label` | #1a1a1a |  |  |
 | `checkbox.description` | #36322d |  |  |
-| `checkbox.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `checkbox.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `checkbox.invalid-border` | #b3261e |  |  |
 | `checkbox.disabled-opacity` | 0.45 |  |  |
 | `checkbox.radius` | 0.75rem |  |  |
@@ -637,7 +637,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `radio.label-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"1rem","fontWeight":400,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `radio.label` | #1a1a1a |  |  |
 | `radio.description` | #36322d |  |  |
-| `radio.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `radio.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `radio.invalid-border` | #b3261e |  |  |
 | `radio.disabled-opacity` | 0.45 |  |  |
 | `radio.radius` | 9999px |  |  |
@@ -658,7 +658,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `switch.label-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"1rem","fontWeight":400,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `switch.label` | #1a1a1a |  |  |
 | `switch.description` | #36322d |  |  |
-| `switch.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `switch.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `switch.duration` | 150ms |  |  |
 | `switch.disabled-opacity` | 0.45 |  |  |
 | `slider.rail-height` | 0.5rem |  |  |
@@ -699,7 +699,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `file-upload.icon` | #36322d |  |  |
 | `file-upload.icon-size` | 1.5rem |  |  |
 | `file-upload.hint` | #36322d |  |  |
-| `file-upload.hint-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `file-upload.hint-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `file-upload.item-bg` | #ece4d2 |  |  |
 | `file-upload.item-radius` | 0.75rem |  |  |
 | `file-upload.item-padding` | 0.75rem |  |  |
@@ -767,7 +767,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `stepper.label` | #1a1a1a |  |  |
 | `stepper.label-muted` | #36322d |  |  |
 | `stepper.label-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
-| `stepper.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `stepper.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `stepper.gap` | 0.75rem |  |  |
 | `stepper.done-border` | #615b52 |  |  |
 | `popover.bg` | #fffdf9 |  |  |
@@ -822,7 +822,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `tooltip.radius` | 0.75rem |  |  |
 | `tooltip.padding-x` | 0.75rem |  |  |
 | `tooltip.padding-y` | 0.5rem |  |  |
-| `tooltip.type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `tooltip.type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `tooltip.max-width` | 240px |  |  |
 | `tooltip.offset` | 0.5rem |  |  |
 | `tooltip.shadow` | {"offsetX":"0px","offsetY":"18px","blur":"44px","spread":"0px","color":"#0f0f0e38"} |  |  |
@@ -863,7 +863,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `calendar.today-border` | #8f6f14 |  |  |
 | `calendar.today-border-width` | 2px |  |  |
 | `calendar.weekday` | #36322d |  |  |
-| `calendar.weekday-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `calendar.weekday-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `calendar.title-type` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"1.25rem","fontWeight":700,"lineHeight":1.2,"letterSpacing":"0em"} |  |  |
 | `calendar.gap` | 0.25rem |  |  |
 | `calendar.disabled-opacity` | 0.45 |  |  |
@@ -894,7 +894,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `divider.width` | 1px |  |  |
 | `divider.gap` | 0.75rem |  |  |
 | `divider.label-fg` | #36322d |  |  |
-| `divider.label-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `divider.label-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `skeleton.bg` | #ece4d2 |  |  |
 | `skeleton.shimmer` | #e6e2dc |  |  |
 | `skeleton.radius` | 0.75rem |  |  |
@@ -928,7 +928,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `panel.title-fg` | #1a1a1a |  |  |
 | `panel.title-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `panel.description-fg` | #36322d |  |  |
-| `panel.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `panel.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `panel.icon-box` | 2rem |  |  |
 | `panel.icon-radius` | 0.75rem |  |  |
 | `panel.icon.brand.bg` | #d4af37 |  |  |
@@ -949,7 +949,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `avatar.radius-square` | 0.75rem |  |  |
 | `avatar.bg` | #d4af37 |  |  |
 | `avatar.fg` | #1a1a1a |  |  |
-| `avatar.type-sm` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `avatar.type-sm` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `avatar.type-md` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `avatar.type-lg` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"1.25rem","fontWeight":700,"lineHeight":1.2,"letterSpacing":"0em"} |  |  |
 | `avatar.ring` | #fbf8f1 |  |  |
@@ -971,7 +971,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `progress.fill.danger` | #8f1d17 |  |  |
 | `progress.gap` | 0.75rem |  |  |
 | `progress.value-fg` | #36322d |  |  |
-| `progress.value-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `progress.value-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `progress.label-fg` | #1a1a1a |  |  |
 | `progress.label-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `progress.transition` | 350ms |  |  |
@@ -992,7 +992,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `toast.fg` | #1a1a1a |  |  |
 | `toast.action` | #574306 |  |  |
 | `toast.title-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
-| `toast.body-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `toast.body-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `toast.enter` | 250ms |  |  |
 | `toast.info.bg` | #eaf2fc |  |  |
 | `toast.info.fg` | #184b8f |  |  |
@@ -1011,7 +1011,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `count-badge.radius` | 9999px |  |  |
 | `count-badge.min-size` | 1.25rem |  |  |
 | `count-badge.padding-x` | 0.25rem |  |  |
-| `count-badge.type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `count-badge.type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `notification-center.width` | 24.25rem |  |  |
 | `notification-center.max-height` | 280px |  |  |
 | `notification-center.padding-x` | 0.75rem |  |  |
@@ -1022,7 +1022,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `notification-center.title-fg` | #1a1a1a |  |  |
 | `notification-center.title-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `notification-center.body-fg` | #36322d |  |  |
-| `notification-center.body-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `notification-center.body-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `notification-center.time-fg` | #36322d |  |  |
 | `notification-center.icon-box` | 2rem |  |  |
 | `notification-center.empty-fg` | #36322d |  |  |
@@ -1052,7 +1052,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `program-card.body-padding` | 1.5rem |  |  |
 | `program-card.body-gap` | 1rem |  |  |
 | `program-card.description-type` | {"fontFamily":["Literata","Georgia","serif"],"fontSize":"1.125rem","fontWeight":400,"lineHeight":1.6,"letterSpacing":"0em"} |  |  |
-| `program-card.meta-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `program-card.meta-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `program-card.meta-gap` | 0.5rem |  |  |
 | `program-card.cover-gold` | #d4af37 |  |  |
 | `program-card.cover-amber` | #e89e10 |  |  |
@@ -1093,7 +1093,7 @@ Per-component decisions, aliased to semantic or primitive tokens.
 | `radio-card.label-fg` | #1a1a1a |  |  |
 | `radio-card.label-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.875rem","fontWeight":500,"lineHeight":1.4,"letterSpacing":"0em"} |  |  |
 | `radio-card.description-fg` | #36322d |  |  |
-| `radio-card.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.04em"} |  |  |
+| `radio-card.description-type` | {"fontFamily":["system-ui","-apple-system","Segoe UI","sans-serif"],"fontSize":"0.75rem","fontWeight":600,"lineHeight":1.4,"letterSpacing":"0.01em"} |  |  |
 | `radio-card.icon-bg` | #ece4d2 |  |  |
 | `radio-card.icon-fg` | #36322d |  |  |
 | `radio-card.icon-size` | 2rem |  |  |

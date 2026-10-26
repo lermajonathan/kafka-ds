@@ -42,6 +42,11 @@ if (darkInPayload < darkCount - 6) fail(`dark values lost: source ${darkCount}, 
 // Figma reads a variable bound to a layer's opacity as a percentage (0.45 would render at 0.45 %)
 const op45 = cols.Primitives && cols.Primitives.variables.find((v) => v.name === 'opacity/45')
 if (!op45 || op45.values.Value.value !== 45) fail(`opacity/45 must be 45 (percent) in Figma, got ${op45 && JSON.stringify(op45.values.Value)}`)
+// tracking: caption/folio 1 %, overline/running head 2 %. Text styles use these as percent, never bound (a bound variable would be read as pixels).
+for (const [n, pct] of [['wide', 1], ['wider', 2]]) {
+  const ls = cols.Primitives.variables.find((v) => v.name === 'letterSpacing/' + n)
+  if (!ls || ls.values.Value.value !== pct) fail(`letterSpacing/${n} must be ${pct} (percent), got ${ls && JSON.stringify(ls.values.Value)}`)
+}
 
 // Scale of the library: every colour, dimension, number, duration and opacity token is a variable
 if (names.size < 800) fail(`too few variables (${names.size}); typography, shadow and gradient are styles, everything else is a variable`)

@@ -1420,7 +1420,7 @@
           "syntax": "var(--kafka-letter-spacing-wide)",
           "values": {
             "Value": {
-              "value": 4
+              "value": 1
             }
           }
         },
@@ -1431,7 +1431,7 @@
           "syntax": "var(--kafka-letter-spacing-wider)",
           "values": {
             "Value": {
-              "value": 10
+              "value": 2
             }
           }
         },

@@ -133,8 +133,8 @@
   --kafka-font-weight-bold: 700;
   --kafka-letter-spacing-tight: -0.01em;
   --kafka-letter-spacing-normal: 0em;
-  --kafka-letter-spacing-wide: 0.04em;
-  --kafka-letter-spacing-wider: 0.1em;
+  --kafka-letter-spacing-wide: 0.01em;
+  --kafka-letter-spacing-wider: 0.02em;
   --kafka-opacity-45: 0.45;
   --kafka-z-index-base: 0;
   --kafka-z-index-sticky: 100;

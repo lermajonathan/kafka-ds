@@ -300,8 +300,8 @@ export const tokens = {
   "letterSpacing": {
     "tight": "-0.01em",
     "normal": "0em",
-    "wide": "0.04em",
-    "wider": "0.1em"
+    "wide": "0.01em",
+    "wider": "0.02em"
   },
   "opacity": {
     "45": 0.45,
@@ -531,7 +531,7 @@ export const tokens = {
         "fontSize": "0.75rem",
         "fontWeight": 600,
         "lineHeight": 1.4,
-        "letterSpacing": "0.04em"
+        "letterSpacing": "0.01em"
       },
       "overline": {
         "fontFamily": [
@@ -543,7 +543,7 @@ export const tokens = {
         "fontSize": "0.75rem",
         "fontWeight": 700,
         "lineHeight": 1.4,
-        "letterSpacing": "0.1em"
+        "letterSpacing": "0.02em"
       },
       "input": {
         "fontFamily": [
@@ -646,7 +646,7 @@ export const tokens = {
         "fontSize": "8pt",
         "fontWeight": 500,
         "lineHeight": "10.5pt",
-        "letterSpacing": "0.04em"
+        "letterSpacing": "0.01em"
       },
       "running-head": {
         "fontFamily": [
@@ -658,7 +658,7 @@ export const tokens = {
         "fontSize": "8pt",
         "fontWeight": 600,
         "lineHeight": "10.5pt",
-        "letterSpacing": "0.1em"
+        "letterSpacing": "0.02em"
       }
     }
   },
@@ -798,7 +798,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "neutral": {
       "bg": "#1a1a1a",
@@ -970,7 +970,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "gap": "0.75rem",
     "meta-gap": "0.5rem",
@@ -1180,7 +1180,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     }
   },
   "drop-cap": {
@@ -1226,7 +1226,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 700,
       "lineHeight": 1.4,
-      "letterSpacing": "0.1em"
+      "letterSpacing": "0.02em"
     },
     "type": {
       "fontFamily": [
@@ -1262,7 +1262,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 700,
       "lineHeight": 1.4,
-      "letterSpacing": "0.1em"
+      "letterSpacing": "0.02em"
     },
     "option-bg": "#fffdf9",
     "option-border": "#615b52",
@@ -1308,7 +1308,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 700,
       "lineHeight": 1.4,
-      "letterSpacing": "0.1em"
+      "letterSpacing": "0.02em"
     },
     "title": "#1a1a1a",
     "title-type": {
@@ -1339,7 +1339,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     }
   },
   "author": {
@@ -1373,7 +1373,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     }
   },
   "reading-time": {
@@ -1389,7 +1389,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     }
   },
   "embed": {
@@ -1409,7 +1409,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "facade-fg": "#1a1a1a",
     "facade-gap": "1rem"
@@ -1455,7 +1455,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "error": "#8f1d17",
     "error-type": {
@@ -1468,7 +1468,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "required": "#36322d"
   },
@@ -1544,7 +1544,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "invalid-border": "#b3261e",
     "disabled-opacity": 0.45,
@@ -1584,7 +1584,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "invalid-border": "#b3261e",
     "disabled-opacity": 0.45,
@@ -1629,7 +1629,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "duration": "150ms",
     "disabled-opacity": 0.45
@@ -1721,7 +1721,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "item-bg": "#ece4d2",
     "item-radius": "0.75rem",
@@ -1876,7 +1876,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "gap": "0.75rem",
     "done-border": "#615b52"
@@ -1990,7 +1990,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "max-width": "240px",
     "offset": "0.5rem",
@@ -2072,7 +2072,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "title-type": {
       "fontFamily": [
@@ -2160,7 +2160,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     }
   },
   "skeleton": {
@@ -2249,7 +2249,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "icon-box": "2rem",
     "icon-radius": "0.75rem",
@@ -2297,7 +2297,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "type-md": {
       "fontFamily": [
@@ -2355,7 +2355,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "label-fg": "#1a1a1a",
     "label-type": {
@@ -2421,7 +2421,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "enter": "250ms",
     "info": {
@@ -2461,7 +2461,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     }
   },
   "notification-center": {
@@ -2496,7 +2496,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "time-fg": "#36322d",
     "icon-box": "2rem",
@@ -2591,7 +2591,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "meta-gap": "0.5rem",
     "cover-gold": "#d4af37",
@@ -2671,7 +2671,7 @@ export const tokens = {
       "fontSize": "0.75rem",
       "fontWeight": 600,
       "lineHeight": 1.4,
-      "letterSpacing": "0.04em"
+      "letterSpacing": "0.01em"
     },
     "icon-bg": "#ece4d2",
     "icon-fg": "#36322d",
