@@ -1,4 +1,4 @@
-// Decisions: every card is lifted (Shadow/md = elevation.card) and the DDRs added since the page was built (013…018) are appended.
+// Decisions: every card is lifted (Shadow/md = elevation.card) and the DDRs added since the page was built (013…019) are appended.
 const effect = (await figma.getLocalEffectStylesAsync()).find((s) => s.name === 'Shadow/md')
 if (!effect) throw new Error('missing effect style Shadow/md')
 const page = figma.root.children.find((p) => p.name === 'Decisions')

@@ -56,6 +56,10 @@ jobs:
       - name: axe-core (every example, 2 viewports × 2 themes)
         run: pnpm run test:axe
 
+      # ── Documentation site ──────────────────────────────────────────────────
+      - name: Docs site (data, routes, live examples, focus, theme, axe)
+        run: pnpm run test:site
+
       # ── Packages ────────────────────────────────────────────────────────────
       - name: Build packages
         run: pnpm run build:packages

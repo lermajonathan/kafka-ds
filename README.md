@@ -21,8 +21,9 @@ Kafka parte de la arquitectura de [Pance](https://github.com/lermajonathan/pance
 | 🧪 | **Pruebas**: contraste (336 pares en claro y 335 en oscuro), estructura de tokens, lint, teclado y ARIA, axe-core, ejemplos de la documentación, paquetes y diferencia visual | [`tests/`](tests) |
 | 📐 | **Figma**: variables (Primitives, Semantic, Components), estilos y 6 conjuntos de componentes | [archivo en Figma](https://www.figma.com/design/S3WoutgiyT1a5kwahRaKJ2) |
 | 📝 | **Decisiones de diseño** (DDR-KF) | [`docs/decisions/`](docs/decisions) |
+| 🌐 | **Sitio de documentación**: componentes con ejemplos vivos, decisiones y tokens (`pnpm run dev:site`) | [`site/`](site) · [DDR-KF-019](docs/decisions/DDR-KF-019-sitio-de-documentacion.md) |
 
-H5 está cerrado en el código. Falta llevar Figma al mismo nivel (hito H5b: variables, una página por componente, patrones y decisiones), el módulo de impresión (H6), el sitio de documentación (H7) y el lanzamiento (H8).
+H5 está cerrado en el código. Figma, impresión y el sitio de documentación están construidos; faltan su publicación (H7) y el lanzamiento (H8).
 
 ## Empezar
 

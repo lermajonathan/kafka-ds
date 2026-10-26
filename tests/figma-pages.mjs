@@ -14,8 +14,8 @@ assert.equal(d.components, 70)
 assert.equal(d.families.reduce((n, f) => n + f.count, 0), d.components, 'families add up to the components')
 assert.ok(d.families.every((f) => f.note), 'every family has a note')
 
-// DDR 013…018 are added to the Decisions page, with their own text
-assert.deepEqual(d.newDdrs.map((x) => x.id), ['DDR-KF-013', 'DDR-KF-014', 'DDR-KF-015', 'DDR-KF-016', 'DDR-KF-017', 'DDR-KF-018'])
+// DDR 013…019 are added to the Decisions page, with their own text
+assert.deepEqual(d.newDdrs.map((x) => x.id), ['DDR-KF-013', 'DDR-KF-014', 'DDR-KF-015', 'DDR-KF-016', 'DDR-KF-017', 'DDR-KF-018', 'DDR-KF-019'])
 for (const x of d.newDdrs) {
   for (const k of ['title', 'status', 'body', 'note']) assert.ok(x[k], x.id + ' needs ' + k)
   assert.ok(existsSync(new URL(`../docs/decisions/${x.id}-${x.slug}.md`, import.meta.url)), x.id + ' exists in docs/decisions')

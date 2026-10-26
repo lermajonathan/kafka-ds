@@ -26,6 +26,7 @@ const NEW_DDRS = [
   { id: 'DDR-KF-016', slug: 'tooltip-con-flecha-y-valores-truncados', title: 'Tooltip con flecha y valores cortados', status: 'Aceptada · 2026-10-26', body: 'Tooltip con flecha en cuatro lados que se voltea con su lado. DateRangePicker se queda en una línea y muestra un tooltip solo si el texto se corta.', note: 'Un contenido vacío apaga el tooltip.' },
   { id: 'DDR-KF-017', slug: 'drawer-con-radio-y-esqueleto-visible', title: 'Drawer con radio y esqueleto visible', status: 'Aceptada · 2026-10-26', body: 'Drawer redondea las esquinas que miran a la página. El esqueleto usa color.bg.placeholder (≥ 1,4:1 en claro y oscuro). ConfirmDialog alinea icono y mensaje.', note: 'La auditoría de Figma mide las sombras recortadas.' },
   { id: 'DDR-KF-018', slug: 'patrones-tarjeta-completa-y-notificaciones-separadas', title: 'Patrones: tarjeta completa y notificaciones', status: 'Aceptada · 2026-10-26', body: 'ProgramCard en Figma es la tarjeta completa: portada, insignia, precio y acción. Cada notificación sin leer es una pieza propia con inset de 4 px.', note: 'La separación de notificaciones queda abierta a ajuste.' },
+  { id: 'DDR-KF-019', slug: 'sitio-de-documentacion', title: 'Sitio de documentación', status: 'Aceptada · 2026-10-26', body: 'El sitio es una app de Vite y React dentro del repositorio, publicada en GitHub Pages. Usa los componentes de Kafka y corre cada ejemplo sobre su código.', note: 'Se publica al fusionar a main.' },
 ]
 
 export function buildPageData() {

@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H7 · Sitio de documentación (26 oct 2026)
+- **Sitio de documentación** en Vite y React (`site/`): inicio, primeros pasos, 70 páginas de componentes con ejemplos que corren encima de su código, 19 decisiones y la referencia de tokens. Claro y oscuro, navegable con teclado, sin peticiones fuera de su origen ([DDR-KF-019](docs/decisions/DDR-KF-019-sitio-de-documentacion.md)).
+- `pnpm run dev:site`, `pnpm run build:site` y `pnpm run test:site` (datos, rutas, foco, tema, axe-core en dos tamaños y dos temas, sin desborde en 390 px). Se publica en GitHub Pages cuando `main` cambia (`.github/workflows/pages.yml`).
+- Nueva guía [Primeros pasos](docs/getting-started.md).
+- Figma: marco editorial (cabecera, línea dorada y colofón) en todas las páginas menos la portada; la página Decisions suma DDR-KF-019.
+
 ### H5 cerrado (25 oct 2026)
 - Retroalimentación y superficies, tarjetas de Altazor y paridad con Pance terminados: **70 componentes**, 1113 tokens, 336/335 pares de contraste, 511 comprobaciones de teclado y ARIA y axe-core sin violaciones ([DDR-KF-011](docs/decisions/DDR-KF-011-retroalimentacion-y-superficies.md), [DDR-KF-012](docs/decisions/DDR-KF-012-auditoria-de-paridad.md)).
 - Siguiente: **H5b**, Figma completo (fundaciones, páginas de componentes, patrones, decisiones), antes de H6 (impresión).
