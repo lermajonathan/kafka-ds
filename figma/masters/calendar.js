@@ -15,8 +15,10 @@ const grid = (kindOf) => {
   }
   return rows
 }
+// Previous / next month: the soft icon button, as in the component
+const nav = (icon) => ({ frame: true, name: 'Nav', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 44, height: 44, wvar: 'Components/icon-button/size', hvar: 'Components/icon-button/size', radius: 'Components/icon-button/radius', fill: 'Components/button/soft/bg', children: [{ icon, size: 20, fill: 'Components/button/soft/fg' }] })
 const header = [
-  { frame: true, name: 'Header', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', fillWidth: true, children: [{ text: 'octubre de 2026', style: 'Reading/Heading SM', fill: C + 'fg' }] },
+  { frame: true, name: 'Header', dir: 'HORIZONTAL', align: 'CENTER', justify: 'SPACE_BETWEEN', height: 44, fillWidth: true, children: [nav('ChevronLeft'), { text: 'octubre de 2026', style: 'Reading/Heading SM', fill: C + 'fg' }, nav('ChevronRight')] },
   { frame: true, name: 'Weekdays', dir: 'HORIZONTAL', gap: C + 'gap', children: ['L', 'M', 'X', 'J', 'V', 'S', 'D'].map((w) => ({ frame: true, name: 'Wd', dir: 'HORIZONTAL', align: 'CENTER', justify: 'CENTER', width: 44, wvar: C + 'cell-size', children: [{ text: w, style: 'UI/Caption', fill: C + 'weekday' }] })) }]
 const comps = []
 for (const [name, kindOf] of [

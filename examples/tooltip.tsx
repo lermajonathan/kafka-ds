@@ -14,4 +14,21 @@ export const examples: Example[] = [
       </div>
     ),
   },
+  {
+    id: 'placements',
+    title: 'Placements',
+    description: 'The arrow always points at the control it describes. The tooltip flips to the opposite side when there is no room.',
+    render: () => (
+      <div className="flex flex-wrap items-center justify-center gap-24 px-24 py-16">
+        {(['top', 'bottom', 'left', 'right'] as const).map((placement) => {
+          const label = { top: 'Arriba', bottom: 'Abajo', left: 'Izquierda', right: 'Derecha' }[placement]
+          return (
+            <Tooltip key={placement} placement={placement} content={`Aparece ${label.toLowerCase()}`}>
+              <IconButton Icon={IconClose} label={label} variant="outline" />
+            </Tooltip>
+          )
+        })}
+      </div>
+    ),
+  },
 ]

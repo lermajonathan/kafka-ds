@@ -135,3 +135,29 @@ console.log('figma-select: ok')
   assert.doesNotMatch(rc, /radius: 'Semantic\/radius\/control', fill: C \+ 'icon-bg'/, 'RadioCard icon no longer uses the control radius')
 }
 console.log('figma-c3: ok')
+
+// C4: Tooltip has an arrow and shows every side
+{
+  const tt = master('tooltip')
+  assert.match(tt, /arrow/, 'Tooltip shows its arrow')
+  for (const side of ['Top', 'Bottom', 'Left', 'Right']) assert.match(tt, new RegExp("\\['" + side + "'"), 'Tooltip shows the ' + side + ' side')
+}
+console.log('figma-tooltip: ok')
+
+// C4: Calendar and RangeCalendar head is the real one (previous / month / next, 44 px high), so the weekdays are never pressed against the title
+for (const id of ['calendar', 'range-calendar']) {
+  const m = master(id)
+  assert.match(m, /nav\('ChevronLeft'\)/, id + ' header has the previous-month button')
+  assert.match(m, /nav\('ChevronRight'\)/, id + ' header has the next-month button')
+  assert.match(m, /name: 'Header'[^\n]*height: 44/, id + ' header row is 44 px high')
+}
+console.log('figma-calendar-header: ok')
+
+// C4: DateRangePicker keeps one line: the value is cut with an ellipsis and a tooltip carries the full text
+{
+  const d = master('date-range-picker')
+  assert.match(d, /textTruncation = 'ENDING'|truncate: true/, 'DateRangePicker value is truncated')
+  assert.match(d, /State=Truncated/, 'DateRangePicker shows the truncated state with its tooltip')
+  assert.match(d, /Components\/tooltip\//, 'the truncated state uses the tooltip tokens')
+}
+console.log('figma-drp: ok')

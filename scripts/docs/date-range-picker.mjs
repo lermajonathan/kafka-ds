@@ -16,7 +16,8 @@ export default {
     "**A button with `aria-haspopup=\"dialog\"`** that opens a non-modal popover: Escape closes it and returns focus to the button; a click outside closes it.",
     "**Half-picked is never saved:** `onValueChange` receives a complete range or an empty one.",
     "The calendar keeps all of RangeCalendar's keys and its announced status line. The button and presets are 44 px high.",
-    "`invalid` and `Field` errors are tied to the button like any other control."
+    "`invalid` and `Field` errors are tied to the button like any other control.",
+    "**One line:** a long range is cut with an ellipsis, so the field never grows taller. When it is cut, a tooltip shows the whole text on hover and on keyboard focus (the accessible name always has it)."
   ],
   "content": [
     "The placeholder says the format of the answer (\"Elige las fechas\"), not an instruction to click."

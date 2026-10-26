@@ -1140,8 +1140,9 @@
   --kafka-tooltip-type-line-height: var(--kafka-typography-ui-caption-line-height);
   --kafka-tooltip-type-letter-spacing: var(--kafka-typography-ui-caption-letter-spacing);
   --kafka-tooltip-max-width: var(--kafka-size-menu);
-  --kafka-tooltip-offset: var(--kafka-space-8);
+  --kafka-tooltip-offset: var(--kafka-space-12);
   --kafka-tooltip-shadow: var(--kafka-elevation-floating);
+  --kafka-tooltip-arrow-size: var(--kafka-space-8);
   --kafka-modal-bg: var(--kafka-color-bg-surface);
   --kafka-modal-fg: var(--kafka-color-fg-default);
   --kafka-modal-border: var(--kafka-color-border-default);

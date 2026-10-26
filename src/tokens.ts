@@ -2004,14 +2004,15 @@ export const tokens = {
       "letterSpacing": "0.01em"
     },
     "max-width": "240px",
-    "offset": "0.5rem",
+    "offset": "0.75rem",
     "shadow": {
       "offsetX": "0px",
       "offsetY": "18px",
       "blur": "44px",
       "spread": "0px",
       "color": "#0f0f0e38"
-    }
+    },
+    "arrow-size": "0.5rem"
   },
   "modal": {
     "bg": "#fffdf9",

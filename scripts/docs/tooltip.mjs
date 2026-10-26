@@ -13,7 +13,8 @@ export default {
   "accessibility": [
     "**Pattern:** `role=\"tooltip\"` linked with `aria-describedby`, so it is read as a description.",
     "It shows on keyboard focus and after a short hover delay; Esc hides it; the pointer can move onto it (WCAG 1.4.13).",
-    "It never holds links or buttons."
+    "It never holds links or buttons.",
+    "**Arrow:** it always points at the centre of the control, on any side (`top`, `bottom`, `left`, `right`). When there is no room the tooltip flips to the opposite side and the arrow follows."
   ],
   "content": [
     "One short sentence, no full stop needed."

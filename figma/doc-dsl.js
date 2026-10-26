@@ -65,6 +65,7 @@ async function fill(parent, children) {
       if (c.w) { node.layoutSizingHorizontal = 'FIXED'; node.resize(c.w, node.height) } else if (c.fillW) node.layoutSizingHorizontal = 'FILL'; else node.textAutoResize = 'WIDTH_AND_HEIGHT'
       if (c.align) node.textAlignHorizontal = c.align
       if (c.underline) node.textDecoration = 'UNDERLINE'
+      if (c.truncate) { node.textTruncation = 'ENDING'; node.maxLines = 1 } // one line, cut with an ellipsis
     } else if (c.frame) {
       node = frame(c.frame, false); parent.appendChild(node); await fill(node, c.frame.children)
       if (c.frame.width) { node.layoutSizingHorizontal = 'FIXED'; node.resize(c.frame.width, node.height) }

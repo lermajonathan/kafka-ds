@@ -588,7 +588,7 @@ await withBrowser(async (browser) => {
   // ── Tooltip ──────────────────────────────────────────────────────────────
   await go('tooltip')
   const tipBtn = exa('tooltip', 'default').getByRole('button', { name: 'Cerrar' })
-  const tip = page.locator('[role=tooltip]')
+  const tip = exa('tooltip', 'default').locator('[role=tooltip]')
   check(!(await tip.isVisible()), 'tooltip: hidden by default')
   check((await tipBtn.getAttribute('aria-describedby')) === (await tip.getAttribute('id')), 'tooltip: linked with aria-describedby')
   await reset(); await press('Tab')
@@ -602,6 +602,23 @@ await withBrowser(async (browser) => {
   await page.mouse.move(await tip.evaluate((el) => el.getBoundingClientRect().x + 4), await tip.evaluate((el) => el.getBoundingClientRect().y + 4))
   await page.waitForTimeout(300)
   check(await tip.isVisible(), 'tooltip: stays while the pointer is over it')
+
+  // Placements: every side shows an arrow that points at the centre of the control
+  await go('tooltip')
+  for (const [side, name] of [['top', 'Arriba'], ['bottom', 'Abajo'], ['left', 'Izquierda'], ['right', 'Derecha']]) {
+    const btn = exa('tooltip', 'placements').getByRole('button', { name })
+    await btn.focus(); await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Tab')
+    const t = page.locator('[role=tooltip]:popover-open')
+    await t.waitFor({ state: 'visible', timeout: 2000 }).catch(() => {})
+    check((await t.count()) === 1 && (await t.getAttribute('data-side')) === side, `tooltip ${side}: shows on the ${side} side`)
+    const tb = await t.boundingBox(), bb = await btn.boundingBox(), ab = await t.locator('[data-arrow]').boundingBox()
+    const ok = tb && bb && ab && (side === 'top' ? tb.y + tb.height <= bb.y : side === 'bottom' ? tb.y >= bb.y + bb.height : side === 'left' ? tb.x + tb.width <= bb.x : tb.x >= bb.x + bb.width)
+    check(ok, `tooltip ${side}: sits on the ${side} of its control`)
+    const horizontal = side === 'top' || side === 'bottom'
+    const off = ab && bb ? (horizontal ? Math.abs(ab.x + ab.width / 2 - (bb.x + bb.width / 2)) : Math.abs(ab.y + ab.height / 2 - (bb.y + bb.height / 2))) : 99
+    check(off <= 2, `tooltip ${side}: the arrow points at the centre of the control (off by ${off.toFixed(1)} px)`)
+    await press('Escape')
+  }
 
   // ── Combobox ─────────────────────────────────────────────────────────────
   await go('combobox')
@@ -1271,6 +1288,17 @@ await withBrowser(async (browser) => {
   check(!/Del/.test(await drpBtn.innerText()), 'date range picker: Borrar fechas empties the range')
   const drpFilled = exa('date-range-picker', 'filled').getByRole('button', { name: /Fechas del taller/ })
   check(/Del .*10 de nov.* al .*20 de nov/.test(await drpFilled.innerText()), 'date range picker: shows an initial value')
+  // A long range in a narrow field stays on one line, is cut with an ellipsis, and a tooltip carries the whole text
+  const drpLong = exa('date-range-picker', 'long').getByRole('button', { name: /Fechas del taller/ })
+  const drpLongBox = await drpLong.boundingBox()
+  check(drpLongBox && drpLongBox.height >= 43.5 && drpLongBox.height <= 44.5, `date range picker: a long value never makes the field taller (got ${drpLongBox?.height})`)
+  const drpCut = await drpLong.locator('span.truncate').evaluate((e) => ({ cut: e.scrollWidth > e.clientWidth, ellipsis: getComputedStyle(e).textOverflow }))
+  check(drpCut.cut && drpCut.ellipsis === 'ellipsis', 'date range picker: a value that does not fit is truncated with an ellipsis')
+  await drpLong.focus(); await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Tab')
+  const drpTip = exa('date-range-picker', 'long').locator('[role=tooltip]')
+  await drpTip.waitFor({ state: 'visible', timeout: 2000 }).catch(() => {})
+  check(await drpTip.isVisible() && /Del .*10 de nov.* al .*20 de nov/.test((await drpTip.textContent()) ?? ''), 'date range picker: a truncated value shows its full text in a tooltip')
+  check((await exa('date-range-picker', 'filled').locator('[role=tooltip]').count()) === 0, 'date range picker: no tooltip when the whole value fits')
 })
 
 console.log(`\n  ${passed} keyboard / ARIA checks passed`)

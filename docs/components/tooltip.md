@@ -31,6 +31,23 @@ Shown on keyboard focus or after hovering; Esc hides it. The icon button already
 </div>
 ```
 
+### Placements
+
+The arrow always points at the control it describes. The tooltip flips to the opposite side when there is no room.
+
+```tsx
+<div className="flex flex-wrap items-center justify-center gap-24 px-24 py-16">
+  {(['top', 'bottom', 'left', 'right'] as const).map((placement) => {
+    const label = { top: 'Arriba', bottom: 'Abajo', left: 'Izquierda', right: 'Derecha' }[placement]
+    return (
+      <Tooltip key={placement} placement={placement} content={`Aparece ${label.toLowerCase()}`}>
+        <IconButton Icon={IconClose} label={label} variant="outline" />
+      </Tooltip>
+    )
+  })}
+</div>
+```
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -38,6 +55,7 @@ Shown on keyboard focus or after hovering; Esc hides it. The icon button already
 | `content` (required) | `string` |  | The text. Short, and never the only place a fact appears: touch and some screen readers will not show it. |
 | `children` (required) | `ReactElement<Record<string, unknown>>` |  | The one control it describes. It receives `aria-describedby`. |
 | `placement` | `Placement` | `'top'` |  |
+| `anchorClassName` | `string` |  | Classes for the wrapper around the control, for example `flex w-full` when the control fills its row. |
 | `delay` | `number` | `400` | Milliseconds before it shows on hover. Focus shows it at once. |
 | `className` | `string` |  |  |
 
@@ -46,6 +64,7 @@ Shown on keyboard focus or after hovering; Esc hides it. The icon button already
 - **Pattern:** `role="tooltip"` linked with `aria-describedby`, so it is read as a description.
 - It shows on keyboard focus and after a short hover delay; Esc hides it; the pointer can move onto it (WCAG 1.4.13).
 - It never holds links or buttons.
+- **Arrow:** it always points at the centre of the control, on any side (`top`, `bottom`, `left`, `right`). When there is no room the tooltip flips to the opposite side and the arrow follows.
 
 ## Content
 
@@ -64,8 +83,9 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 | `tooltip.padding-y` | `{space.8}` |
 | `tooltip.type` | `{typography.ui.caption}` |
 | `tooltip.max-width` | `{size.menu}` |
-| `tooltip.offset` | `{space.8}` |
+| `tooltip.offset` | `{space.12}` |
 | `tooltip.shadow` | `{elevation.floating}` |
+| `tooltip.arrow-size` | `{space.8}` |
 
 ## Related
 

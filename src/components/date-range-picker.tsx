@@ -1,5 +1,5 @@
 /* Kafka · DateRangePicker */
-import { useEffect, useId, useMemo, useState } from 'react'
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { IconCalendar } from '../icons'
 import { Button } from './button'
 import { fromISO } from './calendar'
@@ -9,6 +9,7 @@ import { useLabels } from './labels'
 import { Popover } from './popover'
 import { RangeCalendar, type DateRange, type RangeCalendarProps } from './range-calendar'
 import { cx } from './shared'
+import { Tooltip } from './tooltip'
 
 export interface DateRangePreset {
   label: string
@@ -42,6 +43,18 @@ export function DateRangePicker({ value, onValueChange, presets, placeholder, in
   const show = (iso: string) => fmt.format(fromISO(iso))
   const complete = !!value.start && !!value.end
   const text = complete ? labels.rangeValue(show(value.start!), show(value.end!)) : ''
+  // The value stays on one line. When it is cut, a tooltip carries the whole text.
+  const valueEl = useRef<HTMLSpanElement | null>(null)
+  const [cut, setCut] = useState(false)
+  useLayoutEffect(() => {
+    const el = valueEl.current
+    if (!el) return
+    const measure = () => setCut(el.scrollWidth > el.clientWidth + 1)
+    measure()
+    const watch = new ResizeObserver(measure)
+    watch.observe(el)
+    return () => watch.disconnect()
+  }, [text])
   useEffect(() => { if (open) setDraft(value) }, [open, value])
   const commit = (range: DateRange) => { onValueChange(range); setOpen(false) }
   const name = fieldLabelId ? { 'aria-labelledby': `${fieldLabelId} ${valueId}` } : { 'aria-label': text ? `${labels.chooseDateRange}: ${text}` : labels.chooseDateRange }
@@ -53,17 +66,19 @@ export function DateRangePicker({ value, onValueChange, presets, placeholder, in
       placement="bottom-start"
       className={className}
       trigger={(p) => (
-        <button
-          {...p}
-          {...a11y}
-          {...name}
-          type="button"
-          disabled={disabled}
-          className={cx(inputClass, 'flex cursor-pointer items-center gap-(--kafka-input-icon-gap) text-left')}
-        >
-          <IconCalendar aria-hidden="true" className="size-(--kafka-input-icon-size) shrink-0 text-(--kafka-input-icon)" />
-          <span id={valueId} className={cx('truncate', !text && 'text-(--kafka-input-placeholder)')}>{text || placeholder || ''}</span>
-        </button>
+        <Tooltip content={cut ? text : ''} placement="bottom" anchorClassName="flex w-full">
+          <button
+            {...p}
+            {...a11y}
+            {...name}
+            type="button"
+            disabled={disabled}
+            className={cx(inputClass, 'flex cursor-pointer items-center gap-(--kafka-input-icon-gap) text-left')}
+          >
+            <IconCalendar aria-hidden="true" className="size-(--kafka-input-icon-size) shrink-0 text-(--kafka-input-icon)" />
+            <span ref={valueEl} id={valueId} className={cx('truncate', !text && 'text-(--kafka-input-placeholder)')}>{text || placeholder || ''}</span>
+          </button>
+        </Tooltip>
       )}
     >
       <div className="flex flex-col gap-(--kafka-date-range-picker-gap)">

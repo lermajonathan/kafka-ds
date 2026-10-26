@@ -7,10 +7,10 @@ const PRESETS = [
   { label: 'Temporada de diciembre', range: { start: '2026-12-01', end: '2026-12-20' } },
 ]
 
-function Demo({ initial = { start: null, end: null } as DateRange }) {
+function Demo({ initial = { start: null, end: null } as DateRange, narrow = false }) {
   const [range, setRange] = useState<DateRange>(initial)
   return (
-    <div className="max-w-sm">
+    <div className={narrow ? 'max-w-60' : 'max-w-md'}>
       <Field label="Fechas del taller" hint="Elige el primer y el último día.">
         <DateRangePicker value={range} onValueChange={setRange} defaultMonth="2026-11-01" presets={PRESETS} />
       </Field>
@@ -30,5 +30,11 @@ export const examples: Example[] = [
     title: 'With a value',
     description: 'The accessible name carries the label and the value: "Fechas del taller: Del 10 de nov de 2026 al 20 de nov de 2026".',
     render: () => <Demo initial={{ start: '2026-11-10', end: '2026-11-20' }} />,
+  },
+  {
+    id: 'long',
+    title: 'Long value in a narrow field',
+    description: 'The value stays on one line and is cut with an ellipsis, so the field never grows taller. When it is cut, a tooltip shows the whole text on hover and on keyboard focus.',
+    render: () => <Demo initial={{ start: '2026-11-10', end: '2026-11-20' }} narrow />,
   },
 ]

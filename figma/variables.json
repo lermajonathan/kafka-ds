@@ -9565,6 +9565,19 @@
           "syntax": "var(--kafka-tooltip-offset)",
           "values": {
             "Default": {
+              "alias": "Primitives/space/12"
+            }
+          }
+        },
+        {
+          "name": "tooltip/arrow-size",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "syntax": "var(--kafka-tooltip-arrow-size)",
+          "values": {
+            "Default": {
               "alias": "Primitives/space/8"
             }
           }

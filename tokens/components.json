@@ -2154,11 +2154,15 @@
     },
     "offset": {
       "$type": "dimension",
-      "$value": "{space.8}"
+      "$value": "{space.12}"
     },
     "shadow": {
       "$type": "shadow",
       "$value": "{elevation.floating}"
+    },
+    "arrow-size": {
+      "$type": "dimension",
+      "$value": "{space.8}"
     }
   },
   "modal": {

@@ -36,6 +36,14 @@ The accessible name carries the label and the value: "Fechas del taller: Del 10 
 <Demo initial={{ start: '2026-11-10', end: '2026-11-20' }} />
 ```
 
+### Long value in a narrow field
+
+The value stays on one line and is cut with an ellipsis, so the field never grows taller. When it is cut, a tooltip shows the whole text on hover and on keyboard focus.
+
+```tsx
+<Demo initial={{ start: '2026-11-10', end: '2026-11-20' }} narrow />
+```
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -57,6 +65,7 @@ The accessible name carries the label and the value: "Fechas del taller: Del 10 
 - **Half-picked is never saved:** `onValueChange` receives a complete range or an empty one.
 - The calendar keeps all of RangeCalendar's keys and its announced status line. The button and presets are 44 px high.
 - `invalid` and `Field` errors are tied to the button like any other control.
+- **One line:** a long range is cut with an ellipsis, so the field never grows taller. When it is cut, a tooltip shows the whole text on hover and on keyboard focus (the accessible name always has it).
 
 ## Content
 

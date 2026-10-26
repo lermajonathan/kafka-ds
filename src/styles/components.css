@@ -131,6 +131,12 @@ mark {
 /* ── Overlays: panels in the top layer (Popover API). Position is set by script; these reset the browser defaults. ── */
 .kafka-overlay { position: fixed; inset: auto; overflow: auto; color: inherit; }
 .kafka-overlay[role="tooltip"] { overflow: visible; }
+/* The arrow: a rotated square in the tooltip colour, centred on the edge facing the control. overlay.ts sets data-side and where the control's centre falls. */
+.kafka-overlay[role="tooltip"] [data-arrow] { position: absolute; width: var(--kafka-tooltip-arrow-size); height: var(--kafka-tooltip-arrow-size); background: var(--kafka-tooltip-bg); border-radius: 2px; transform: translate(-50%, -50%) rotate(45deg); pointer-events: none; }
+.kafka-overlay[data-side="top"] [data-arrow] { top: 100%; left: var(--kafka-arrow-x, 50%); }
+.kafka-overlay[data-side="bottom"] [data-arrow] { top: 0; left: var(--kafka-arrow-x, 50%); }
+.kafka-overlay[data-side="left"] [data-arrow] { left: 100%; top: var(--kafka-arrow-y, 50%); }
+.kafka-overlay[data-side="right"] [data-arrow] { left: 0; top: var(--kafka-arrow-y, 50%); }
 
 /* ── Dialogs: native <dialog>. Modal, Drawer and ConfirmDialog share these rules. ── */
 .kafka-dialog {
