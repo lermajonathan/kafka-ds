@@ -69,6 +69,7 @@ html {
   orphans: var(--kafka-print-orphans);
   widows: var(--kafka-print-widows);
   hyphens: auto;
+  hyphenate-limit-chars: 6 3 3; /* no fragments of fewer than three letters, no hyphenating short words */
   text-rendering: optimizeLegibility;
   print-color-adjust: exact;
 }
@@ -245,4 +246,101 @@ html {
   font-size: var(--kafka-typography-print-caption-font-size);
   line-height: var(--kafka-typography-print-caption-line-height);
   color: var(--kafka-color-ink-600);
+}
+
+/* ── Book template (templates/print/book.html) ──────────────────────────────────────────────────────
+   Front matter lives on a named page: no running head and no folio. Chromium has no @page name:first, so
+   a chapter's opening page keeps its head. */
+@page front:left {
+  @top-left { content: none; }
+  @bottom-left { content: none; }
+}
+
+@page front:right {
+  @top-right { content: none; }
+  @bottom-right { content: none; }
+}
+
+.kafka-print__title-page,
+.kafka-print__colophon {
+  page: front;
+  display: flex;
+  flex-direction: column;
+  /* the text block of the page, minus a hair so rounding never spills onto a second page */
+  height: calc(var(--kafka-print-book-height) - var(--kafka-print-book-margin-top) - var(--kafka-print-book-margin-bottom) - 1mm);
+  break-after: page;
+}
+
+.kafka-print__title-page {
+  align-items: center;
+  text-align: center;
+}
+
+.kafka-print .kafka-print__title-page > p,
+.kafka-print .kafka-print__title {
+  margin: 0;
+  text-align: center;
+  text-indent: 0;
+}
+
+.kafka-print .kafka-print__title {
+  margin-top: auto;
+}
+
+.kafka-print .kafka-print__title-page .kafka-print__subtitle {
+  margin-top: var(--kafka-physical-leading-body);
+  font-size: var(--kafka-typography-print-lead-font-size);
+  line-height: var(--kafka-typography-print-lead-line-height);
+}
+
+.kafka-print .kafka-print__title-page .kafka-print__imprint {
+  margin-top: auto;
+  font-size: var(--kafka-typography-print-caption-font-size);
+  line-height: var(--kafka-typography-print-caption-line-height);
+  color: var(--kafka-color-ink-600);
+}
+
+.kafka-print__colophon {
+  justify-content: flex-end;
+  font-size: var(--kafka-typography-print-footnote-font-size);
+  line-height: var(--kafka-typography-print-footnote-line-height);
+}
+
+.kafka-print .kafka-print__colophon p {
+  margin-top: var(--kafka-physical-leading-body);
+  text-align: left;
+  text-indent: 0;
+  hyphens: manual;
+}
+
+/* A chapter opens on a recto, with space above its title. */
+.kafka-print__chapter {
+  break-before: right;
+}
+
+.kafka-print__chapter-head {
+  padding-top: calc(var(--kafka-physical-leading-body) * 8);
+  margin-bottom: calc(var(--kafka-physical-leading-body) * 2);
+  break-after: avoid;
+}
+
+.kafka-print .kafka-print__chapter-number {
+  margin: 0;
+  text-align: left;
+  text-indent: 0;
+  font-size: var(--kafka-typography-print-lead-font-size);
+  line-height: var(--kafka-typography-print-lead-line-height);
+  font-style: italic;
+  color: var(--kafka-color-ink-600);
+}
+
+.kafka-print .kafka-print__chapter-head h2 {
+  margin-top: var(--kafka-physical-leading-body);
+}
+
+/* Verse lines are blocks with a hanging indent, with or without the screen utilities. */
+.kafka-print .kafka-verse p > span {
+  display: block;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
 }

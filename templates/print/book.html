@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Un libro de muestra</title>
+<!-- Plantilla de libro de Kafka DS (DDR-KF-005): A5, márgenes interior/exterior, portadilla, créditos, capítulos en página impar,
+     notas al final de cada capítulo (DDR-KF-013). En tu proyecto cambia estas rutas por las de @kafka/tokens: tokens.css y print.css. -->
+<link rel="stylesheet" href="../../src/styles/tokens.css">
+<link rel="stylesheet" href="../../src/styles/print.css">
+<style>
+  /* Cabeza corrida: el texto que se repite arriba de cada página, salvo en portadilla y créditos. */
+  :root { --kafka-running-head: "Plantilla de libro"; }
+</style>
+</head>
+<body class="kafka-print kafka-print--book">
+
+  <!-- Portadilla -->
+  <section class="kafka-print__title-page">
+    <p class="kafka-print__author">Nombre Apellido</p>
+    <h1 class="kafka-print__title">Un libro de muestra</h1>
+    <p class="kafka-print__subtitle">Kafka DS · módulo de impresión</p>
+    <p class="kafka-print__imprint">Editorial de muestra</p>
+  </section>
+
+  <!-- Página de créditos -->
+  <section class="kafka-print__colophon">
+    <p>Plantilla de muestra del módulo de impresión de Kafka DS.</p>
+    <p>Los fragmentos de <em>Don Quijote de la Mancha</em> (Miguel de Cervantes, 1605) y de las <em>Rimas</em> (Gustavo Adolfo Bécquer, 1871) están en dominio público. El resto es texto de relleno (<em>lorem ipsum</em>).</p>
+    <p>Composición: Literata. Formato: A5, 148 × 210 mm. Licencia del código: MIT.</p>
+  </section>
+
+  <!-- Capítulo 1 -->
+  <section class="kafka-print__chapter">
+    <header class="kafka-print__chapter-head">
+      <p class="kafka-print__chapter-number">Capítulo primero</p>
+      <h2>El hidalgo</h2>
+    </header>
+    <p class="kafka-drop-cap">En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero<sup><a id="c1-ref-1" href="#c1-1" aria-label="Nota 1">1</a></sup>, adarga<sup><a id="c1-ref-2" href="#c1-2" aria-label="Nota 2">2</a></sup> antigua, rocín<sup><a id="c1-ref-3" href="#c1-3" aria-label="Nota 3">3</a></sup> flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+      <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Finis uno.</p>
+    <section role="doc-endnotes" aria-label="Notas">
+      <ol>
+        <li id="c1-1" class="kafka-footnote-item"><span aria-hidden="true">1.</span><span><em>Lanza en astillero</em>: soporte de madera donde se guardaban las lanzas.</span><a href="#c1-ref-1" aria-label="Volver al texto">↩</a></li>
+        <li id="c1-2" class="kafka-footnote-item"><span aria-hidden="true">2.</span><span><em>Adarga</em>: escudo de cuero, ovalado o en forma de corazón.</span><a href="#c1-ref-2" aria-label="Volver al texto">↩</a></li>
+        <li id="c1-3" class="kafka-footnote-item"><span aria-hidden="true">3.</span><span><em>Rocín</em>: caballo de trabajo, de poca alzada y flaco.</span><a href="#c1-ref-3" aria-label="Volver al texto">↩</a></li>
+      </ol>
+    </section>
+  </section>
+
+  <!-- Capítulo 2 -->
+  <section class="kafka-print__chapter">
+    <header class="kafka-print__chapter-head">
+      <p class="kafka-print__chapter-number">Capítulo segundo</p>
+      <h2>Las golondrinas</h2>
+    </header>
+    <p class="kafka-drop-cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<sup><a id="c2-ref-1" href="#c2-1" aria-label="Nota 1">1</a></sup></p>
+    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+    <figure class="kafka-verse">
+      <div>
+            <p><span>Volverán las oscuras golondrinas</span><span>en tu balcón sus nidos a colgar,</span><span>y otra vez con el ala a sus cristales</span><span>jugando llamarán.</span></p>
+            <p><span>Pero aquellas que el vuelo refrenaban</span><span>tu hermosura y mi dicha a contemplar,</span><span>aquellas que aprendieron nuestros nombres...</span><span>¡esas... no volverán!</span></p>
+            <p><span>Volverán del amor en tus oídos</span><span>las palabras ardientes a sonar;</span><span>tu corazón de su profundo sueño</span><span>tal vez despertará.</span></p>
+      </div>
+      <figcaption>Gustavo Adolfo Bécquer, Rima LIII</figcaption>
+    </figure>
+      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Finis dos.</p>
+    <section role="doc-endnotes" aria-label="Notas">
+      <ol>
+        <li id="c2-1" class="kafka-footnote-item"><span aria-hidden="true">1.</span><span>Bécquer murió en 1870 y se publicaron las Rimas en 1871; esta nota solo muestra cómo cierran las notas al capítulo.</span><a href="#c2-ref-1" aria-label="Volver al texto">↩</a></li>
+      </ol>
+    </section>
+  </section>
+
+</body>
+</html>
