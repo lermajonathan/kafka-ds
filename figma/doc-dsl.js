@@ -12,6 +12,17 @@ async function iconSet(name) {
   if (!ICONS) { const pg = figma.root.children.find((p) => p.name === 'Icons'); await pg.loadAsync(); ICONS = new Map(pg.findAllWithCriteria({ types: ['COMPONENT_SET'] }).map((s) => [s.name.slice(5), s])) }
   const s = ICONS.get(name); if (!s) throw new Error('missing icon ' + name); return s
 }
+// {inst:'Button', variant:'Variant=Primary, State=Default'} -> instance of the master on the page of that name
+const MASTERS = new Map()
+async function masterOf(name) {
+  if (!MASTERS.has(name)) {
+    const pg = figma.root.children.find((p) => p.name === name); if (!pg) throw new Error('no page for component ' + name)
+    await pg.loadAsync()
+    const host = pg.findAll((n) => n.type === 'FRAME' && n.name === 'Specimens')[0]
+    MASTERS.set(name, host.children[0])
+  }
+  return MASTERS.get(name)
+}
 function frame(def, asComponent) {
   const n = asComponent ? figma.createComponent() : figma.createAutoLayout(def.dir || 'VERTICAL')
   if (asComponent) n.layoutMode = def.dir || 'VERTICAL'
@@ -57,6 +68,11 @@ async function fill(parent, children) {
       node = frame(c.frame, false); parent.appendChild(node); await fill(node, c.frame.children)
       if (c.frame.width) { node.layoutSizingHorizontal = 'FIXED'; node.resize(c.frame.width, node.height) }
       if (c.fillW) node.layoutSizingHorizontal = 'FILL'
+    } else if (c.inst) {
+      const m = await masterOf(c.inst)
+      node = (m.type === 'COMPONENT_SET' ? m.children.find((v) => v.name === c.variant) || m.defaultVariant : m).createInstance()
+      parent.appendChild(node)
+      if (c.w) { node.layoutSizingHorizontal = 'FIXED'; node.resize(c.w, node.height) } else if (c.fillW) node.layoutSizingHorizontal = 'FILL'
     } else if (c.rect) {
       node = figma.createRectangle(); node.name = c.name || 'Rect'; node.resize(c.w || 24, c.h || 24)
       node.fills = c.fill ? [paintOf(c.fill)] : []

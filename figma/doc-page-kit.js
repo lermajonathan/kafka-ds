@@ -64,7 +64,7 @@ if (!page) { page = figma.createPage(); page.name = pageName }
 await figma.setCurrentPageAsync(page)
 for (const c of [...page.children]) c.remove()
 const root = figma.createAutoLayout('VERTICAL')
-root.name = 'Kafka · ' + DATA.name; root.itemSpacing = 64
+root.name = (DATA.pattern ? 'Pattern · ' : 'Kafka · ') + DATA.name; root.itemSpacing = 64
 root.paddingLeft = root.paddingRight = 80; root.paddingTop = 80; root.paddingBottom = 120
 root.counterAxisSizingMode = 'FIXED'; root.resize(1440, 100); root.primaryAxisSizingMode = 'AUTO'
 bindFill(root, 'Semantic/color/bg/page'); root.setExplicitVariableModeForCollection(SC, MODE.Light)
@@ -107,6 +107,42 @@ async function table(parent, widths, headers, rows, name, cell) {
   await mk(headers, true)
   for (const r of rows) await mk(r, false)
   return t
+}
+
+// ---- pattern page: header, overview, live composition (light + dark), rules, components, accessibility ----
+if (DATA.pattern) {
+  const head = fr('Header', { gap: 16 }); place(root, head)
+  head.appendChild(await tx(('KAFKA DS · PATTERN · ' + DATA.category).toUpperCase(), 'UI/Overline', BRAND))
+  head.appendChild(await tx(DATA.name, 'Reading/Title', FG))
+  { const t = await tx(DATA.summary, 'Reading/Lead', SOFT); head.appendChild(t); t.textAutoResize = 'HEIGHT'; t.layoutSizingHorizontal = 'FIXED'; t.resize(820, t.height) }
+  { const s = await section('01', 'Overview', 'When this pattern applies.'); await bulletList(s, DATA.whenTo, 'When to use') }
+  {
+    const s = await section('02', 'Composition', 'Real instances of the component masters, in light and dark.')
+    const AFp = Object.getPrototypeOf(async function () {}).constructor
+    for (const mode of ['Light', 'Dark']) {
+      const stage = fr('Stage · ' + mode, { gap: 24, pad: 32, fill: 'Semantic/color/bg/page', stroke: 'Semantic/color/border/default', radius: 'Semantic/radius/card' }); place(s, stage)
+      stage.setExplicitVariableModeForCollection(SC, MODE[mode])
+      stage.appendChild(await tx(mode, 'UI/Overline', MUTED))
+      const host = fr('Composition', { gap: 32 }); place(stage, host)
+      await new AFp('figma', 'H', 'host', MASTER.code)(figma, H, host)
+    }
+  }
+  {
+    const s = await section('03', 'Rules', 'What to do and what to avoid.')
+    const two = fr('Columns', { dir: 'HORIZONTAL', gap: 48 }); place(s, two)
+    for (const [label, items] of [['Do', DATA.dos], ["Don't", DATA.donts]]) {
+      const col = fr(label, { gap: 12 }); two.appendChild(col); col.layoutSizingHorizontal = 'FILL'
+      col.appendChild(await tx(label, 'UI/Label', FG)); await bulletList(col, items, 'List')
+    }
+  }
+  { const s = await section('04', 'Components', 'What the pattern is made of.'); await table(s, [220, 0], ['Component', 'Role'], DATA.uses.map((x) => [x.name, x.role]), 'Components') }
+  { const s = await section('05', 'Accessibility', 'Semantics, focus and announcements.'); await bulletList(s, DATA.accessibility, 'Accessibility') }
+  if (DATA.related.length) {
+    const s = await section('06', 'Related'); const row = fr('Related', { dir: 'HORIZONTAL', gap: 12, wrap: true }); place(s, row)
+    for (const r of DATA.related) { const chip = fr('Chip · ' + r, { py: 8, px: 16, stroke: 'Semantic/color/border/strong', radius: 'Semantic/radius/pill' }); row.appendChild(chip); chip.appendChild(await tx(r, 'UI/Label', FG)) }
+  }
+  const texts = root.findAll((n) => n.type === 'TEXT')
+  return { page: page.id, root: root.id, h: Math.round(root.height), texts: texts.length, collapsed: texts.filter((t) => t.height < 8 || t.width < 6).length, unbound: root.findAll((n) => 'fills' in n && n.fills !== figma.mixed && n.fills.length && n.fills[0].type === 'SOLID' && n.visible && !n.fills[0].boundVariables?.color).length }
 }
 
 // ---- 1 · header ----
