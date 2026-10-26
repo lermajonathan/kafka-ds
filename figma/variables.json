@@ -11737,6 +11737,34 @@
           }
         },
         {
+          "name": "count-badge/danger-bg",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "syntax": "var(--kafka-count-badge-danger-bg)",
+          "values": {
+            "Default": {
+              "alias": "Semantic/color/status/danger/fg"
+            }
+          }
+        },
+        {
+          "name": "count-badge/danger-fg",
+          "type": "COLOR",
+          "scopes": [
+            "TEXT_FILL",
+            "SHAPE_FILL"
+          ],
+          "syntax": "var(--kafka-count-badge-danger-fg)",
+          "values": {
+            "Default": {
+              "alias": "Semantic/color/fg/inverse"
+            }
+          }
+        },
+        {
           "name": "notification-center/width",
           "type": "FLOAT",
           "scopes": [

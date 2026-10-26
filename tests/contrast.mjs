@@ -332,6 +332,7 @@ pairs.push(
   ['toast.action', 'toast.danger.bg', TEXT, 'toast action on danger'],
   ['toast.danger.border', 'color.bg.page', UI, 'danger toast border'],
   ['count-badge.fg', 'count-badge.bg', TEXT, 'count badge number'],
+  ['count-badge.danger-fg', 'count-badge.danger-bg', TEXT, 'count badge number, danger tone'],
   ['notification-center.title-fg', 'popover.bg', TEXT, 'notification title'],
   ['notification-center.title-fg', 'notification-center.unread-bg', TEXT, 'unread notification title'],
   ['notification-center.body-fg', 'popover.bg', TEXT, 'notification body'],

@@ -2967,6 +2967,14 @@
     "type": {
       "$type": "typography",
       "$value": "{typography.ui.caption}"
+    },
+    "danger-bg": {
+      "$type": "color",
+      "$value": "{color.status.danger.fg}"
+    },
+    "danger-fg": {
+      "$type": "color",
+      "$value": "{color.fg.inverse}"
     }
   },
   "notification-center": {

@@ -100,3 +100,24 @@ assert.doesNotMatch(master('split-button'), /gap: S \+ 'gap'/, 'SplitButton is o
 assert.ok(/const G = 'Components\/button-group\/'/.test(master('split-button')) && /G \+ 'divider'/.test(master('split-button')), 'SplitButton draws the divider of the button group inside')
 assert.doesNotMatch(master('split-button'), /name: 'Main'[\s\S]*stroke: outline/, 'the SplitButton parts do not carry their own outer borders')
 console.log('figma-button-family: ok')
+
+// Avatar shows photos (generated once; hashes are kept in the file so rebuilding keeps them) and a group
+assert.match(master('avatar'), /avatarPhotos/, 'Avatar reads the stored photo hashes')
+assert.match(master('avatar'), /Photo=Medium/, 'Avatar shows photo variants')
+assert.match(master('avatar'), /Group=Photos/, 'Avatar shows a group of photos')
+console.log('figma-avatar: ok')
+
+// CountBadge shows the red tone for notifications
+{
+  const cb = readFileSync(new URL('../figma/masters/count-badge.js', import.meta.url), 'utf8')
+  assert.match(cb, /danger/, 'CountBadge shows the danger tone')
+}
+console.log('figma-count-badge: ok')
+
+// Select shows its open state (the list itself is drawn by the system, so the variant is illustrative and says so)
+{
+  const sel = master('select')
+  assert.match(sel, /State=Open/, 'Select shows the open state')
+  assert.match(sel, /Components\/combobox\//, 'the open list borrows the combobox list tokens')
+}
+console.log('figma-select: ok')

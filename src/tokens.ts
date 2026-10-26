@@ -2469,7 +2469,9 @@ export const tokens = {
       "fontWeight": 600,
       "lineHeight": 1.4,
       "letterSpacing": "0.01em"
-    }
+    },
+    "danger-bg": "#8f1d17",
+    "danger-fg": "#fbf8f1"
   },
   "notification-center": {
     "width": "24.25rem",

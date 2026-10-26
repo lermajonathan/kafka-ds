@@ -795,6 +795,14 @@ await withBrowser(async (browser) => {
   check((await avImg.first().innerText()).trim() === 'CP', 'avatar: shows the initials')
   const sizes = await avImg.evaluateAll((els) => els.map((e) => e.getBoundingClientRect().width))
   check(sizes[0] < sizes[1] && sizes[1] < sizes[2], `avatar: sm < md < lg (got ${sizes.join(', ')})`)
+  // Photos (H5 Figma review, C2): a working src shows the photo, round, named by the person
+  const photos = exa('avatar', 'photos').locator('img')
+  check((await photos.count()) === 4, 'avatar: the photos example shows four photos')
+  if ((await photos.count()) === 4) {
+    const info = await photos.evaluateAll((els) => els.map((e) => ({ alt: e.alt, w: e.getBoundingClientRect().width, r: getComputedStyle(e).borderTopLeftRadius, loaded: e.complete && e.naturalWidth > 0 })))
+    check(info.every((i) => i.alt && i.loaded), 'avatar: each photo loads and is named by the person')
+    check(info.slice(0, 3).every((i) => i.r !== '0px') && info[0].w < info[2].w, 'avatar: photos are rounded and keep the avatar sizes')
+  }
   const fb = exa('avatar', 'fallback')
   check((await fb.locator('img').count()) === 0 && (await fb.getByRole('img', { name: 'Luis Ortega' }).innerText()).trim() === 'LO', 'avatar: a broken image falls back to the initials')
   const avSt = exa('avatar', 'status')
@@ -832,6 +840,13 @@ await withBrowser(async (browser) => {
   const cntB = exa('count-badge', 'default')
   check((await cntB.getByText('3', { exact: true }).count()) === 1 && (await cntB.getByText('9+', { exact: true }).count()) === 1, 'count badge: shows the number, and "9+" above max')
   check((await cntB.locator('.kafka-count-badge').count()) === 3, 'count badge: zero renders nothing unless showZero is set')
+  // Tones: red for notifications (H5 Figma review, C2)
+  const tones = exa('count-badge', 'tones').locator('.kafka-count-badge')
+  check((await tones.count()) === 2, 'count badge: a neutral and a danger tone are shown')
+  if ((await tones.count()) === 2) {
+    const [c0, c1] = [await tones.nth(0).evaluate((e) => getComputedStyle(e).backgroundColor), await tones.nth(1).evaluate((e) => getComputedStyle(e).backgroundColor)]
+    check(c0 !== c1, 'count badge: the danger tone has its own background (red), not the neutral one')
+  }
   check((await exa('count-badge', 'labelled').getByRole('img', { name: '5 mensajes sin leer' }).count()) === 1, 'count badge: label gives the number a spoken meaning')
 
   // ── Toast (H5) ───────────────────────────────────────────────────────────

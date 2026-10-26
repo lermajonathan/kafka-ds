@@ -16,6 +16,17 @@ export const examples: Example[] = [
     ),
   },
   {
+    id: 'tones',
+    title: 'Neutral and danger',
+    description: 'Red marks notifications that need attention. The number is what carries the meaning; the colour only adds urgency.',
+    render: () => (
+      <div className="flex items-center gap-4">
+        <CountBadge count={4} />
+        <CountBadge count={4} tone="danger" label="4 notificaciones sin leer" />
+      </div>
+    ),
+  },
+  {
     id: 'labelled',
     title: 'With a spoken label',
     description: 'When the number stands alone, `label` says what it counts.',

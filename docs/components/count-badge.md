@@ -32,6 +32,17 @@ Above `max` it shows "9+". At zero it renders nothing, unless `showZero` is set.
 </div>
 ```
 
+### Neutral and danger
+
+Red marks notifications that need attention. The number is what carries the meaning; the colour only adds urgency.
+
+```tsx
+<div className="flex items-center gap-4">
+  <CountBadge count={4} />
+  <CountBadge count={4} tone="danger" label="4 notificaciones sin leer" />
+</div>
+```
+
 ### With a spoken label
 
 When the number stands alone, `label` says what it counts.
@@ -45,6 +56,7 @@ When the number stands alone, `label` says what it counts.
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | `count` (required) | `number` |  |  |
+| `tone` | `CountBadgeTone` | `'neutral'` | `danger` is red, for notifications that need attention; `neutral` is ink. The number still carries the meaning. |
 | `max` | `number` | `9` | Above this the badge shows "max+" (for 9: "9+"). |
 | `showZero` | `boolean` | `false` | Renders a zero instead of nothing. |
 | `label` | `string` |  | What the number counts, spoken instead of the digits ("5 mensajes sin leer"). Without it the number is read as plain text. |
@@ -71,6 +83,8 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 | `count-badge.min-size` | `{space.20}` |
 | `count-badge.padding-x` | `{space.4}` |
 | `count-badge.type` | `{typography.ui.caption}` |
+| `count-badge.danger-bg` | `{color.status.danger.fg}` |
+| `count-badge.danger-fg` | `{color.fg.inverse}` |
 
 ## Related
 

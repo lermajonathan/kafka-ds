@@ -32,6 +32,19 @@ import { Avatar } from '@kafka/react'
 </div>
 ```
 
+### Photos
+
+With `src` the photo fills the circle; the name is its alt text. If the photo fails, the initials show instead. Use portraits with the person's permission.
+
+```tsx
+<div className="flex items-center gap-4">
+  <Avatar name={camila.name} src={camila.src} size="sm" />
+  <Avatar name={luis.name} src={luis.src} />
+  <Avatar name={marta.name} src={marta.src} size="lg" />
+  <Avatar name={ivan.name} src={ivan.src} status="online" />
+</div>
+```
+
 ### Image that fails to load
 
 A broken `src` shows the initials instead of a broken image.
@@ -58,7 +71,7 @@ The dot is announced with its own text, so colour is never the only cue. Use `de
 Overlapping avatars with a +N chip for the rest.
 
 ```tsx
-<AvatarGroup people={people} max={3} />
+<AvatarGroup people={[...photos, ...people.slice(4)]} max={3} />
 ```
 
 ## Props
