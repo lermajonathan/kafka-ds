@@ -118,6 +118,20 @@
         "$type": "color",
         "$value": "{color.vip.badge-fg}"
       }
+    },
+    "link": {
+      "fg": {
+        "$type": "color",
+        "$value": "{color.fg.link}"
+      },
+      "fg-hover": {
+        "$type": "color",
+        "$value": "{color.fg.link-hover}"
+      },
+      "padding-x": {
+        "$type": "dimension",
+        "$value": "{space.4}"
+      }
     }
   },
   "badge": {
@@ -1064,10 +1078,18 @@
     }
   },
   "button-group": {
-    "$description": "Agrupa botones relacionados bajo un nombre.",
+    "$description": "Agrupa botones relacionados bajo un nombre; unidos, comparten una sola forma con una línea entre ellos.",
     "gap": {
       "$type": "dimension",
       "$value": "{space.8}"
+    },
+    "divider": {
+      "$type": "color",
+      "$value": "{color.border.strong}"
+    },
+    "divider-width": {
+      "$type": "dimension",
+      "$value": "{borderWidth.hairline}"
     }
   },
   "link": {
@@ -3379,11 +3401,7 @@
     }
   },
   "split-button": {
-    "$description": "Acción principal más un botón de flecha que abre un menú de acciones relacionadas.",
-    "gap": {
-      "$type": "dimension",
-      "$value": "{space.2}"
-    },
+    "$description": "Un solo elemento: acción principal, una línea divisoria interna y un botón de flecha que abre un menú de acciones relacionadas.",
     "toggle-width": {
       "$type": "dimension",
       "$value": "{size.touch}"

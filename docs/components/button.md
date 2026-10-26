@@ -34,13 +34,22 @@ Use one primary button per view; soft and outline are for secondary actions.
 
 ### With icons
 
-A leading icon names the action; a trailing arrow suggests moving forward.
+A leading icon names the action; a trailing arrow suggests moving forward; both can go together.
 
 ```tsx
 <div className="flex flex-wrap items-center gap-4">
   <Button Icon={IconCrown}>Hazte miembro</Button>
   <Button variant="outline" TrailingIcon={IconArrowRight}>Continuar</Button>
+  <Button variant="soft" Icon={IconCrown} TrailingIcon={IconArrowRight}>Ver membresías</Button>
 </div>
+```
+
+### Link variant
+
+Text only and always underlined, for a quiet action that runs on the page. It is still 44 px tall. For navigation use a Link.
+
+```tsx
+<Button variant="link">Ver el reglamento</Button>
 ```
 
 ### Disabled and loading
@@ -133,3 +142,6 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 | `button.vip.bg-hover` | `{color.vip.button-bg-hover}` |
 | `button.vip.bg-active` | `{color.vip.button-bg-active}` |
 | `button.vip.fg` | `{color.vip.badge-fg}` |
+| `button.link.fg` | `{color.fg.link}` |
+| `button.link.fg-hover` | `{color.fg.link-hover}` |
+| `button.link.padding-x` | `{space.4}` |

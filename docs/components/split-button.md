@@ -42,7 +42,7 @@ Takes the same variants as a Button.
 |---|---|---|---|
 | `label` (required) | `string` |  | The main action's label: a verb. |
 | `Icon` | `IconType` |  |  |
-| `variant` | `Exclude<ButtonVariant, 'vip'>` | `'primary'` |  |
+| `variant` | `Exclude<ButtonVariant, 'vip' \| 'link'>` | `'primary'` |  |
 | `onClick` | `() => void` |  | The main action. |
 | `items` (required) | `MenuItem[]` |  | The related actions in the menu. |
 | `menuLabel` | `string` |  | Names the arrow button. Defaults to "Más acciones". |
@@ -51,9 +51,9 @@ Takes the same variants as a Button.
 
 ## Accessibility
 
-- **Two buttons, not one.** The main button runs the action; the arrow is a separate 44 px button named "Más acciones" with `aria-haspopup="menu"` and `aria-expanded`.
+- **Two buttons in one shape.** The main button runs the action; the arrow is a separate 44 px button named "Más acciones" with `aria-haspopup="menu"` and `aria-expanded`.
 - **The menu is the Menu component:** Enter, Space or Down open it on the first item, arrows, Home, End and typing move, Esc closes and returns focus to the arrow.
-- A small gap separates the two buttons, so each one keeps a full focus ring.
+- One shape with a line inside between the two parts. The focus ring is drawn inside each part, so neither loses it next to the other.
 
 ## Content
 
@@ -65,7 +65,6 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 
 | Token | Value |
 |---|---|
-| `split-button.gap` | `{space.2}` |
 | `split-button.toggle-width` | `{size.touch}` |
 
 ## Related

@@ -30,18 +30,31 @@ The group has a name. Put the primary action first or last, consistently across 
 </ButtonGroup>
 ```
 
+### Joined
+
+For options that act on the same thing, such as text format. One shape with a line between the buttons; the focus ring stays inside each one.
+
+```tsx
+<ButtonGroup label="Formato del texto" joined>
+  <Button variant="outline">Negrita</Button>
+  <Button variant="outline">Cursiva</Button>
+  <Button variant="outline">Subrayado</Button>
+</ButtonGroup>
+```
+
 ## Props
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | `label` (required) | `string` |  | Names the group for screen readers ("Acciones del texto"). |
+| `joined` | `boolean` | `false` | Joins the buttons into one shape with a line between them, for options that act on the same thing (alignment, format). |
 | …rest | `HTMLAttributes<HTMLDivElement>` | | Everything else is passed to the underlying element. |
 
 ## Accessibility
 
 - **Role:** `group` with a required `aria-label`, so screen readers announce what the buttons share.
 - Tab order follows the DOM; each button keeps its own focus ring.
-- Wraps instead of overflowing on narrow screens.
+- Wraps instead of overflowing on narrow screens. A joined group does not wrap: keep it to two to four short labels.
 
 ## Content
 
@@ -54,6 +67,8 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 | Token | Value |
 |---|---|
 | `button-group.gap` | `{space.8}` |
+| `button-group.divider` | `{color.border.strong}` |
+| `button-group.divider-width` | `{borderWidth.hairline}` |
 
 ## Related
 

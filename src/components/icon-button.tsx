@@ -18,6 +18,7 @@ export function IconButton({ Icon, label, variant = 'soft', className, type = 'b
     <button
       type={type}
       aria-label={label}
+      data-variant={variant}
       className={cx(focus, 'inline-flex size-(--kafka-icon-button-size) shrink-0 cursor-pointer items-center justify-center rounded-(--kafka-icon-button-radius) disabled:cursor-not-allowed disabled:opacity-(--kafka-button-disabled-opacity)', BUTTON_VARIANT[variant], className)}
       {...rest}
     >

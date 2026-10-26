@@ -39,6 +39,18 @@ await withBrowser(async (browser) => {
     check(box && box.height >= 44, `button: variant ${i} is at least 44px tall (got ${box?.height})`)
   }
 
+  // Link variant: a text-only button (H5 Figma review, C1)
+  const linkBtn = ex('link').getByRole('button', { name: 'Ver el reglamento' })
+  check((await linkBtn.count()) === 1, 'button: a link variant exists')
+  if (await linkBtn.count()) {
+    const lk = await linkBtn.evaluate((el) => { const s = getComputedStyle(el); return { deco: s.textDecorationLine, bg: s.backgroundColor, bw: parseFloat(s.borderTopWidth), h: el.getBoundingClientRect().height } })
+    check(lk.deco === 'underline', `button link: always underlined (got ${lk.deco})`)
+    check(lk.bg === 'rgba(0, 0, 0, 0)' && lk.bw === 0, 'button link: no surface and no border')
+    check(lk.h >= 44, `button link: at least 44px tall (got ${lk.h})`)
+  }
+  const icons3 = ex('icons').getByRole('button')
+  check((await icons3.count()) === 3 && (await icons3.nth(2).locator('svg[aria-hidden="true"]').count()) === 2, 'button: an example shows icons on both sides')
+
   // Disabled and loading
   const states = ex('states').getByRole('button')
   const disabled = states.nth(0)
@@ -251,6 +263,23 @@ await withBrowser(async (browser) => {
   check((await grp.getByRole('button').count()) === 3, 'button group: a named group of three buttons')
   await reset(); await press('Tab'); await press('Tab')
   check((await page.evaluate(() => document.activeElement?.textContent?.trim())) === 'Guardar para después', 'button group: Tab moves through the buttons in order')
+
+  const joined = exa('button-group', 'joined')
+  const jg = joined.getByRole('group', { name: 'Formato del texto' })
+  const jb = jg.getByRole('button')
+  check((await jb.count()) === 3, 'button group joined: three buttons in one named group')
+  if ((await jb.count()) === 3) {
+    const rect = async (i) => jb.nth(i).evaluate((el) => { const r = el.getBoundingClientRect(); const s = getComputedStyle(el); return { x: r.x, w: r.width, h: r.height, tl: parseFloat(s.borderTopLeftRadius), tr: parseFloat(s.borderTopRightRadius), bl: parseFloat(s.borderBottomLeftRadius), br: parseFloat(s.borderBottomRightRadius) } })
+    const [a, b, c] = [await rect(0), await rect(1), await rect(2)]
+    check(Math.abs(b.x - (a.x + a.w)) <= 0.5 && Math.abs(c.x - (b.x + b.w)) <= 0.5, 'button group joined: the buttons touch, with no gap')
+    check(a.tl > 0 && a.bl > 0 && a.tr === 0 && a.br === 0, 'button group joined: the first button is rounded only on the left')
+    check(b.tl === 0 && b.tr === 0 && b.bl === 0 && b.br === 0, 'button group joined: the middle button has square corners')
+    check(c.tr > 0 && c.br > 0 && c.tl === 0 && c.bl === 0, 'button group joined: the last button is rounded only on the right')
+    check(a.h >= 44 && b.h >= 44 && c.h >= 44, 'button group joined: every button is at least 44px tall')
+    const line = async (i) => jb.nth(i).evaluate((el) => ({ l: parseFloat(getComputedStyle(el).borderLeftWidth), r: parseFloat(getComputedStyle(el).borderRightWidth) }))
+    const [l0, l1, l2] = [await line(0), await line(1), await line(2)]
+    check(l0.r + l1.l >= 1 && l1.r + l2.l >= 1 && l0.r + l1.l < 4, `button group joined: exactly one line separates each pair (got ${l0.r + l1.l}px and ${l1.r + l2.l}px)`)
+  }
 
   // Link
   await go('link')
@@ -1105,8 +1134,19 @@ await withBrowser(async (browser) => {
   await press('ArrowDown'); await press('Enter')
   check((await sb.getByText('Última acción: calendario').count()) === 1 || (await sb.getByText('Última acción: amigo').count()) === 1, 'split button: a menu item runs its action')
   check(await sbArrow.evaluate((e) => e === document.activeElement), 'split button: focus returns to the arrow')
-  const sbGap = await (async () => { const a = await sbMain.boundingBox(); const b = await sbArrow.boundingBox(); return b.x - (a.x + a.width) })()
-  check(sbGap > 0, `split button: a gap separates the two buttons (got ${sbGap}px)`)
+  // One element, split by a line inside it (H5 Figma review, C1; replaces the gap of DDR-KF-012)
+  const sbShape = async () => {
+    const a = await sbMain.evaluate((el) => { const r = el.getBoundingClientRect(); const s = getComputedStyle(el); return { x: r.x, w: r.width, tl: parseFloat(s.borderTopLeftRadius), tr: parseFloat(s.borderTopRightRadius) } })
+    const b = await sbArrow.evaluate((el) => { const r = el.getBoundingClientRect(); const s = getComputedStyle(el); return { x: r.x, tl: parseFloat(s.borderTopLeftRadius), tr: parseFloat(s.borderTopRightRadius), line: parseFloat(s.borderLeftWidth) } })
+    return { a, b }
+  }
+  const sbs = await sbShape()
+  check(Math.abs(sbs.b.x - (sbs.a.x + sbs.a.w)) <= 0.5, `split button: the two parts touch (gap ${sbs.b.x - (sbs.a.x + sbs.a.w)}px)`)
+  check(sbs.a.tl > 0 && sbs.a.tr === 0 && sbs.b.tl === 0 && sbs.b.tr > 0, 'split button: rounded only on the outer corners, so it reads as one element')
+  check(sbs.b.line >= 1, `split button: a line inside the element divides body and arrow (got ${sbs.b.line}px)`)
+  await sbArrow.focus(); await press('Shift+Tab'); await press('Tab')
+  const sbRing = await sbArrow.evaluate((el) => { const s = getComputedStyle(el); return { w: parseFloat(s.outlineWidth), off: parseFloat(s.outlineOffset) } })
+  check(sbRing.w >= 2 && sbRing.off < 0, `split button: the focus ring is drawn inside each part so neither loses it (width ${sbRing.w}, offset ${sbRing.off})`)
 
   await go('toggle-button')
   const tb = exa('toggle-button', 'default')

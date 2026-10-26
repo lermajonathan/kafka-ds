@@ -441,6 +441,9 @@
   --kafka-button-vip-bg-hover: var(--kafka-color-vip-button-bg-hover);
   --kafka-button-vip-bg-active: var(--kafka-color-vip-button-bg-active);
   --kafka-button-vip-fg: var(--kafka-color-vip-badge-fg);
+  --kafka-button-link-fg: var(--kafka-color-fg-link);
+  --kafka-button-link-fg-hover: var(--kafka-color-fg-link-hover);
+  --kafka-button-link-padding-x: var(--kafka-space-4);
   --kafka-badge-radius: var(--kafka-radius-pill);
   --kafka-badge-padding-x: var(--kafka-space-12);
   --kafka-badge-padding-y: var(--kafka-space-4);
@@ -786,6 +789,8 @@
   --kafka-icon-button-radius: var(--kafka-radius-control);
   --kafka-icon-button-icon: var(--kafka-size-icon-md);
   --kafka-button-group-gap: var(--kafka-space-8);
+  --kafka-button-group-divider: var(--kafka-color-border-strong);
+  --kafka-button-group-divider-width: var(--kafka-border-width-hairline);
   --kafka-link-fg: var(--kafka-color-fg-link);
   --kafka-link-fg-hover: var(--kafka-color-fg-link-hover);
   --kafka-link-fg-visited: var(--kafka-color-fg-link-visited);
@@ -1539,7 +1544,6 @@
   --kafka-inline-edit-type-font-weight: var(--kafka-typography-ui-input-font-weight);
   --kafka-inline-edit-type-line-height: var(--kafka-typography-ui-input-line-height);
   --kafka-inline-edit-type-letter-spacing: var(--kafka-typography-ui-input-letter-spacing);
-  --kafka-split-button-gap: var(--kafka-space-2);
   --kafka-split-button-toggle-width: var(--kafka-size-touch);
   --kafka-nav-menu-item-min-height: var(--kafka-size-touch);
   --kafka-nav-menu-item-padding-x: var(--kafka-space-12);

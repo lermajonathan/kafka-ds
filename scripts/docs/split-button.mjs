@@ -12,9 +12,9 @@ export default {
     "More than five menu items."
   ],
   "accessibility": [
-    "**Two buttons, not one.** The main button runs the action; the arrow is a separate 44 px button named \"Más acciones\" with `aria-haspopup=\"menu\"` and `aria-expanded`.",
+    "**Two buttons in one shape.** The main button runs the action; the arrow is a separate 44 px button named \"Más acciones\" with `aria-haspopup=\"menu\"` and `aria-expanded`.",
     "**The menu is the Menu component:** Enter, Space or Down open it on the first item, arrows, Home, End and typing move, Esc closes and returns focus to the arrow.",
-    "A small gap separates the two buttons, so each one keeps a full focus ring."
+    "One shape with a line inside between the two parts. The focus ring is drawn inside each part, so neither loses it next to the other."
   ],
   "content": [
     "Main label is a verb. Menu items are verbs too, each different from the main one."

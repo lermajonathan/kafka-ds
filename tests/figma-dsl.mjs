@@ -87,3 +87,16 @@ import { buildDocs } from '../scripts/figma/docs.mjs'
 const missing = buildDocs().map((d) => d.id).filter((id) => !existsSync(new URL(`../figma/masters/${id}.js`, import.meta.url)))
 assert.deepEqual(missing, [], 'components without a Figma master: ' + missing.join(', '))
 console.log('figma-masters: ok')
+
+// Button family (H5 Figma review, C1): the masters show what the code does
+const master = (id) => readFileSync(new URL(`../figma/masters/${id}.js`, import.meta.url), 'utf8')
+assert.match(readFileSync(new URL('../figma/doc-dsl.js', import.meta.url), 'utf8'), /c\.underline/, 'the DSL must support underlined text')
+assert.match(master('link'), /underline: true/, 'Link is always underlined')
+assert.match(master('button'), /'link'/, 'Button has the link variant')
+assert.match(master('button'), /Content=/, 'Button shows content variants (label, icon left, icon right, both)')
+assert.match(master('button'), /Both icons/, 'Button shows icons on both sides')
+assert.match(master('button-group'), /Joined/, 'ButtonGroup shows the joined layout')
+assert.doesNotMatch(master('split-button'), /gap: S \+ 'gap'/, 'SplitButton is one element: no gap between the parts')
+assert.ok(/const G = 'Components\/button-group\/'/.test(master('split-button')) && /G \+ 'divider'/.test(master('split-button')), 'SplitButton draws the divider of the button group inside')
+assert.doesNotMatch(master('split-button'), /name: 'Main'[\s\S]*stroke: outline/, 'the SplitButton parts do not carry their own outer borders')
+console.log('figma-button-family: ok')

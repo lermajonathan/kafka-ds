@@ -3979,6 +3979,47 @@
           }
         },
         {
+          "name": "button/link/fg",
+          "type": "COLOR",
+          "scopes": [
+            "TEXT_FILL",
+            "SHAPE_FILL"
+          ],
+          "syntax": "var(--kafka-button-link-fg)",
+          "values": {
+            "Default": {
+              "alias": "Semantic/color/fg/link"
+            }
+          }
+        },
+        {
+          "name": "button/link/fg-hover",
+          "type": "COLOR",
+          "scopes": [
+            "TEXT_FILL",
+            "SHAPE_FILL"
+          ],
+          "syntax": "var(--kafka-button-link-fg-hover)",
+          "values": {
+            "Default": {
+              "alias": "Semantic/color/fg/link-hover"
+            }
+          }
+        },
+        {
+          "name": "button/link/padding-x",
+          "type": "FLOAT",
+          "scopes": [
+            "GAP"
+          ],
+          "syntax": "var(--kafka-button-link-padding-x)",
+          "values": {
+            "Default": {
+              "alias": "Primitives/space/4"
+            }
+          }
+        },
+        {
           "name": "badge/radius",
           "type": "FLOAT",
           "scopes": [
@@ -6447,6 +6488,32 @@
           "values": {
             "Default": {
               "alias": "Primitives/space/8"
+            }
+          }
+        },
+        {
+          "name": "button-group/divider",
+          "type": "COLOR",
+          "scopes": [
+            "STROKE_COLOR"
+          ],
+          "syntax": "var(--kafka-button-group-divider)",
+          "values": {
+            "Default": {
+              "alias": "Semantic/color/border/strong"
+            }
+          }
+        },
+        {
+          "name": "button-group/divider-width",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "syntax": "var(--kafka-button-group-divider-width)",
+          "values": {
+            "Default": {
+              "alias": "Primitives/borderWidth/hairline"
             }
           }
         },
@@ -12863,19 +12930,6 @@
           "values": {
             "Default": {
               "alias": "Semantic/color/fg/soft"
-            }
-          }
-        },
-        {
-          "name": "split-button/gap",
-          "type": "FLOAT",
-          "scopes": [
-            "GAP"
-          ],
-          "syntax": "var(--kafka-split-button-gap)",
-          "values": {
-            "Default": {
-              "alias": "Primitives/space/2"
             }
           }
         },

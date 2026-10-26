@@ -17,13 +17,20 @@ export const examples: Example[] = [
   {
     id: 'icons',
     title: 'With icons',
-    description: 'A leading icon names the action; a trailing arrow suggests moving forward.',
+    description: 'A leading icon names the action; a trailing arrow suggests moving forward; both can go together.',
     render: () => (
       <div className="flex flex-wrap items-center gap-4">
         <Button Icon={IconCrown}>Hazte miembro</Button>
         <Button variant="outline" TrailingIcon={IconArrowRight}>Continuar</Button>
+        <Button variant="soft" Icon={IconCrown} TrailingIcon={IconArrowRight}>Ver membresías</Button>
       </div>
     ),
+  },
+  {
+    id: 'link',
+    title: 'Link variant',
+    description: 'Text only and always underlined, for a quiet action that runs on the page. It is still 44 px tall. For navigation use a Link.',
+    render: () => <Button variant="link">Ver el reglamento</Button>,
   },
   {
     id: 'states',

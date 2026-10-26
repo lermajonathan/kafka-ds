@@ -782,6 +782,11 @@ export const tokens = {
       "bg-hover": "#26231f",
       "bg-active": "#36322d",
       "fg": "#f7ecc4"
+    },
+    "link": {
+      "fg": "#574306",
+      "fg-hover": "#1a1a1a",
+      "padding-x": "0.25rem"
     }
   },
   "badge": {
@@ -1420,7 +1425,9 @@ export const tokens = {
     "icon": "1.25rem"
   },
   "button-group": {
-    "gap": "0.5rem"
+    "gap": "0.5rem",
+    "divider": "#615b52",
+    "divider-width": "1px"
   },
   "link": {
     "fg": "#574306",
@@ -2719,7 +2726,6 @@ export const tokens = {
     }
   },
   "split-button": {
-    "gap": "0.125rem",
     "toggle-width": "2.75rem"
   },
   "nav-menu": {
