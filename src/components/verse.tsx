@@ -13,7 +13,7 @@ export interface VerseProps extends Omit<HTMLAttributes<HTMLElement>, 'children'
 export function Verse({ text, attribution, className, ...rest }: VerseProps) {
   const stanzas = text.replace(/\r\n/g, '\n').trim().split(/\n\s*\n/)
   return (
-    <figure className={cx('flex flex-col gap-(--kafka-verse-attribution-gap)', className)} {...rest}>
+    <figure className={cx('kafka-verse flex flex-col gap-(--kafka-verse-attribution-gap)', className)} {...rest}>
       <div className="kafka-type-verse-type flex flex-col gap-(--kafka-verse-stanza-gap) text-(--kafka-verse-text)">
         {stanzas.map((stanza, i) => (
           <p key={i}>

@@ -7,7 +7,10 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { createElement as h } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 import { chromium } from 'playwright'
+import { tsImport } from 'tsx/esm/api'
 
 const root = path.resolve(import.meta.dirname, '..')
 const MM_TO_PT = 72 / 25.4
@@ -22,33 +25,73 @@ const failures = []
 const check = (ok, message) => { if (!ok) failures.push(message) }
 const tool = (cmd, ...args) => execFileSync(cmd, args, { encoding: 'utf8' })
 
-// ── Sample content: a chapter long enough for several A5 pages, with the elements print must handle ──────────
+// ── Sample content: a chapter long enough for several A5 pages, built with the real components ───────────────
+// The compiled stylesheet (Tailwind utilities included) is loaded before print.css, as an app would; needs `pnpm build`.
+const { KafkaProvider, labelsEs, DropCap, Footnote, Footnotes, FootnoteItem, Verse } = await tsImport('../src/components/index.ts', import.meta.url)
+const compiledDir = path.join(root, 'dist/playground/assets')
+const compiledCss = fs.existsSync(compiledDir) ? fs.readdirSync(compiledDir).find((f) => f.endsWith('.css')) : undefined
+if (!compiledCss) { console.error('✗ Print output: dist/playground/assets/*.css not found. Run `pnpm build` first.'); process.exit(1) }
 const sentence = 'La tinta se seca despacio sobre el papel y la página guarda la voz de quien escribe, aunque nadie la lea todavía.'
-const paragraph = (n) => `<p>${Array.from({ length: 5 }, (_, i) => `${sentence} (${n}.${i + 1})`).join(' ')}</p>`
+const chunk = (n) => Array.from({ length: 5 }, (_, i) => `${sentence} (${n}.${i + 1})`).join(' ')
+const paragraph = (n) => `<p>${chunk(n)}</p>`
+const render = (el) => renderToStaticMarkup(h(KafkaProvider, { labels: labelsEs }, el))
 const LAST_MARKER = 'FINALDELCAPITULO'
 const RUNNING_HEAD = 'Muestra de libro'
+const VERSE = ['Dentro de la sal', 'una casa pequeña guarda la luz', 'y la sombra de quien se fue.', '', 'Nadie vuelve del todo,', 'pero el nombre queda escrito en la pared.'].join('\n')
+const NOTE_TEXT = ['Primera nota de la muestra.', 'Segunda nota de la muestra.']
+const body = [
+  '<h1>Capítulo primero</h1>',
+  render(h(DropCap, { id: 'dropcap' }, chunk(1))),
+  paragraph(2),
+  // paragraph with two note calls: it must stay on the baseline grid
+  `<p id="noted">${chunk(3)}${render(h(Footnote, { n: 1 }))} ${chunk(4)}${render(h(Footnote, { n: 2 }))}</p>`,
+  paragraph(5),
+  render(h(Verse, { text: VERSE, attribution: 'Altares de sal', id: 'verse' })),
+  ...Array.from({ length: 18 }, (_, i) => paragraph(i + 6)),
+  `<p>${LAST_MARKER}</p>`,
+  render(h(Footnotes, null, NOTE_TEXT.map((t, i) => h(FootnoteItem, { n: i + 1, key: i }, t)))),
+].join('\n')
 const html = (cssHrefs) => `<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><title>Muestra de libro</title>
 ${cssHrefs.map((href) => `<link rel="stylesheet" href="${href}">`).join('\n')}
 <style>:root { --kafka-running-head: "${RUNNING_HEAD}"; }</style>
 </head><body class="kafka-print kafka-print--book">
-<h1>Capítulo primero</h1>
-${Array.from({ length: 24 }, (_, i) => paragraph(i + 1)).join('\n')}
-<p>${LAST_MARKER}</p>
+${body}
 </body></html>`
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'kafka-print-'))
 process.on('exit', () => fs.rmSync(tmp, { recursive: true, force: true }))
 const href = (rel) => pathToFileURL(path.join(root, rel)).href
 const htmlFile = path.join(tmp, 'book.html')
-fs.writeFileSync(htmlFile, html([href('src/styles/tokens.css'), href('src/styles/print.css')]))
+fs.writeFileSync(htmlFile, html([href('src/styles/tokens.css'), pathToFileURL(path.join(compiledDir, compiledCss)).href, href('src/styles/print.css')]))
+if (process.env.KAFKA_PRINT_HTML) fs.copyFileSync(htmlFile, process.env.KAFKA_PRINT_HTML) // the sample page, for debugging in a browser
 
 const browser = await chromium.launch()
 const page = await browser.newPage()
 await page.goto(pathToFileURL(htmlFile).href)
 await page.evaluate(() => document.fonts.ready)
 await page.emulateMedia({ media: 'print' })
-const bodyStyle = await page.evaluate(() => { const s = getComputedStyle(document.querySelector('p')); return { widows: s.widows, orphans: s.orphans } })
+const bodyStyle = await page.evaluate(() => { const s = getComputedStyle(document.querySelector('p#noted')); return { widows: s.widows, orphans: s.orphans } })
+const measured = await page.evaluate(() => {
+  const px = (v) => parseFloat(v)
+  const noted = document.querySelector('#noted'), cap = document.querySelector('#dropcap'), verse = document.querySelector('#verse')
+  const lh = px(getComputedStyle(noted).lineHeight)
+  const stanzas = [...verse.querySelectorAll('p')]
+  return {
+    lineHeightPt: lh * 0.75,
+    notedLines: noted.getBoundingClientRect().height / lh,
+    dropCap: { initialLetter: getComputedStyle(cap, '::first-letter').initialLetter, float: getComputedStyle(cap, '::first-letter').float },
+    verse: { align: getComputedStyle(stanzas[0]).textAlign, indent: getComputedStyle(stanzas[1]).textIndent, breakInside: getComputedStyle(stanzas[0]).breakInside },
+    backLinkDisplay: getComputedStyle(document.querySelector('.kafka-footnote-item a')).display,
+    pageBackground: [getComputedStyle(document.documentElement).backgroundColor, getComputedStyle(document.body).backgroundColor],
+    callDisplay: getComputedStyle(document.querySelector('sup a')).display,
+  }
+})
+// A reader on the dark theme who prints still gets dark ink on white paper.
+await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'dark'))
+const darkInk = await page.evaluate(() => ['p#noted', '.kafka-verse > div', '[role=doc-endnotes] ol'].map((q) => getComputedStyle(document.querySelector(q)).color))
+const lum = (c) => { const [r, g, b] = c.match(/[\d.]+/g).map(Number); return 0.2126 * r + 0.7152 * g + 0.0722 * b }
+check(darkInk.every((c) => lum(c) < 100), `print ink must stay dark in the dark theme, got ${darkInk.join(' | ')}`)
 const pdfFile = path.join(tmp, 'book.pdf')
 await page.pdf({ path: pdfFile, preferCSSPageSize: true, printBackground: true })
 await browser.close()
@@ -110,6 +153,44 @@ for (const pg of bbox.split('<page ').slice(1)) {
     .filter((x) => x.y0 > 0.1 * h && x.y1 < 0.9 * h) // body block, excluding head and folio
   const left = Math.min(...words.map((x) => x.x0)), right = Math.max(...words.map((x) => x.x1))
   check(Math.min(left, w - right) >= outer - 1, `body text closer than 15 mm to the edge (left ${(left / MM_TO_PT).toFixed(1)} mm, right ${((w - right) / MM_TO_PT).toFixed(1)} mm)`)
+}
+
+// 6 · Footnotes, drop cap and verse (corte 3). Notes go at the end of the chapter (DDR-KF-013: Chromium has no float: footnote).
+check(Math.abs(measured.lineHeightPt - 14) < 0.01, `body leading should be 14 pt, got ${measured.lineHeightPt} pt`)
+check(Math.abs(measured.notedLines - Math.round(measured.notedLines)) < 0.01, `paragraph with note calls leaves the baseline grid (${measured.notedLines} lines): the call must not stretch its line`)
+check(measured.pageBackground.every((c) => c === 'rgba(0, 0, 0, 0)'), `paper is the page: no screen background may print (${measured.pageBackground.join(' | ')})`)
+check(measured.backLinkDisplay === 'none', 'the "back to text" link is useless on paper and must be hidden')
+check(measured.callDisplay !== 'inline-flex', 'the note call must be plain inline text on paper, not an inline-flex touch target')
+check(text.includes(NOTE_TEXT[0]) && text.includes(NOTE_TEXT[1]), 'the notes are missing from the PDF')
+check(text.indexOf(NOTE_TEXT[0]) > text.indexOf(LAST_MARKER), 'the notes must come after the end of the chapter text')
+check(measured.dropCap.initialLetter === '3' || measured.dropCap.float === 'left', `the drop cap needs initial-letter: 3 (or a float), got ${JSON.stringify(measured.dropCap)}`)
+check(measured.verse.align === 'left' && measured.verse.indent === '0px' && measured.verse.breakInside === 'avoid', `verse must be ragged-right, unindented and kept whole: ${JSON.stringify(measured.verse)}`)
+
+// Line geometry from the PDF: group words into lines by their baseline-ish position.
+const wordsOf = (pg) => [...pg.matchAll(/<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)">([^<]*)</g)]
+  .map((m) => ({ x0: +m[1], y0: +m[2], x1: +m[3], y1: +m[4], t: m[5] }))
+const linesOf = (words) => {
+  const out = []
+  for (const w of [...words].sort((a, b) => a.y1 - b.y1 || a.x0 - b.x0)) {
+    const last = out[out.length - 1]
+    if (last && Math.abs(last.y1 - w.y1) < 2.5) last.words.push(w); else out.push({ y1: w.y1, words: [w] })
+  }
+  return out.map((l) => ({ ...l, x0: Math.min(...l.words.map((w) => w.x0)), text: l.words.map((w) => w.t).join(' ') }))
+}
+const firstPage = linesOf(wordsOf(bbox.split('<page ')[1]))
+// Drop cap: first body line has a tall initial; the next two lines are indented past it; the fourth is flush again.
+const bodyLines = firstPage.slice(1) // after the title
+const flushX = bodyLines[3].x0
+check(bodyLines[1].x0 > flushX + 8 && bodyLines[2].x0 > flushX + 8 && Math.abs(bodyLines[3].x0 - bodyLines[4].x0) < 1,
+  `lines 2–3 of the first paragraph should wrap around the drop cap and line 4 be flush (x: ${bodyLines.slice(0, 5).map((l) => l.x0.toFixed(1)).join(' / ')})`)
+// Verse: its lines keep the 14 pt leading and a stanza break is exactly one extra line.
+const verseAt = (pg) => linesOf(wordsOf(pg)).filter((l) => l.text.includes('Dentro de la sal') || l.text.includes('una casa pequeña') || l.text.includes('y la sombra') || l.text.includes('Nadie vuelve') || l.text.includes('pero el nombre'))
+const versePage = bbox.split('<page ').slice(1).map(verseAt).find((l) => l.length === 5)
+check(Boolean(versePage), 'the poem is split across pages or missing: all five verses must sit on one page')
+if (versePage) {
+  const pitches = versePage.slice(1).map((l, i) => +(l.y1 - versePage[i].y1).toFixed(1))
+  const near = (v, t) => Math.abs(v - t) <= 1 // the PDF box heights wobble with glyph shapes; exact leading is asserted from CSS above
+  check(near(pitches[0], 14) && near(pitches[1], 14) && near(pitches[2], 28) && near(pitches[3], 14), `verse leading should be 14 / 14 / 28 / 14 pt, got ${pitches.join(' / ')}`)
 }
 
 if (failures.length) {

@@ -1,6 +1,12 @@
 /* Kafka · print stylesheet (DDR-KF-005). Reads only tokens from tokens.css; load it after tokens.css.
+   Ink colours are primitives, not semantic tokens: paper is always light, whatever theme the screen is in.
    Book format (A5) is the default; magazine and sheet formats arrive with their templates.
    Running head: set --kafka-running-head on :root, e.g. :root { --kafka-running-head: "Título del libro"; } */
+
+/* Paper is the page: the screen background (and the dark theme) must never print. */
+html {
+  background: none;
+}
 
 @page {
   size: var(--kafka-print-book-width) var(--kafka-print-book-height);
@@ -17,13 +23,13 @@
     content: var(--kafka-running-head, '');
     font: var(--kafka-typography-print-running-head-font-weight) var(--kafka-typography-print-running-head-font-size) / var(--kafka-typography-print-running-head-line-height) var(--kafka-typography-print-running-head-font-family);
     letter-spacing: var(--kafka-typography-print-running-head-letter-spacing);
-    color: var(--kafka-color-fg-muted);
+    color: var(--kafka-color-ink-600);
   }
   @bottom-left {
     content: counter(page);
     font: var(--kafka-typography-print-folio-font-weight) var(--kafka-typography-print-folio-font-size) / var(--kafka-typography-print-folio-line-height) var(--kafka-typography-print-folio-font-family);
     letter-spacing: var(--kafka-typography-print-folio-letter-spacing);
-    color: var(--kafka-color-fg-muted);
+    color: var(--kafka-color-ink-600);
   }
 }
 
@@ -35,13 +41,13 @@
     content: var(--kafka-running-head, '');
     font: var(--kafka-typography-print-running-head-font-weight) var(--kafka-typography-print-running-head-font-size) / var(--kafka-typography-print-running-head-line-height) var(--kafka-typography-print-running-head-font-family);
     letter-spacing: var(--kafka-typography-print-running-head-letter-spacing);
-    color: var(--kafka-color-fg-muted);
+    color: var(--kafka-color-ink-600);
   }
   @bottom-right {
     content: counter(page);
     font: var(--kafka-typography-print-folio-font-weight) var(--kafka-typography-print-folio-font-size) / var(--kafka-typography-print-folio-line-height) var(--kafka-typography-print-folio-font-family);
     letter-spacing: var(--kafka-typography-print-folio-letter-spacing);
-    color: var(--kafka-color-fg-muted);
+    color: var(--kafka-color-ink-600);
   }
 }
 
@@ -54,7 +60,7 @@
 .kafka-print {
   margin: 0;
   background: none;
-  color: var(--kafka-color-fg-default);
+  color: var(--kafka-color-ink-900);
   font-family: var(--kafka-typography-print-body-font-family);
   font-size: var(--kafka-typography-print-body-font-size);
   font-weight: var(--kafka-typography-print-body-font-weight);
@@ -117,4 +123,126 @@
 .kafka-print pre,
 .kafka-print table {
   break-inside: avoid;
+}
+
+/* ── Note calls ─────────────────────────────────────────────────────────────────────────────────────
+   A call is plain superscript text on paper: no touch target, no colour, and it must not stretch its line. */
+.kafka-print a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.kafka-print sup {
+  position: relative;
+  top: -0.45em;
+  font-size: 70%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+.kafka-print sup a {
+  display: inline;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+}
+
+/* ── Notes (DDR-KF-013) ─────────────────────────────────────────────────────────────────────────────
+   Chromium has no float: footnote, so notes close the chapter, in the footnote style, on the baseline grid. */
+.kafka-print [role='doc-endnotes'] {
+  margin-top: calc(var(--kafka-physical-leading-body) * 2);
+  padding-top: var(--kafka-physical-leading-body);
+  border-top: 0.5pt solid var(--kafka-color-ink-600);
+}
+
+.kafka-print [role='doc-endnotes'] ol {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--kafka-color-ink-900);
+  font-family: var(--kafka-typography-print-footnote-font-family);
+  font-size: var(--kafka-typography-print-footnote-font-size);
+  line-height: var(--kafka-typography-print-footnote-line-height);
+}
+
+.kafka-print .kafka-footnote-item {
+  display: block;
+  margin: 0;
+  padding: 0 0 0 2em;
+  text-indent: -2em;
+  break-inside: avoid;
+}
+
+.kafka-print .kafka-footnote-item + .kafka-footnote-item {
+  margin-top: var(--kafka-physical-baseline);
+}
+
+.kafka-print .kafka-footnote-item > span {
+  display: inline;
+}
+
+.kafka-print .kafka-footnote-item > span[aria-hidden='true'] {
+  display: inline-block;
+  width: 2em;
+  text-indent: 0;
+}
+
+/* The link back to the text is a screen affordance. */
+.kafka-print .kafka-footnote-item a {
+  display: none;
+}
+
+/* ── Drop cap: three lines of the baseline grid ───────────────────────────────────────────────────── */
+.kafka-print .kafka-drop-cap {
+  text-indent: 0;
+}
+
+.kafka-print .kafka-drop-cap::first-letter {
+  float: none;
+  initial-letter: 3;
+  margin-right: 0.08em;
+  padding-right: 0;
+  color: inherit;
+  font-family: var(--kafka-typography-print-heading-font-family);
+  font-size: inherit;
+  font-weight: var(--kafka-typography-print-title-font-weight);
+  line-height: inherit;
+}
+
+/* ── Verse: ragged-right, unindented, one stanza never split, rhythm of the body leading ──────────── */
+.kafka-print .kafka-verse {
+  display: block;
+  margin: var(--kafka-physical-leading-body) 0;
+  padding-left: 1.5em;
+  break-inside: avoid;
+}
+
+.kafka-print .kafka-verse > div {
+  display: block;
+  font-family: var(--kafka-typography-print-body-font-family);
+  font-size: var(--kafka-typography-print-body-font-size);
+  line-height: var(--kafka-typography-print-body-line-height);
+  color: var(--kafka-color-ink-900);
+}
+
+.kafka-print .kafka-verse p {
+  margin: 0;
+  text-align: left;
+  text-indent: 0;
+  hyphens: manual;
+  break-inside: avoid;
+}
+
+.kafka-print .kafka-verse p + p {
+  margin-top: var(--kafka-physical-leading-body);
+}
+
+.kafka-print .kafka-verse figcaption {
+  margin-top: var(--kafka-physical-leading-body);
+  font-size: var(--kafka-typography-print-caption-font-size);
+  line-height: var(--kafka-typography-print-caption-line-height);
+  color: var(--kafka-color-ink-600);
 }
