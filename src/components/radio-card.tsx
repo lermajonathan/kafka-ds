@@ -28,7 +28,7 @@ export function RadioCard({ label, description, Icon, badge, className, ...rest 
     >
       <input type="radio" aria-labelledby={`${uid}-l`} aria-describedby={description ? `${uid}-d` : undefined} className="peer absolute inset-0 m-0 size-full cursor-[inherit] appearance-none opacity-0" {...rest} />
       {Icon && (
-        <span aria-hidden="true" className="grid size-(--kafka-radio-card-icon-size) shrink-0 place-items-center rounded-(--kafka-radio-card-radius) bg-(--kafka-radio-card-icon-bg) text-(--kafka-radio-card-icon-fg)">
+        <span aria-hidden="true" className="grid size-(--kafka-radio-card-icon-size) shrink-0 place-items-center rounded-(--kafka-radio-card-icon-radius) bg-(--kafka-radio-card-icon-bg) text-(--kafka-radio-card-icon-fg)">
           <Icon aria-hidden="true" className="size-(--kafka-size-icon-md)" />
         </span>
       )}

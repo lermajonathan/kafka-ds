@@ -1529,7 +1529,7 @@
     }
   },
   "tag-input": {
-    "$description": "Lista de etiquetas que se escriben y se quitan. Cada etiqueta mide 44 px y su botón de quitar también.",
+    "$description": "Lista de etiquetas dentro del campo. Cada etiqueta mide 32 px y su botón de quitar es de 32 × 32 px, de modo que el campo no crece en altura (DDR-KF-015).",
     "gap": {
       "$type": "dimension",
       "$value": "{space.8}"
@@ -1548,7 +1548,7 @@
     },
     "tag-padding-left": {
       "$type": "dimension",
-      "$value": "{space.16}"
+      "$value": "{space.12}"
     },
     "tag-type": {
       "$type": "typography",
@@ -1556,7 +1556,7 @@
     },
     "remove-size": {
       "$type": "dimension",
-      "$value": "{size.touch}"
+      "$value": "{space.32}"
     },
     "remove-hover-bg": {
       "$type": "color",
@@ -1565,6 +1565,18 @@
     "remove-icon": {
       "$type": "dimension",
       "$value": "{size.icon.sm}"
+    },
+    "tag-height": {
+      "$type": "dimension",
+      "$value": "{space.32}"
+    },
+    "field-padding-y": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "input-min-width": {
+      "$type": "dimension",
+      "$value": "{space.96}"
     }
   },
   "file-upload": {
@@ -3348,6 +3360,10 @@
     "disabled-opacity": {
       "$type": "opacity",
       "$value": "{opacity.disabled}"
+    },
+    "icon-radius": {
+      "$type": "dimension",
+      "$value": "{radius.tile}"
     }
   },
   "input-group": {

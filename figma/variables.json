@@ -3002,6 +3002,23 @@
           }
         },
         {
+          "name": "radius/tile",
+          "type": "FLOAT",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "syntax": "var(--kafka-radius-tile)",
+          "values": {
+            "Light": {
+              "alias": "Primitives/radius/8"
+            },
+            "Dark": {
+              "alias": "Primitives/radius/8"
+            }
+          },
+          "description": "Iconos y miniaturas cuadradas pequeñas, que conservan su forma de cuadrado."
+        },
+        {
           "name": "radius/control",
           "type": "FLOAT",
           "scopes": [
@@ -7797,7 +7814,7 @@
           "syntax": "var(--kafka-tag-input-tag-padding-left)",
           "values": {
             "Default": {
-              "alias": "Primitives/space/16"
+              "alias": "Primitives/space/12"
             }
           }
         },
@@ -7810,7 +7827,7 @@
           "syntax": "var(--kafka-tag-input-remove-size)",
           "values": {
             "Default": {
-              "alias": "Primitives/size/touch"
+              "alias": "Primitives/space/32"
             }
           }
         },
@@ -7838,6 +7855,46 @@
           "values": {
             "Default": {
               "alias": "Primitives/size/icon/sm"
+            }
+          }
+        },
+        {
+          "name": "tag-input/tag-height",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "syntax": "var(--kafka-tag-input-tag-height)",
+          "values": {
+            "Default": {
+              "alias": "Primitives/space/32"
+            }
+          }
+        },
+        {
+          "name": "tag-input/field-padding-y",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "syntax": "var(--kafka-tag-input-field-padding-y)",
+          "values": {
+            "Default": {
+              "alias": "Primitives/space/4"
+            }
+          }
+        },
+        {
+          "name": "tag-input/input-min-width",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "syntax": "var(--kafka-tag-input-input-min-width)",
+          "values": {
+            "Default": {
+              "alias": "Primitives/space/96"
             }
           }
         },
@@ -12808,6 +12865,19 @@
           "values": {
             "Default": {
               "alias": "Semantic/opacity/disabled"
+            }
+          }
+        },
+        {
+          "name": "radio-card/icon-radius",
+          "type": "FLOAT",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "syntax": "var(--kafka-radio-card-icon-radius)",
+          "values": {
+            "Default": {
+              "alias": "Semantic/radius/tile"
             }
           }
         },

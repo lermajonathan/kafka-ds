@@ -435,6 +435,10 @@
   },
   "radius": {
     "$type": "dimension",
+    "tile": {
+      "$value": "{radius.8}",
+      "$description": "Iconos y miniaturas cuadradas pequeñas, que conservan su forma de cuadrado."
+    },
     "control": {
       "$value": "{radius.12}",
       "$description": "Botones, campos y chips rectangulares."

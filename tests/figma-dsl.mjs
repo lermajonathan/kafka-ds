@@ -121,3 +121,17 @@ console.log('figma-count-badge: ok')
   assert.match(sel, /Components\/combobox\//, 'the open list borrows the combobox list tokens')
 }
 console.log('figma-select: ok')
+
+// C3: TagInput keeps its height (32 px tags inside the field, wrapping), FileUpload shows its icon, RadioCard icon is square
+{
+  const tag = master('tag-input')
+  assert.match(tag, /tag-height/, 'TagInput tags use the 32 px tag-height token')
+  assert.match(tag, /wrap/, 'TagInput wraps onto more rows instead of overflowing')
+  assert.match(tag, /State=Many/, 'TagInput shows the many-tags state')
+  assert.doesNotMatch(tag, /minHeight: 44, minHeightVar: T/, 'a tag is no longer 44 px tall')
+  assert.match(master('file-upload'), /icon: 'Upload'/, 'FileUpload shows the upload icon')
+  const rc = master('radio-card')
+  assert.match(rc, /icon-radius/, 'RadioCard icon uses its own radius')
+  assert.doesNotMatch(rc, /radius: 'Semantic\/radius\/control', fill: C \+ 'icon-bg'/, 'RadioCard icon no longer uses the control radius')
+}
+console.log('figma-c3: ok')

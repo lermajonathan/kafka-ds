@@ -90,6 +90,7 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 | `radio-card.icon-size` | `{space.32}` |
 | `radio-card.group-gap` | `{space.12}` |
 | `radio-card.disabled-opacity` | `{opacity.disabled}` |
+| `radio-card.icon-radius` | `{radius.tile}` |
 
 ## Related
 

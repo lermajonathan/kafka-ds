@@ -222,6 +222,7 @@ export const tokens = {
     "16": "1rem",
     "20": "1.25rem",
     "full": "9999px",
+    "tile": "0.5rem",
     "control": "0.75rem",
     "card": "1rem",
     "media": "1.25rem",
@@ -1688,7 +1689,7 @@ export const tokens = {
     "tag-bg": "#ece4d2",
     "tag-fg": "#1a1a1a",
     "tag-radius": "9999px",
-    "tag-padding-left": "1rem",
+    "tag-padding-left": "0.75rem",
     "tag-type": {
       "fontFamily": [
         "system-ui",
@@ -1701,9 +1702,12 @@ export const tokens = {
       "lineHeight": 1.4,
       "letterSpacing": "0em"
     },
-    "remove-size": "2.75rem",
+    "remove-size": "2rem",
     "remove-hover-bg": "#e6e2dc",
-    "remove-icon": "1rem"
+    "remove-icon": "1rem",
+    "tag-height": "2rem",
+    "field-padding-y": "0.25rem",
+    "input-min-width": "6rem"
   },
   "file-upload": {
     "border": "#615b52",
@@ -2686,7 +2690,8 @@ export const tokens = {
     "icon-fg": "#36322d",
     "icon-size": "2rem",
     "group-gap": "0.75rem",
-    "disabled-opacity": 0.45
+    "disabled-opacity": 0.45,
+    "icon-radius": "0.5rem"
   },
   "input-group": {
     "addon-bg": "#ece4d2",

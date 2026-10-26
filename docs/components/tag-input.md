@@ -25,6 +25,14 @@ Each tag has its own remove button, and additions and removals are announced.
 <Demo />
 ```
 
+### Many tags
+
+Tags are small (32 px) and sit inside the field, so a few tags never make it taller. When they run out of room they wrap onto a new row and the text box wraps with them, never overflowing.
+
+```tsx
+<Many />
+```
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -43,7 +51,7 @@ Each tag has its own remove button, and additions and removals are announced.
 
 - **Keyboard:** Enter or comma adds, Backspace on an empty field removes the last, Tab reaches each remove button.
 - **Announcements:** additions and removals are read through a polite live region.
-- **Targets:** each tag and its remove button are 44 px tall.
+- **Targets:** the field is 44 px tall; each tag is 32 px and its remove button is 32 × 32 px, above the 24 px minimum of WCAG 2.5.8. The whole field focuses the text box when clicked.
 - **Names:** remove buttons say "Quitar poesía", not just "Quitar".
 
 ## Content
@@ -60,11 +68,14 @@ Component tokens, all aliasing semantic tokens (see [tokens.md](../tokens.md)). 
 | `tag-input.tag-bg` | `{color.bg.sunken}` |
 | `tag-input.tag-fg` | `{color.fg.default}` |
 | `tag-input.tag-radius` | `{radius.pill}` |
-| `tag-input.tag-padding-left` | `{space.16}` |
+| `tag-input.tag-padding-left` | `{space.12}` |
 | `tag-input.tag-type` | `{typography.ui.label}` |
-| `tag-input.remove-size` | `{size.touch}` |
+| `tag-input.remove-size` | `{space.32}` |
 | `tag-input.remove-hover-bg` | `{color.bg.sunken-hover}` |
 | `tag-input.remove-icon` | `{size.icon.sm}` |
+| `tag-input.tag-height` | `{space.32}` |
+| `tag-input.field-padding-y` | `{space.4}` |
+| `tag-input.input-min-width` | `{space.96}` |
 
 ## Related
 
