@@ -6,7 +6,7 @@ const preset = (t) => ({ frame: true, name: 'Preset', dir: 'HORIZONTAL', align: 
 for (const [name, kids] of [
   ['State=Empty', [btn('Elige las fechas', true, 'border')]],
   ['State=With value', [btn('Del 10 de nov de 2026 al 20 de nov de 2026', false, 'border-focus')]],
-  ['State=Presets', [btn('Elige las fechas', true, 'border-focus'), { frame: true, name: 'Presets', dir: 'HORIZONTAL', gap: D + 'preset-gap', stroke: D + 'footer-border', sw: 1, swvar: D + 'footer-border-width', pt: D + 'footer-padding-top', children: [preset('Este mes'), preset('Esta temporada')] }]],
+  ['State=Presets', [btn('Elige las fechas', true, 'border-focus'), { frame: true, name: 'Presets', dir: 'HORIZONTAL', gap: D + 'preset-gap', stroke: D + 'footer-border', sw: { t: D + 'footer-border-width' }, pt: D + 'footer-padding-top', children: [preset('Este mes'), preset('Esta temporada')] }]],
   ['State=Invalid', [btn('Elige las fechas', true, 'invalid-border')]]]) {
   comps.push(await H.comp({ name, dir: 'VERTICAL', gap: D + 'gap', children: kids }, host))
 }

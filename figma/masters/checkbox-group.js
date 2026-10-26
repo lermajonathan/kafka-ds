@@ -7,7 +7,7 @@ for (const [name, checks] of [['State=None', [false, false, false]], ['State=Som
   const some = checks.some(Boolean) && !checks.every(Boolean)
   const kids = [
     { text: 'Talleres de interés', style: 'UI/Label', fill: 'Semantic/color/fg/default' },
-    { frame: true, name: 'Select all', dir: 'VERTICAL', pb: G + 'select-all-padding-bottom', stroke: G + 'select-all-border', sw: 1, swvar: G + 'select-all-border-width', children: [row('Seleccionar todos' + (some ? ' (mixto)' : ''), checks.every(Boolean) || some)] },
+    { frame: true, name: 'Select all', dir: 'VERTICAL', pb: G + 'select-all-padding-bottom', stroke: G + 'select-all-border', sw: { b: G + 'select-all-border-width' }, children: [row('Seleccionar todos' + (some ? ' (mixto)' : ''), checks.every(Boolean) || some)] },
     row('Poesía', checks[0]), row('Cuento', checks[1]), row('Ensayo', checks[2])]
   comps.push(await H.comp({ name, dir: 'VERTICAL', gap: G + 'gap', width: 320, children: kids }, host))
 }

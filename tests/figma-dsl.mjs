@@ -24,6 +24,52 @@ const deep = n({ children: [{ frame: true, name: 'A', children: [{ frame: true, 
 assert.deepEqual(deep.children[0].frame.children, [{ frame: { name: 'B', children: [] }, fillW: true }])
 // root keys are untouched
 assert.equal(n({ name: 'R', width: 360, fillWidth: true, children: [] }).width, 360)
+
+// ---- H.variants: no clipping (shadows survive) and room around the variants for them ----
+{
+  const made = []
+  const mockSet = { name: '', children: [], fills: [1], strokes: [1], appendChild() {}, resize(w, h) { this.w = w } , clipsContent: true }
+  const H2 = { figma: { combineAsVariants: () => mockSet }, V: new Map(), tx() {}, code() {} }
+  await new AsyncFunction('H', readFileSync(new URL('../figma/doc-dsl.js', import.meta.url), 'utf8'))(H2)
+  H2.variants([], 'X', { appendChild() {} })
+  assert.equal(mockSet.clipsContent, false, 'a component set must not clip its content: component shadows would be cut')
+  assert.ok(mockSet.paddingLeft >= 24 && mockSet.paddingTop >= 24 && mockSet.paddingRight >= 24 && mockSet.paddingBottom >= 24, 'a component set needs at least 24 px of room for shadows')
+  assert.ok(mockSet.itemSpacing >= 32, 'variants need 32 px between them so neighbouring shadows do not overlap')
+}
+
+// ---- the page kit: dark shows every variant, and every page gets the canvas colour ----
+{
+  const kit = readFileSync(new URL('../figma/doc-page-kit.js', import.meta.url), 'utf8')
+  assert.doesNotMatch(kit, /defaultVariant\.createInstance/, 'dark mode must instantiate every variant, not only the default one')
+  assert.match(kit, /#635841/i, 'the page kit sets the canvas colour #635841')
+  assert.match(kit, /\.backgrounds\s*=/, 'the page kit assigns page.backgrounds')
+  assert.match(kit, /pad: mode === 'Dark' \? 40 : 0/, 'the dark host keeps the same 40 px as the light component set')
+}
+
+// ---- masters: a divider is a one-sided border, never a box ----
+{
+  const { readdirSync } = await import('node:fs')
+  const dir = new URL('../figma/masters/', import.meta.url)
+  const offenders = []
+  for (const f of readdirSync(dir)) {
+    readFileSync(new URL(f, dir), 'utf8').split('\n').forEach((line, i) => {
+      for (const m of line.matchAll(/stroke:\s*[^,]*?(list-border|select-all-border|footer-border|[-/]rule|divider)[^,]*,\s*sw:\s*([^,]+)/g)) {
+        if (!m[2].trim().startsWith('{') && !/radius:/.test(line)) offenders.push(`${f}:${i + 1} (${m[1]})`) // a rounded frame is a real box (a listbox, a card)
+      }
+    })
+  }
+  assert.deepEqual(offenders, [], 'these masters draw a divider as a full box; use sw: { b: … } or { t: … }')
+}
+
+// ---- print-batch: several pages in one call, each guarded so one failure does not stop the rest ----
+{
+  const { batchCall } = await import('../scripts/figma/print-batch.mjs')
+  const call = batchCall(['footnote', 'tabs'])
+  assert.match(call, /"name":"Footnote"/); assert.match(call, /"name":"Tabs"/)
+  assert.match(call, /try \{/); assert.match(call, /catch \(e\)/)
+  assert.match(call, /"mastersOnly":true/)
+  assert.throws(() => batchCall(['nope']), /unknown component id/)
+}
 console.log('figma-dsl: ok')
 
 // print-call --masters emits a minimal call (no DATA body) that only rebuilds the specimens

@@ -101,8 +101,10 @@ H.comp = async (def, host) => { def = normalize(def); const n = frame(def, true)
 H.mk = async (def, host) => { def = normalize(def); const n = frame(def, false); host.appendChild(n); await fill(n, def.children); return n }
 H.variants = (comps, name, host) => {
   const set = figma.combineAsVariants(comps, host); set.name = name
-  set.layoutMode = 'HORIZONTAL'; set.itemSpacing = 24; set.layoutWrap = 'WRAP'; set.counterAxisSpacing = 24
+  // 40 px of room on every side and between variants: elevation shadows spill well past a component's box, and a set clips by default.
+  set.layoutMode = 'HORIZONTAL'; set.itemSpacing = 40; set.layoutWrap = 'WRAP'; set.counterAxisSpacing = 40
   set.primaryAxisSizingMode = 'FIXED'; set.counterAxisSizingMode = 'AUTO'; set.resize(1100, set.height)
-  set.fills = []; set.strokes = []; set.paddingLeft = set.paddingRight = set.paddingTop = set.paddingBottom = 0
+  set.clipsContent = false
+  set.fills = []; set.strokes = []; set.paddingLeft = set.paddingRight = set.paddingTop = set.paddingBottom = 40
   host.appendChild(set); return set
 }

@@ -52,7 +52,9 @@ if (DATA.mastersOnly) {
   for (const h of hosts) for (const c of [...h.children]) c.remove()
   const AFm = Object.getPrototypeOf(async function () {}).constructor
   const made = await new AFm('figma', 'H', 'host', MASTER.code)(figma, H, hosts[0])
-  for (const n of made || []) hosts[1].appendChild(n.type === 'COMPONENT_SET' ? n.defaultVariant.createInstance() : n.createInstance())
+  hosts[0].itemSpacing = hosts[0].counterAxisSpacing = 40
+  hosts[1].itemSpacing = hosts[1].counterAxisSpacing = 40; hosts[1].paddingLeft = hosts[1].paddingRight = hosts[1].paddingTop = hosts[1].paddingBottom = 40
+  for (const n of made || []) for (const m of n.type === 'COMPONENT_SET' ? n.children : [n]) hosts[1].appendChild(m.createInstance())
   const texts = pg.findAll((n) => n.type === 'TEXT')
   return { page: pg.id, texts: texts.length, collapsed: texts.filter((t) => t.height < 8 || t.width < 6).length, masters: (made || []).map((m) => m.id), hosts: hosts.length }
 }
@@ -61,6 +63,8 @@ if (DATA.mastersOnly) {
 const pageName = DATA.pageName || DATA.name
 let page = figma.root.children.find((p) => p.name === pageName)
 if (!page) { page = figma.createPage(); page.name = pageName }
+const CANVAS = { r: 0x63 / 255, g: 0x58 / 255, b: 0x41 / 255 } // #635841, the canvas behind every page of the file
+page.backgrounds = [{ type: 'SOLID', color: CANVAS }]
 await figma.setCurrentPageAsync(page)
 for (const c of [...page.children]) c.remove()
 const root = figma.createAutoLayout('VERTICAL')
@@ -207,12 +211,14 @@ const masters = []
       const stage = fr('Stage · ' + mode, { gap: 24, pad: 32, fill: 'Semantic/color/bg/page', stroke: 'Semantic/color/border/default', radius: 'Semantic/radius/card' }); place(s, stage)
       stage.setExplicitVariableModeForCollection(SC, MODE[mode])
       stage.appendChild(await tx(mode, 'UI/Overline', MUTED))
-      const host = fr('Specimens', { dir: 'HORIZONTAL', gap: 32, wrap: true, align: 'MIN' }); place(stage, host)
+      // the light component set keeps 40 px of room for shadows; the dark host keeps the same, so both columns line up
+      const host = fr('Specimens', { dir: 'HORIZONTAL', gap: 40, pad: mode === 'Dark' ? 40 : 0, wrap: true, align: 'MIN' }); place(stage, host)
       if (mode === 'Light') {
         const made = await new AF('figma', 'H', 'host', MASTER.code)(figma, H, host)
         for (const n of made || []) masters.push(n)
       } else {
-        for (const n of masters) { const inst = n.type === 'COMPONENT_SET' ? n.defaultVariant.createInstance() : n.createInstance(); host.appendChild(inst) }
+        // dark mirrors light one for one: every variant of every set, not just the default
+        for (const n of masters) for (const m of n.type === 'COMPONENT_SET' ? n.children : [n]) host.appendChild(m.createInstance())
       }
     }
   } else {
