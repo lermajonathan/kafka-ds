@@ -10,16 +10,20 @@ const MAIN_NAV: { label: string; route: string; match: (r: string) => boolean }[
   { label: 'Tokens', route: 'tokens', match: (r) => r === 'tokens' },
 ]
 
-export function Header({ route, menuOpen, onMenu, children }: { route: string; menuOpen: boolean; onMenu: () => void; children?: React.ReactNode }) {
+export function Header({ route, menuOpen, onMenu }: { route: string; menuOpen: boolean; onMenu: () => void }) {
   return (
     <header className="top">
-      <a className="brand" href={href('')}>Kafka<span className="brand-version">v{data.version}</span></a>
+      <a className="brand" href={href('')}>
+        <span className="brand-mark" aria-hidden="true">K</span>
+        <span className="brand-text"><span className="brand-name">Kafka</span><span className="brand-version">v{data.version}</span></span>
+      </a>
       <nav className="main-nav" aria-label="Principal">
         {MAIN_NAV.map((n) => <a key={n.route} href={href(n.route)} aria-current={n.match(route) ? 'page' : undefined}>{n.label}</a>)}
       </nav>
-      {children}
-      {route !== '' && <button type="button" className="menu-button" aria-expanded={menuOpen} aria-controls="documentacion" onClick={onMenu}>Menú</button>}
-      <ThemeToggle size="sm" />
+      <div className="top-tools">
+        {route !== '' && <button type="button" className="menu-button" aria-expanded={menuOpen} aria-controls="documentacion" onClick={onMenu}>Menú</button>}
+        <ThemeToggle size="sm" />
+      </div>
     </header>
   )
 }

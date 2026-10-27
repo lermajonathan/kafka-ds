@@ -4,6 +4,13 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H7 · Ajustes del sitio tras la primera revisión (26 oct 2026)
+
+- Cabecera con el menú centrado, logotipo K sobre fondo dorado y etiqueta de versión alineada a la línea base; el buscador de las páginas de documentación pasa a la barra lateral.
+- Estados hover en los botones de contorno, las etiquetas populares, la paginación y «Volver arriba».
+- Fuera el «§» de los títulos Escala y Medida; Libro, Revista y Ficha dejan de ser enlaces.
+- Espacio entre el campo de búsqueda y las etiquetas del catálogo.
+
 ### Arreglo · InlineEdit (26 oct 2026)
 - `InlineEdit` devuelve el foco al botón en cuanto confirma o cancela, no un fotograma después. Antes, durante ese instante, el foco quedaba en la página; era la causa del test intermitente «Enter saves and focus returns to the button». Prueba nueva que lo exige sin depender del tiempo.
 
