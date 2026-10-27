@@ -11,6 +11,9 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 - Fuera el «§» de los títulos Escala y Medida; Libro, Revista y Ficha dejan de ser enlaces.
 - Espacio entre el campo de búsqueda y las etiquetas del catálogo.
 
+### Arreglo · InlineEdit (26 oct 2026)
+- `InlineEdit` devuelve el foco al botón en cuanto confirma o cancela, no un fotograma después. Antes, durante ese instante, el foco quedaba en la página; era la causa del test intermitente «Enter saves and focus returns to the button». Prueba nueva que lo exige sin depender del tiempo.
+
 ### H7 · Rediseño del sitio (26 oct 2026)
 - **Nueva portada** (dirección F): cabecera con navegación principal y selector de tema, muestra de Literata con guías medidas, escala y medida, banda de tinta «Papel, tinta y oro», «Un texto. Dos páginas.», módulo de impresión, cifras y catálogo con buscador, familias, paginación y miniaturas reales de cada componente.
 - **Pie de página** oscuro en todas las páginas. La cabecera deja de seguir al lector por debajo de 1200 px.
