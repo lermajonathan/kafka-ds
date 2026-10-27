@@ -29,22 +29,19 @@ const inFamilies = data.families.flatMap((f) => f.ids)
 check(data.families.length >= 8, `expected 8 families, got ${data.families.length}`)
 check(inFamilies.length === ids.length && new Set(inFamilies).size === ids.length, 'every component must be in exactly one family')
 
-// Decisions: DDR-KF-001…N in order, with a clean title and a status.
-const ddrFiles = fs.readdirSync(path.join(root, 'docs/decisions')).filter((f) => /^DDR-KF-\d+/.test(f)).sort()
-check(data.decisions.length === ddrFiles.length, `expected ${ddrFiles.length} decisions, got ${data.decisions.length}`)
-data.decisions.forEach((d, i) => {
-  check(d.id === `DDR-KF-${String(i + 1).padStart(3, '0')}`, `decision ${i + 1}: unexpected id ${d.id}`)
-  check(d.title && !d.title.startsWith('DDR-KF'), `${d.id}: the title must not repeat the id`)
-  check(/aceptada|propuesta|sustituida|rechazada/i.test(d.status), `${d.id}: needs a status`)
-  check(/^<h1[ >]/.test(d.html), `${d.id}: page must open with its <h1>`)
-})
+// Nothing about the design decisions or the roadmap is public: no data, no page, no mention, no link.
+check(data.decisions === undefined && data.counts.decisions === undefined, 'the decisions must not be part of the site data')
+for (const p of [...data.pages, ...data.components]) {
+  check(!/DDR-KF/i.test(p.html), `${p.path}: mentions a DDR`)
+  check(!/roadmap|hoja de ruta|decisions\//i.test(p.html), `${p.path}: mentions the roadmap or links to the decisions`)
+}
 
 // Fixed pages.
 for (const p of ['getting-started', 'tokens']) check(data.pages.some((x) => x.path === p && /^<h1[ >]/.test(x.html)), `missing page ${p}`)
 
 // Every internal link lands on a page that exists; no raw .md links survive.
-const routes = new Set(['', ...data.pages.map((p) => p.path), 'components', 'decisions', ...data.components.map((c) => 'components/' + c.id), ...data.decisions.map((d) => 'decisions/' + d.id)])
-const pages = [...data.pages, ...data.components, ...data.decisions]
+const routes = new Set(['', ...data.pages.map((p) => p.path), 'components', ...data.components.map((c) => 'components/' + c.id)])
+const pages = [...data.pages, ...data.components]
 for (const p of pages) for (const m of p.html.matchAll(/href="([^"]+)"/g)) {
   const href = m[1]
   if (/^https?:\/\//.test(href) || href.startsWith('mailto:')) continue
@@ -53,7 +50,7 @@ for (const p of pages) for (const m of p.html.matchAll(/href="([^"]+)"/g)) {
   else if (!href.startsWith('#')) check(false, `${p.path ?? p.id}: link that is neither external nor a site route: ${href}`)
 }
 // External links must be safe to open.
-for (const p of pages) for (const m of p.html.matchAll(/<a [^>]*href="https?:[^>]*>/g)) check(/rel="noopener noreferrer"/.test(m[0]), `${p.path ?? p.id}: external link without rel="noopener noreferrer"`)
+for (const p of pages) for (const m of p.html.matchAll(/<a [^>]*href="https?:[^>]*>/g)) check(/rel="noopener noreferrer"/.test(m[0]) && /target="_blank"/.test(m[0]), `${p.path ?? p.id}: external link must open in a new tab with rel="noopener noreferrer"`)
 // Code blocks keep their text escaped.
 for (const p of pages) check(!/<code[^>]*>[^<]*<[A-Z]/.test(p.html.replace(/<span[^>]*>|<\/span>/g, '')), `${p.path ?? p.id}: unescaped JSX inside <code>`)
 
@@ -61,4 +58,4 @@ check(/^\d+\.\d+\.\d+/.test(data.version), 'needs the version from package.json'
 check(data.counts.components === ids.length && data.counts.tokens > 1000, 'counts for the home page are missing')
 
 if (failures.length) { console.log(failures.slice(0, 30).map((f) => `  ✗ ${f}`).join('\n') + (failures.length > 30 ? `\n  … and ${failures.length - 30} more` : '')); process.exit(1) }
-console.log(`✓ Site data: ${data.components.length} components, ${data.decisions.length} decisions, ${pages.length} pages, links resolve`)
+console.log(`✓ Site data: ${data.components.length} components, ${pages.length} pages, links resolve`)

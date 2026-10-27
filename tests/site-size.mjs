@@ -26,6 +26,9 @@ for (const f of chunks) {
   const size = gz(path.join(dist, 'assets', f))
   if (size > 130 * 1024) failures.push(`${f} is ${kb(size)} gzipped (budget 130 kB per chunk)`)
 }
+// Nothing about the design decisions or the roadmap may ship in the built site.
+const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]))
+for (const f of walk(dist).filter((f) => /\.(js|html|css|json)$/.test(f))) if (/DDR-KF/.test(fs.readFileSync(f, 'utf8'))) failures.push(`${path.relative(dist, f)} mentions a DDR`)
 console.log(`  entry ${kb(entryGz)} gzipped · first load ${kb(firstLoad)} · ${chunks.length} chunks`)
 if (failures.length) { console.log(failures.map((f) => `  ✗ ${f}`).join('\n')); process.exit(1) }
 console.log('✓ Site size: shell first, pages on demand')

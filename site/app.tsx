@@ -5,21 +5,18 @@ import { useRoute } from './router'
 import { Footer, Header } from './chrome'
 import { Landing } from './home'
 import { ComponentDetail } from './detail'
-import { ComponentsIndex, DecisionsIndex, DocPage, NextBand, NotFound } from './inner'
+import { ComponentsIndex, DocPage, NextBand, NotFound } from './inner'
 import { byId } from './parts'
 
 const THEME_KEY = 'kafka-site-theme'
 const SITE = 'Kafka'
-const decisionById = new Map(data.decisions.map((d) => [d.id, d]))
 
 interface Resolved { title: string; node: ReactNode }
 function resolve(route: string): Resolved {
   if (route === '') return { title: `${SITE} · Sistema de diseño`, node: <Landing /> }
   if (route === 'components') return { title: `Componentes · ${SITE}`, node: <ComponentsIndex /> }
-  if (route === 'decisions') return { title: `Decisiones · ${SITE}`, node: <DecisionsIndex /> }
   let m: RegExpMatchArray | null
   if ((m = route.match(/^components\/([a-z0-9-]+)$/)) && byId.has(m[1]!)) return { title: `${byId.get(m[1]!)!.name} · ${SITE}`, node: <ComponentDetail key={route} id={m[1]!} /> }
-  if ((m = route.match(/^decisions\/(DDR-KF-\d+)$/)) && decisionById.has(m[1]!)) return { title: `${m[1]} · ${SITE}`, node: <DocPage key={route} route={route} eyebrow="Decisión" title={decisionById.get(m[1]!)!.title} crumbs={[{ label: 'Inicio', route: '' }, { label: 'Decisiones', route: 'decisions' }, { label: m[1]! }]} /> }
   const page = data.pages.find((p) => p.path === route)
   if (page) return { title: `${page.title} · ${SITE}`, node: <DocPage key={route} route={route} eyebrow={route === 'getting-started' ? 'Guía' : 'Referencia'} title={page.title} crumbs={[{ label: 'Inicio', route: '' }, { label: page.title }]} next={route === 'getting-started' ? <NextBand label="Siguiente" title={`Explora los ${data.counts.components} componentes`} to="components" action="Ir al catálogo" /> : undefined} /> }
   return { title: `No encontrada · ${SITE}`, node: <NotFound /> }

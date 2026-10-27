@@ -1,8 +1,6 @@
 /* Kafka docs site. Plain CSS over the tokens: the components bring their own styles. */
 body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-color-fg-default); font-family: var(--kafka-font-family-ui); }
-.p-doc a:not([class]), .p-main .cards a, .p-main .decisions a, .cards a, .decisions a { color: var(--kafka-color-fg-link); text-decoration: underline; text-underline-offset: 0.2em; }
-.p-doc a:not([class]):hover, .p-main .cards a:hover, .p-main .decisions a:hover, .cards a:hover, .decisions a:hover { color: var(--kafka-color-fg-link-hover); }
-.skip:focus-visible, .brand:focus-visible, .p-main a:focus-visible, .d-detail a:focus-visible, .p-top a:focus-visible, .p-toc button:focus-visible, .d-tabs button:focus-visible, .l-rail button:focus-visible, .doc pre:focus-visible, .table-wrap:focus-visible, .live-example:focus-visible { outline: 2px solid var(--kafka-color-border-focus); outline-offset: 2px; }
+.p-doc a:not([class]), .p-main .cards a, .p-main .p-doc a:not([class]):hover, .p-main .cards a:hover, .p-main .skip:focus-visible, .brand:focus-visible, .p-main a:focus-visible, .d-detail a:focus-visible, .p-top a:focus-visible, .p-toc button:focus-visible, .d-tabs button:focus-visible, .l-rail button:focus-visible, .doc pre:focus-visible, .table-wrap:focus-visible, .live-example:focus-visible { outline: 2px solid var(--kafka-color-border-focus); outline-offset: 2px; }
 
 .skip { position: absolute; left: var(--kafka-space-16); top: -4rem; z-index: 50; padding: var(--kafka-space-12) var(--kafka-space-16); background: var(--kafka-color-bg-inverse); color: var(--kafka-color-fg-inverse); border-radius: var(--kafka-radius-control); }
 .skip:focus { top: var(--kafka-space-16); }
@@ -39,16 +37,11 @@ body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-col
 .cards li { display: flex; flex-direction: column; gap: var(--kafka-space-4); padding: var(--kafka-space-16); border: 1px solid var(--kafka-color-border-default); border-radius: var(--kafka-radius-card); background: var(--kafka-color-bg-surface); }
 .cards a { font-weight: 700; }
 .cards span { color: var(--kafka-color-fg-soft); font-size: 0.9375rem; line-height: 1.5; }
-.decisions { margin: var(--kafka-space-32) 0 0; padding: 0; list-style: none; border-top: 1px solid var(--kafka-color-border-default); }
-.decisions li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) auto; gap: var(--kafka-space-16); align-items: baseline; padding: var(--kafka-space-16) 0; border-bottom: 1px solid var(--kafka-color-border-default); }
-.decision-id { font-family: var(--kafka-font-family-mono); font-size: 0.875rem; color: var(--kafka-color-fg-muted); }
-.decision-status { font-size: 0.875rem; color: var(--kafka-color-fg-muted); }
 
 @media (max-width: 899px) {
   .top { padding-inline: var(--kafka-space-16); }
   .doc h1, .page-title { font-size: 2rem; }
-  .decisions li { grid-template-columns: minmax(0, 1fr); gap: var(--kafka-space-4); }
-}
+  }
 
 .loading { color: var(--kafka-color-fg-muted); }
 
@@ -60,7 +53,7 @@ body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-col
 .brand-name { font-family: var(--kafka-font-family-reading); font-size: 1.5rem; font-weight: 700; line-height: 1; }
 .brand-version { font-family: var(--kafka-font-family-mono); font-size: var(--kafka-font-size-12); font-weight: 400; line-height: 1; color: var(--kafka-color-fg-muted); }
 .main-nav { display: flex; justify-content: center; gap: var(--kafka-space-32); font-size: 0.9375rem; font-weight: 500; }
-.main-nav a { display: inline-flex; align-items: center; min-height: var(--kafka-size-touch); color: var(--kafka-color-fg-default); text-decoration: none; border-bottom: 2px solid transparent; box-sizing: border-box; }
+.main-nav a { display: inline-flex; align-items: center; gap: var(--kafka-space-8); min-height: var(--kafka-size-touch); color: var(--kafka-color-fg-default); text-decoration: none; border-bottom: 2px solid transparent; box-sizing: border-box; }
 .main-nav a:hover { border-bottom-color: var(--kafka-color-border-strong); }
 .main-nav a[aria-current='page'] { border-bottom-color: var(--kafka-color-border-brand); }
 .top-tools { display: flex; align-items: center; justify-content: flex-end; gap: var(--kafka-space-12); }

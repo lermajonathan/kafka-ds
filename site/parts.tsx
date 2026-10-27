@@ -9,11 +9,10 @@ import type { Heading } from './doc'
 export const byId = new Map(data.components.map((c) => [c.id, c]))
 export const familyOf = new Map(data.families.flatMap((f) => f.ids.map((id) => [id, f.name] as const)))
 
-/** Everything a reader can look for: components (with their family), decisions and the fixed pages. */
+/** Everything a reader can look for: components (with their family) and the fixed pages. */
 const searchOptions = [
   ...data.pages.map((p) => ({ value: p.path, label: p.title })),
   ...data.families.flatMap((f) => f.ids.map((id) => ({ value: 'components/' + id, label: `${byId.get(id)!.name} · ${familyName(f.name)}` }))),
-  ...data.decisions.map((d) => ({ value: d.path, label: `${d.id} · ${d.title}` })),
 ]
 const componentOptions = data.families.flatMap((f) => f.ids.map((id) => ({ value: 'components/' + id, label: `${byId.get(id)!.name} · ${familyName(f.name)}` })))
 

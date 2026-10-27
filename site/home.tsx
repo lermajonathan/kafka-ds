@@ -185,7 +185,6 @@ function Print() {
         <p className="l-mono l-accent">Módulo de impresión</p>
         <h2 id="impresion-title">Tres plantillas listas para el PDF</h2>
         <p>Tamaños A5 y A4, sangrado de 3 mm, márgenes de página izquierda y derecha y una rejilla de líneas base. Las notas van al final de cada capítulo.</p>
-        <p><a href={href('decisions/DDR-KF-005')}>Cómo se decidió (DDR-KF-005)</a></p>
       </div>
       <ul className="l-templates">
         {TEMPLATES.map(([id, name, text]) => (
@@ -204,7 +203,7 @@ function Numbers() {
   const items: [string, string][] = [
     [String(data.counts.components), 'componentes con ejemplos en vivo'],
     [fmt(data.counts.tokens), 'tokens en tres niveles, claro y oscuro'],
-    [String(data.counts.decisions), 'decisiones de diseño documentadas'],
+    [String(TEMPLATES.length), 'plantillas de impresión: libro, revista y ficha'],
     ['7:1', 'contraste del texto de lectura'],
   ]
   return (
