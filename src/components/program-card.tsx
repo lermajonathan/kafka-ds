@@ -1,5 +1,5 @@
 /* Kafka · ProgramCard */
-import { createElement, useState, type ReactNode } from 'react'
+import { cloneElement, createElement, isValidElement, useId, useState, type ReactElement, type ReactNode } from 'react'
 import { IconCrown, type IconType } from '../icons'
 import { Card, type CardHighlight } from './card'
 import { useLabels } from './labels'
@@ -23,7 +23,7 @@ export interface ProgramCardProps {
   description?: string
   /** One line each, starting with the date. */
   meta?: Array<{ Icon: IconType; text: string }>
-  /** The single way forward: a `Button` or a link. */
+  /** The single way forward: a `Button` or a link. It is described by the program's title, so a list of buttons does not read "Inscribirme" five times with no context. */
   action?: ReactNode
   /** `featured` pushes this program; `vip` is the membership. */
   highlight?: CardHighlight
@@ -41,6 +41,7 @@ const TONE: Record<CoverTone, string> = {
 /** A program (workshop, masterclass, membership): cover, badges, price, details and one action. */
 export function ProgramCard({ title, subtitle, image, cover, badges, price, description, meta, action, highlight = 'none', headingLevel = 3, className }: ProgramCardProps) {
   const labels = useLabels()
+  const titleId = useId()
   const [broken, setBroken] = useState(false)
   const showImage = image && !broken
   const Cover = cover?.Icon
@@ -72,7 +73,7 @@ export function ProgramCard({ title, subtitle, image, cover, badges, price, desc
           )}
         </div>
         <div className="absolute inset-x-0 bottom-0 p-(--kafka-program-card-media-padding)">
-          {createElement(`h${headingLevel}`, { className: 'kafka-type-program-card-title-type text-(--kafka-program-card-title-fg)' }, title)}
+          {createElement(`h${headingLevel}`, { id: titleId, className: 'kafka-type-program-card-title-type text-(--kafka-program-card-title-fg)' }, title)}
           {subtitle && <p className="kafka-type-program-card-subtitle-type text-(--kafka-program-card-subtitle-fg)">{subtitle}</p>}
         </div>
       </div>
@@ -88,7 +89,7 @@ export function ProgramCard({ title, subtitle, image, cover, badges, price, desc
             ))}
           </ul>
         )}
-        {action && <div className="mt-auto pt-(--kafka-program-card-badge-gap)">{action}</div>}
+        {action && <div className="mt-auto pt-(--kafka-program-card-badge-gap)">{isValidElement<{ 'aria-describedby'?: string }>(action) && !action.props['aria-describedby'] ? cloneElement(action as ReactElement<{ 'aria-describedby'?: string }>, { 'aria-describedby': titleId }) : action}</div>}
       </div>
     </Card>
   )

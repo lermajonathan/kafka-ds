@@ -18,7 +18,7 @@
     "typecheck": "tsc --noEmit",
     "test:keyboard": "node tests/keyboard.mjs",
     "test:axe": "tsx tests/axe.mjs",
-    "test:screenreader": "node tests/screenreader.mjs",
+    "test:screenreader": "node tests/screenreader.mjs && node tests/screenreader-forms.mjs && node tests/screenreader-actions.mjs && node tests/screenreader-navigation.mjs && node tests/screenreader-content.mjs && tsx tests/screenreader-sweep.mjs",
     "build:packages": "node scripts/build-tokens.mjs && node scripts/build-packages.mjs",
     "test:packages": "node tests/packages.mjs",
     "docs": "node scripts/build-docs.mjs",

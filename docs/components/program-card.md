@@ -122,7 +122,7 @@ A broken `image.src` falls back to the generated cover, so the card never shows 
 | `price` | `string` |  | The price, as text: "$200.000". |
 | `description` | `string` |  |  |
 | `meta` | `Array<{ Icon: IconType; text: string }>` |  | One line each, starting with the date. |
-| `action` | `ReactNode` |  | The single way forward: a `Button` or a link. |
+| `action` | `ReactNode` |  | The single way forward: a `Button` or a link. It is described by the program's title, so a list of buttons does not read "Inscribirme" five times with no context. |
 | `highlight` | `CardHighlight` | `'none'` | `featured` pushes this program; `vip` is the membership. |
 | `headingLevel` | `2 \| 3 \| 4` | `3` |  |
 | `className` | `string` |  |  |

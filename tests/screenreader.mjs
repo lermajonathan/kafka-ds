@@ -3,40 +3,14 @@
 // This does not run a real screen reader. It reads the accessibility tree Chromium builds from the page, which is
 // the same tree NVDA, JAWS and VoiceOver consume: role, name, description, state and live regions. If the tree
 // is right, the announcement is right; the exact phrasing of each reader is not ours to test.
-// Scope of the first cut: the components where readers fail most (forms, dialogs, menus, live updates, notes, dates).
+// This file holds the components where readers fail most: Field, Alert, Tabs, the dialogs, Menu, Combobox, Toast,
+// Footnote, Calendar and NotificationCenter. The rest is in tests/screenreader-{forms,actions,navigation,content}.mjs and
+// tests/screenreader-sweep.mjs, which also fails when a component has no expectations at all.
 //   node tests/screenreader.mjs
-import { withBrowser, url } from './lib/server.mjs'
+import { withBrowser } from './lib/server.mjs'
+import { axTree, checker, example, focusedText, liveText, named, ofRole } from './lib/ax.mjs'
 
-let passed = 0
-const failures = []
-const check = (cond, what) => { if (cond) passed++; else failures.push(what) }
-
-// ── Reading the tree ────────────────────────────────────────────────────────────────────────────────────────
-/** The accessibility tree of the page without the nodes a reader skips, as plain objects. */
-async function axTree(page) {
-  const session = await page.context().newCDPSession(page)
-  const { nodes } = await session.send('Accessibility.getFullAXTree')
-  await session.detach()
-  return nodes.filter((n) => !n.ignored).map((n) => ({
-    role: n.role?.value, name: n.name?.value ?? '', description: n.description?.value ?? '',
-    props: Object.fromEntries((n.properties ?? []).map((p) => [p.name, p.value?.value])),
-  }))
-}
-const named = (tree, role, name) => tree.find((n) => n.role === role && (name instanceof RegExp ? name.test(n.name) : n.name === name))
-const ofRole = (tree, role) => tree.filter((n) => n.role === role)
-const text = (page, selector) => page.locator(selector).first().evaluate((el) => el.textContent.trim())
-
-/** Opens one example of the playground, runs the actions that bring it to the state under test and returns the page. */
-async function example(browser, id, act) {
-  const page = await browser.newPage({ viewport: { width: 900, height: 800 }, reducedMotion: 'reduce' })
-  await page.goto(url({ only: id, theme: 'light' }))
-  await page.waitForSelector('main')
-  if (act) await act(page)
-  await page.waitForTimeout(350) // overlays and live regions settle
-  return page
-}
-const focusedText = (page) => page.evaluate(() => document.activeElement?.textContent?.trim() || document.activeElement?.getAttribute('aria-label') || '')
-const liveText = (page) => page.evaluate(() => [...document.querySelectorAll('[role=status],[role=alert],[aria-live]:not([aria-live=off])')].map((e) => ({ role: e.getAttribute('role'), live: e.getAttribute('aria-live'), text: e.textContent.trim() })))
+const { check, finish } = checker('screen reader', 'Screen reader tree: names, roles, states and live regions are as expected')
 
 await withBrowser(async (browser) => {
   // ── Field: name, hint, error ───────────────────────────────────────────────────────────────────────────────
@@ -198,6 +172,4 @@ await withBrowser(async (browser) => {
   }
 })
 
-console.log(`\n  ${passed} screen reader checks passed`)
-if (failures.length) { console.log(failures.map((f) => `  ✗ ${f}`).join('\n')); process.exit(1) }
-console.log('✓ Screen reader tree: names, roles, states and live regions are as expected')
+finish()
