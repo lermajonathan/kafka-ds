@@ -1168,6 +1168,15 @@ await withBrowser(async (browser) => {
   await ie.getByRole('button', { name: /Mi primer relato/ }).click()
   await page.keyboard.press('Control+a'); await page.keyboard.type('otro'); await press('Escape')
   check((await ie.getByText('Título: Mi primer relato').count()) === 1 && (await ie.getByRole('textbox', { name: 'Título del relato' }).count()) === 0, 'inline edit: Escape cancels')
+  // Focus is back on the button by the time the key event finishes, not a frame later (a screen reader would announce the page in between)
+  await ie.getByRole('button', { name: /Mi primer relato/ }).click()
+  const focusAtOnce = await page.evaluate(async () => {
+    const input = document.activeElement
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true }))
+    await null; await null // React commits at the end of the event (a microtask), well before the next frame
+    return document.activeElement?.tagName === 'BUTTON' && document.activeElement.textContent.includes('Mi primer relato')
+  })
+  check(focusAtOnce, 'inline edit: focus is on the button as soon as Enter has been handled')
   await ie.getByRole('button', { name: /Mi primer relato/ }).click()
   await page.keyboard.press('Control+a'); await page.keyboard.type('Guardado al salir'); await press('Tab')
   check((await ie.getByText('Título: Guardado al salir').count()) === 1, 'inline edit: leaving the field saves')
