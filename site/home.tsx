@@ -107,7 +107,7 @@ function Tokens() {
           <p className="l-mono l-accent">{fmt(data.counts.tokens)} tokens · tres niveles</p>
           <h2 id="tokens-band-title">Papel, tinta y oro</h2>
         </div>
-        <p>El oro vivo es superficie, o texto sobre tinta; sobre papel, los textos dorados usan el tono más oscuro. Cada par de colores se prueba en claro y en oscuro.</p>
+        <p>El oro vivo es superficie, o texto sobre tinta; sobre papel, los textos dorados usan el tono más oscuro. Cada par de colores se prueba en claro y en oscuro. <a href={href('altazor')}>Mira cómo se viste con un tema</a>.</p>
       </div>
       <ul className="l-swatches" aria-label="Paleta">
         {SWATCHES.map(([token, name, tone]) => <li key={token} data-tone={tone} style={{ background: `var(--kafka-color-${token})` }}>{name}</li>)}

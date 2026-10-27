@@ -1,0 +1,11 @@
+/* Showcase of the Altazor theme: only the frame around the specimens. The specimens get their look from the library and the theme. */
+.az-stage { margin-block: var(--kafka-space-16) var(--kafka-space-32); padding: var(--kafka-space-24); border: 1px solid var(--kafka-color-border-default); border-radius: var(--kafka-radius-card); background: var(--kafka-color-bg-page); box-shadow: var(--kafka-shadow-sm); overflow: hidden; }
+.az-stage.az-patterns { padding: 0; }
+.p-main .az-stage { margin-top: var(--kafka-space-16); }
+.az-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--kafka-space-24); align-items: start; }
+.az-side { display: flex; flex-direction: column; gap: var(--kafka-space-16); }
+.az-chips { display: flex; flex-wrap: wrap; gap: var(--kafka-space-8); margin: 0; }
+.az-actions { display: flex; flex-wrap: wrap; gap: var(--kafka-space-12); }
+.az-patterns .kafka-altazor-quotes { margin-top: var(--kafka-space-48); }
+@media (max-width: 899px) { .az-stage { padding: var(--kafka-space-16); } .az-stage.az-patterns { padding: 0; } }
+.az-switch { margin-top: var(--kafka-space-16); }

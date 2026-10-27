@@ -31,7 +31,7 @@
   padding-inline: 1.5rem;
 }
 [data-kafka-theme='altazor'] .kafka-altazor-hero__text { max-width: min(36rem, 45%); }
-[data-kafka-theme='altazor'] .kafka-altazor-hero h1 {
+[data-kafka-theme='altazor'] .kafka-altazor-hero :is(h1, h2, h3, h4) {
   margin: 0;
   font-family: var(--kafka-font-family-reading);
   font-size: clamp(2.375rem, 5.4vw, 4rem);
@@ -119,7 +119,7 @@
   text-decoration: none;
 }
 [data-kafka-theme='altazor'] .kafka-altazor-quick a:focus-visible { outline: var(--kafka-focus-width) solid var(--kafka-color-border-focus); outline-offset: var(--kafka-focus-offset); }
-[data-kafka-theme='altazor'] .kafka-altazor-quick h3 { margin: 0; font-family: var(--kafka-font-family-reading); font-size: 1.375rem; line-height: 1.2; }
+[data-kafka-theme='altazor'] .kafka-altazor-quick :is(h2, h3, h4) { margin: 0; font-family: var(--kafka-font-family-reading); font-size: 1.375rem; line-height: 1.2; }
 [data-kafka-theme='altazor'] .kafka-altazor-quick p { margin: 0; font-size: 1rem; color: var(--kafka-color-fg-soft); }
 @media (prefers-reduced-motion: no-preference) {
   [data-kafka-theme='altazor'] .kafka-altazor-quick a { transition: translate var(--kafka-duration-base) var(--kafka-ease-standard); }
