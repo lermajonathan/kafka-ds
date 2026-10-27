@@ -40,7 +40,8 @@ write('packages/react/dist/tailwind.css', [
 /* ── @kafka/theme-altazor ── */
 fs.rmSync(rel('packages/theme-altazor/dist'), { recursive: true, force: true })
 copy('src/styles/themes/altazor.css', 'packages/theme-altazor/dist/altazor.css')
+copy('src/styles/themes/altazor-patterns.css', 'packages/theme-altazor/dist/patterns.css')
 
 for (const pkg of ['tokens', 'react', 'theme-altazor']) copy('LICENSE', `packages/${pkg}/LICENSE`)
 const count = (dir) => fs.readdirSync(rel(dir), { recursive: true }).filter((f) => fs.statSync(rel(path.join(dir, f))).isFile()).length
-console.log(`\n✓ @kafka/tokens (${count('packages/tokens/dist')} files) · @kafka/react (${count('packages/react/dist')} files) · @kafka/theme-altazor (${count('packages/theme-altazor/dist')} file)`)
+console.log(`\n✓ @kafka/tokens (${count('packages/tokens/dist')} files) · @kafka/react (${count('packages/react/dist')} files) · @kafka/theme-altazor (${count('packages/theme-altazor/dist')} files)`)

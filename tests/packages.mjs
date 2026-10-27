@@ -26,8 +26,9 @@ const kr = path.join(app, 'node_modules/@kafka/react'), kt = path.join(app, 'nod
 for (const f of ['dist/index.js', 'dist/styles.css', 'dist/tailwind.css', 'dist/types/lib.d.ts', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(kr, f)), `@kafka/react ships ${f}`)
 for (const f of ['dist/tokens.css', 'dist/theme.css', 'dist/typography.css', 'dist/print.css', 'dist/tokens.json', 'dist/tokens.js', 'dist/tokens.d.ts', 'dist/json/semantic.json', 'LICENSE']) check(fs.existsSync(path.join(kt, f)), `@kafka/tokens ships ${f}`)
 const ka = path.join(app, 'node_modules/@kafka/theme-altazor')
-for (const f of ['dist/altazor.css', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(ka, f)), `@kafka/theme-altazor ships ${f}`)
+for (const f of ['dist/altazor.css', 'dist/patterns.css', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(ka, f)), `@kafka/theme-altazor ships ${f}`)
 const themeCss = fs.readFileSync(path.join(ka, 'dist/altazor.css'), 'utf8')
+check(fs.readFileSync(path.join(ka, 'dist/patterns.css'), 'utf8').includes('kafka-altazor-hero'), 'patterns.css ships the hero pattern')
 check(themeCss.includes("[data-kafka-theme='altazor']") && !/(^|\n):root\s*\{/.test(themeCss), 'theme CSS is scoped and never writes :root')
 check(!fs.readFileSync(path.join(kr, 'dist/types/lib.d.ts'), 'utf8').includes('.css'), 'type entry does not import CSS')
 // 2 · stylesheets

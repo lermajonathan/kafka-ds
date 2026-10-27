@@ -13,6 +13,7 @@
   "exports": {
     ".": "./dist/altazor.css",
     "./altazor.css": "./dist/altazor.css",
+    "./patterns.css": "./dist/patterns.css",
     "./package.json": "./package.json"
   },
   "files": ["dist", "README.md", "LICENSE"],

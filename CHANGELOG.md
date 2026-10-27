@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H8 · Tema Altazor, corte 2: patrones (27 oct 2026)
+
+- **Patrones del tema** (`@kafka/theme-altazor/patterns.css`, solo con tokens y dentro del ámbito del tema): portada con velo, tarjetas de acceso rápido que se montan sobre ella, formas flotantes y banda de citas siempre oscura.
+- **Contraste medido sobre píxeles:** el texto de la portada se mide contra el peor fondo posible, una foto blanca (7:1 el titular, 4,5:1 el texto secundario), en escritorio y móvil. Los tokens del velo y de la banda también entran en `test:contrast`.
+- **Movimiento:** las formas flotan y las tarjetas se elevan solo si el sistema no pide menos movimiento; con `prefers-reduced-motion` todo queda quieto.
+
 ### H8 · Tema Altazor, corte 1: el tema como datos (27 oct 2026)
 
 - **Temas en el compilador:** `tokens/themes/<nombre>.json` sobrescribe tokens semánticos y de componente (nunca primitivos ni tipografía) y se compila a CSS acotado a `[data-kafka-theme='<nombre>']`, con claro, oscuro y sistema. Los tokens que dependen de uno sobrescrito se redeclaran dentro del ámbito.
