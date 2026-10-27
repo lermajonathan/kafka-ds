@@ -111,7 +111,7 @@ body { background: var(--l-bg); }
 .l-caption i { width: 44px; height: 1px; background: var(--kafka-color-border-brand); }
 
 /* Print module */
-.l-print { display: grid; grid-template-columns: 18.75rem minmax(0, 1fr); gap: 3.5rem; align-items: start; margin: 3rem var(--l-inline) 0; padding: clamp(1.5rem, 3vw, 3rem); background: var(--l-panel); border-radius: 20px; }
+.l-print { display: grid; grid-template-columns: 18.75rem minmax(0, 1fr); gap: 3.5rem; align-items: start; margin: 3rem var(--l-inline) 0; padding: clamp(1.5rem, 3vw, 3rem); background: var(--l-panel); border-radius: 20px; box-shadow: var(--kafka-shadow-sm); }
 .l-print-text h2 { margin-top: 0.875rem; font-size: 2.5rem; font-weight: 600; line-height: 1.12; }
 .l-print-text > p:nth-of-type(2) { margin-top: 1.125rem; font-size: 1.0625rem; line-height: 1.6; color: var(--kafka-color-fg-soft); }
 .l-print-text > p:last-child { margin-top: 1rem; font: 0.9375rem/1.5 var(--kafka-font-family-ui); }
@@ -145,7 +145,7 @@ body { background: var(--l-bg); }
 .l-numbers dd { margin: 0.5rem 0 0; font: 0.875rem/1.5 var(--kafka-font-family-ui); color: var(--kafka-color-fg-soft); }
 
 /* Search and catalog: one panel */
-.l-catalog { margin: 7rem var(--l-inline) 0; background: var(--l-panel); border: 1px solid var(--kafka-color-border-default); border-radius: 20px; }
+.l-catalog { margin: 7rem var(--l-inline) 0; background: var(--l-panel); border: 1px solid var(--kafka-color-border-default); border-radius: 20px; box-shadow: var(--kafka-shadow-sm); }
 .l-search { padding: 3.5rem clamp(1.25rem, 3vw, 3rem) 2.25rem; }
 .l-search h2 { margin-top: 1rem; max-width: 56rem; font-size: clamp(2.25rem, 4.2vw, 3.75rem); line-height: 1.02; letter-spacing: -0.03em; }
 .catalog-search { margin-top: 2rem; }
@@ -167,7 +167,7 @@ body { background: var(--l-bg); }
 .l-grid-head h3 { font-family: var(--kafka-font-family-reading); font-size: 1.75rem; font-weight: 600; }
 .l-grid-head p { text-transform: none; letter-spacing: 0; color: var(--kafka-color-fg-soft); }
 .l-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 1.5rem !important; }
-.l-cards article { display: flex; flex-direction: column; height: 100%; overflow: hidden; border: 1px solid var(--kafka-color-border-default); border-radius: 14px; background: var(--kafka-color-bg-surface); }
+.l-cards article { display: flex; flex-direction: column; height: 100%; overflow: hidden; border: 1px solid var(--kafka-color-border-default); border-radius: 14px; background: var(--kafka-color-bg-surface); box-shadow: var(--kafka-shadow-sm); }
 .l-cards li { min-width: 0; }
 .l-thumb { position: relative; display: grid; place-items: center; height: 9.5rem; overflow: hidden; background: var(--kafka-color-bg-sunken); pointer-events: none; user-select: none; }
 .l-thumb-inner { position: absolute; left: 50%; top: 50%; width: max-content; max-width: none; transform: translate(-50%, -50%) scale(var(--k, 1)); }
@@ -207,6 +207,8 @@ body:not([data-route='']) .site-footer { margin-top: 0; }
 .foot-base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 1.5rem; padding: 1.75rem var(--l-inline) 2.5rem; font-size: 0.875rem; color: var(--kafka-color-ink-300); }
 .foot-base p { margin: 0; }
 .foot-base strong { color: var(--kafka-color-paper-50); }
+.foot-author { color: inherit; text-decoration: underline; text-decoration-color: var(--kafka-color-gold-400); text-underline-offset: 0.25em; text-decoration-thickness: 1px; }
+.foot-author:hover { color: var(--kafka-color-gold-300); text-decoration-thickness: 2px; }
 .foot-top { display: inline-flex; align-items: center; gap: 0.5rem; min-height: var(--kafka-size-touch); padding: 0 1.125rem; border: 1px solid var(--kafka-color-ink-400); border-radius: var(--kafka-radius-control); background: transparent; color: var(--kafka-color-ink-50); font: inherit; cursor: pointer; }
 .foot-top:hover { background: var(--kafka-color-gold-400); border-color: var(--kafka-color-gold-400); color: var(--kafka-color-ink-950); }
 
@@ -243,6 +245,28 @@ body:not([data-route='']) .site-footer { margin-top: 0; }
   .l-search { padding-top: 2rem; }
   .foot-main { padding-top: 3rem; }
 }
+/* Depth under the pointer. A shadow change is not motion, so it also applies with reduced motion; what moves is below. */
+.l-cards article:hover, .l-cards article:focus-within { border-color: var(--kafka-color-border-strong); box-shadow: var(--kafka-elevation-card); }
+.l-btn-gold:hover, .landing .l-btn-gold:hover { box-shadow: var(--kafka-elevation-glow); }
+.cards li:hover { border-color: var(--kafka-color-border-strong); box-shadow: var(--kafka-elevation-card); }
+.foot-top:hover { box-shadow: var(--kafka-shadow-sm); }
+
+/* Movement. Everything here is switched off for readers who ask for less motion. */
 @media (prefers-reduced-motion: no-preference) {
-  .l-btn, .l-pill, .l-families button, .l-pages button { transition: background-color 0.15s ease; }
+  .l-btn, .l-pill, .l-families button, .l-pages button { transition: background-color var(--kafka-motion-duration-fast) var(--kafka-motion-easing-standard), color var(--kafka-motion-duration-fast) var(--kafka-motion-easing-standard), border-color var(--kafka-motion-duration-fast) var(--kafka-motion-easing-standard), box-shadow var(--kafka-motion-duration-base) var(--kafka-motion-easing-standard), transform var(--kafka-motion-duration-base) var(--kafka-motion-easing-standard); }
+  .l-btn:hover, .l-pill:hover { transform: translateY(-2px); }
+  .l-btn:active, .l-pill:active { transform: translateY(0); transition-duration: 0s; }
+  .l-cards article, .cards li { transition: transform var(--kafka-motion-duration-base) var(--kafka-motion-easing-standard), box-shadow var(--kafka-motion-duration-base) var(--kafka-motion-easing-standard), border-color var(--kafka-motion-duration-fast) var(--kafka-motion-easing-standard); }
+  .l-cards article:hover, .l-cards article:focus-within, .cards li:hover { transform: translateY(-4px); }
+  .l-thumb-inner { transition: transform var(--kafka-motion-duration-slow) var(--kafka-motion-easing-standard); }
+  .l-cards article:hover .l-thumb-inner { transform: translate(-50%, -50%) scale(calc(var(--k, 1) * 1.06)); }
+  .foot-top { transition: background-color var(--kafka-motion-duration-fast) var(--kafka-motion-easing-standard), box-shadow var(--kafka-motion-duration-base) var(--kafka-motion-easing-standard), transform var(--kafka-motion-duration-base) var(--kafka-motion-easing-standard); }
+  .foot-top:hover { transform: translateY(-2px); }
+  .main-nav a, .menu-nav a, .foot-cols a { transition: border-color var(--kafka-motion-duration-fast) var(--kafka-motion-easing-standard), background-color var(--kafka-motion-duration-fast) var(--kafka-motion-easing-standard), color var(--kafka-motion-duration-fast) var(--kafka-motion-easing-standard); }
+}
+
+/* Papel, tinta y oro: the colours answer the pointer. The hovered one takes more of the row and the others give way, so the band never overflows. */
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) and (min-width: 900px) {
+  .l-swatches li { transition: flex-grow var(--kafka-motion-duration-slow) var(--kafka-motion-easing-standard), padding var(--kafka-motion-duration-slow) var(--kafka-motion-easing-standard), font-size var(--kafka-motion-duration-slow) var(--kafka-motion-easing-standard); }
+  .l-swatches li:hover { flex-grow: 1.9; padding: 1.25rem; font-size: 0.875rem; }
 }

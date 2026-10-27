@@ -17,6 +17,11 @@ function WithIcons() {
   return <SegmentedControl label="Formato" value={v} onChange={setV} options={[{ value: 'lista', label: 'Lista', Icon: IconFile }, { value: 'calendario', label: 'Calendario', Icon: IconCalendar }]} />
 }
 
+function IconsOnly() {
+  const [v, setV] = useState('lista')
+  return <SegmentedControl label="Formato" iconOnly value={v} onChange={setV} options={[{ value: 'lista', label: 'Lista', Icon: IconFile }, { value: 'calendario', label: 'Calendario', Icon: IconCalendar }]} />
+}
+
 export const examples: Example[] = [
   {
     id: 'default',
@@ -35,5 +40,11 @@ export const examples: Example[] = [
     title: 'With icons',
     description: 'The icon never replaces the text: every option keeps its visible label.',
     render: () => <WithIcons />,
+  },
+  {
+    id: 'icon-only',
+    title: 'Icons only',
+    description: '`iconOnly` for a phone header or a tight toolbar. Each option stays 44 px wide and keeps its label as its accessible name and as a tooltip. Use it only when the icons are universal (sun, moon, screen) and the space really is missing.',
+    render: () => <IconsOnly />,
   },
 ]

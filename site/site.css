@@ -7,7 +7,7 @@ body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-col
 .skip { position: absolute; left: var(--kafka-space-16); top: -4rem; z-index: 50; padding: var(--kafka-space-12) var(--kafka-space-16); background: var(--kafka-color-bg-inverse); color: var(--kafka-color-fg-inverse); border-radius: var(--kafka-radius-control); }
 .skip:focus { top: var(--kafka-space-16); }
 
-.top { position: sticky; top: 0; z-index: 20; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--kafka-space-8) var(--kafka-space-16); padding: var(--kafka-space-12) var(--kafka-space-24); background: var(--kafka-color-bg-surface); border-bottom: 1px solid var(--kafka-color-border-default); }
+.top { position: sticky; top: 0; z-index: 20; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--kafka-space-8) var(--kafka-space-16); padding: var(--kafka-space-12) var(--kafka-space-24); background: var(--kafka-color-bg-surface); border-bottom: 1px solid var(--kafka-color-border-default); box-shadow: var(--kafka-shadow-sm); }
 .search { margin-bottom: var(--kafka-space-16); }
 .search label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } /* named for assistive technology; the placeholder says it to everyone else */
 
@@ -28,7 +28,7 @@ body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-col
 .table-wrap tr:last-child td { border-bottom: 0; }
 
 /* Live example: a surface that frames the component, then the code */
-.live-example { margin-block: var(--kafka-space-16); padding: var(--kafka-space-24); border: 1px solid var(--kafka-color-border-default); border-radius: var(--kafka-radius-card); background: var(--kafka-color-bg-surface); overflow-x: auto; }
+.live-example { margin-block: var(--kafka-space-16); padding: var(--kafka-space-24); border: 1px solid var(--kafka-color-border-default); border-radius: var(--kafka-radius-card); background: var(--kafka-color-bg-surface); box-shadow: var(--kafka-shadow-sm); overflow-x: auto; }
 
 /* Pages made by hand */
 .page-title { font-family: var(--kafka-font-family-reading); font-size: 2.5rem; line-height: 1.15; margin: 0 0 var(--kafka-space-8); }
@@ -36,7 +36,7 @@ body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-col
 .page-lead { max-width: var(--kafka-measure-reading); font-family: var(--kafka-font-family-reading); font-size: 1.25rem; line-height: 1.6; color: var(--kafka-color-fg-soft); }
 .family h2 { font-family: var(--kafka-font-family-reading); margin-top: var(--kafka-space-48); }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: var(--kafka-space-16); margin: var(--kafka-space-16) 0 0; padding: 0; list-style: none; }
-.cards li { display: flex; flex-direction: column; gap: var(--kafka-space-4); padding: var(--kafka-space-16); border: 1px solid var(--kafka-color-border-default); border-radius: var(--kafka-radius-card); background: var(--kafka-color-bg-surface); }
+.cards li { display: flex; flex-direction: column; gap: var(--kafka-space-4); padding: var(--kafka-space-16); border: 1px solid var(--kafka-color-border-default); border-radius: var(--kafka-radius-card); background: var(--kafka-color-bg-surface); box-shadow: var(--kafka-shadow-sm); }
 .cards a { font-weight: 700; }
 .cards span { color: var(--kafka-color-fg-soft); font-size: 0.9375rem; line-height: 1.5; }
 
@@ -63,14 +63,26 @@ body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-col
 .content-wide { outline: none; }
 .content-wide:focus-visible { outline: 2px solid var(--kafka-color-border-focus); outline-offset: -2px; }
 
-/* Below 1200px the switch no longer fits beside a centred navigation: the header wraps and stops following the reader. */
+/* Header, three widths. From 1200px: brand, navigation centred on the page, theme switch with its words.
+   1000–1199px: one row still; the switch keeps only its icons and the links sit between brand and switch.
+   Below 1000px: the links move into a side panel behind the menu button. */
 @media (max-width: 1199px) {
-  .top { position: static; display: flex; flex-wrap: wrap; }
+  .top { display: flex; gap: var(--kafka-space-16); }
+  .main-nav { flex: 1; gap: var(--kafka-space-24); }
+}
+@media (max-width: 999px) {
+  .top { padding-inline: var(--kafka-space-16); }
   .brand { margin-inline-end: auto; }
-  .top-tools { order: 2; flex-wrap: wrap; }
-  .main-nav { order: 3; flex: 1 1 100%; flex-wrap: wrap; gap: 0 var(--kafka-space-24); justify-content: center; }
+  .top-tools { gap: var(--kafka-space-8); }
 }
-@media (max-width: 899px) {
-  .top-tools { flex-basis: 100%; justify-content: flex-start; }
-  .brand { margin-inline-end: 0; }
+@media (max-width: 479px) {
+  .brand-version { display: none; } /* the version is in the footer and in the menu */
 }
+
+/* The menu panel (a Drawer) */
+.menu-nav { display: flex; flex-direction: column; gap: var(--kafka-space-4); }
+.menu-nav a { display: flex; align-items: center; gap: var(--kafka-space-12); min-height: var(--kafka-size-touch); padding: 0 var(--kafka-space-12); border-radius: var(--kafka-radius-control); color: var(--kafka-color-fg-default); font: 500 1.0625rem var(--kafka-font-family-ui); text-decoration: none; }
+.menu-nav a:hover { background: var(--kafka-color-bg-sunken); }
+.menu-nav a[aria-current='page'] { background: var(--kafka-color-bg-inverse); color: var(--kafka-color-fg-inverse); }
+.menu-nav a:focus-visible { outline: 2px solid var(--kafka-color-border-focus); outline-offset: 2px; }
+.menu-version { margin: var(--kafka-space-24) 0 0; padding-top: var(--kafka-space-16); border-top: 1px solid var(--kafka-color-border-default); font: var(--kafka-font-size-12) var(--kafka-font-family-mono); color: var(--kafka-color-fg-muted); }

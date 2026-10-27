@@ -4,6 +4,14 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H7 · Sitio con profundidad, movimiento y cabecera móvil (27 oct 2026)
+
+- **Profundidad:** sombra de reposo en la cabecera, el catálogo, el módulo de impresión, las tarjetas y los ejemplos en vivo. Las tarjetas se elevan al pasar el puntero o al recibir el foco, y el botón dorado gana un brillo.
+- **Movimiento:** en «Papel, tinta y oro» el color bajo el puntero crece y los demás ceden sitio. Todo el movimiento se apaga con `prefers-reduced-motion`.
+- **Cabecera móvil:** por debajo de 1000 px los enlaces pasan a un panel lateral (menú hamburguesa, con `Drawer`); entre 1000 y 1199 px el selector de tema muestra solo iconos.
+- **Pie:** el nombre del autor enlaza a ux.jonathanlerma.com.
+- **Librería:** `SegmentedControl` y `ThemeToggle` ganan `iconOnly` (solo iconos; el texto queda como nombre accesible y tooltip).
+
 ### Arreglo · enlaces sin contorno permanente (26 oct 2026)
 
 - Una regla de CSS mal fusionada dibujaba el anillo de foco alrededor de todos los enlaces de la documentación. Ahora solo aparece con el foco del teclado; un test lo exige en cinco rutas.

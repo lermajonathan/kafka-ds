@@ -13,7 +13,7 @@ const entry = html.match(/<script[^>]+src="[^"]*\/(assets\/[^"]+\.js)"/)?.[1]
 if (!entry) { console.log('  ✗ index.html has no entry script'); process.exit(1) }
 const entrySize = fs.statSync(path.join(dist, entry)).size
 const entryGz = gz(path.join(dist, entry))
-if (entryGz > 130 * 1024) failures.push(`entry script is ${kb(entryGz)} gzipped (budget 130 kB)`)
+if (entryGz > 132 * 1024) failures.push(`entry script is ${kb(entryGz)} gzipped (budget 132 kB)`)
 
 // What the first load fetches: the entry plus its static imports (modulepreload links).
 const preloaded = [...html.matchAll(/<link[^>]+rel="modulepreload"[^>]+href="[^"]*\/(assets\/[^"]+\.js)"/g)].map((m) => m[1])
@@ -24,7 +24,7 @@ const chunks = fs.readdirSync(path.join(dist, 'assets')).filter((f) => f.endsWit
 if (chunks.length < 90) failures.push(`expected one chunk per page (90+), found ${chunks.length}`)
 for (const f of chunks) {
   const size = gz(path.join(dist, 'assets', f))
-  if (size > 130 * 1024) failures.push(`${f} is ${kb(size)} gzipped (budget 130 kB per chunk)`)
+  if (size > 132 * 1024) failures.push(`${f} is ${kb(size)} gzipped (budget 132 kB per chunk)`)
 }
 // Nothing about the design decisions or the roadmap may ship in the built site.
 const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]))

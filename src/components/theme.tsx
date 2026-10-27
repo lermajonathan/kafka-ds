@@ -79,17 +79,20 @@ export const useTheme = () => useContext(ThemeContext)
 
 export interface ThemeToggleProps {
   size?: 'sm' | 'md'
+  /** Only the sun, moon and screen icons; the names stay for screen readers and as tooltips. For a phone header. */
+  iconOnly?: boolean
   className?: string
 }
 
 /** Light, dark or system as a radio group. Needs a `ThemeProvider` above it. */
-export function ThemeToggle({ size = 'md', className }: ThemeToggleProps) {
+export function ThemeToggle({ size = 'md', iconOnly = false, className }: ThemeToggleProps) {
   const labels = useLabels()
   const { mode, setMode } = useTheme()
   return (
     <SegmentedControl<ThemeMode>
       label={labels.theme}
       size={size}
+      iconOnly={iconOnly}
       className={className}
       value={mode}
       onChange={setMode}
