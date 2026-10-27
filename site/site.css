@@ -1,15 +1,15 @@
 /* Kafka docs site. Plain CSS over the tokens: the components bring their own styles. */
 body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-color-fg-default); font-family: var(--kafka-font-family-ui); }
-.content a:not([class]), .home-note a, .cards a, .home-links a, .decisions a { color: var(--kafka-color-fg-link); text-decoration: underline; text-underline-offset: 0.2em; }
-.content a:not([class]):hover, .home-note a:hover, .cards a:hover, .home-links a:hover, .decisions a:hover { color: var(--kafka-color-fg-link-hover); }
+.content a:not([class]), .cards a, .decisions a { color: var(--kafka-color-fg-link); text-decoration: underline; text-underline-offset: 0.2em; }
+.content a:not([class]):hover, .cards a:hover, .decisions a:hover { color: var(--kafka-color-fg-link-hover); }
 .skip:focus-visible, .brand:focus-visible, .menu-button:focus-visible, .content a:focus-visible, .doc pre:focus-visible, .table-wrap:focus-visible, .live-example:focus-visible, .content:focus-visible { outline: 2px solid var(--kafka-color-border-focus); outline-offset: 2px; }
 
 .skip { position: absolute; left: var(--kafka-space-16); top: -4rem; z-index: 50; padding: var(--kafka-space-12) var(--kafka-space-16); background: var(--kafka-color-bg-inverse); color: var(--kafka-color-fg-inverse); border-radius: var(--kafka-radius-control); }
 .skip:focus { top: var(--kafka-space-16); }
 
-.top { flex-wrap: wrap; position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: var(--kafka-space-16); padding: var(--kafka-space-12) var(--kafka-space-24); background: var(--kafka-color-bg-page); border-bottom: 1px solid var(--kafka-color-border-default); }
+.top { flex-wrap: wrap; position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: var(--kafka-space-16); padding: var(--kafka-space-12) var(--kafka-space-24); background: var(--kafka-color-bg-surface); border-bottom: 1px solid var(--kafka-color-border-default); }
 .brand { font-family: var(--kafka-font-family-reading); font-size: 1.5rem; font-weight: 700; color: var(--kafka-color-fg-default); text-decoration: none; }
-.search { flex: 1 1 18rem; max-width: 30rem; margin-inline: auto var(--kafka-space-16); }
+.search { flex: 0 1 14rem; margin-inline: 0; }
 .search label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } /* named for assistive technology; the placeholder says it to everyone else */
 .brand:hover { color: var(--kafka-color-fg-default); }
 .menu-button { display: none; margin-inline-start: auto; min-height: var(--kafka-size-touch); padding: 0 var(--kafka-space-16); border: 1px solid var(--kafka-color-border-strong); border-radius: var(--kafka-radius-control); background: var(--kafka-color-bg-surface); color: var(--kafka-color-fg-default); font: inherit; cursor: pointer; }
@@ -50,24 +50,12 @@ body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-col
 .decision-id { font-family: var(--kafka-font-family-mono); font-size: 0.875rem; color: var(--kafka-color-fg-muted); }
 .decision-status { font-size: 0.875rem; color: var(--kafka-color-fg-muted); }
 
-/* Home: a title page */
-.home { display: flex; flex-direction: column; align-items: flex-start; gap: var(--kafka-space-24); min-height: 60vh; }
-.home-kicker { margin: 0; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--kafka-color-fg-soft); }
-.home-title { margin: 0; font-family: var(--kafka-font-family-reading); font-size: clamp(5rem, 16vw, 9rem); line-height: 0.95; letter-spacing: -0.02em; }
-.home-rule { width: 120px; height: 4px; background: var(--kafka-color-bg-brand); }
-.home-lead { margin: 0; max-width: var(--kafka-measure-reading); font-family: var(--kafka-font-family-reading); font-size: 1.5rem; line-height: 1.5; }
-.home-stats { display: flex; flex-wrap: wrap; gap: var(--kafka-space-8) var(--kafka-space-32); margin: 0; padding: var(--kafka-space-16) 0; list-style: none; border-block: 1px solid var(--kafka-color-border-default); width: 100%; color: var(--kafka-color-fg-soft); }
-.home-stats strong { color: var(--kafka-color-fg-default); font-family: var(--kafka-font-family-reading); font-size: 1.25rem; }
-.home-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr)); gap: var(--kafka-space-16); width: 100%; margin: 0; padding: 0; list-style: none; }
-.home-links li { display: flex; flex-direction: column; gap: var(--kafka-space-8); padding: var(--kafka-space-24); border: 1px solid var(--kafka-color-border-default); border-radius: var(--kafka-radius-card); background: var(--kafka-color-bg-surface); box-shadow: var(--kafka-elevation-card); }
-.home-links a { font-family: var(--kafka-font-family-reading); font-size: 1.25rem; font-weight: 700; }
-.home-links span { color: var(--kafka-color-fg-soft); line-height: 1.5; }
-.home-note { margin: 0; color: var(--kafka-color-fg-muted); font-size: 0.875rem; }
-
 @media (max-width: 899px) {
   .menu-button { display: inline-flex; align-items: center; }
   .top { padding-inline: var(--kafka-space-16); }
-  .search { order: 3; flex-basis: 100%; max-width: none; margin-inline: 0; }
+  .search { order: 4; flex-basis: 100%; }
+  .main-nav { order: 3; flex-basis: 100%; margin-inline: 0; flex-wrap: wrap; gap: 0 var(--kafka-space-24); }
+  .top .menu-button { margin-inline-start: auto; }
   .shell { grid-template-columns: minmax(0, 1fr); }
   .side { display: none; position: static; max-height: none; border-inline-end: 0; border-bottom: 1px solid var(--kafka-color-border-default); }
   .side[data-open='true'] { display: block; }
@@ -77,3 +65,25 @@ body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-col
 }
 
 .loading { color: var(--kafka-color-fg-muted); }
+
+/* Header: brand, main navigation, search (documentation pages), theme switch */
+.top { gap: var(--kafka-space-8) var(--kafka-space-16); }
+.brand { display: inline-flex; align-items: baseline; gap: var(--kafka-space-8); min-height: var(--kafka-size-touch); align-items: center; }
+.brand-version { font-family: var(--kafka-font-family-mono); font-size: var(--kafka-font-size-12); font-weight: 400; color: var(--kafka-color-fg-muted); }
+.main-nav { display: flex; gap: var(--kafka-space-24); margin-inline: var(--kafka-space-24) auto; font-size: 0.9375rem; font-weight: 500; }
+.main-nav a { display: inline-flex; align-items: center; min-height: var(--kafka-size-touch); color: var(--kafka-color-fg-default); text-decoration: none; border-bottom: 2px solid transparent; box-sizing: border-box; }
+.main-nav a:hover { border-bottom-color: var(--kafka-color-border-strong); }
+.main-nav a[aria-current='page'] { border-bottom-color: var(--kafka-color-border-brand); }
+.main-nav a:focus-visible, .foot-cols a:focus-visible, .foot-top:focus-visible, .l-btn:focus-visible, .landing a:focus-visible, .landing button:focus-visible, .landing input:focus-visible { outline: 2px solid var(--kafka-color-border-focus); outline-offset: 2px; }
+.content-wide { outline: none; }
+.content-wide:focus-visible { outline: 2px solid var(--kafka-color-border-focus); outline-offset: -2px; }
+
+/* The header can wrap below 1200px, so it stops following the reader and the sidebar sticks to the top instead. */
+@media (max-width: 1199px) {
+  .top { position: static; }
+  .side { top: 0; max-height: 100vh; }
+}
+@media (max-width: 899px) {
+  .main-nav { margin-inline: 0; flex: 1 1 100%; flex-wrap: wrap; gap: 0 var(--kafka-space-24); order: 3; }
+  .search { order: 4; flex-basis: 100%; }
+}
