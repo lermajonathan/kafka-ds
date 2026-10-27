@@ -133,8 +133,8 @@ try {
   }
   await go('/getting-started')
   check(await page.locator('main .p-doc a').first().evaluate((a) => getComputedStyle(a).textDecorationLine === 'underline'), 'links in the text stay underlined')
+  await page.keyboard.press('Tab') // the last input was the keyboard, so a focus() shows the ring (:focus-visible)
   await page.locator('main .p-doc a').first().focus()
-  await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Tab')
   check(await page.locator('main .p-doc a').first().evaluate((a) => parseFloat(getComputedStyle(a).outlineWidth) >= 2), 'a link in the text must show its ring when it has keyboard focus')
   // Every link that leaves for GitHub opens in a new tab
   for (const r of ['', '/getting-started', '/components', '/tokens', '/components/chip']) {
