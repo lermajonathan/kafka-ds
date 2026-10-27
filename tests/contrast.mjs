@@ -36,6 +36,20 @@ export const ratio = (fgPath, bgPath, mode) => {
   return (a + 0.05) / (b + 0.05)
 }
 
+// A theme is checked as a whole: the base tokens with its overrides on top, against the same list of pairs.
+export const applyTheme = (name) => {
+  const own = new Map()
+  const w = (node, path) => {
+    if (node && typeof node === 'object' && '$value' in node) { own.set(path.join('.'), { value: node.$value, dark: node.$extensions?.['kafka.modes']?.dark }); return }
+    for (const [k, v] of Object.entries(node)) if (!k.startsWith('$') && v && typeof v === 'object') w(v, [...path, k])
+  }
+  w(JSON.parse(fs.readFileSync(new URL(`../tokens/themes/${name}.json`, import.meta.url), 'utf8')), [])
+  const saved = new Map()
+  for (const [k, t] of own) { saved.set(k, tokens.get(k)); tokens.set(k, { value: t.value, dark: t.dark ?? tokens.get(k)?.dark }) }
+  return () => { for (const [k, t] of saved) t === undefined ? tokens.delete(k) : tokens.set(k, t) }
+}
+export const themeNames = fs.existsSync(new URL('../tokens/themes/', import.meta.url)) ? fs.readdirSync(new URL('../tokens/themes/', import.meta.url)).filter((f) => f.endsWith('.json')).map((f) => f.replace(/\.json$/, '')).sort() : []
+
 const READING = 7, TEXT = 4.5, UI = 3
 const pairs = []
 for (const bg of ['page', 'surface']) {
@@ -362,13 +376,17 @@ pairs.push(
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   let failures = 0
-  for (const mode of ['light', 'dark']) {
-    // the brand-gold-on-ink pair is mode-independent; run it once
-    const list = pairs.filter(([f]) => mode === 'light' || f !== 'color.gold.400')
-    const fails = list.filter(([f, b, min]) => ratio(f, b, mode) + 1e-9 < min)
-    failures += fails.length
-    console.log(`\n${mode.toUpperCase()} · ${list.length - fails.length}/${list.length} pairs pass`)
-    for (const [f, b, min, what] of fails) console.log(`  ✗ ${ratio(f, b, mode).toFixed(2)}:1 < ${min}:1  ${what}`)
+  const run = (label) => {
+    for (const mode of ['light', 'dark']) {
+      // the brand-gold-on-ink pair is mode-independent; run it once
+      const list = pairs.filter(([f]) => mode === 'light' || f !== 'color.gold.400')
+      const fails = list.filter(([f, b, min]) => ratio(f, b, mode) + 1e-9 < min)
+      failures += fails.length
+      console.log(`\n${label}${mode.toUpperCase()} · ${list.length - fails.length}/${list.length} pairs pass`)
+      for (const [f, b, min, what] of fails) console.log(`  ✗ ${ratio(f, b, mode).toFixed(2)}:1 < ${min}:1  ${what}`)
+    }
   }
+  run('')
+  for (const name of themeNames) { const restore = applyTheme(name); run(`THEME ${name} · `); restore() }
   process.exit(failures ? 1 : 0)
 }

@@ -1,0 +1,21 @@
+{
+  "name": "@kafka/theme-altazor",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Jonathan Lerma",
+  "homepage": "https://github.com/lermajonathan/kafka-ds",
+  "bugs": "https://github.com/lermajonathan/kafka-ds/issues",
+  "type": "module",
+  "publishConfig": { "access": "public", "provenance": true },
+  "description": "Altazor theme for Kafka: a few semantic overrides and decoration tokens, scoped to [data-kafka-theme='altazor']. CSS only.",
+  "keywords": ["design-tokens", "theme", "kafka", "css-variables"],
+  "repository": { "type": "git", "url": "git+https://github.com/lermajonathan/kafka-ds.git", "directory": "packages/theme-altazor" },
+  "exports": {
+    ".": "./dist/altazor.css",
+    "./altazor.css": "./dist/altazor.css",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "peerDependencies": { "@kafka/tokens": "*" },
+  "sideEffects": ["*.css"]
+}

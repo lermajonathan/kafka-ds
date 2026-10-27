@@ -1,0 +1,44 @@
+{
+  "$description": "Tema Altazor: lo que el sitio de Altazor Taller de Escritura Creativa cambia de Kafka. La paleta, la tipografía y el contraste son los de Kafka; un tema solo sobrescribe tokens semánticos o de componente, nunca la paleta, y todo par de colores sigue pasando tests/contrast.mjs. Decisión de no tocar `color.border.default`: el prototipo usa una línea más clara (papel 200), pero 25 componentes la usan como borde de control y quedaría bajo 3:1.",
+  "color": {
+    "$type": "color",
+    "bg": {
+      "sunken": {
+        "$value": "{color.paper.100}",
+        "$description": "Fondo hundido más claro que el de Kafka (papel 100 en lugar de papel 200): bandas y secciones apenas más oscuras que la página. En oscuro conserva el valor de Kafka."
+      }
+    }
+  },
+  "radius": {
+    "$type": "dimension",
+    "control": {
+      "$value": "{radius.8}",
+      "$description": "Botones, campos y chips de 8 px (Kafka: 12 px)."
+    },
+    "tile": {
+      "$value": "0.875rem",
+      "$description": "Mosaico de icono de 14 px, más redondeado (Kafka: 8 px)."
+    }
+  },
+  "altazor": {
+    "$type": "color",
+    "deco": {
+      "$description": "Adornos flotantes decorativos de la portada (puntos, barras y rombos), siempre aria-hidden y con opacidad baja. Nunca llevan texto, por eso no entran en las pruebas de contraste.",
+      "purple": {
+        "dot": { "$value": "#8b5cf6" },
+        "bar": { "$value": "#c026d3" },
+        "diamond": { "$value": "#7c3aed" }
+      },
+      "red": {
+        "dot": { "$value": "#dc2626" },
+        "bar": { "$value": "#ef4444" },
+        "diamond": { "$value": "#b91c1c" }
+      },
+      "gold": {
+        "dot": { "$value": "{color.gold.400}" },
+        "bar": { "$value": "{color.gold.300}" },
+        "diamond": { "$value": "{color.gold.500}" }
+      }
+    }
+  }
+}
