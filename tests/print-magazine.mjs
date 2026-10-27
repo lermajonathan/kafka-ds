@@ -3,7 +3,7 @@
 //   node tests/print-magazine.mjs        (KAFKA_MAGAZINE_OUT=file.pdf keeps the PDF)
 import fs from 'node:fs'
 import path from 'node:path'
-import { checkGeometry, MM_TO_PT, mm, pageMm, renderPdf, reporter, root } from './lib/pdf.mjs'
+import { checkGeometry, checkReadingFont, MM_TO_PT, mm, pageMm, renderPdf, reporter, root } from './lib/pdf.mjs'
 
 const r = reporter('Magazine template')
 const { check } = r
@@ -31,7 +31,7 @@ const pdf = await renderPdf(TEMPLATE, {
 const { dom, pages, pageText, where, hasFolio, all, wordsOf } = pdf
 
 // 0 · Standalone, Spanish, three pieces, two columns for the prose pieces
-check(dom.external.length === 2 && dom.external.every((h) => /(tokens|print)\.css$/.test(h)), `the template must link only tokens.css and print.css, got ${dom.external.join(', ')}`)
+check(dom.external.length === 3 && dom.external.every((h) => /(tokens|fonts|print)\.css$/.test(h)) && dom.external.some((h) => /fonts\.css$/.test(h)), `the template must link only tokens.css, fonts.css and print.css, got ${dom.external.join(', ')}`)
 check(dom.lang === 'es', `the template must declare lang="es", got "${dom.lang}"`)
 check(dom.pieces === 3, `the sample has three pieces, found ${dom.pieces}`)
 check(dom.columns[0] === '2' && dom.columns[2] === '2', `the story and the essay run in two columns, got ${dom.columns.join(' / ')}`)
@@ -42,6 +42,7 @@ check(dom.dropCap === '3', `the story opens with a three-line drop cap, got init
 
 // 1 · Geometry: A4, fonts embedded, inside the printable area, no blank pages
 checkGeometry(r, pdf, pageMm('a4'))
+checkReadingFont(check, pdf.fonts().map((f) => f.row))
 check(pages >= 5 && pages <= 12, `the sample anthology should span 5–12 pages, got ${pages}`)
 for (let n = 1; n <= pages; n++) check(pageText(n).replace(/\s+/g, '').length > 3, `page ${n} is blank`)
 

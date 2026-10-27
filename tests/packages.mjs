@@ -37,6 +37,24 @@ for (const needle of ['--kafka-color-bg-brand', '.kafka-focus', '--kafka-button-
 check(!/\.bg-slate-|\.bg-blue-|\.bg-red-/.test(css), 'styles.css contains no default Tailwind palette')
 const tw = fs.readFileSync(path.join(kr, 'dist/tailwind.css'), 'utf8')
 check(tw.includes('@source "./index.js"') && tw.includes('@theme'), 'tailwind.css scans the package and defines the theme')
+// 2b · Literata ships with the packages (DDR-KF-001): every @font-face url resolves to a file inside the installed package,
+// and the OFL licence travels with the font files.
+const fontUrls = (cssFile) => [...fs.readFileSync(cssFile, 'utf8').matchAll(/url\(['"]?([^'")]+\.woff2)['"]?\)/g)].map((m) => path.resolve(path.dirname(cssFile), m[1]))
+const checkFonts = (pkgDir, cssName, label) => {
+  const file = path.join(pkgDir, 'dist', cssName)
+  const urls = fs.existsSync(file) ? fontUrls(file) : []
+  check(urls.length === 4, `${label} declares Literata in four files (normal and italic, latin and latin-ext), found ${urls.length}`)
+  check(urls.length > 0 && urls.every((u) => u.startsWith(pkgDir) && fs.existsSync(u)), `${label}: every Literata file exists inside the package`)
+  check(fs.existsSync(file) && /font-family:\s*'Literata'/.test(fs.readFileSync(file, 'utf8')), `${label} declares the Literata family`)
+}
+// a consumer imports it by name, so the package's exports map must allow it
+let fontsResolved = ''
+try { fontsResolved = sh(`node --input-type=module -e "console.log(import.meta.resolve('@kafka/tokens/fonts.css'))"`, app).trim() } catch { /* not exported */ }
+check(fontsResolved.endsWith('/@kafka/tokens/dist/fonts.css'), `@kafka/tokens/fonts.css must be importable by name (exports map), got "${fontsResolved}"`)
+checkFonts(kt, 'fonts.css', '@kafka/tokens fonts.css')
+checkFonts(kr, 'styles.css', '@kafka/react styles.css')
+checkFonts(kr, 'tailwind.css', '@kafka/react tailwind.css')
+for (const [dir, label] of [[kt, '@kafka/tokens'], [kr, '@kafka/react']]) check(fs.existsSync(path.join(dir, 'dist/fonts/OFL.txt')), `${label} ships the OFL licence next to the fonts`)
 // 3 · the library renders on the server, with Spanish labels from the provider
 const { registry } = await (await import('tsx/esm/api')).tsImport('../examples/index.ts', import.meta.url)
 const names = Object.values(registry).map((e) => e.name)

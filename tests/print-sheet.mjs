@@ -3,7 +3,7 @@
 //   node tests/print-sheet.mjs           (KAFKA_SHEET_OUT=file.pdf keeps the PDF)
 import fs from 'node:fs'
 import path from 'node:path'
-import { checkGeometry, linesOf, mm, pageMm, renderPdf, reporter, root } from './lib/pdf.mjs'
+import { checkGeometry, checkReadingFont, linesOf, mm, pageMm, renderPdf, reporter, root } from './lib/pdf.mjs'
 
 const r = reporter('Sheet template')
 const { check } = r
@@ -21,12 +21,13 @@ const pdf = await renderPdf(TEMPLATE, {
 })
 const { dom, pages, pageText, wordsOf, all } = pdf
 
-check(dom.external.length === 2 && dom.external.every((h) => /(tokens|print)\.css$/.test(h)), `the template must link only tokens.css and print.css, got ${dom.external.join(', ')}`)
+check(dom.external.length === 3 && dom.external.every((h) => /(tokens|fonts|print)\.css$/.test(h)) && dom.external.some((h) => /fonts\.css$/.test(h)), `the template must link only tokens.css, fonts.css and print.css, got ${dom.external.join(', ')}`)
 check(dom.lang === 'es', `the template must declare lang="es", got "${dom.lang}"`)
 check(dom.rows === SESSIONS, `the schedule has ${SESSIONS} sessions, found ${dom.rows}`)
 
 // A sheet is exactly one A4 page, with no running head or folio
 checkGeometry(r, pdf, pageMm('a4'))
+checkReadingFont(check, pdf.fonts().map((f) => f.row))
 check(pages === 1, `a sheet must fit on one page, got ${pages}`)
 check(!/^\s*1\s*$/m.test(pageText(1)), 'a one-page sheet carries no folio')
 

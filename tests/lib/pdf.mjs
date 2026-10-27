@@ -88,6 +88,17 @@ export function checkGeometry({ check }, pdf, expectedMm, edgeMm = 5) {
   }
 }
 
+/**
+ * Reading text is set in Literata, embedded in the PDF (DDR-KF-001). A serif fallback in the file means the font was not
+ * available to the printer's browser: the document would look different on every machine.
+ * `rows` are the lines of `pdffonts`.
+ */
+export const checkReadingFont = (check, rows) => {
+  check(rows.some((r) => /Literata/i.test(r)), 'the PDF must embed Literata: the reading text needs the self-hosted font, not a fallback')
+  const fallback = rows.filter((r) => /Liberation|DejaVu|Georgia|Times|FreeSerif|NimbusRoman/i.test(r))
+  check(fallback.length === 0, `a serif fallback replaced Literata: ${fallback.map((r) => r.split(/\s+/)[0]).join(', ')}`)
+}
+
 /** Groups the words of a page into lines by their bottom edge. */
 export const linesOf = (words) => {
   const out = []
