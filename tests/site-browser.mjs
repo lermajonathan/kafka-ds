@@ -66,6 +66,40 @@ try {
   })
   check(Math.abs(guide.base - guide.line) <= 3, `home: the baseline guide is ${(guide.line - guide.base).toFixed(1)}px off the font's baseline`)
 
+  // Header: the main navigation is centred on the page, on the home page and on a documentation page
+  const centred = async () => page.evaluate(() => { const r = document.querySelector('.main-nav').getBoundingClientRect(); return Math.abs((r.left + r.right) / 2 - window.innerWidth / 2) })
+  check(await centred() <= 24, `header: the navigation is ${await centred()}px off the centre on the home page`)
+  // Brand: a gold mark with the K, and a version tag that shares the word's baseline
+  const brand = await page.evaluate(() => {
+    const a = document.querySelector('.brand'), mark = a.querySelector('.brand-mark'), word = a.querySelector('.brand-name'), tag = a.querySelector('.brand-version')
+    if (!mark || !word || !tag) return null
+    const base = (el) => { const p = document.createElement('span'); p.style.cssText = 'display:inline-block;width:0;height:0'; el.appendChild(p); const y = p.getBoundingClientRect().bottom; p.remove(); return y }
+    return { bg: getComputedStyle(mark).backgroundColor, mark: mark.textContent.trim(), hidden: mark.getAttribute('aria-hidden'), off: Math.abs(base(word) - base(tag)) }
+  })
+  check(brand !== null && brand.mark === 'K' && brand.hidden === 'true', 'brand: needs a decorative K mark')
+  check(brand !== null && /rgb\(2(0|1)\d, 1[67]\d, [3-6]\d\)/.test(brand.bg), `brand: the mark must be gold, it was ${brand?.bg}`)
+  check(brand !== null && brand.off <= 1.5, `brand: the version tag is ${brand?.off.toFixed(1)}px off the baseline of "Kafka"`)
+
+  // Outline controls answer to the pointer
+  for (const sel of ['.l-btn-line', '.l-pill', '.foot-top', '.l-pages button:not([aria-current])']) {
+    const el = page.locator(sel).first()
+    await el.scrollIntoViewIfNeeded()
+    await page.mouse.move(0, 0)
+    const before = await el.evaluate((e) => { const c = getComputedStyle(e); return c.backgroundColor + c.color })
+    await el.hover()
+    await page.waitForTimeout(300) // colours ease in
+    const after = await el.evaluate((e) => { const c = getComputedStyle(e); return c.backgroundColor + c.color })
+    check(before !== after, `hover: ${sel} must change on hover`)
+  }
+  await page.mouse.move(0, 0)
+
+  // Section labels carry words, not numbering symbols; the print templates only show what the system can do
+  check(!/§/.test(await page.locator('main').innerText()), 'home: labels must not carry "§"')
+  check(await page.locator('.l-templates a').count() === 0, 'print: the templates show capabilities, they are not links')
+  check(await page.locator('.l-templates li').count() === 3, 'print: three templates')
+  const gap = await page.evaluate(() => document.querySelector('.l-popular').getBoundingClientRect().top - document.querySelector('.catalog-search input').getBoundingClientRect().bottom)
+  check(gap >= 16, `search: only ${gap}px between the field and the popular searches`)
+
   // The "Papel, tinta y oro" band is ink in both themes
   for (const theme of ['light', 'dark']) {
     await page.evaluate((t) => { localStorage.setItem('kafka-site-theme', t) }, theme)
@@ -111,11 +145,12 @@ try {
   await page.keyboard.press('/')
   check(await page.evaluate(() => document.activeElement?.getAttribute('type') === 'search'), 'home: "/" must focus the catalog search')
 
-  // Documentation pages keep their sidebar and the header search
+  // Documentation pages keep their sidebar, with the search on top
   await go('/getting-started')
   check(await page.locator('aside').count() === 1, 'docs page: keeps the sidebar')
-  check(await page.getByRole('banner').getByRole('combobox', { name: /buscar/i }).count() === 1, 'docs page: the header keeps the search')
+  check(await page.locator('aside').getByRole('combobox', { name: /buscar/i }).count() === 1, 'docs page: the search sits at the top of the sidebar')
   check(await page.getByRole('contentinfo').count() === 1, 'docs page: the footer is on every page')
+  check(await centred() <= 24, `header: the navigation is ${await centred()}px off the centre on a documentation page`)
 
   await go(''); await page.reload(); await page.waitForSelector('main h1')
   // Skip link comes first and lands on the content

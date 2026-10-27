@@ -4,6 +4,13 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H7 · Ajustes del sitio tras la primera revisión (26 oct 2026)
+
+- Cabecera con el menú centrado, logotipo K sobre fondo dorado y etiqueta de versión alineada a la línea base; el buscador de las páginas de documentación pasa a la barra lateral.
+- Estados hover en los botones de contorno, las etiquetas populares, la paginación y «Volver arriba».
+- Fuera el «§» de los títulos Escala y Medida; Libro, Revista y Ficha dejan de ser enlaces.
+- Espacio entre el campo de búsqueda y las etiquetas del catálogo.
+
 ### H7 · Rediseño del sitio (26 oct 2026)
 - **Nueva portada** (dirección F): cabecera con navegación principal y selector de tema, muestra de Literata con guías medidas, escala y medida, banda de tinta «Papel, tinta y oro», «Un texto. Dos páginas.», módulo de impresión, cifras y catálogo con buscador, familias, paginación y miniaturas reales de cada componente.
 - **Pie de página** oscuro en todas las páginas. La cabecera deja de seguir al lector por debajo de 1200 px.

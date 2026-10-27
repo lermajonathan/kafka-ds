@@ -19,7 +19,7 @@ function Hero() {
   return (
     <Section id="hero" label="Presentación" className="l-hero">
       <div className="l-specimen">
-        <p className="l-mono l-accent">§01 · Literata 7–72 pt · 200–900</p>
+        <p className="l-mono l-accent">Literata 7–72 pt · 200–900</p>
         <div className="l-aa" aria-hidden="true">
           <span className="l-aa-glyph">Aa</span>
           <span className="l-guide l-guide-cap"><i>altura de versal</i></span>
@@ -54,7 +54,7 @@ function Scale() {
   return (
     <Section id="escala" label="Escala" className="l-split">
       <div className="l-side">
-        <p className="l-mono l-accent">§02 · Escala</p>
+        <p className="l-mono l-accent">Escala</p>
         <h2 id="escala-title">Escala tipográfica</h2>
         <p>Nueve tamaños, de 12 a 64 px, y un cuerpo de lectura de 18 px con interlineado de 1,6. Cada fila está compuesta con su propio token.</p>
       </div>
@@ -75,7 +75,7 @@ function Measure() {
   return (
     <Section id="medida" label="Medida" className="l-split">
       <div className="l-side">
-        <p className="l-mono l-accent">§03 · Medida</p>
+        <p className="l-mono l-accent">Medida</p>
         <h2 id="medida-title">66 caracteres por línea</h2>
         <p>La medida de lectura cómoda. Prose la respeta; los componentes de texto también.</p>
       </div>
@@ -189,12 +189,10 @@ function Print() {
       </div>
       <ul className="l-templates">
         {TEMPLATES.map(([id, name, text]) => (
-          <li key={id}>
-            <a className="l-template-link" href={`${data.repo}/blob/main/templates/print/${id}.html`} rel="noopener noreferrer">
-              <Sheet kind={id} />
-              <span className="l-template-name">{name}</span>
-              <span className="l-template-text">{text}</span>
-            </a>
+          <li key={id} className="l-template">
+            <Sheet kind={id} />
+            <h3 className="l-template-name">{name}</h3>
+            <p className="l-template-text">{text}</p>
           </li>
         ))}
       </ul>

@@ -192,12 +192,13 @@ export function App() {
     <KafkaProvider labels={labelsEs}>
       <ThemeProvider storageKey={THEME_KEY}>
         <a className="skip" href="#contenido" onClick={(e) => { e.preventDefault(); main.current?.focus() }}>Saltar al contenido</a>
-        <Header route={route} menuOpen={menu} onMenu={() => setMenu((v) => !v)}>{route !== '' && <Search />}</Header>
+        <Header route={route} menuOpen={menu} onMenu={() => setMenu((v) => !v)} />
         {route === '' ? (
           <main id="contenido" ref={main} tabIndex={-1} className="content-wide">{page.node}</main>
         ) : (
           <div className="shell">
             <aside id="documentacion" className="side" data-open={menu}>
+              <Search />
               <NavMenu items={nav} value={route} label="Documentación" onNavigate={(key) => navigate(key)} />
             </aside>
             <main id="contenido" ref={main} tabIndex={-1} className="content">{page.node}</main>
