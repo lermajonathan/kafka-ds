@@ -135,6 +135,7 @@ try {
   check(await page.locator('main .p-doc a').first().evaluate((a) => getComputedStyle(a).textDecorationLine === 'underline'), 'links in the text stay underlined')
   await page.keyboard.press('Tab') // the last input was the keyboard, so a focus() shows the ring (:focus-visible)
   await page.locator('main .p-doc a').first().focus()
+  await page.waitForTimeout(300) // the outline is read once it has settled
   const ring = await page.locator('main .p-doc a').first().evaluate((a) => { const c = getComputedStyle(a); return { w: c.outlineWidth, st: c.outlineStyle, focused: document.activeElement === a, vis: a.matches(':focus-visible'), href: a.getAttribute('href') } })
   check(parseFloat(ring.w) >= 2, `a link in the text must show its ring when it has keyboard focus (${JSON.stringify(ring)})`)
   // Every link that leaves for GitHub opens in a new tab
@@ -323,6 +324,7 @@ try {
     for (const route of audited) {
       await page.evaluate((t) => localStorage.setItem('kafka-site-theme', t), theme)
       await go(route)
+      await page.waitForTimeout(300) // colours settle after a theme change; axe must not read them mid-transition
       await page.addScriptTag({ content: axeSource })
       const result = await page.evaluate(() => window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } }))
       for (const v of result.violations) check(false, `axe · ${route || '/'} · ${size.width} · ${theme} · ${v.id}: ${v.help} (${v.nodes.slice(0, 2).map((n) => n.target.join(' ')).join(', ')})`)
