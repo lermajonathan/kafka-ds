@@ -11,6 +11,7 @@ import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { chromium } from 'playwright'
 import { tsImport } from 'tsx/esm/api'
+import { checkReadingFont } from './lib/pdf.mjs'
 
 const root = path.resolve(import.meta.dirname, '..')
 const MM_TO_PT = 72 / 25.4
@@ -63,7 +64,7 @@ const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'kafka-print-'))
 process.on('exit', () => fs.rmSync(tmp, { recursive: true, force: true }))
 const href = (rel) => pathToFileURL(path.join(root, rel)).href
 const htmlFile = path.join(tmp, 'book.html')
-fs.writeFileSync(htmlFile, html([href('src/styles/tokens.css'), pathToFileURL(path.join(compiledDir, compiledCss)).href, href('src/styles/print.css')]))
+fs.writeFileSync(htmlFile, html([href('src/styles/tokens.css'), href('src/styles/fonts.css'), pathToFileURL(path.join(compiledDir, compiledCss)).href, href('src/styles/print.css')]))
 if (process.env.KAFKA_PRINT_HTML) fs.copyFileSync(htmlFile, process.env.KAFKA_PRINT_HTML) // the sample page, for debugging in a browser
 
 const browser = await chromium.launch()
@@ -119,6 +120,8 @@ for (const row of fontRows) {
   const emb = cols[cols.length - 5] // columns end: emb sub uni object ID (two for ID)
   check(emb === 'yes', `font not embedded: ${row.trim()}`)
 }
+
+checkReadingFont(check, fontRows)
 
 // 4 · No cut text: the last word survives, and no word sits outside the printable area
 const text = tool('pdftotext', '-layout', pdfFile, '-')
@@ -177,9 +180,14 @@ const linesOf = (words) => {
   }
   return out.map((l) => ({ ...l, x0: Math.min(...l.words.map((w) => w.x0)), text: l.words.map((w) => w.t).join(' ') }))
 }
-const firstPage = linesOf(wordsOf(bbox.split('<page ')[1]))
+// Poppler boxes each word with the font's own ascent and descent, so the tall drop cap (and the title) would merge with
+// a neighbouring line. Measure the body lines only: words of ordinary height.
+const firstWords = wordsOf(bbox.split('<page ')[1])
+const heights = firstWords.map((w) => w.y1 - w.y0).sort((a, b) => a - b)
+const ordinary = heights[Math.floor(heights.length / 2)] * 1.6
+const firstPage = linesOf(firstWords.filter((w) => w.y1 - w.y0 <= ordinary))
 // Drop cap: first body line has a tall initial; the next two lines are indented past it; the fourth is flush again.
-const bodyLines = firstPage.slice(1) // after the title
+const bodyLines = firstPage // the title and the cap were left out above
 const flushX = bodyLines[3].x0
 check(bodyLines[1].x0 > flushX + 8 && bodyLines[2].x0 > flushX + 8 && Math.abs(bodyLines[3].x0 - bodyLines[4].x0) < 1,
   `lines 2–3 of the first paragraph should wrap around the drop cap and line 4 be flush (x: ${bodyLines.slice(0, 5).map((l) => l.x0.toFixed(1)).join(' / ')})`)

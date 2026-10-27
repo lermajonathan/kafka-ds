@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H8 · Literata autoalojada en la librería y en impresión (27 oct 2026)
+
+- **Una sola copia de la fuente:** Literata variable (OFL, normal y cursiva, latín y latín extendido) vive en `src/styles/fonts/` con su `fonts.css`; el sitio, las plantillas de impresión y los paquetes usan esos mismos archivos.
+- **Paquetes:** `@kafka/tokens/fonts.css` (con `fonts/` y la licencia OFL) y `@kafka/react` (reglas `@font-face` al inicio de `styles.css` y `tailwind.css`, más `fonts/`). Ninguna página pide la fuente a un tercero.
+- **Impresión:** las plantillas de libro, revista y ficha enlazan `fonts.css`. Antes los PDF salían con una tipografía de reemplazo (LiberationSerif); ahora `test:print` exige que Literata esté incrustada y que no haya serif de reemplazo. Con la métrica real de Literata el libro de muestra pasa de 6 a 7 páginas A5.
+
 ### H8 · Tema Altazor, corte 3: página de ejemplo (27 oct 2026)
 
 - **Página `#/altazor`** («Kafka con el tema Altazor»): cómo se aplica, los mismos componentes reales (`ProgramCard`, tarjeta VIP, `NewsBox`, campo, chips, botones) con un interruptor Kafka/Altazor, los patrones del tema (portada, tarjetas de acceso rápido, formas flotantes, citas de Cervantes y Bécquer) y la tabla «Qué cambia», generada de los datos del tema.

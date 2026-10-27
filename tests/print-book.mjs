@@ -3,7 +3,7 @@
 //   node tests/print-book.mjs            (KAFKA_BOOK_OUT=file.pdf keeps the PDF)
 import fs from 'node:fs'
 import path from 'node:path'
-import { checkGeometry, MM_TO_PT, pageMm, renderPdf, reporter, root } from './lib/pdf.mjs'
+import { checkGeometry, checkReadingFont, MM_TO_PT, pageMm, renderPdf, reporter, root } from './lib/pdf.mjs'
 
 const r = reporter('Book template')
 const { check } = r
@@ -24,13 +24,14 @@ const pdf = await renderPdf(TEMPLATE, {
 const { dom, pages, pageText, where, hasFolio, all, wordsOf } = pdf
 
 // 0 · The template is standalone: it needs only the token and print stylesheets, and declares its language
-check(dom.external.length === 2 && dom.external.every((h) => /(tokens|print)\.css$/.test(h)), `the template must link only tokens.css and print.css, got ${dom.external.join(', ')}`)
+check(dom.external.length === 3 && dom.external.every((h) => /(tokens|fonts|print)\.css$/.test(h)) && dom.external.some((h) => /fonts\.css$/.test(h)), `the template must link only tokens.css, fonts.css and print.css, got ${dom.external.join(', ')}`)
 check(dom.lang === 'es', `the template must declare lang="es" (hyphenation depends on it), got "${dom.lang}"`)
 check(dom.chapters === 2, `the sample has two chapters, found ${dom.chapters}`)
 check(dom.dropCap === '3', `the first chapter opens with a three-line drop cap, got initial-letter: ${dom.dropCap}`)
 
 // 1 · Geometry: every page is A5, fonts embedded, nothing outside the printable area
 checkGeometry(r, pdf, pageMm('a5'))
+checkReadingFont(check, pdf.fonts().map((f) => f.row))
 check(pages >= 6 && pages <= 14, `the sample book should span 6–14 pages, got ${pages}`)
 
 // 2 · No blank pages: a forced recto break may not leave an empty verso in the sample

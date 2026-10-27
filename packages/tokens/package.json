@@ -17,6 +17,7 @@
     "./tokens.css": "./dist/tokens.css",
     "./theme.css": "./dist/theme.css",
     "./typography.css": "./dist/typography.css",
+    "./fonts.css": "./dist/fonts.css",
     "./print.css": "./dist/print.css",
     "./tokens.json": "./dist/tokens.json",
     "./json/*": "./dist/json/*",
