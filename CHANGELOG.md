@@ -4,6 +4,15 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H8 · Pruebas de lector de pantalla (27 oct 2026)
+
+- **`test:screenreader`** (dentro de `pnpm verify`): lee el árbol de accesibilidad que Chromium construye —el mismo que consumen NVDA, JAWS y VoiceOver— en **los 70 componentes**, repartidos en `tests/screenreader.mjs` (los críticos: Field, Alert, Tabs, diálogos, Menu, Combobox, Toast, notas, Calendar) y `screenreader-{forms,actions,navigation,content}.mjs`. Comprueba rol, nombre, descripción, estado (inválido, expandido, marcado, presionado, actual), foco y regiones en vivo, incluido qué cambia al usar el teclado. No es un lector real: lo que dice cada lector con sus propias palabras no es nuestro.
+- **Cobertura obligatoria y barrida** (`screenreader-sweep.mjs`): falla si un componente del registro no tiene expectativas propias, y en cada ejemplo exige que todo lo que un lector puede enfocar tenga nombre y que los puntos de referencia del mismo tipo se distingan entre sí.
+- **Correcciones que salieron de las pruebas:** un `ConfirmDialog` con `tone="danger"` ahora se anuncia como `alertdialog` (antes, `dialog`; `Modal` acepta `role`), y el botón de acción de un `ProgramCard` queda descrito por el título del programa, para que una lista de botones no lea «Inscribirme» cinco veces sin contexto.
+
+- **`test:screenreader`** (dentro de `pnpm verify`): lee el árbol de accesibilidad que Chromium construye —el mismo que consumen NVDA, JAWS y VoiceOver— en 12 componentes críticos: Field, Alert, Tabs, Modal, ConfirmDialog, Drawer, Menu, Combobox, Toast, Footnote, Calendar y NotificationCenter. Comprueba rol, nombre, descripción, estado (inválido, expandido, deshabilitado, modal), foco y regiones en vivo. No es un lector real: lo que dice cada lector con sus propias palabras no es nuestro.
+- **Corrección que salió de la prueba:** un `ConfirmDialog` con `tone="danger"` ahora se anuncia como `alertdialog` (antes, `dialog`). `Modal` acepta `role="alertdialog"`.
+
 ### H8 · Literata autoalojada en la librería y en impresión (27 oct 2026)
 
 - **Una sola copia de la fuente:** Literata variable (OFL, normal y cursiva, latín y latín extendido) vive en `src/styles/fonts/` con su `fonts.css`; el sitio, las plantillas de impresión y los paquetes usan esos mismos archivos.
