@@ -7,6 +7,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 ### Arreglo · InlineEdit (26 oct 2026)
 - `InlineEdit` devuelve el foco al botón en cuanto confirma o cancela, no un fotograma después. Antes, durante ese instante, el foco quedaba en la página; era la causa del test intermitente «Enter saves and focus returns to the button». Prueba nueva que lo exige sin depender del tiempo.
 
+### H7 · Rediseño del sitio (26 oct 2026)
+- **Nueva portada** (dirección F): cabecera con navegación principal y selector de tema, muestra de Literata con guías medidas, escala y medida, banda de tinta «Papel, tinta y oro», «Un texto. Dos páginas.», módulo de impresión, cifras y catálogo con buscador, familias, paginación y miniaturas reales de cada componente.
+- **Pie de página** oscuro en todas las páginas. La cabecera deja de seguir al lector por debajo de 1200 px.
+- `tests/site-browser.mjs` cubre cabecera, orden de secciones, banda oscura en ambos temas, catálogo, pie y que la guía de línea base coincida con la de la fuente.
+
 ### H7 · Sitio de documentación (26 oct 2026)
 - **Sitio de documentación** en Vite y React (`site/`): inicio, primeros pasos, 70 páginas de componentes con ejemplos que corren encima de su código, 19 decisiones y la referencia de tokens. Claro y oscuro, navegable con teclado, sin peticiones fuera de su origen ([DDR-KF-019](docs/decisions/DDR-KF-019-sitio-de-documentacion.md)).
 - `pnpm run dev:site`, `pnpm run build:site` y `pnpm run test:site` (datos, rutas, foco, tema, axe-core en dos tamaños y dos temas, sin desborde en 390 px). Se publica en GitHub Pages cuando `main` cambia (`.github/workflows/pages.yml`).

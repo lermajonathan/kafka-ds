@@ -1,17 +1,15 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { Combobox, Field, KafkaProvider, NavMenu, Prose, ThemeProvider, ThemeToggle, labelsEs, type NavMenuItem } from '../src/components'
+import { Combobox, Field, KafkaProvider, NavMenu, Prose, ThemeProvider, labelsEs, type NavMenuItem } from '../src/components'
 import data, { exampleLoaders, pageLoaders } from 'virtual:kafka-site'
 import type { Example } from '../examples/types'
 import { href, navigate, useRoute } from './router'
 import { LiveExample } from './live'
+import { familyName } from './names'
+import { Footer, Header } from './chrome'
+import { Landing } from './home'
 
 const THEME_KEY = 'kafka-site-theme'
 const SITE = 'Kafka'
-const fmt = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-
-/** Family names come from the English documentation index; the site's own navigation speaks Spanish. */
-const FAMILY_ES: Record<string, string> = { Actions: 'Acciones', 'Data display': 'Datos', Forms: 'Formularios', Navigation: 'Navegación', Overlays: 'Capas', Reading: 'Lectura', Feedback: 'Retroalimentación', Layout: 'Estructura' }
-const familyName = (name: string) => FAMILY_ES[name] ?? name
 
 const byId = new Map(data.components.map((c) => [c.id, c]))
 const decisionById = new Map(data.decisions.map((d) => [d.id, d]))
@@ -43,21 +41,10 @@ const searchOptions = [
 ]
 
 function Search() {
-  // "/" jumps to the field from anywhere that is not already a text field, as on most documentation sites.
-  useEffect(() => {
-    const on = (e: KeyboardEvent) => {
-      const t = e.target as HTMLElement | null
-      if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey || t?.closest('input, textarea, select, [contenteditable="true"]')) return
-      e.preventDefault()
-      document.querySelector<HTMLInputElement>('.search input')?.focus()
-    }
-    document.addEventListener('keydown', on)
-    return () => document.removeEventListener('keydown', on)
-  }, [])
   return (
     <div className="search">
       <Field label="Buscar en la documentación">
-        <Combobox options={searchOptions} value={null} placeholder="Buscar componentes y decisiones" onValueChange={(route) => route !== null && navigate(route)} />
+        <Combobox options={searchOptions} value={null} placeholder="Buscar…" onValueChange={(route) => route !== null && navigate(route)} />
       </Field>
     </div>
   )
@@ -112,30 +99,6 @@ function ComponentPage({ id }: { id: string }) {
   )
 }
 
-function Home() {
-  return (
-    <div className="home">
-      <p className="home-kicker">Design system · Artes literarias en pantalla</p>
-      <h1 className="home-title">Kafka</h1>
-      <span className="home-rule" aria-hidden="true" />
-      <p className="home-lead">Un sistema de diseño para leer, escribir y publicar literatura en pantalla: tipografía de lectura primero, interfaz accesible después.</p>
-      <ul className="home-stats" aria-label="Contenido del sistema">
-        <li><strong>{data.counts.components}</strong> componentes</li>
-        <li><strong>{fmt(data.counts.tokens)}</strong> tokens</li>
-        <li><strong>{data.counts.decisions}</strong> decisiones</li>
-        <li>Claro y oscuro</li>
-      </ul>
-      <ul className="home-links">
-        <li><a href={href('getting-started')}>Primeros pasos</a><span>Pruébalo, usa los tokens y monta tu primera página.</span></li>
-        <li><a href={href('components')}>Componentes</a><span>Cuándo usar cada uno, ejemplos vivos, propiedades y accesibilidad.</span></li>
-        <li><a href={href('decisions')}>Decisiones de diseño</a><span>Por qué Kafka es como es, una decisión por página.</span></li>
-        <li><a href={href('tokens')}>Tokens</a><span>La referencia completa de los tres niveles.</span></li>
-      </ul>
-      <p className="home-note">Versión {data.version} · pre-1.0: aún no está en npm. El código es de <a href={data.repo} rel="noopener noreferrer">código abierto (MIT)</a>.</p>
-    </div>
-  )
-}
-
 function ComponentsIndex() {
   return (
     <div>
@@ -186,7 +149,7 @@ function NotFound() {
 
 interface Resolved { title: string; node: ReactNode }
 function resolve(route: string): Resolved {
-  if (route === '') return { title: `${SITE} · Sistema de diseño`, node: <Home /> }
+  if (route === '') return { title: `${SITE} · Sistema de diseño`, node: <Landing /> }
   if (route === 'components') return { title: `Componentes · ${SITE}`, node: <ComponentsIndex /> }
   if (route === 'decisions') return { title: `Decisiones · ${SITE}`, node: <DecisionsIndex /> }
   let m: RegExpMatchArray | null
@@ -204,6 +167,18 @@ export function App() {
   const first = useRef(true)
   const [menu, setMenu] = useState(false)
 
+  // "/" jumps to the search field from anywhere that is not already a text field, as on most documentation sites.
+  useEffect(() => {
+    const on = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null
+      if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey || t?.closest('input, textarea, select, [contenteditable="true"]')) return
+      e.preventDefault()
+      document.querySelector<HTMLInputElement>('.search input, .catalog-search input')?.focus()
+    }
+    document.addEventListener('keydown', on)
+    return () => document.removeEventListener('keydown', on)
+  }, [])
+
   useEffect(() => {
     document.title = page.title
     document.body.dataset.route = route
@@ -217,18 +192,18 @@ export function App() {
     <KafkaProvider labels={labelsEs}>
       <ThemeProvider storageKey={THEME_KEY}>
         <a className="skip" href="#contenido" onClick={(e) => { e.preventDefault(); main.current?.focus() }}>Saltar al contenido</a>
-        <header className="top">
-          <a className="brand" href={href('')}>Kafka</a>
-          <button type="button" className="menu-button" aria-expanded={menu} aria-controls="documentacion" onClick={() => setMenu((v) => !v)}>Menú</button>
-          <Search />
-          <ThemeToggle size="sm" />
-        </header>
-        <div className="shell">
-          <aside id="documentacion" className="side" data-open={menu}>
-            <NavMenu items={nav} value={route} label="Documentación" onNavigate={(key) => navigate(key)} />
-          </aside>
-          <main id="contenido" ref={main} tabIndex={-1} className="content">{page.node}</main>
-        </div>
+        <Header route={route} menuOpen={menu} onMenu={() => setMenu((v) => !v)}>{route !== '' && <Search />}</Header>
+        {route === '' ? (
+          <main id="contenido" ref={main} tabIndex={-1} className="content-wide">{page.node}</main>
+        ) : (
+          <div className="shell">
+            <aside id="documentacion" className="side" data-open={menu}>
+              <NavMenu items={nav} value={route} label="Documentación" onNavigate={(key) => navigate(key)} />
+            </aside>
+            <main id="contenido" ref={main} tabIndex={-1} className="content">{page.node}</main>
+          </div>
+        )}
+        <Footer onTop={() => { window.scrollTo({ top: 0 }); main.current?.focus({ preventScroll: true }) }} />
       </ThemeProvider>
     </KafkaProvider>
   )
