@@ -17,7 +17,7 @@ import { SegmentedControl } from '@kafka/react'
 
 - More than five options or long labels: use Select.
 - Moving between pages or sections: use Tabs.
-- Icon-only options: every option keeps its text.
+- Icon-only options by default: every option keeps its text. `iconOnly` is for a phone header or a tight toolbar, and only with universal icons.
 
 ## Examples
 
@@ -45,6 +45,14 @@ The icon never replaces the text: every option keeps its visible label.
 <WithIcons />
 ```
 
+### Icons only
+
+`iconOnly` for a phone header or a tight toolbar. Each option stays 44 px wide and keeps its label as its accessible name and as a tooltip. Use it only when the icons are universal (sun, moon, screen) and the space really is missing.
+
+```tsx
+<IconsOnly />
+```
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -54,6 +62,7 @@ The icon never replaces the text: every option keeps its visible label.
 | `onChange` (required) | `(value: T) => void` |  |  |
 | `label` (required) | `string` |  | Names the group for screen readers ("Vista del calendario"). |
 | `size` | `'sm' \| 'md'` | `'md'` | `md` is 44 px; `sm` is 32 px, for dense toolbars. |
+| `iconOnly` | `boolean` | `false` | Shows only the icons, for a phone header or a tight toolbar. The labels stay as the accessible names (and as the tooltip). Every option needs an `Icon`. |
 | `className` | `string` |  |  |
 
 ## Accessibility
@@ -61,6 +70,7 @@ The icon never replaces the text: every option keeps its visible label.
 - **A radio group:** `role="radiogroup"` named by `label`, with `role="radio"` and `aria-checked` on each option.
 - **One Tab stop.** Arrow keys move and select (they wrap), Home and End jump to the first and last.
 - **The active option is not only a colour:** it also gets a raised surface and a brand border.
+- **`iconOnly`** hides the text visually but keeps it as the accessible name and as the tooltip; each option stays a 44 px square.
 - Options are 44 px high (`md`); `sm` is 32 px and meets the 24 px minimum for dense toolbars.
 
 ## Content

@@ -10,12 +10,13 @@ export default {
   "avoid": [
     "More than five options or long labels: use Select.",
     "Moving between pages or sections: use Tabs.",
-    "Icon-only options: every option keeps its text."
+    "Icon-only options by default: every option keeps its text. `iconOnly` is for a phone header or a tight toolbar, and only with universal icons."
   ],
   "accessibility": [
     "**A radio group:** `role=\"radiogroup\"` named by `label`, with `role=\"radio\"` and `aria-checked` on each option.",
     "**One Tab stop.** Arrow keys move and select (they wrap), Home and End jump to the first and last.",
     "**The active option is not only a colour:** it also gets a raised surface and a brand border.",
+    "**`iconOnly`** hides the text visually but keeps it as the accessible name and as the tooltip; each option stays a 44 px square.",
     "Options are 44 px high (`md`); `sm` is 32 px and meets the 24 px minimum for dense toolbars."
   ],
   "content": [

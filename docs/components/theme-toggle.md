@@ -39,12 +39,13 @@ The provider sets `data-theme` on `<html>` and remembers the choice in `localSto
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | `size` | `'sm' \| 'md'` | `'md'` |  |
+| `iconOnly` | `boolean` | `false` | Only the sun, moon and screen icons; the names stay for screen readers and as tooltips. For a phone header. |
 | `className` | `string` |  |  |
 
 ## Accessibility
 
 - **The toggle is a SegmentedControl:** one Tab stop, arrows move and select, named "Tema".
-- **Each option keeps its text** next to the icon; the icons are decorative.
+- **Each option keeps its text** next to the icon; the icons are decorative. On a phone header use `iconOnly`: the names stay for screen readers and as tooltips.
 - **"Sistema" follows `prefers-color-scheme`** and updates live when the device changes.
 - Both themes pass contrast (text 4.5:1, reading 7:1, controls 3:1).
 
