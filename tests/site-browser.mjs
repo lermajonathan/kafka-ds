@@ -332,5 +332,5 @@ try {
   check(foreign.length === 0, `requests outside the site: ${[...new Set(foreign)].slice(0, 3).join(', ')}`)
 } finally { await browser.close(); server?.kill() }
 
-if (failures.length) { console.log(failures.slice(0, 40).map((f) => `  ✗ ${f}`).join('\n') + (failures.length > 40 ? `\n  … and ${failures.length - 40} more` : '')); process.exit(1) }
+if (failures.length) { if (process.env.GITHUB_ACTIONS) for (const f of failures.slice(0, 10)) console.log(`::error title=site-browser::${f.replace(/\n/g, ' ')}`); console.log(failures.slice(0, 40).map((f) => `  ✗ ${f}`).join('\n') + (failures.length > 40 ? `\n  … and ${failures.length - 40} more` : '')); process.exit(1) }
 console.log('✓ Docs site: routes, live examples, focus, theme, axe (2 sizes × 2 themes) and no foreign requests')
