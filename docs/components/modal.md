@@ -38,6 +38,7 @@ The page behind is inert, Tab stays inside, Esc closes, and focus returns to the
 | `actions` | `ReactNode` |  | Buttons at the bottom. Put the main action last. |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |  |
 | `dismissible` | `boolean` | `true` | Whether a click on the backdrop closes the dialog. Turn it off when closing would lose work. |
+| `role` | `'dialog' \| 'alertdialog'` |  | `alertdialog` interrupts with a message that needs an answer (ConfirmDialog uses it when the action destroys something). |
 | `side` | `'center' \| 'start' \| 'end' \| 'bottom'` | `'center'` | Used by Drawer. |
 | `className` | `string` |  |  |
 

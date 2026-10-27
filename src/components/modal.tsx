@@ -19,13 +19,15 @@ export interface ModalProps {
   size?: 'sm' | 'md' | 'lg'
   /** Whether a click on the backdrop closes the dialog. Turn it off when closing would lose work. */
   dismissible?: boolean
+  /** `alertdialog` interrupts with a message that needs an answer (ConfirmDialog uses it when the action destroys something). */
+  role?: 'dialog' | 'alertdialog'
   /** Used by Drawer. */
   side?: 'center' | 'start' | 'end' | 'bottom'
   className?: string
 }
 
 /** A dialog on the native `<dialog>` (put `data-autofocus` on a control to start focus there): the page behind becomes inert, Tab stays inside, Esc closes, and focus returns to the control that opened it. */
-export function Modal({ open, onOpenChange, title, description, children, actions, size = 'md', dismissible = true, side = 'center', className }: ModalProps) {
+export function Modal({ open, onOpenChange, title, description, children, actions, size = 'md', dismissible = true, role, side = 'center', className }: ModalProps) {
   const labels = useLabels()
   const uid = useId()
   const ref = useRef<HTMLDialogElement | null>(null)
@@ -39,6 +41,7 @@ export function Modal({ open, onOpenChange, title, description, children, action
   return (
     <dialog
       ref={ref}
+      role={role}
       aria-labelledby={`${uid}-title`}
       aria-describedby={description ? `${uid}-desc` : undefined}
       data-size={size}

@@ -29,6 +29,7 @@ export function ConfirmDialog({ open, onOpenChange, title, description, onConfir
       open={open}
       onOpenChange={onOpenChange}
       size="sm"
+      role={danger ? 'alertdialog' : undefined}
       dismissible={!danger}
       title={title}
       description={
