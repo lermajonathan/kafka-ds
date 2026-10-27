@@ -3,13 +3,11 @@ declare module 'virtual:kafka-site' {
   import type { Example } from '../examples/types'
   interface Page { path: string; title: string }
   interface Component { id: string; path: string; name: string; summary: string }
-  interface Decision { id: string; path: string; title: string; status: string }
   const data: {
     version: string
-    counts: { components: number; tokens: number; decisions: number }
+    counts: { components: number; tokens: number }
     components: Component[]
     families: { name: string; ids: string[] }[]
-    decisions: Decision[]
     pages: Page[]
     repo: string
   }

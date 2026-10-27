@@ -30,14 +30,14 @@ function siteData(): Plugin {
       const data = load()
       if (id.startsWith('\0' + PAGE)) {
         const route = id.slice(('\0' + PAGE).length)
-        const page = [...data.pages, ...data.components, ...data.decisions].find((p: { path: string }) => p.path === route)
+        const page = [...data.pages, ...data.components].find((p: { path: string }) => p.path === route)
         if (!page) throw new Error(`no page for ${route}`)
         return `export default ${JSON.stringify(page.html)}`
       }
-      const pages = [...data.pages, ...data.components, ...data.decisions]
+      const pages = [...data.pages, ...data.components]
       const loaders = pages.map((p: { path: string }) => `${JSON.stringify(p.path)}: () => import(${JSON.stringify(PAGE + p.path)}).then((m) => m.default)`)
       const examples = data.components.map((c: { id: string }) => `${JSON.stringify(c.id)}: () => import(${JSON.stringify('@examples/' + c.id)}).then((m) => m.examples)`)
-      const index = { ...data, components: data.components.map(withoutHtml), decisions: data.decisions.map(withoutHtml), pages: data.pages.map(withoutHtml) }
+      const index = { ...data, components: data.components.map(withoutHtml), pages: data.pages.map(withoutHtml) }
       return `export default ${JSON.stringify(index)}\nexport const pageLoaders = {\n${loaders.join(',\n')}\n}\nexport const exampleLoaders = {\n${examples.join(',\n')}\n}`
     },
     transformIndexHtml: (html) => html.replace('<!--theme-init-->', `<script>${themeInit}</script>`),

@@ -39,11 +39,10 @@
 .p-doc pre code { color: inherit; background: none; }
 .p-doc .table-wrap { background: var(--kafka-color-bg-surface); }
 
-/* Components index and decisions */
+/* Components index */
 .p-family h2 { display: flex; align-items: baseline; gap: 0.75rem; scroll-margin-top: 6rem; margin: 3rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--kafka-color-fg-default); font-size: 2rem; font-weight: 600; }
 .p-family:first-of-type h2 { margin-top: 0; }
 .p-main .cards li { background: var(--l-panel); border-radius: 14px; }
-.p-main .decisions { margin-top: 0; border-top: 1px solid var(--kafka-color-fg-default); font-family: var(--kafka-font-family-ui); }
 
 /* Closing band */
 .p-next { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; margin-top: 4rem; padding: 1.75rem 2rem; border-radius: 20px; background: var(--l-ink); color: var(--kafka-color-ink-50); font-family: var(--kafka-font-family-ui); }

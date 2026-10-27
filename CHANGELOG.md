@@ -4,6 +4,12 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H7 · Sitio público sin decisiones ni hoja de ruta (26 oct 2026)
+
+- Las decisiones (DDR-KF) y la hoja de ruta dejan de estar en el sitio: sin rutas, sin buscador, sin enlaces y sin menciones en el texto publicado. Siguen en el repositorio. Los tests lo exigen sobre los datos y sobre el sitio construido.
+- El menú gana **Inicio** y un icono a la izquierda en Inicio, Primeros pasos, Componentes y Tokens.
+- Todo enlace que sale a GitHub se abre en una pestaña nueva.
+
 ### H7 · Detalle en el catálogo y páginas internas (26 oct 2026)
 
 - Cada componente se abre dentro del panel del catálogo: buscador arriba, familias a la izquierda (se expanden con sus componentes) y el detalle a la derecha, con ruta, importación, pestañas de sección, ejemplos en vivo, propiedades y anterior/siguiente.

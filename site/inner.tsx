@@ -102,22 +102,6 @@ export function ComponentsIndex() {
   )
 }
 
-export function DecisionsIndex() {
-  return (
-    <InnerPage crumbs={[{ label: 'Inicio', route: '' }, { label: 'Decisiones' }]} eyebrow="Registro" title="Decisiones de diseño" lead="Cada decisión importante queda escrita: contexto, decisión y alternativas descartadas.">
-      <ol className="decisions">
-        {data.decisions.map((d) => (
-          <li key={d.id}>
-            <span className="decision-id">{d.id}</span>
-            <a href={href(d.path)}>{d.title}</a>
-            <span className="decision-status">{d.status}</span>
-          </li>
-        ))}
-      </ol>
-    </InnerPage>
-  )
-}
-
 export function NotFound() {
   return (
     <InnerPage crumbs={[{ label: 'Inicio', route: '' }, { label: 'No encontrada' }]} eyebrow="Error 404" title="No se encontró la página" lead="Esta dirección no existe en la documentación.">

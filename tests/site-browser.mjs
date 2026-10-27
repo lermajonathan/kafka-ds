@@ -40,7 +40,14 @@ try {
   await go('')
   const banner = page.getByRole('banner')
   check(await banner.getByRole('navigation', { name: /principal/i }).getByRole('link').count() === 4, 'home: the header needs a "Principal" navigation with 4 links')
-  for (const name of ['Primeros pasos', 'Componentes', 'Decisiones', 'Tokens']) check(await banner.getByRole('navigation', { name: /principal/i }).getByRole('link', { name }).count() === 1, `home: header link "${name}"`)
+  for (const name of ['Inicio', 'Primeros pasos', 'Componentes', 'Tokens']) {
+    const link = banner.getByRole('navigation', { name: /principal/i }).getByRole('link', { name, exact: true })
+    check(await link.count() === 1, `home: header link "${name}"`)
+    const geo = await link.evaluate((a) => { const i = a.querySelector('svg[aria-hidden="true"]'); const t = a.querySelector('span'); return i && t ? { icon: i.getBoundingClientRect().right, label: t.getBoundingClientRect().left } : null })
+    check(geo !== null && geo.icon <= geo.label + 1, `header: "${name}" needs its icon to the left of the label`)
+  }
+  check(await banner.getByRole('navigation', { name: /principal/i }).getByRole('link', { name: 'Inicio', exact: true }).getAttribute('aria-current') === 'page', 'home: "Inicio" is the current page')
+  check(await banner.getByRole('link', { name: /decisiones/i }).count() === 0, 'header: no link to the decisions')
   check(await banner.getByRole('radiogroup', { name: /tema/i }).count() === 1, 'home: the theme switch must be in the header')
   check(await page.locator('aside').count() === 0, 'home: a landing page has no documentation sidebar')
   check(await banner.getByRole('combobox').count() === 0, 'home: the catalog has the search; the header does not repeat it')
@@ -51,7 +58,8 @@ try {
   check(at.every((v, i) => i === 0 || v > at[i - 1]), `home: sections out of order ${JSON.stringify(at)}`)
   check(await page.getByRole('button', { name: /ver el módulo de impresión/i }).count() === 1, 'home: needs the "Ver el módulo de impresión" button')
   const main = await page.locator('main').innerText()
-  check(/1\.129/.test(main) && /\b19\b/.test(main) && /\b7\s*:\s*1\b/.test(main), 'home: needs the numbers (70, 1.129, 19, 7:1)')
+  check(/1\.129/.test(main) && /\b7\s*:\s*1\b/.test(main) && /\b3\b\s+plantillas de impresión/.test(main), 'home: needs the numbers (70, 1.129, 3 print templates, 7:1)')
+  check(!/DDR|decisiones|roadmap|hoja de ruta/i.test(await page.locator('body').innerText()), 'home: nothing about the decisions or the roadmap is public')
   check(/10,5\s*pt/.test(main) && /3\s*mm/.test(main), 'home: the print module must state its real measures (10,5 pt, sangrado de 3 mm)')
 
   // The specimen's baseline guide sits on the real baseline of the font, not where it looked right once
@@ -115,6 +123,14 @@ try {
   for (const name of ['Sistema', 'Impresión', 'Proyecto']) check(await footer.getByRole('navigation', { name }).count() === 1, `footer: needs the "${name}" navigation`)
   check(await footer.getByRole('link', { name: 'GitHub' }).getAttribute('href').then((h) => /github\.com/.test(h ?? '')), 'footer: the GitHub link must go to the repository')
   check(await footer.getByRole('button', { name: /volver arriba/i }).count() === 1, 'footer: needs "Volver arriba"')
+  for (const name of [/decisiones/i, /hoja de ruta/i, /sangrado y marcas/i]) check(await footer.getByRole('link', { name }).count() === 0, `footer: no link ${name}`)
+  // Every link that leaves for GitHub opens in a new tab
+  for (const r of ['', '/getting-started', '/components', '/tokens', '/components/chip']) {
+    await go(r)
+    const bad = await page.$$eval('a[href^="http"]', (as) => as.filter((a) => a.target !== '_blank' || !/noopener/.test(a.rel) || !/noreferrer/.test(a.rel)).map((a) => a.href))
+    check(bad.length === 0, `${r || '/'}: external links must open in a new tab (${bad.slice(0, 2).join(', ')})`)
+  }
+  await go('')
 
   // Catalog: search, families, cards, pagination
   const cat = page.getByRole('searchbox', { name: /buscar componente/i })
@@ -167,15 +183,18 @@ try {
   await go('')
   const homeLeft = await leftOf('.landing .l-catalog')
   check(Math.abs(innerLeft - homeLeft) <= 1, `alignment: inner pages start at ${innerLeft}px, the home panel at ${homeLeft}px`)
-  for (const r of ['/components', '/decisions', '/decisions/DDR-KF-015', '/tokens']) {
+  for (const r of ['/components', '/tokens']) {
     await go(r)
     check(await page.locator('aside').count() === 0, `${r}: no sidebar`)
     check(await page.locator('main').getByRole('navigation', { name: 'Ruta' }).count() === 1, `${r}: breadcrumb`)
     check(Math.abs(await leftOf('main h1') - homeLeft) <= 1, `${r}: the title must start where the home content starts`)
   }
-  await go('/decisions')
-  check(await page.locator('main ol.decisions li').count() === 19, 'decisions: every decision is listed')
-  check(await page.locator('main [data-page-head]').count() === 1, 'decisions: same page head as the other inner pages')
+  for (const r of ['/decisions', '/decisions/DDR-KF-015', '/roadmap']) {
+    await go(r)
+    check(/no se encontr/i.test(await page.locator('main h1').innerText()), `${r}: must not exist in the public site`)
+  }
+  await go('/components')
+  check(await page.locator('main [data-page-head]').count() === 1, 'components: same page head as the other inner pages')
 
   await go(''); await page.reload(); await page.waitForSelector('main h1')
   // Skip link comes first and lands on the content
@@ -203,9 +222,8 @@ try {
   await page.waitForFunction(() => document.body.dataset.route === 'components/chip')
   check((await search.inputValue()) === '', 'search: the field must clear after choosing')
   await go('/components')
-  await search.fill('015')
-  await page.getByRole('option', { name: /DDR-KF-015/ }).click()
-  await page.waitForFunction(() => document.body.dataset.route === 'decisions/DDR-KF-015')
+  await search.fill('DDR')
+  check(await page.getByRole('option').count() === 0, 'search: nothing about the decisions can be found')
   await search.fill('navegacion')
   check(await page.getByRole('option', { name: /Tabs/ }).count() >= 1, 'search: it finds by family and ignores accents ("navegacion" → Tabs · Navegación)')
   await search.fill('zzzz')
@@ -259,9 +277,7 @@ try {
   await rail.getByRole('link', { name: /todos/i }).click()
   await page.waitForFunction(() => document.body.dataset.route === 'components')
 
-  // A decision, and a route that does not exist
-  await go('/decisions/DDR-KF-015')
-  check(/etiquetas peque/i.test(await page.locator('main h1').innerText()), 'DDR-KF-015: h1')
+  // A route that does not exist
   await go('/nope')
   check(/no se encontr/i.test(await page.locator('main h1').innerText()), 'unknown route: needs a not-found page')
   check(await page.locator('main').getByRole('link', { name: /inicio/i }).count() > 0, 'not found: needs a way home')
@@ -288,7 +304,7 @@ try {
   check(errors.length === 0, `console/page errors: ${[...new Set(errors)].slice(0, 3).join(' | ')}`)
 
   // axe + mobile overflow, light and dark
-  const audited = ['', '/getting-started', '/components', '/components/chip', '/components/button', '/decisions', '/decisions/DDR-KF-015', '/tokens', '/nope']
+  const audited = ['', '/getting-started', '/components', '/components/chip', '/components/button', '/tokens', '/nope']
   for (const size of [{ width: 1280, height: 900 }, { width: 390, height: 800 }]) for (const theme of ['light', 'dark']) {
     await page.setViewportSize(size)
     for (const route of audited) {
