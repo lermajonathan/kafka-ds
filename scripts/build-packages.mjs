@@ -1,6 +1,7 @@
-// Builds the two publishable packages from the repo sources:
+// Builds the three publishable packages from the repo sources:
 //   packages/tokens → @kafka/tokens  (CSS variables, Tailwind theme, typography classes, typed JS object, JSON)
 //   packages/react  → @kafka/react   (components + icons, precompiled CSS, Tailwind entry, types)
+//   packages/theme-altazor → @kafka/theme-altazor (CSS only: the Altazor theme)
 // Run with `pnpm build:packages` (tokens are rebuilt first).
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
@@ -36,6 +37,10 @@ write('packages/react/dist/tailwind.css', [
   read('src/styles/components.css'),
 ].join('\n'))
 
-for (const pkg of ['tokens', 'react']) copy('LICENSE', `packages/${pkg}/LICENSE`)
+/* ── @kafka/theme-altazor ── */
+fs.rmSync(rel('packages/theme-altazor/dist'), { recursive: true, force: true })
+copy('src/styles/themes/altazor.css', 'packages/theme-altazor/dist/altazor.css')
+
+for (const pkg of ['tokens', 'react', 'theme-altazor']) copy('LICENSE', `packages/${pkg}/LICENSE`)
 const count = (dir) => fs.readdirSync(rel(dir), { recursive: true }).filter((f) => fs.statSync(rel(path.join(dir, f))).isFile()).length
-console.log(`\n✓ @kafka/tokens (${count('packages/tokens/dist')} files) · @kafka/react (${count('packages/react/dist')} files)`)
+console.log(`\n✓ @kafka/tokens (${count('packages/tokens/dist')} files) · @kafka/react (${count('packages/react/dist')} files) · @kafka/theme-altazor (${count('packages/theme-altazor/dist')} file)`)

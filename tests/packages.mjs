@@ -1,4 +1,4 @@
-// Installs the two packages, as tarballs, into a fresh project and checks they work the way a consumer would use them:
+// Installs the three packages, as tarballs, into a fresh project and checks they work the way a consumer would use them:
 // the files exist, the stylesheet has the tokens, a component renders on the server, the types compile.
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
@@ -13,9 +13,9 @@ const check = (cond, what) => { if (cond) passed++; else failures.push(what) }
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'kafka-pkg-'))
 const packDir = path.join(tmp, 'packs'); fs.mkdirSync(packDir)
-for (const pkg of ['tokens', 'react']) sh(`pnpm pack --pack-destination ${packDir}`, path.join(root, 'packages', pkg))
+for (const pkg of ['tokens', 'react', 'theme-altazor']) sh(`pnpm pack --pack-destination ${packDir}`, path.join(root, 'packages', pkg))
 const tarballs = fs.readdirSync(packDir).map((f) => path.join(packDir, f))
-check(tarballs.length === 2, 'both packages pack')
+check(tarballs.length === 3, 'the three packages pack')
 
 const app = path.join(tmp, 'app'); fs.mkdirSync(app)
 fs.writeFileSync(path.join(app, 'package.json'), JSON.stringify({ name: 'consumer', private: true, type: 'module' }))
@@ -25,6 +25,10 @@ const kr = path.join(app, 'node_modules/@kafka/react'), kt = path.join(app, 'nod
 // 1 · files
 for (const f of ['dist/index.js', 'dist/styles.css', 'dist/tailwind.css', 'dist/types/lib.d.ts', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(kr, f)), `@kafka/react ships ${f}`)
 for (const f of ['dist/tokens.css', 'dist/theme.css', 'dist/typography.css', 'dist/print.css', 'dist/tokens.json', 'dist/tokens.js', 'dist/tokens.d.ts', 'dist/json/semantic.json', 'LICENSE']) check(fs.existsSync(path.join(kt, f)), `@kafka/tokens ships ${f}`)
+const ka = path.join(app, 'node_modules/@kafka/theme-altazor')
+for (const f of ['dist/altazor.css', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(ka, f)), `@kafka/theme-altazor ships ${f}`)
+const themeCss = fs.readFileSync(path.join(ka, 'dist/altazor.css'), 'utf8')
+check(themeCss.includes("[data-kafka-theme='altazor']") && !/(^|\n):root\s*\{/.test(themeCss), 'theme CSS is scoped and never writes :root')
 check(!fs.readFileSync(path.join(kr, 'dist/types/lib.d.ts'), 'utf8').includes('.css'), 'type entry does not import CSS')
 // 2 · stylesheets
 const css = fs.readFileSync(path.join(kr, 'dist/styles.css'), 'utf8')

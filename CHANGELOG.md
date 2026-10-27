@@ -4,6 +4,13 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H8 · Tema Altazor, corte 1: el tema como datos (27 oct 2026)
+
+- **Temas en el compilador:** `tokens/themes/<nombre>.json` sobrescribe tokens semánticos y de componente (nunca primitivos ni tipografía) y se compila a CSS acotado a `[data-kafka-theme='<nombre>']`, con claro, oscuro y sistema. Los tokens que dependen de uno sobrescrito se redeclaran dentro del ámbito.
+- **Paquete `@kafka/theme-altazor`:** solo CSS, sin logotipos ni fotografías. Cambia `bg.sunken` (claro), `radius.control` (8 px), `radius.tile` (14 px) y añade tokens de decoración `--kafka-altazor-deco-*`.
+- **Tests:** `test:themes` (el ámbito llega a cada dependiente y no escapa) y el contraste se mide también con cada tema aplicado.
+- **Gobernanza:** el tema de Altazor se construye sobre Kafka, no dentro de él.
+
 ### H7 · Sitio con profundidad, movimiento y cabecera móvil (27 oct 2026)
 
 - **Profundidad:** sombra de reposo en la cabecera, el catálogo, el módulo de impresión, las tarjetas y los ejemplos en vivo. Las tarjetas se elevan al pasar el puntero o al recibir el foco, y el botón dorado gana un brillo.

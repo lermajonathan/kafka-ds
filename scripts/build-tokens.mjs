@@ -11,7 +11,7 @@
  * Format: W3C Design Tokens ($value / $type / $description). Aliases use {path.to.token}.
  * Dark values live in $extensions["kafka.modes"].dark. Same architecture as Pance.
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -115,6 +115,61 @@ const darkToks = [...tokens.values()].filter((t) => t.dark !== undefined)
 const darkBlock = darkToks.map((t) => `  ${cssName(t.path)}: ${cssRef(t.dark)};`).join('\n')
 css += `\n/* ── dark: follows the system unless data-theme="light"; force with data-theme="dark" ── */\n@media (prefers-color-scheme: dark) {\n  :root:not([data-theme='light']) {\n${darkBlock.replace(/^/gm, '  ')}\n  }\n}\n:root[data-theme='dark'] {\n${darkBlock}\n}\n`
 write('src/styles/tokens.css', css)
+
+// ── themes: tokens/themes/<name>.json → src/styles/themes/<name>.css ──
+// A theme overrides existing semantic or component tokens (same path) and may add its own tokens under "<name>.".
+// Custom properties that use var() are resolved where they are declared, so a scope only changes what the theme
+// touches AND everything that depends on it: the compiler redeclares those dependents inside the scope.
+const themeDir = resolve(root, 'tokens/themes')
+const themeNames = existsSync(themeDir) ? readdirSync(themeDir).filter((f) => f.endsWith('.json')).map((f) => f.replace(/\.json$/, '')).sort() : []
+for (const name of themeNames) {
+  const own = new Map()
+  const walkTheme = (node, path, inheritedType) => {
+    const type = node.$type ?? inheritedType
+    if ('$value' in node) { own.set(path.join('.'), { path, value: node.$value, type, dark: node.$extensions?.['kafka.modes']?.dark }); return }
+    for (const [k, v] of Object.entries(node)) if (!k.startsWith('$') && typeof v === 'object' && v !== null) walkTheme(v, [...path, k], type)
+  }
+  walkTheme(read(`tokens/themes/${name}.json`), [], undefined)
+  const overridden = [], created = []
+  for (const [key, t] of own) {
+    if (key.startsWith(`${name}.`)) { created.push(key); continue }
+    const base = tokens.get(key)
+    if (!base) throw new Error(`Theme ${name}: "${key}" does not exist in the base tokens (new tokens go under "${name}.")`)
+    if (base.tier === 'primitives') throw new Error(`Theme ${name}: "${key}" is a primitive; a theme overrides semantic or component tokens`)
+    if (finalType(base) === 'typography') throw new Error(`Theme ${name}: "${key}" is a typography token; themes do not override typography`)
+    overridden.push(key)
+  }
+  const known = (r) => tokens.has(r) || own.has(r)
+  for (const [key, t] of own) for (const v of [t.value, t.dark]) for (const m of typeof v === 'string' ? v.matchAll(REF_G) : []) if (!known(m[1])) throw new Error(`Theme ${name}: "${key}" points at unknown token {${m[1]}}`)
+  // dependents: base tokens that reach an overridden token through their light or dark value
+  const reaches = (key, seen = new Set()) => {
+    if (overridden.includes(key)) return true
+    if (seen.has(key)) return false
+    seen.add(key)
+    const t = tokens.get(key)
+    if (!t) return false
+    return [t.value, t.dark].some((v) => typeof v === 'string' && [...v.matchAll(REF_G)].some((m) => reaches(m[1], seen)))
+  }
+  const dependents = [...tokens.keys()].filter((k) => !overridden.includes(k) && reaches(k))
+  const lines = (keys, pick) => keys.map((k) => { const v = pick(k); return v === undefined ? null : `  ${cssName(k)}: ${v};` }).filter(Boolean).join('\n')
+  const light = (k) => (own.has(k) ? toCss({ value: own.get(k).value, type: own.get(k).type ?? tokens.get(k)?.type }) : toCss(tokens.get(k)))
+  // dark: the theme's own dark value, else the base's dark value; tokens with neither are the same in both modes
+  const dark = (k) => {
+    const d = own.has(k) && own.get(k).dark !== undefined ? own.get(k).dark : tokens.get(k)?.dark
+    return d === undefined ? undefined : cssRef(d)
+  }
+  const keys = [...overridden, ...created, ...dependents]
+  const scope = `[data-kafka-theme='${name}']`
+  const darkBody = lines(keys, dark)
+  let themeCss = header(`Kafka theme "${name}" — scope [data-kafka-theme="${name}"]`)
+  themeCss += `${scope} {\n${lines(keys, light)}\n}\n`
+  if (darkBody) {
+    const sys = `:root:not([data-theme='light']) ${scope}, :root:not([data-theme='light'])${scope}`
+    const forced = `:root[data-theme='dark'] ${scope}, :root[data-theme='dark']${scope}`
+    themeCss += `\n/* dark: same rule as the base tokens */\n@media (prefers-color-scheme: dark) {\n  ${sys} {\n${darkBody.replace(/^/gm, '  ')}\n  }\n}\n${forced} {\n${darkBody}\n}\n`
+  }
+  write(`src/styles/themes/${name}.css`, themeCss)
+}
 
 // ── typography.css: one class per typography token (e.g. .kafka-type-reading-body, .kafka-type-button-type) ──
 let typo = header('Kafka typography classes — one per typography token')

@@ -12,7 +12,7 @@ Kafka es **código abierto con un mantenedor**. Cualquiera puede usarlo, copiarl
 
 Un cambio entra si resuelve un problema real, cumple los criterios de «completo» de [DDR-KF-004](docs/decisions/DDR-KF-004-alcance-v1.md) y no rompe el uso existente sin pasar por la [política de deprecación](docs/deprecation.md).
 
-Kafka **no incluye** visualización de datos (eso es de [Pance](https://github.com/lermajonathan/pance-ds)) ni componentes específicos de un solo cliente: el tema de Altazor se construye sobre Kafka, no dentro de él.
+Kafka **no incluye** visualización de datos (eso es de [Pance](https://github.com/lermajonathan/pance-ds)) ni componentes específicos de un solo cliente: el tema de Altazor se construye sobre Kafka, no dentro de él: vive en su propio paquete (`@kafka/theme-altazor`), solo con tokens de tema (sobrescrituras semánticas y de componente, nunca primitivos ni tipografía) y sin logotipos, fotografías ni ilustraciones.
 
 ## Versiones
 
