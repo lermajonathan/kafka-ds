@@ -4,6 +4,10 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### Arreglo · enlaces sin contorno permanente (26 oct 2026)
+
+- Una regla de CSS mal fusionada dibujaba el anillo de foco alrededor de todos los enlaces de la documentación. Ahora solo aparece con el foco del teclado; un test lo exige en cinco rutas.
+
 ### H7 · Sitio público sin decisiones ni hoja de ruta (26 oct 2026)
 
 - Las decisiones (DDR-KF) y la hoja de ruta dejan de estar en el sitio: sin rutas, sin buscador, sin enlaces y sin menciones en el texto publicado. Siguen en el repositorio. Los tests lo exigen sobre los datos y sobre el sitio construido.

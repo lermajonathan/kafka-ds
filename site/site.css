@@ -1,6 +1,8 @@
 /* Kafka docs site. Plain CSS over the tokens: the components bring their own styles. */
 body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-color-fg-default); font-family: var(--kafka-font-family-ui); }
-.p-doc a:not([class]), .p-main .cards a, .p-main .p-doc a:not([class]):hover, .p-main .cards a:hover, .p-main .skip:focus-visible, .brand:focus-visible, .p-main a:focus-visible, .d-detail a:focus-visible, .p-top a:focus-visible, .p-toc button:focus-visible, .d-tabs button:focus-visible, .l-rail button:focus-visible, .doc pre:focus-visible, .table-wrap:focus-visible, .live-example:focus-visible { outline: 2px solid var(--kafka-color-border-focus); outline-offset: 2px; }
+.p-doc a:not([class]), .p-main .cards a { color: var(--kafka-color-fg-link); text-decoration: underline; text-underline-offset: 0.2em; }
+.p-doc a:not([class]):hover, .p-main .cards a:hover { color: var(--kafka-color-fg-link-hover); }
+.skip:focus-visible, .brand:focus-visible, .p-main a:focus-visible, .d-detail a:focus-visible, .p-top a:focus-visible, .p-toc button:focus-visible, .d-tabs button:focus-visible, .l-rail button:focus-visible, .doc pre:focus-visible, .table-wrap:focus-visible, .live-example:focus-visible { outline: 2px solid var(--kafka-color-border-focus); outline-offset: 2px; }
 
 .skip { position: absolute; left: var(--kafka-space-16); top: -4rem; z-index: 50; padding: var(--kafka-space-12) var(--kafka-space-16); background: var(--kafka-color-bg-inverse); color: var(--kafka-color-fg-inverse); border-radius: var(--kafka-radius-control); }
 .skip:focus { top: var(--kafka-space-16); }
@@ -41,7 +43,7 @@ body { margin: 0; background: var(--kafka-color-bg-page); color: var(--kafka-col
 @media (max-width: 899px) {
   .top { padding-inline: var(--kafka-space-16); }
   .doc h1, .page-title { font-size: 2rem; }
-  }
+}
 
 .loading { color: var(--kafka-color-fg-muted); }
 

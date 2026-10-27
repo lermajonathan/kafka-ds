@@ -124,6 +124,18 @@ try {
   check(await footer.getByRole('link', { name: 'GitHub' }).getAttribute('href').then((h) => /github\.com/.test(h ?? '')), 'footer: the GitHub link must go to the repository')
   check(await footer.getByRole('button', { name: /volver arriba/i }).count() === 1, 'footer: needs "Volver arriba"')
   for (const name of [/decisiones/i, /hoja de ruta/i, /sangrado y marcas/i]) check(await footer.getByRole('link', { name }).count() === 0, `footer: no link ${name}`)
+  // A link shows a focus ring only while it has focus: never a permanent box
+  for (const r of ['', '/getting-started', '/components', '/components/chip', '/tokens']) {
+    await go(r)
+    await page.locator('body').click({ position: { x: 2, y: 2 } })
+    const boxed = await page.$$eval('main a, footer a, header a', (as) => as.filter((a) => { const c = getComputedStyle(a); return c.outlineStyle !== 'none' && parseFloat(c.outlineWidth) > 0 }).map((a) => a.textContent.trim().slice(0, 30)))
+    check(boxed.length === 0, `${r || '/'}: links with an outline without focus: ${boxed.slice(0, 3).join(', ')}`)
+  }
+  await go('/getting-started')
+  check(await page.locator('main .p-doc a').first().evaluate((a) => getComputedStyle(a).textDecorationLine === 'underline'), 'links in the text stay underlined')
+  await page.locator('main .p-doc a').first().focus()
+  await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Tab')
+  check(await page.locator('main .p-doc a').first().evaluate((a) => parseFloat(getComputedStyle(a).outlineWidth) >= 2), 'a link in the text must show its ring when it has keyboard focus')
   // Every link that leaves for GitHub opens in a new tab
   for (const r of ['', '/getting-started', '/components', '/tokens', '/components/chip']) {
     await go(r)
