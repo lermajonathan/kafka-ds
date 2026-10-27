@@ -4,7 +4,7 @@
 A group of options of which one is chosen, with a fieldset and legend.
 
 ```tsx
-import { Radio } from '@kafka/react'
+import { Radio } from '@kafka-ds/react'
 ```
 
 ## When to use it

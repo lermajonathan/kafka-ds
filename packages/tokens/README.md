@@ -1,16 +1,14 @@
-# @kafka/tokens
+# @kafka-ds/tokens
 
 Design tokens de [Kafka](https://github.com/lermajonathan/kafka-ds), el sistema de diseño para la literatura en pantalla, con un módulo de impresión.
 
-> **Pre-1.0, no publicado todavía.** Se publicará junto con Kafka 1.0.0 ([roadmap](https://github.com/lermajonathan/kafka-ds/blob/main/docs/roadmap.md)).
-
 ```css
-@import '@kafka/tokens/tokens.css';   /* variables --kafka-* en claro y oscuro */
-@import '@kafka/tokens/fonts.css';    /* Literata autoalojada (OFL), sin pedir nada a terceros */
+@import '@kafka-ds/tokens/tokens.css';   /* variables --kafka-* en claro y oscuro */
+@import '@kafka-ds/tokens/fonts.css';    /* Literata autoalojada (OFL), sin pedir nada a terceros */
 ```
 
 ```ts
-import tokens from '@kafka/tokens'    // valores resueltos y tipados
+import tokens from '@kafka-ds/tokens'    // valores resueltos y tipados
 ```
 
 | Archivo | Qué es |

@@ -4,7 +4,7 @@
 A program (workshop, masterclass, membership) with a cover, badges, price, details and one action.
 
 ```tsx
-import { ProgramCard } from '@kafka/react'
+import { ProgramCard } from '@kafka-ds/react'
 ```
 
 ## When to use it

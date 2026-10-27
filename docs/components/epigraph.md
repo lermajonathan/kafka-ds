@@ -4,7 +4,7 @@
 A short quotation that opens a text, set to the right in a softer tone.
 
 ```tsx
-import { Epigraph } from '@kafka/react'
+import { Epigraph } from '@kafka-ds/react'
 ```
 
 ## When to use it

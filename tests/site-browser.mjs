@@ -281,7 +281,7 @@ try {
   check(await panel.locator('.l-popular a').count() === 4, 'component: popular components stay as links under the search, spaced from it')
   check((await panel.locator('[data-detail] h1').innerText()).trim() === 'Chip', 'component: the detail has the component as h1')
   check((await page.title()) === 'Chip · Kafka', `chip: title was "${await page.title()}"`)
-  check(/@kafka\/react/.test(await panel.locator('[data-detail] [data-import]').innerText()), 'component: shows the import line apart from the doc')
+  check(/@kafka-ds\/react/.test(await panel.locator('[data-detail] [data-import]').innerText()), 'component: shows the import line apart from the doc')
   check(await panel.locator('[data-detail] > nav[aria-label="Ruta"] [aria-current="page"]').innerText() === 'Chip', 'component: breadcrumb ends at the component')
   check(await panel.getByRole('link', { name: /volver a los resultados/i }).getAttribute('href') === '#/components', 'component: a way back to the results')
   check(await panel.getByRole('navigation', { name: 'Familias' }).locator('[aria-current="true"]').count() === 1, 'component: the family of the component is marked in the rail')

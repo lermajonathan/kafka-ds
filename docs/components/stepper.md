@@ -4,7 +4,7 @@
 Shows progress through a sequence of steps.
 
 ```tsx
-import { Stepper } from '@kafka/react'
+import { Stepper } from '@kafka-ds/react'
 ```
 
 ## When to use it

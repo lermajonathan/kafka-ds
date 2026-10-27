@@ -4,7 +4,7 @@
 A one-line text field, 44 px tall, 16 px text and a 3:1 border.
 
 ```tsx
-import { Input } from '@kafka/react'
+import { Input } from '@kafka-ds/react'
 ```
 
 ## When to use it

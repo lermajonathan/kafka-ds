@@ -4,7 +4,7 @@
 A text field with a filtered list of options.
 
 ```tsx
-import { Combobox } from '@kafka/react'
+import { Combobox } from '@kafka-ds/react'
 ```
 
 ## When to use it

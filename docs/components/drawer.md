@@ -4,7 +4,7 @@
 A modal panel anchored to an edge of the screen.
 
 ```tsx
-import { Drawer } from '@kafka/react'
+import { Drawer } from '@kafka-ds/react'
 ```
 
 ## When to use it

@@ -4,7 +4,7 @@
 A zone to choose or drop files, with the native file input inside.
 
 ```tsx
-import { FileUpload } from '@kafka/react'
+import { FileUpload } from '@kafka-ds/react'
 ```
 
 ## When to use it

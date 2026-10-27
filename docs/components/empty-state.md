@@ -4,7 +4,7 @@
 What to show when there is nothing to show yet: what is missing and the one next step.
 
 ```tsx
-import { EmptyState } from '@kafka/react'
+import { EmptyState } from '@kafka-ds/react'
 ```
 
 ## When to use it

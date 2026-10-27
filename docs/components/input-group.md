@@ -4,7 +4,7 @@
 An input with fixed text, an icon or one button attached to its sides: units, prefixes, a search action.
 
 ```tsx
-import { InputGroup } from '@kafka/react'
+import { InputGroup } from '@kafka-ds/react'
 ```
 
 ## When to use it

@@ -4,7 +4,7 @@
 The path from the home page to where the reader is.
 
 ```tsx
-import { Breadcrumbs } from '@kafka/react'
+import { Breadcrumbs } from '@kafka-ds/react'
 ```
 
 ## When to use it

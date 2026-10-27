@@ -4,7 +4,7 @@
 A navigation list of the sections of a text, with the current one marked.
 
 ```tsx
-import { TableOfContents } from '@kafka/react'
+import { TableOfContents } from '@kafka-ds/react'
 ```
 
 ## When to use it

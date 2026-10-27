@@ -4,7 +4,7 @@
 A titled, sandboxed frame for third-party content (Genially, video, maps), with a link to open it on its own.
 
 ```tsx
-import { Embed } from '@kafka/react'
+import { Embed } from '@kafka-ds/react'
 ```
 
 ## When to use it

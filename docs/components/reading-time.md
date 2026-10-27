@@ -4,7 +4,7 @@
 Estimated reading time, calculated from the word count.
 
 ```tsx
-import { ReadingTime } from '@kafka/react'
+import { ReadingTime } from '@kafka-ds/react'
 ```
 
 ## When to use it

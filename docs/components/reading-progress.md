@@ -4,7 +4,7 @@
 A thin bar that fills as the reader moves through the text.
 
 ```tsx
-import { ReadingProgress } from '@kafka/react'
+import { ReadingProgress } from '@kafka-ds/react'
 ```
 
 ## When to use it

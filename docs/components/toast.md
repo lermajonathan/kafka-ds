@@ -4,7 +4,7 @@
 A brief notice that appears without taking the reader away from what they were doing. `ToastStack` is the region that holds them.
 
 ```tsx
-import { Toast } from '@kafka/react'
+import { Toast } from '@kafka-ds/react'
 ```
 
 ## When to use it

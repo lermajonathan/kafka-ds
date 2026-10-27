@@ -4,7 +4,7 @@
 A field for a range of dates: a button with the chosen range that opens the calendar in a popover.
 
 ```tsx
-import { DateRangePicker } from '@kafka/react'
+import { DateRangePicker } from '@kafka-ds/react'
 ```
 
 ## When to use it

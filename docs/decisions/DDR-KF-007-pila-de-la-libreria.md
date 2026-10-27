@@ -16,7 +16,7 @@ Kafka usa la misma pila que Pance, para que ambos se mantengan igual y se puedan
 | Tipos | TypeScript 5.9, `strict` y `noUncheckedIndexedAccess` | La API de documentación lee los tipos |
 | Íconos | Phosphor, una selección nombrada (DDR-KF-002) | |
 | Pruebas en navegador | Playwright 1.56 y axe-core 4.10 | Versiones fijas, igual que Pance |
-| Paquetes | `@kafka/tokens` y `@kafka/react` (ESM, tipos, `styles.css` y `tailwind.css`) | |
+| Paquetes | `@kafka-ds/tokens` y `@kafka-ds/react` (ESM, tipos, `styles.css` y `tailwind.css`) | |
 
 **El tema de Tailwind desactiva lo que no viene de un token.** `theme.css` pone `--color-*`, `--text-*`, `--radius-*`, `--shadow-*` y los demás en `initial` y define solo las utilidades respaldadas por tokens. Así `bg-red-500` no existe, y el lint (`lint:tokens`) lo atrapa además de los hex, `rgb()` y las dimensiones sueltas.
 
@@ -32,5 +32,5 @@ Los textos integrados (por ejemplo «Cargando») van en inglés por defecto y se
 
 ## Consecuencias
 
-- Kafka queda fijado a Tailwind v4 para las utilidades; quien no lo use importa `@kafka/react/styles.css`, que ya trae todo compilado.
+- Kafka queda fijado a Tailwind v4 para las utilidades; quien no lo use importa `@kafka-ds/react/styles.css`, que ya trae todo compilado.
 - Literata sigue sin autoalojarse (H8): hasta entonces los títulos de lectura se ven con la tipografía de respaldo.

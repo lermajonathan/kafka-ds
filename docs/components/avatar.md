@@ -4,7 +4,7 @@
 A person or entity as an image or initials, with an optional presence status. `AvatarGroup` overlaps several with a +N chip.
 
 ```tsx
-import { Avatar } from '@kafka/react'
+import { Avatar } from '@kafka-ds/react'
 ```
 
 ## When to use it

@@ -4,7 +4,7 @@
 A numbered call in the text, a list of notes at the end, and a link back from each note.
 
 ```tsx
-import { Footnote } from '@kafka/react'
+import { Footnote } from '@kafka-ds/react'
 ```
 
 ## When to use it

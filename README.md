@@ -8,7 +8,7 @@ Sistema de diseño para la literatura en pantalla: legibilidad, contraste y tipo
 
 Kafka parte de la arquitectura de [Pance](https://github.com/lermajonathan/pance-ds) (tokens en tres capas, geometría, lista de componentes y controles de calidad) con una identidad propia: papel cálido, tinta y oro, y tipografía de lectura Literata.
 
-> **Estado: pre-1.0, en construcción.** No hay versión en npm. Kafka se publica y se anuncia solo cuando cumple el criterio de «completo» de [DDR-KF-004](docs/decisions/DDR-KF-004-alcance-v1.md). El avance está en el [roadmap](docs/roadmap.md).
+> **Estado: 1.0.0.** Kafka cumple el criterio de «completo» de [DDR-KF-004](docs/decisions/DDR-KF-004-alcance-v1.md) y se publica en npm bajo `@kafka-ds`: `@kafka-ds/tokens`, `@kafka-ds/react` y `@kafka-ds/theme-altazor`. El avance está en el [roadmap](docs/roadmap.md).
 
 ## Qué hay hoy
 
@@ -16,8 +16,8 @@ Kafka parte de la arquitectura de [Pance](https://github.com/lermajonathan/pance
 |---|---|---|
 | 🎨 | **Tokens**: 1113 en tres niveles (primitivos → semánticos → componentes), formato W3C DTCG, claro y oscuro | [`tokens/`](tokens) · [referencia](docs/tokens.md) |
 | 🖨️ | **Tokens de impresión**: página, sangrado, márgenes, tipografía en puntos y rejilla de líneas base | [`tokens/`](tokens) (`physical.*`, `print.*`) |
-| 🧩 | **Librería React**: `@kafka/react`, con 70 componentes terminados según el criterio de «completo» (lectura, UI esencial, navegación y capas, retroalimentación y superficies, y la paridad con Pance)); el resto llega por hitos | [`src/components/`](src/components) · [documentación](docs/components/README.md) |
-| 📦 | **Paquetes** (sin publicar): `@kafka/tokens` y `@kafka/react`, probados instalándolos en un proyecto nuevo | [`packages/`](packages) |
+| 🧩 | **Librería React**: `@kafka-ds/react`, con 70 componentes terminados según el criterio de «completo» (lectura, UI esencial, navegación y capas, retroalimentación y superficies, y la paridad con Pance)); el resto llega por hitos | [`src/components/`](src/components) · [documentación](docs/components/README.md) |
+| 📦 | **Paquetes** (sin publicar): `@kafka-ds/tokens` y `@kafka-ds/react`, probados instalándolos en un proyecto nuevo | [`packages/`](packages) |
 | 🧪 | **Pruebas**: contraste (336 pares en claro y 335 en oscuro), estructura de tokens, lint, teclado y ARIA, axe-core, ejemplos de la documentación, paquetes y diferencia visual | [`tests/`](tests) |
 | 📐 | **Figma**: variables (Primitives, Semantic, Components), estilos y 6 conjuntos de componentes | [archivo en Figma](https://www.figma.com/design/S3WoutgiyT1a5kwahRaKJ2) |
 | 📝 | **Decisiones de diseño** (DDR-KF) | [`docs/decisions/`](docs/decisions) |

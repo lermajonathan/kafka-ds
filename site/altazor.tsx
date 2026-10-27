@@ -121,7 +121,7 @@ export default function AltazorPage() {
       <section aria-labelledby="como-se-aplica" >
         <h2 id="como-se-aplica">Cómo se aplica</h2>
         <p>Un tema es un archivo de datos que sobrescribe unos pocos tokens semánticos; se compila a CSS y vive dentro de un atributo. Nada cambia fuera de ese elemento, ni la paleta ni la tipografía.</p>
-        <pre tabIndex={0}><code>{`@import '@kafka/tokens/tokens.css';\n@import '@kafka/theme-altazor';\n@import '@kafka/theme-altazor/patterns.css';\n\n<div data-kafka-theme="altazor"> … </div>`}</code></pre>
+        <pre tabIndex={0}><code>{`@import '@kafka-ds/tokens/tokens.css';\n@import '@kafka-ds/theme-altazor';\n@import '@kafka-ds/theme-altazor/patterns.css';\n\n<div data-kafka-theme="altazor"> … </div>`}</code></pre>
       </section>
       <section aria-labelledby="componentes" >
         <h2 id="componentes">Los mismos componentes</h2>

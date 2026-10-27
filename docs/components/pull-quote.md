@@ -4,7 +4,7 @@
 A quotation set apart from the text with a gold rule, in the reading typeface and italic.
 
 ```tsx
-import { PullQuote } from '@kafka/react'
+import { PullQuote } from '@kafka-ds/react'
 ```
 
 ## When to use it

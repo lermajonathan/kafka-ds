@@ -4,7 +4,7 @@
 A line that separates content, with or without a label.
 
 ```tsx
-import { Divider } from '@kafka/react'
+import { Divider } from '@kafka-ds/react'
 ```
 
 ## When to use it

@@ -4,7 +4,7 @@
 Light, dark or system. `ThemeProvider` decides which theme `<html>` wears; `ThemeToggle` is the control; `useTheme` reads and sets it.
 
 ```tsx
-import { ThemeToggle } from '@kafka/react'
+import { ThemeToggle } from '@kafka-ds/react'
 ```
 
 ## When to use it

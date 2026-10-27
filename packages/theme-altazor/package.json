@@ -1,6 +1,6 @@
 {
-  "name": "@kafka/theme-altazor",
-  "version": "0.0.0",
+  "name": "@kafka-ds/theme-altazor",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Jonathan Lerma",
   "homepage": "https://github.com/lermajonathan/kafka-ds",
@@ -17,6 +17,6 @@
     "./package.json": "./package.json"
   },
   "files": ["dist", "README.md", "LICENSE"],
-  "peerDependencies": { "@kafka/tokens": "*" },
+  "peerDependencies": { "@kafka-ds/tokens": "^1.0.0" },
   "sideEffects": ["*.css"]
 }

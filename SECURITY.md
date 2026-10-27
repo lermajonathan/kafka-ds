@@ -12,4 +12,4 @@ No abras una *issue* pública. Usa **Security → Report a vulnerability** en [g
 - Una evaluación y un plan en 15 días hábiles.
 - Crédito en el CHANGELOG si lo deseas.
 
-Solo se corrige la versión más reciente mientras Kafka esté antes de la 1.0.0.
+Solo se corrige la versión más reciente mientras Kafka esté en 1.x.

@@ -4,7 +4,7 @@
 Asks the reader to confirm an action.
 
 ```tsx
-import { ConfirmDialog } from '@kafka/react'
+import { ConfirmDialog } from '@kafka-ds/react'
 ```
 
 ## When to use it

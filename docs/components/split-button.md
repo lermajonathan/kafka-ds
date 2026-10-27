@@ -4,7 +4,7 @@
 A main action and an arrow that opens a menu of related actions.
 
 ```tsx
-import { SplitButton } from '@kafka/react'
+import { SplitButton } from '@kafka-ds/react'
 ```
 
 ## When to use it

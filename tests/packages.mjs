@@ -21,12 +21,12 @@ const app = path.join(tmp, 'app'); fs.mkdirSync(app)
 fs.writeFileSync(path.join(app, 'package.json'), JSON.stringify({ name: 'consumer', private: true, type: 'module' }))
 sh(`npm install --no-audit --no-fund --silent ${tarballs.join(' ')} react@19 react-dom@19 @types/react@19 typescript@5.9`, app)
 
-const kr = path.join(app, 'node_modules/@kafka/react'), kt = path.join(app, 'node_modules/@kafka/tokens')
+const kr = path.join(app, 'node_modules/@kafka-ds/react'), kt = path.join(app, 'node_modules/@kafka-ds/tokens')
 // 1 · files
-for (const f of ['dist/index.js', 'dist/styles.css', 'dist/tailwind.css', 'dist/types/lib.d.ts', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(kr, f)), `@kafka/react ships ${f}`)
-for (const f of ['dist/tokens.css', 'dist/theme.css', 'dist/typography.css', 'dist/print.css', 'dist/tokens.json', 'dist/tokens.js', 'dist/tokens.d.ts', 'dist/json/semantic.json', 'LICENSE']) check(fs.existsSync(path.join(kt, f)), `@kafka/tokens ships ${f}`)
-const ka = path.join(app, 'node_modules/@kafka/theme-altazor')
-for (const f of ['dist/altazor.css', 'dist/patterns.css', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(ka, f)), `@kafka/theme-altazor ships ${f}`)
+for (const f of ['dist/index.js', 'dist/styles.css', 'dist/tailwind.css', 'dist/types/lib.d.ts', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(kr, f)), `@kafka-ds/react ships ${f}`)
+for (const f of ['dist/tokens.css', 'dist/theme.css', 'dist/typography.css', 'dist/print.css', 'dist/tokens.json', 'dist/tokens.js', 'dist/tokens.d.ts', 'dist/json/semantic.json', 'LICENSE']) check(fs.existsSync(path.join(kt, f)), `@kafka-ds/tokens ships ${f}`)
+const ka = path.join(app, 'node_modules/@kafka-ds/theme-altazor')
+for (const f of ['dist/altazor.css', 'dist/patterns.css', 'README.md', 'LICENSE']) check(fs.existsSync(path.join(ka, f)), `@kafka-ds/theme-altazor ships ${f}`)
 const themeCss = fs.readFileSync(path.join(ka, 'dist/altazor.css'), 'utf8')
 check(fs.readFileSync(path.join(ka, 'dist/patterns.css'), 'utf8').includes('kafka-altazor-hero'), 'patterns.css ships the hero pattern')
 check(themeCss.includes("[data-kafka-theme='altazor']") && !/(^|\n):root\s*\{/.test(themeCss), 'theme CSS is scoped and never writes :root')
@@ -49,21 +49,21 @@ const checkFonts = (pkgDir, cssName, label) => {
 }
 // a consumer imports it by name, so the package's exports map must allow it
 let fontsResolved = ''
-try { fontsResolved = sh(`node --input-type=module -e "console.log(import.meta.resolve('@kafka/tokens/fonts.css'))"`, app).trim() } catch { /* not exported */ }
-check(fontsResolved.endsWith('/@kafka/tokens/dist/fonts.css'), `@kafka/tokens/fonts.css must be importable by name (exports map), got "${fontsResolved}"`)
-checkFonts(kt, 'fonts.css', '@kafka/tokens fonts.css')
-checkFonts(kr, 'styles.css', '@kafka/react styles.css')
-checkFonts(kr, 'tailwind.css', '@kafka/react tailwind.css')
-for (const [dir, label] of [[kt, '@kafka/tokens'], [kr, '@kafka/react']]) check(fs.existsSync(path.join(dir, 'dist/fonts/OFL.txt')), `${label} ships the OFL licence next to the fonts`)
+try { fontsResolved = sh(`node --input-type=module -e "console.log(import.meta.resolve('@kafka-ds/tokens/fonts.css'))"`, app).trim() } catch { /* not exported */ }
+check(fontsResolved.endsWith('/@kafka-ds/tokens/dist/fonts.css'), `@kafka-ds/tokens/fonts.css must be importable by name (exports map), got "${fontsResolved}"`)
+checkFonts(kt, 'fonts.css', '@kafka-ds/tokens fonts.css')
+checkFonts(kr, 'styles.css', '@kafka-ds/react styles.css')
+checkFonts(kr, 'tailwind.css', '@kafka-ds/react tailwind.css')
+for (const [dir, label] of [[kt, '@kafka-ds/tokens'], [kr, '@kafka-ds/react']]) check(fs.existsSync(path.join(dir, 'dist/fonts/OFL.txt')), `${label} ships the OFL licence next to the fonts`)
 // 3 · the library renders on the server, with Spanish labels from the provider
 const { registry } = await (await import('tsx/esm/api')).tsImport('../examples/index.ts', import.meta.url)
 const names = Object.values(registry).map((e) => e.name)
 fs.writeFileSync(path.join(app, 'render.mjs'), `
 import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import tokens from '@kafka/tokens'
-import * as K from '@kafka/react'
-import { Button, KafkaProvider, labelsEs, IconCrown } from '@kafka/react'
+import tokens from '@kafka-ds/tokens'
+import * as K from '@kafka-ds/react'
+import { Button, KafkaProvider, labelsEs, IconCrown } from '@kafka-ds/react'
 const html = renderToStaticMarkup(h(KafkaProvider, { labels: labelsEs }, h(Button, { loading: true, Icon: IconCrown }, 'Enviar')))
 const names = ${JSON.stringify(names)}
 const missing = names.filter((n) => typeof K[n] !== 'function')
@@ -78,8 +78,8 @@ check(out.reading.includes('8 min de lectura') && out.reading.includes('rel="nex
 check(out.brand === '#d4af37', 'tokens export resolves colours')
 check(out.print === '148mm', 'tokens export includes the print module')
 // 4 · types compile for a consumer (and reject a wrong variant)
-fs.writeFileSync(path.join(app, 'ok.tsx'), `import { Button, type ButtonProps } from '@kafka/react'\nexport const a = <Button variant="soft" Icon={undefined}>Hola</Button>\nexport type P = ButtonProps\n`)
-fs.writeFileSync(path.join(app, 'bad.tsx'), `import { Button } from '@kafka/react'\nexport const a = <Button variant="danger">Hola</Button>\n`)
+fs.writeFileSync(path.join(app, 'ok.tsx'), `import { Button, type ButtonProps } from '@kafka-ds/react'\nexport const a = <Button variant="soft" Icon={undefined}>Hola</Button>\nexport type P = ButtonProps\n`)
+fs.writeFileSync(path.join(app, 'bad.tsx'), `import { Button } from '@kafka-ds/react'\nexport const a = <Button variant="danger">Hola</Button>\n`)
 fs.writeFileSync(path.join(app, 'tsconfig.json'), JSON.stringify({ compilerOptions: { jsx: 'react-jsx', module: 'esnext', moduleResolution: 'bundler', strict: true, noEmit: true, skipLibCheck: true, types: [] } }))
 let ok = true, bad = false
 try { sh('npx tsc -p . --noEmit', app) } catch (e) { const msg = String(e.stdout ?? ''); ok = !/ok\.tsx/.test(msg); bad = /bad\.tsx\(\d+,\d+\): error TS2322/.test(msg) }

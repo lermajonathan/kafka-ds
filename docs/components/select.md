@@ -4,7 +4,7 @@
 A native select with the Kafka field look.
 
 ```tsx
-import { Select } from '@kafka/react'
+import { Select } from '@kafka-ds/react'
 ```
 
 ## When to use it

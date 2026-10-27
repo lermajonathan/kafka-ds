@@ -4,7 +4,7 @@
 A value in a range, on the native range input.
 
 ```tsx
-import { Slider } from '@kafka/react'
+import { Slider } from '@kafka-ds/react'
 ```
 
 ## When to use it

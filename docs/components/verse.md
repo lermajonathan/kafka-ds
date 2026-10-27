@@ -4,7 +4,7 @@
 A poem: verse breaks and stanzas are kept, and long verses wrap with a hanging indent.
 
 ```tsx
-import { Verse } from '@kafka/react'
+import { Verse } from '@kafka-ds/react'
 ```
 
 ## When to use it

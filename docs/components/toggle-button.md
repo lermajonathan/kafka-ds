@@ -4,7 +4,7 @@
 A button that stays pressed or not: follow, save, mute.
 
 ```tsx
-import { ToggleButton } from '@kafka/react'
+import { ToggleButton } from '@kafka-ds/react'
 ```
 
 ## When to use it

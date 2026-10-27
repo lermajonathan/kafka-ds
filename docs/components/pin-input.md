@@ -4,7 +4,7 @@
 A short code, one cell per character, with paste and autofill support.
 
 ```tsx
-import { PinInput } from '@kafka/react'
+import { PinInput } from '@kafka-ds/react'
 ```
 
 ## When to use it

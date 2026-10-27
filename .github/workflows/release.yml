@@ -1,0 +1,53 @@
+name: Release
+
+# Publishes @kafka-ds/tokens, @kafka-ds/react and @kafka-ds/theme-altazor to npm when a GitHub release is published.
+# Trusted publishing (OIDC): no npm token is stored. Run it by hand (workflow_dispatch) for a dry run that publishes nothing.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write # npm trusted publishing + provenance
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - name: npm 11 (trusted publishing needs 11.5 or later)
+        run: npm install -g npm@11
+      - run: pnpm install --frozen-lockfile
+
+      - name: The release tag matches the package versions
+        if: github.event_name == 'release'
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          for pkg in tokens react theme-altazor; do
+            v=$(node -p "require('./packages/$pkg/package.json').version")
+            if [ "$v" != "$tag" ]; then echo "::error::Tag v$tag does not match packages/$pkg ($v)"; exit 1; fi
+          done
+
+      - run: pnpm run tokens
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Full gate
+        run: pnpm run verify
+
+      - name: Publish @kafka-ds/tokens
+        working-directory: packages/tokens
+        run: npm publish --access public --provenance ${{ github.event_name != 'release' && '--dry-run' || '' }}
+      - name: Publish @kafka-ds/react
+        working-directory: packages/react
+        run: npm publish --access public --provenance ${{ github.event_name != 'release' && '--dry-run' || '' }}
+      - name: Publish @kafka-ds/theme-altazor
+        working-directory: packages/theme-altazor
+        run: npm publish --access public --provenance ${{ github.event_name != 'release' && '--dry-run' || '' }}

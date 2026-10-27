@@ -4,7 +4,7 @@
 Moves between numbered pages of a long list.
 
 ```tsx
-import { Pagination } from '@kafka/react'
+import { Pagination } from '@kafka-ds/react'
 ```
 
 ## When to use it
