@@ -2,7 +2,7 @@
    Paper in the light theme, the page colour in the dark one; the ink band and the footer are ink in both. */
 :root { --l-bg: var(--kafka-color-paper-200); --l-panel: var(--kafka-color-paper-50); --l-pad: clamp(1rem, 6.67vw, 6rem); --l-inline: max(var(--l-pad), calc((100vw - 90rem) / 2 + var(--l-pad))); --l-ink: var(--kafka-color-ink-950); }
 [data-theme='dark'] { --l-bg: var(--kafka-color-bg-page); --l-panel: var(--kafka-color-bg-surface); }
-body[data-route=''] { background: var(--l-bg); }
+body { background: var(--l-bg); }
 
 .landing { background: var(--l-bg); color: var(--kafka-color-fg-default); font-family: var(--kafka-font-family-reading); }
 .landing :where(h1, h2, h3, h4) { text-wrap: balance; font-weight: 500; font-variation-settings: 'opsz' 72; letter-spacing: -0.02em; margin: 0; }
