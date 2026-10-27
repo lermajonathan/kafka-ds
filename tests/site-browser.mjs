@@ -31,11 +31,93 @@ try {
 
   // Home
   await go('')
-  check((await page.locator('main h1').innerText()).trim() === 'Kafka', 'home: h1 must be "Kafka"')
+  check((await page.locator('main h1').innerText()).trim() === 'La página, medida al milímetro.', `home: h1 was "${await page.locator('main h1').innerText()}"`)
   check(/70\s+componentes/i.test(await page.locator('main').innerText()), 'home: must say how many components there are')
   check(await page.getByRole('link', { name: /primeros pasos/i }).count() > 0, 'home: needs a link to getting started')
   check((await page.title()) === 'Kafka · Sistema de diseño', `home: title was "${await page.title()}"`)
 
+  // Home: header, sections in order, dark band, print module, numbers, catalog and footer
+  await go('')
+  const banner = page.getByRole('banner')
+  check(await banner.getByRole('navigation', { name: /principal/i }).getByRole('link').count() === 4, 'home: the header needs a "Principal" navigation with 4 links')
+  for (const name of ['Primeros pasos', 'Componentes', 'Decisiones', 'Tokens']) check(await banner.getByRole('navigation', { name: /principal/i }).getByRole('link', { name }).count() === 1, `home: header link "${name}"`)
+  check(await banner.getByRole('radiogroup', { name: /tema/i }).count() === 1, 'home: the theme switch must be in the header')
+  check(await page.locator('aside').count() === 0, 'home: a landing page has no documentation sidebar')
+  check(await banner.getByRole('combobox').count() === 0, 'home: the catalog has the search; the header does not repeat it')
+  const order = ['Escala tipográfica', '66 caracteres por línea', 'Papel, tinta y oro', 'Un texto. Dos páginas.', 'Tres plantillas listas para el PDF', 'Busca entre 70 componentes hechos para leer.']
+  const h2s = (await page.locator('main h2').allInnerTexts()).map((t) => t.trim())
+  const at = order.map((t) => h2s.indexOf(t))
+  check(at.every((i) => i >= 0), `home: missing sections ${JSON.stringify(order.filter((t, i) => at[i] < 0))}`)
+  check(at.every((v, i) => i === 0 || v > at[i - 1]), `home: sections out of order ${JSON.stringify(at)}`)
+  check(await page.getByRole('button', { name: /ver el módulo de impresión/i }).count() === 1, 'home: needs the "Ver el módulo de impresión" button')
+  const main = await page.locator('main').innerText()
+  check(/1\.129/.test(main) && /\b19\b/.test(main) && /\b7\s*:\s*1\b/.test(main), 'home: needs the numbers (70, 1.129, 19, 7:1)')
+  check(/10,5\s*pt/.test(main) && /3\s*mm/.test(main), 'home: the print module must state its real measures (10,5 pt, sangrado de 3 mm)')
+
+  // The specimen's baseline guide sits on the real baseline of the font, not where it looked right once
+  const guide = await page.evaluate(() => {
+    const box = document.querySelector('.l-aa'), glyph = box.querySelector('.l-aa-glyph'), probe = document.createElement('span')
+    probe.style.cssText = 'display:inline-block;width:0;height:0'
+    glyph.appendChild(probe)
+    const top = box.getBoundingClientRect().top
+    const out = { base: probe.getBoundingClientRect().bottom - top, line: box.querySelector('.l-guide-base').getBoundingClientRect().top - top }
+    probe.remove()
+    return out
+  })
+  check(Math.abs(guide.base - guide.line) <= 3, `home: the baseline guide is ${(guide.line - guide.base).toFixed(1)}px off the font's baseline`)
+
+  // The "Papel, tinta y oro" band is ink in both themes
+  for (const theme of ['light', 'dark']) {
+    await page.evaluate((t) => { localStorage.setItem('kafka-site-theme', t) }, theme)
+    await page.reload(); await page.waitForSelector('main h1')
+    const lum = await page.getByRole('region', { name: /papel, tinta y oro/i }).evaluate((el) => { const [r, g, b] = getComputedStyle(el).backgroundColor.match(/\d+/g).map(Number); return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255 })
+    check(lum < 0.1, `home: the "Papel, tinta y oro" band must stay ink in ${theme} mode (luminance ${lum.toFixed(2)})`)
+  }
+  await page.evaluate(() => localStorage.setItem('kafka-site-theme', 'light'))
+
+  // Footer
+  const footer = page.getByRole('contentinfo')
+  check(await footer.count() === 1, 'footer: needs one contentinfo landmark')
+  for (const name of ['Sistema', 'Impresión', 'Proyecto']) check(await footer.getByRole('navigation', { name }).count() === 1, `footer: needs the "${name}" navigation`)
+  check(await footer.getByRole('link', { name: 'GitHub' }).getAttribute('href').then((h) => /github\.com/.test(h ?? '')), 'footer: the GitHub link must go to the repository')
+  check(await footer.getByRole('button', { name: /volver arriba/i }).count() === 1, 'footer: needs "Volver arriba"')
+
+  // Catalog: search, families, cards, pagination
+  const cat = page.getByRole('searchbox', { name: /buscar componente/i })
+  const status = page.getByRole('status').filter({ hasText: /Mostrando/ })
+  check(await cat.count() === 1, 'catalog: needs one search field named "Buscar componente"')
+  check(/Mostrando 1–12 de 70/.test(await status.innerText()), `catalog: initial status was "${await status.innerText()}"`)
+  check(await page.locator('[data-catalog] article').count() === 12, 'catalog: 12 cards per page')
+  await page.getByRole('button', { name: /^Lectura/ }).click()
+  check((await page.getByRole('button', { name: /^Lectura/ }).getAttribute('aria-pressed')) === 'true', 'catalog: the chosen family must be pressed')
+  check(/Mostrando 1–12 de 14/.test(await status.innerText()), `catalog: Lectura must show 14, status was "${await status.innerText()}"`)
+  await cat.fill('pullquote')
+  check(/Mostrando 1–1 de 1/.test(await status.innerText()), `catalog: searching "pullquote" must find one, status was "${await status.innerText()}"`)
+  check((await page.locator('[data-catalog] article a').first().getAttribute('href')) === '#/components/pull-quote', 'catalog: the card must link to its page')
+  await cat.fill('zzzz')
+  check(await page.getByText(/sin resultados/i).count() > 0, 'catalog: needs an empty state')
+  await cat.fill('')
+  await page.getByRole('button', { name: /^Todos/ }).click()
+  await page.getByRole('navigation', { name: /paginación/i }).getByRole('button', { name: '2' }).click()
+  check(/Mostrando 13–24 de 70/.test(await status.innerText()), `catalog: page 2 status was "${await status.innerText()}"`)
+  check(/(^|\s)2$/.test((await page.getByRole('navigation', { name: /paginación/i }).locator('[aria-current="page"]').innerText()).trim()), 'catalog: pagination must mark the current page')
+  // Thumbnails are the real components, shown inert
+  await page.locator('[data-thumb]').first().waitFor()
+  await page.waitForFunction(() => [...document.querySelectorAll('[data-thumb]')].every((t) => t.childElementCount > 0), null, { timeout: 10000 }).catch(() => {})
+  check(await page.locator('[data-thumb]:empty').count() === 0, 'catalog: every card needs its miniature')
+  check(await page.locator('[data-thumb][aria-hidden="true"][inert]').count() === await page.locator('[data-thumb]').count(), 'catalog: miniatures must be hidden from assistive technology and inert')
+  // "/" reaches the catalog search on the home page
+  await page.locator('main h1').click()
+  await page.keyboard.press('/')
+  check(await page.evaluate(() => document.activeElement?.getAttribute('type') === 'search'), 'home: "/" must focus the catalog search')
+
+  // Documentation pages keep their sidebar and the header search
+  await go('/getting-started')
+  check(await page.locator('aside').count() === 1, 'docs page: keeps the sidebar')
+  check(await page.getByRole('banner').getByRole('combobox', { name: /buscar/i }).count() === 1, 'docs page: the header keeps the search')
+  check(await page.getByRole('contentinfo').count() === 1, 'docs page: the footer is on every page')
+
+  await go(''); await page.reload(); await page.waitForSelector('main h1')
   // Skip link comes first and lands on the content
   await page.keyboard.press('Tab')
   check((await page.evaluate(() => document.activeElement?.textContent ?? '')).match(/saltar al contenido/i) !== null, 'first Tab must reach the skip link')
@@ -49,7 +131,7 @@ try {
   check((await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('italic 16px Literata') })), 'Literata italic must be available')
 
   // Search: type, choose with the keyboard, land on the page; "/" focuses the field from anywhere
-  await go('')
+  await go('/components')
   const search = page.getByRole('combobox', { name: /buscar/i })
   check(await search.count() === 1, 'search: the header needs one combobox named "Buscar"')
   await page.locator('main h1').click()
