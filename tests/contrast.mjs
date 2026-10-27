@@ -374,6 +374,34 @@ pairs.push(
   ['color.gold.400', 'color.ink.900', READING, 'brand gold on ink (dark surfaces)'],
 )
 
+// Text over a photo: the scrim is measured against the worst photo there is (pure white), then the text against that blend.
+const rgba = (c) => { const m = String(c).match(/rgba?\(([^)]+)\)/); if (!m) return { rgb: parse(c), a: 1 }; const [r, g, b, a = 1] = m[1].split(',').map(Number); return { rgb: [r, g, b], a } }
+const over = (top, under) => top.rgb.map((v, i) => v * top.a + under[i] * (1 - top.a))
+const contrastOf = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05) }
+export const themeExtras = (name) => {
+  const has = (p) => tokens.has(p)
+  const out = []
+  if (has(`${name}.hero.scrim.text`)) {
+    const mode = 'light'
+    const bg = over(rgba(resolve(`${name}.hero.scrim.text`, mode)), [255, 255, 255])
+    out.push([contrastOf(parse(resolve(`${name}.hero.fg`, mode)), bg), READING, 'hero text over the scrim on a white photo'])
+    out.push([contrastOf(parse(resolve(`${name}.hero.fg-soft`, mode)), bg), TEXT, 'hero secondary text over the scrim on a white photo'])
+    const strong = over(rgba(resolve(`${name}.hero.scrim.strong`, mode)), [255, 255, 255])
+    out.push([contrastOf(parse(resolve(`${name}.hero.fg`, mode)), strong), READING, 'hero text over the strongest scrim on a white photo'])
+  }
+  if (has(`${name}.quotes.bg`)) {
+    for (const mode of ['light', 'dark']) {
+      const bg = parse(resolve(`${name}.quotes.bg`, mode))
+      const card = over(rgba(resolve(`${name}.quotes.card`, mode)), bg)
+      for (const [t, min] of [['fg', READING], ['fg-soft', TEXT], ['accent', TEXT]]) {
+        out.push([contrastOf(parse(resolve(`${name}.quotes.${t}`, mode)), card), min, `quotes ${t} on the card (${mode})`])
+        out.push([contrastOf(parse(resolve(`${name}.quotes.${t}`, mode)), bg), min, `quotes ${t} on the band (${mode})`])
+      }
+    }
+  }
+  return out
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   let failures = 0
   const run = (label) => {
@@ -387,6 +415,13 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     }
   }
   run('')
-  for (const name of themeNames) { const restore = applyTheme(name); run(`THEME ${name} · `); restore() }
+  for (const name of themeNames) {
+    const restore = applyTheme(name); run(`THEME ${name} · `)
+    const extras = themeExtras(name), bad = extras.filter(([r, min]) => r + 1e-9 < min)
+    failures += bad.length
+    console.log(`\nTHEME ${name} · ON PHOTOS AND BANDS · ${extras.length - bad.length}/${extras.length} pass`)
+    for (const [r, min, what] of bad) console.log(`  ✗ ${r.toFixed(2)}:1 < ${min}:1  ${what}`)
+    restore()
+  }
   process.exit(failures ? 1 : 0)
 }

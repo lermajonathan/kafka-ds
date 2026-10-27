@@ -25,19 +25,96 @@
     "deco": {
       "$description": "Adornos flotantes decorativos de la portada (puntos, barras y rombos), siempre aria-hidden y con opacidad baja. Nunca llevan texto, por eso no entran en las pruebas de contraste.",
       "purple": {
-        "dot": { "$value": "#8b5cf6" },
-        "bar": { "$value": "#c026d3" },
-        "diamond": { "$value": "#7c3aed" }
+        "dot": {
+          "$value": "#8b5cf6"
+        },
+        "bar": {
+          "$value": "#c026d3"
+        },
+        "diamond": {
+          "$value": "#7c3aed"
+        }
       },
       "red": {
-        "dot": { "$value": "#dc2626" },
-        "bar": { "$value": "#ef4444" },
-        "diamond": { "$value": "#b91c1c" }
+        "dot": {
+          "$value": "#dc2626"
+        },
+        "bar": {
+          "$value": "#ef4444"
+        },
+        "diamond": {
+          "$value": "#b91c1c"
+        }
       },
       "gold": {
-        "dot": { "$value": "{color.gold.400}" },
-        "bar": { "$value": "{color.gold.300}" },
-        "diamond": { "$value": "{color.gold.500}" }
+        "dot": {
+          "$value": "{color.gold.400}"
+        },
+        "bar": {
+          "$value": "{color.gold.300}"
+        },
+        "diamond": {
+          "$value": "{color.gold.500}"
+        }
+      },
+      "opacity": {
+        "$type": "number",
+        "$value": 0.5,
+        "$description": "Opacidad de las formas flotantes."
+      }
+    },
+    "hero": {
+      "$description": "Portada con foto y velo oscuro. El texto va siempre sobre el velo, que se mide contra el peor fondo posible (una foto blanca): ver tests/contrast.mjs y tests/theme-patterns.mjs.",
+      "fg": {
+        "$value": "{color.paper.50}",
+        "$description": "Titular y texto principal sobre el velo."
+      },
+      "fg-soft": {
+        "$value": "{color.paper.100}",
+        "$description": "Texto secundario sobre el velo."
+      },
+      "base": {
+        "$value": "{color.ink.900}",
+        "$description": "Fondo mientras carga la foto o si no hay foto."
+      },
+      "accent": {
+        "$value": "{color.gold.400}"
+      },
+      "scrim": {
+        "$description": "Velo oscuro sobre la foto. `text` es el tramo más débil bajo texto; `soft` cubre solo la zona sin texto.",
+        "strong": {
+          "$value": "rgba(15, 15, 14, 0.78)"
+        },
+        "text": {
+          "$value": "rgba(15, 15, 14, 0.74)"
+        },
+        "mid": {
+          "$value": "rgba(15, 15, 14, 0.44)"
+        },
+        "soft": {
+          "$value": "rgba(15, 15, 14, 0.3)"
+        }
+      }
+    },
+    "quotes": {
+      "$description": "Banda de citas: siempre oscura, también en modo claro.",
+      "bg": {
+        "$value": "{color.ink.950}"
+      },
+      "card": {
+        "$value": "rgba(251, 248, 241, 0.05)"
+      },
+      "card-border": {
+        "$value": "rgba(251, 248, 241, 0.14)"
+      },
+      "fg": {
+        "$value": "{color.paper.50}"
+      },
+      "fg-soft": {
+        "$value": "{color.paper.200}"
+      },
+      "accent": {
+        "$value": "{color.gold.400}"
       }
     }
   }

@@ -1,0 +1,158 @@
+/* Kafka theme "altazor" — patterns: hero with scrim, quick-access cards, floating decoration, quotes band.
+   Hand-written; colours come only from tokens (--kafka-altazor-*, --kafka-color-*). Every rule lives inside the theme scope.
+   The photo is the consumer's: set --kafka-altazor-hero-image: url(...) on the hero. Contrast is measured on pixels over a white
+   photo in tests/theme-patterns.mjs. */
+
+/* ── Hero ── */
+[data-kafka-theme='altazor'] .kafka-altazor-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: 6.25rem 10.5rem;
+  background-color: var(--kafka-altazor-hero-base);
+  background-image: var(--kafka-altazor-hero-image, none);
+  background-position: center;
+  background-size: cover;
+  color: var(--kafka-altazor-hero-fg);
+}
+/* The scrim is strongest where the text is: the text column never reaches past half of the width. */
+[data-kafka-theme='altazor'] .kafka-altazor-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, var(--kafka-altazor-hero-scrim-strong) 0%, var(--kafka-altazor-hero-scrim-text) 52%, var(--kafka-altazor-hero-scrim-mid) 68%, var(--kafka-altazor-hero-scrim-soft) 100%);
+}
+[data-kafka-theme='altazor'] .kafka-altazor-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 75rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+[data-kafka-theme='altazor'] .kafka-altazor-hero__text { max-width: min(36rem, 45%); }
+[data-kafka-theme='altazor'] .kafka-altazor-hero h1 {
+  margin: 0;
+  font-family: var(--kafka-font-family-reading);
+  font-size: clamp(2.375rem, 5.4vw, 4rem);
+  line-height: 1.05;
+  color: var(--kafka-altazor-hero-fg);
+}
+[data-kafka-theme='altazor'] .kafka-altazor-hero__lede {
+  margin: 1.375rem 0 0;
+  font-family: var(--kafka-font-family-reading);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: var(--kafka-altazor-hero-fg-soft);
+}
+@media (max-width: 899px) {
+  [data-kafka-theme='altazor'] .kafka-altazor-hero { padding-block: 3rem 6.5rem; }
+  /* Narrow screens: the text takes the whole width, so the scrim is even and as strong as under the text column. */
+  [data-kafka-theme='altazor'] .kafka-altazor-hero::before { background: linear-gradient(180deg, var(--kafka-altazor-hero-scrim-strong) 0%, var(--kafka-altazor-hero-scrim-text) 100%); }
+  [data-kafka-theme='altazor'] .kafka-altazor-hero__text { max-width: none; }
+}
+
+/* ── Floating decoration: dots, bars and diamonds. Always aria-hidden; still unless motion is welcome. ── */
+[data-kafka-theme='altazor'] .kafka-altazor-deco {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: var(--size, 16px);
+  height: var(--size, 16px);
+  opacity: var(--kafka-altazor-deco-opacity);
+}
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-shape='dot'] { border-radius: 50%; }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-shape='bar'] { height: 0.375rem; border-radius: 99px; }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-shape='diamond'] { transform: rotate(45deg); border-radius: 2px; }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-tone='purple'][data-shape='dot'] { background: var(--kafka-altazor-deco-purple-dot); }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-tone='purple'][data-shape='bar'] { background: var(--kafka-altazor-deco-purple-bar); }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-tone='purple'][data-shape='diamond'] { background: var(--kafka-altazor-deco-purple-diamond); }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-tone='red'][data-shape='dot'] { background: var(--kafka-altazor-deco-red-dot); }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-tone='red'][data-shape='bar'] { background: var(--kafka-altazor-deco-red-bar); }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-tone='red'][data-shape='diamond'] { background: var(--kafka-altazor-deco-red-diamond); }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-tone='gold'][data-shape='dot'] { background: var(--kafka-altazor-deco-gold-dot); }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-tone='gold'][data-shape='bar'] { background: var(--kafka-altazor-deco-gold-bar); }
+[data-kafka-theme='altazor'] .kafka-altazor-deco__item[data-tone='gold'][data-shape='diamond'] { background: var(--kafka-altazor-deco-gold-diamond); }
+@media (prefers-reduced-motion: no-preference) {
+  [data-kafka-theme='altazor'] .kafka-altazor-deco__item { animation: kafka-altazor-float 7s ease-in-out var(--delay, 0s) infinite alternate; }
+  @keyframes kafka-altazor-float {
+    from { translate: 0 0; }
+    to { translate: 0.5rem -1rem; }
+  }
+}
+
+/* ── Quick-access cards: they overlap the bottom of the hero ── */
+[data-kafka-theme='altazor'] .kafka-altazor-quick {
+  position: relative;
+  z-index: 2;
+  max-width: 75rem;
+  margin: -4.5rem auto 0;
+  padding-inline: 1.5rem;
+}
+[data-kafka-theme='altazor'] .kafka-altazor-quick ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+[data-kafka-theme='altazor'] .kafka-altazor-quick a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 1.625rem;
+  border: 1px solid var(--kafka-color-border-default);
+  border-radius: var(--kafka-radius-tile);
+  background: var(--kafka-color-bg-surface);
+  box-shadow: var(--kafka-shadow-lg);
+  color: var(--kafka-color-fg-default);
+  text-decoration: none;
+}
+[data-kafka-theme='altazor'] .kafka-altazor-quick a:focus-visible { outline: var(--kafka-focus-width) solid var(--kafka-color-border-focus); outline-offset: var(--kafka-focus-offset); }
+[data-kafka-theme='altazor'] .kafka-altazor-quick h3 { margin: 0; font-family: var(--kafka-font-family-reading); font-size: 1.375rem; line-height: 1.2; }
+[data-kafka-theme='altazor'] .kafka-altazor-quick p { margin: 0; font-size: 1rem; color: var(--kafka-color-fg-soft); }
+@media (prefers-reduced-motion: no-preference) {
+  [data-kafka-theme='altazor'] .kafka-altazor-quick a { transition: translate var(--kafka-duration-base) var(--kafka-ease-standard); }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  [data-kafka-theme='altazor'] .kafka-altazor-quick a:hover { translate: 0 -0.25rem; }
+}
+@media (max-width: 899px) {
+  [data-kafka-theme='altazor'] .kafka-altazor-quick ul { grid-template-columns: 1fr; }
+}
+
+/* ── Quotes band: dark in light and dark mode ── */
+[data-kafka-theme='altazor'] .kafka-altazor-quotes {
+  padding: 4rem 1.5rem;
+  background: var(--kafka-altazor-quotes-bg);
+  color: var(--kafka-altazor-quotes-fg);
+}
+[data-kafka-theme='altazor'] .kafka-altazor-quotes ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+[data-kafka-theme='altazor'] .kafka-altazor-quotes li {
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--kafka-altazor-quotes-card-border);
+  border-radius: var(--kafka-radius-card);
+  background: var(--kafka-altazor-quotes-card);
+  text-align: center;
+}
+[data-kafka-theme='altazor'] .kafka-altazor-quotes blockquote { margin: 0 0 1.25rem; font-family: var(--kafka-font-family-reading); font-size: 1.25rem; font-style: italic; line-height: 1.55; color: var(--kafka-altazor-quotes-fg); }
+[data-kafka-theme='altazor'] .kafka-altazor-quotes cite { font-family: var(--kafka-font-family-ui); font-size: 0.9375rem; font-style: normal; font-weight: 600; color: var(--kafka-altazor-quotes-accent); }
+[data-kafka-theme='altazor'] .kafka-altazor-quotes small { display: block; margin-top: 0.125rem; font-family: var(--kafka-font-family-ui); font-size: 0.875rem; color: var(--kafka-altazor-quotes-fg-soft); }
