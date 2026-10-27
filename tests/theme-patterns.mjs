@@ -15,7 +15,7 @@ const patterns = fs.readFileSync(cssFile, 'utf8')
 const bare = patterns.replace(/\/\*[\s\S]*?\*\//g, '')
 check(!/#[0-9a-f]{3,8}\b/i.test(bare) && !/rgba?\(/i.test(bare), 'patterns use tokens only: no hex or rgb colours in the pattern CSS')
 const noFrames = bare.replace(/@keyframes[^{]+\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}/g, '')
-const selectors = [...noFrames.matchAll(/(^|[{}])\s*([^{}@;][^{}]*)\{/g)].flatMap((m) => m[2].split(',').map((s) => s.trim())).filter((s) => s && !s.startsWith('@'))
+const selectors = [...noFrames.matchAll(/(^|[{}])\s*([^{}@;][^{}]*)\{/g)].flatMap((m) => m[2].replace(/:is\([^)]*\)/g, (x) => x.replace(/,/g, '\u0000')).split(',').map((s) => s.trim())).filter((s) => s && !s.startsWith('@'))
 check(selectors.every((s) => s.startsWith("[data-kafka-theme='altazor']")), `every selector is scoped to the theme (${selectors.filter((s) => !s.startsWith("[data-kafka-theme='altazor']")).slice(0, 3).join(' | ')})`)
 
 const tokensCss = fs.readFileSync(path.join(root, 'src/styles/tokens.css'), 'utf8')

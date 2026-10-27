@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import { KafkaProvider, ThemeProvider, labelsEs } from '../src/components'
 import data from 'virtual:kafka-site'
 import { useRoute } from './router'
@@ -6,7 +6,9 @@ import { Footer, Header } from './chrome'
 import { Landing } from './home'
 import { ComponentDetail } from './detail'
 import { ComponentsIndex, DocPage, NextBand, NotFound } from './inner'
-import { byId } from './parts'
+import { byId, Loading } from './parts'
+
+const AltazorPage = lazy(() => import('./altazor'))
 
 const THEME_KEY = 'kafka-site-theme'
 const SITE = 'Kafka'
@@ -15,10 +17,11 @@ interface Resolved { title: string; node: ReactNode }
 function resolve(route: string): Resolved {
   if (route === '') return { title: `${SITE} · Sistema de diseño`, node: <Landing /> }
   if (route === 'components') return { title: `Componentes · ${SITE}`, node: <ComponentsIndex /> }
+  if (route === 'altazor') return { title: `Tema Altazor · ${SITE}`, node: <Suspense fallback={<Loading />}><AltazorPage /></Suspense> }
   let m: RegExpMatchArray | null
   if ((m = route.match(/^components\/([a-z0-9-]+)$/)) && byId.has(m[1]!)) return { title: `${byId.get(m[1]!)!.name} · ${SITE}`, node: <ComponentDetail key={route} id={m[1]!} /> }
   const page = data.pages.find((p) => p.path === route)
-  if (page) return { title: `${page.title} · ${SITE}`, node: <DocPage key={route} route={route} eyebrow={route === 'getting-started' ? 'Guía' : 'Referencia'} title={page.title} crumbs={[{ label: 'Inicio', route: '' }, { label: page.title }]} next={route === 'getting-started' ? <NextBand label="Siguiente" title={`Explora los ${data.counts.components} componentes`} to="components" action="Ir al catálogo" /> : undefined} /> }
+  if (page) return { title: `${page.title} · ${SITE}`, node: <DocPage key={route} route={route} eyebrow={route === 'getting-started' ? 'Guía' : 'Referencia'} title={page.title} crumbs={[{ label: 'Inicio', route: '' }, { label: page.title }]} next={route === 'getting-started' ? <NextBand label="Siguiente" title={`Explora los ${data.counts.components} componentes`} to="components" action="Ir al catálogo" /> : route === 'tokens' ? <NextBand label="Ejemplo" title="Kafka con el tema Altazor" to="altazor" action="Ver el ejemplo" /> : undefined} /> }
   return { title: `No encontrada · ${SITE}`, node: <NotFound /> }
 }
 

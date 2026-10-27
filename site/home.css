@@ -270,3 +270,4 @@ body:not([data-route='']) .site-footer { margin-top: 0; }
   .l-swatches li { transition: flex-grow var(--kafka-motion-duration-slow) var(--kafka-motion-easing-standard), padding var(--kafka-motion-duration-slow) var(--kafka-motion-easing-standard), font-size var(--kafka-motion-duration-slow) var(--kafka-motion-easing-standard); }
   .l-swatches li:hover { flex-grow: 1.9; padding: 1.25rem; font-size: 0.875rem; }
 }
+.l-ink-head a { color: var(--kafka-color-gold-400); text-decoration: underline; text-underline-offset: 0.2em; } .l-ink-head a:hover { color: var(--kafka-color-gold-300); }

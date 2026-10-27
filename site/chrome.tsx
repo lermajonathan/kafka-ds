@@ -64,6 +64,7 @@ const COLUMNS: { title: string; links: { label: string; href: string; external?:
     { label: 'Primeros pasos', href: href('getting-started') },
     { label: 'Componentes', href: href('components') },
     { label: 'Tokens', href: href('tokens') },
+    { label: 'Tema Altazor', href: href('altazor') },
   ] },
   { title: 'Impresión', links: [
     { label: 'Libro · A5', href: blob('templates/print/book.html'), external: true },

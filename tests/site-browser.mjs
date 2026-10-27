@@ -125,7 +125,7 @@ try {
   check(await footer.getByRole('button', { name: /volver arriba/i }).count() === 1, 'footer: needs "Volver arriba"')
   for (const name of [/decisiones/i, /hoja de ruta/i, /sangrado y marcas/i]) check(await footer.getByRole('link', { name }).count() === 0, `footer: no link ${name}`)
   // A link shows a focus ring only while it has focus: never a permanent box
-  for (const r of ['', '/getting-started', '/components', '/components/chip', '/tokens']) {
+  for (const r of ['', '/getting-started', '/components', '/components/chip', '/tokens', '/altazor']) {
     await go(r)
     await page.locator('body').click({ position: { x: 2, y: 2 } })
     const boxed = await page.$$eval('main a, footer a, header a', (as) => as.filter((a) => { const c = getComputedStyle(a); return c.outlineStyle !== 'none' && parseFloat(c.outlineWidth) > 0 }).map((a) => a.textContent.trim().slice(0, 30)))
@@ -144,6 +144,30 @@ try {
     const bad = await page.$$eval('a[href^="http"]', (as) => as.filter((a) => a.target !== '_blank' || !/noopener/.test(a.rel) || !/noreferrer/.test(a.rel)).map((a) => a.href))
     check(bad.length === 0, `${r || '/'}: external links must open in a new tab (${bad.slice(0, 2).join(', ')})`)
   }
+  await go('')
+
+  // Altazor showcase: reachable from the footer, the home and the Tokens page; never a main-menu item; the switch changes the theme
+  await go('')
+  check(await page.getByRole('contentinfo').getByRole('link', { name: 'Tema Altazor' }).count() === 1, 'altazor: the footer links to the showcase')
+  check(await page.locator('.main-nav').getByRole('link', { name: /altazor/i }).count() === 0, 'altazor: it is not an item of the main menu')
+  check(await page.getByRole('link', { name: /cómo se viste con un tema/i }).count() === 1, 'altazor: the home links to the showcase')
+  await go('/tokens')
+  check(await page.locator('[data-next]').getByRole('link', { name: /ver el ejemplo/i }).count() === 1, 'altazor: the Tokens page ends with a link to the showcase')
+  const jsErrors = []
+  page.on('pageerror', (e) => jsErrors.push(String(e)))
+  await go('/altazor')
+  await page.waitForSelector('.az-stage[data-on]')
+  check(await page.locator('.az-stage[data-on="altazor"][data-kafka-theme="altazor"]').count() === 1, 'altazor: the components start with the theme applied')
+  const radius = () => page.getByRole('button', { name: 'Inscribirme' }).evaluate((b) => getComputedStyle(b).borderTopLeftRadius)
+  const withTheme = await radius()
+  await page.getByRole('radio', { name: 'Kafka' }).click()
+  check(await page.locator('.az-stage[data-on="kafka"]:not([data-kafka-theme])').count() === 1, 'altazor: choosing Kafka removes the theme')
+  await page.waitForTimeout(500)
+  const without = await radius()
+  check(withTheme !== without, `altazor: the button radius must change with the theme (${withTheme} vs ${without})`)
+  check(await page.locator('.az-patterns [data-kafka-theme="altazor"], .az-patterns[data-kafka-theme="altazor"]').count() >= 1, 'altazor: the patterns are always shown with the theme')
+  check(await page.locator('table tbody tr').count() >= 3, 'altazor: the "qué cambia" table lists the overridden tokens')
+  check(jsErrors.length === 0, `altazor: script errors ${jsErrors.join(' | ')}`)
   await go('')
 
   // Catalog: search, families, cards, pagination
@@ -417,7 +441,7 @@ try {
   await page.mouse.move(0, 0)
 
   // axe + mobile overflow, light and dark
-  const audited = ['', '/getting-started', '/components', '/components/chip', '/components/button', '/tokens', '/nope']
+  const audited = ['', '/getting-started', '/components', '/components/chip', '/components/button', '/tokens', '/altazor', '/nope']
   for (const size of [{ width: 1280, height: 900 }, { width: 390, height: 800 }]) for (const theme of ['light', 'dark']) {
     await page.setViewportSize(size)
     for (const route of audited) {

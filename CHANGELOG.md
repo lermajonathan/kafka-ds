@@ -4,6 +4,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ## [Sin publicar]
 
+### H8 · Tema Altazor, corte 3: página de ejemplo (27 oct 2026)
+
+- **Página `#/altazor`** («Kafka con el tema Altazor»): cómo se aplica, los mismos componentes reales (`ProgramCard`, tarjeta VIP, `NewsBox`, campo, chips, botones) con un interruptor Kafka/Altazor, los patrones del tema (portada, tarjetas de acceso rápido, formas flotantes, citas de Cervantes y Bécquer) y la tabla «Qué cambia», generada de los datos del tema.
+- Sin contenido real de Altazor: texto inventado o de dominio público e imágenes dibujadas en SVG. No está en el menú principal; se llega desde el pie, la portada y la página de Tokens. Se carga bajo demanda, así que la entrada del sitio no crece.
+
 ### H8 · Tema Altazor, corte 2: patrones (27 oct 2026)
 
 - **Patrones del tema** (`@kafka/theme-altazor/patterns.css`, solo con tokens y dentro del ámbito del tema): portada con velo, tarjetas de acceso rápido que se montan sobre ella, formas flotantes y banda de citas siempre oscura.
