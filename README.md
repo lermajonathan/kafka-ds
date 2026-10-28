@@ -14,16 +14,22 @@ Kafka parte de la arquitectura de [Pance](https://github.com/lermajonathan/pance
 
 | | Qué | Dónde |
 |---|---|---|
-| 🎨 | **Tokens**: 1113 en tres niveles (primitivos → semánticos → componentes), formato W3C DTCG, claro y oscuro | [`tokens/`](tokens) · [referencia](docs/tokens.md) |
+| 🎨 | **Tokens**: 1129 en tres niveles (primitivos → semánticos → componentes), formato W3C DTCG, claro y oscuro | [`tokens/`](tokens) · [referencia](docs/tokens.md) |
 | 🖨️ | **Tokens de impresión**: página, sangrado, márgenes, tipografía en puntos y rejilla de líneas base | [`tokens/`](tokens) (`physical.*`, `print.*`) |
 | 🧩 | **Librería React**: `@kafka-ds/react`, con 70 componentes terminados según el criterio de «completo» (lectura, UI esencial, navegación y capas, retroalimentación y superficies, y la paridad con Pance)); el resto llega por hitos | [`src/components/`](src/components) · [documentación](docs/components/README.md) |
-| 📦 | **Paquetes** (sin publicar): `@kafka-ds/tokens` y `@kafka-ds/react`, probados instalándolos en un proyecto nuevo | [`packages/`](packages) |
+| 📦 | **Paquetes en npm** (1.0.0): `@kafka-ds/tokens`, `@kafka-ds/react` y `@kafka-ds/theme-altazor`, probados instalándolos en un proyecto nuevo | [`packages/`](packages) |
 | 🧪 | **Pruebas**: contraste (336 pares en claro y 335 en oscuro), estructura de tokens, lint, teclado y ARIA, axe-core, ejemplos de la documentación, paquetes y diferencia visual | [`tests/`](tests) |
 | 📐 | **Figma**: variables (Primitives, Semantic, Components), estilos y 6 conjuntos de componentes | [archivo en Figma](https://www.figma.com/design/S3WoutgiyT1a5kwahRaKJ2) |
 | 📝 | **Decisiones de diseño** (DDR-KF) | [`docs/decisions/`](docs/decisions) |
 | 🌐 | **Sitio de documentación**: componentes con ejemplos vivos, decisiones y tokens (`pnpm run dev:site`) | [`site/`](site) · [DDR-KF-019](docs/decisions/DDR-KF-019-sitio-de-documentacion.md) |
 
-H5 está cerrado en el código. Figma, impresión y el sitio de documentación están construidos; faltan su publicación (H7) y el lanzamiento (H8).
+## Instalar
+
+```bash
+npm install @kafka-ds/react @kafka-ds/tokens
+```
+
+El tema de Altazor es opcional: `npm install @kafka-ds/theme-altazor`. La guía de [primeros pasos](docs/getting-started.md) explica el resto.
 
 ## Empezar
 

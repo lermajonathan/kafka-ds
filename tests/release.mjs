@@ -59,6 +59,13 @@ check(versions.every((v) => v === 'Sin publicar' || /^[1-9]\d*\./.test(v)), `CHA
 check(!/^###\s+(H\d|Antes de H0|Arreglo ·)/m.test(changelog), 'CHANGELOG carries no pre-1.0 milestone history (H0–H8)')
 check(changelog.split('\n').length < 40, `CHANGELOG stays short at 1.0.0 (${changelog.split('\n').length} lines)`)
 
+// 5 · the repo's own pages describe 1.0.0, not the road to it
+const read = (f) => fs.readFileSync(path.join(root, f), 'utf8')
+check(/npm install[^\n]*@kafka-ds\/react/.test(read('docs/getting-started.md')), 'getting-started shows how to install @kafka-ds/react from npm')
+check(/npm install[^\n]*@kafka-ds\/react/.test(read('README.md')), 'README shows how to install @kafka-ds/react from npm')
+check(!/\(sin publicar\)|faltan su publicación|1113 en tres/i.test(read('README.md')), 'README no longer lists packages as unpublished or an old token count')
+check(/\| H8 ✅/.test(read('docs/roadmap.md')), 'roadmap marks H8 (release) as done')
+
 if (failures.length) {
   console.error(`✗ release: ${failures.length} failed, ${passed} passed`)
   for (const f of failures) console.error('  - ' + f)
