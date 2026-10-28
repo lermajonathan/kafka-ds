@@ -51,7 +51,13 @@ if (fs.existsSync(wfPath)) {
 for (const f of ['README.md', 'GOVERNANCE.md', 'packages/tokens/README.md', 'packages/react/README.md', 'packages/theme-altazor/README.md', 'docs/getting-started.md']) {
   check(!/pre-1\.0|no publicado todav|todavía no están en npm|No hay versión en npm|Hasta la 1\.0\.0 no se publica/i.test(fs.readFileSync(path.join(root, f), 'utf8')), `${f} no longer says Kafka is unpublished`)
 }
-check(/^## \[1\.0\.0\]/m.test(fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8')), 'CHANGELOG has a 1.0.0 entry')
+const changelog = fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8')
+check(/^## \[1\.0\.0\]/m.test(changelog), 'CHANGELOG has a 1.0.0 entry')
+// Readers see what changes from 1.0.0 on; the work before it (milestones H0–H8) is not part of the public record.
+const versions = [...changelog.matchAll(/^## \[([^\]]+)\]/gm)].map((m) => m[1])
+check(versions.every((v) => v === 'Sin publicar' || /^[1-9]\d*\./.test(v)), `CHANGELOG only lists 1.0.0 and later (found: ${versions.join(', ')})`)
+check(!/^###\s+(H\d|Antes de H0|Arreglo ·)/m.test(changelog), 'CHANGELOG carries no pre-1.0 milestone history (H0–H8)')
+check(changelog.split('\n').length < 40, `CHANGELOG stays short at 1.0.0 (${changelog.split('\n').length} lines)`)
 
 if (failures.length) {
   console.error(`✗ release: ${failures.length} failed, ${passed} passed`)
