@@ -4,6 +4,12 @@ Kafka es un sistema de diseño para la literatura en pantalla: tipografía de le
 
 > **Estado: 1.0.0.** Los paquetes `@kafka-ds/tokens`, `@kafka-ds/react` y `@kafka-ds/theme-altazor` están en npm. También puedes usar Kafka desde el repositorio, como se explica abajo.
 
+## Instalar desde npm
+
+```bash
+npm install @kafka-ds/react @kafka-ds/tokens
+```
+
 ## 1. Pruébalo
 
 Necesitas Node 22 o superior y pnpm 10.
