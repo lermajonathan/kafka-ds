@@ -26,7 +26,7 @@ for (const pkg of ['tokens', 'react', 'theme-altazor']) {
 
 // 2 · no tracked file still names the old scope (the bare @kafka scope; @kafka-ds is fine)
 const tracked = execSync('git ls-files -z', { cwd: root, encoding: 'utf8' }).split('\0').filter(Boolean)
-const skip = /(^|\/)(pnpm-lock\.yaml|.*\.(woff2|png|jpg|pdf|ico|svg))$/
+const skip = /(^|\/)(tests\/release\.mjs|pnpm-lock\.yaml|.*\.(woff2|png|jpg|pdf|ico|svg))$/
 const stale = tracked.filter((f) => !skip.test(f) && fs.existsSync(path.join(root, f)) && /@kafka\\?\//.test(fs.readFileSync(path.join(root, f), 'utf8')))
 check(stale.length === 0, `no file mentions the old @kafka/ scope (still in: ${stale.slice(0, 8).join(', ')}${stale.length > 8 ? `, +${stale.length - 8}` : ''})`)
 
