@@ -4,7 +4,7 @@
 A dialog that blocks the page until it is answered or closed.
 
 ```tsx
-import { Modal } from '@kafka/react'
+import { Modal } from '@kafka-ds/react'
 ```
 
 ## When to use it

@@ -1,8 +1,16 @@
 # Registro de cambios
 
-Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Kafka no se publica en npm hasta la 1.0.0.
+Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Los paquetes `@kafka-ds/*` comparten versión.
 
 ## [Sin publicar]
+
+## [1.0.0] · 27 oct 2026
+
+Primera versión publicada en npm: `@kafka-ds/tokens`, `@kafka-ds/react` y `@kafka-ds/theme-altazor`, las tres en 1.0.0. Cumple el criterio de «completo» de DDR-KF-004: 70 componentes, 1129 tokens, tema Altazor, impresión, Literata autoalojada y pruebas de teclado, axe y lector de pantalla.
+
+- **Scope `@kafka-ds`:** `@kafka` ya pertenece a otra cuenta en npm; los paquetes se llaman `@kafka-ds/tokens`, `@kafka-ds/react` y `@kafka-ds/theme-altazor`.
+- **Publicación:** `.github/workflows/release.yml` publica con OIDC (trusted publishing, con procedencia) al publicar un release `vX.Y.Z`; `workflow_dispatch` hace un ensayo sin publicar.
+- **Pendiente tras 1.0.0:** chip pequeño (K-44) y publicación en Figma Community.
 
 ### H8 · Pruebas de lector de pantalla (27 oct 2026)
 
@@ -16,7 +24,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 ### H8 · Literata autoalojada en la librería y en impresión (27 oct 2026)
 
 - **Una sola copia de la fuente:** Literata variable (OFL, normal y cursiva, latín y latín extendido) vive en `src/styles/fonts/` con su `fonts.css`; el sitio, las plantillas de impresión y los paquetes usan esos mismos archivos.
-- **Paquetes:** `@kafka/tokens/fonts.css` (con `fonts/` y la licencia OFL) y `@kafka/react` (reglas `@font-face` al inicio de `styles.css` y `tailwind.css`, más `fonts/`). Ninguna página pide la fuente a un tercero.
+- **Paquetes:** `@kafka-ds/tokens/fonts.css` (con `fonts/` y la licencia OFL) y `@kafka-ds/react` (reglas `@font-face` al inicio de `styles.css` y `tailwind.css`, más `fonts/`). Ninguna página pide la fuente a un tercero.
 - **Impresión:** las plantillas de libro, revista y ficha enlazan `fonts.css`. Antes los PDF salían con una tipografía de reemplazo (LiberationSerif); ahora `test:print` exige que Literata esté incrustada y que no haya serif de reemplazo. Con la métrica real de Literata el libro de muestra pasa de 6 a 7 páginas A5.
 
 ### H8 · Tema Altazor, corte 3: página de ejemplo (27 oct 2026)
@@ -26,14 +34,14 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 
 ### H8 · Tema Altazor, corte 2: patrones (27 oct 2026)
 
-- **Patrones del tema** (`@kafka/theme-altazor/patterns.css`, solo con tokens y dentro del ámbito del tema): portada con velo, tarjetas de acceso rápido que se montan sobre ella, formas flotantes y banda de citas siempre oscura.
+- **Patrones del tema** (`@kafka-ds/theme-altazor/patterns.css`, solo con tokens y dentro del ámbito del tema): portada con velo, tarjetas de acceso rápido que se montan sobre ella, formas flotantes y banda de citas siempre oscura.
 - **Contraste medido sobre píxeles:** el texto de la portada se mide contra el peor fondo posible, una foto blanca (7:1 el titular, 4,5:1 el texto secundario), en escritorio y móvil. Los tokens del velo y de la banda también entran en `test:contrast`.
 - **Movimiento:** las formas flotan y las tarjetas se elevan solo si el sistema no pide menos movimiento; con `prefers-reduced-motion` todo queda quieto.
 
 ### H8 · Tema Altazor, corte 1: el tema como datos (27 oct 2026)
 
 - **Temas en el compilador:** `tokens/themes/<nombre>.json` sobrescribe tokens semánticos y de componente (nunca primitivos ni tipografía) y se compila a CSS acotado a `[data-kafka-theme='<nombre>']`, con claro, oscuro y sistema. Los tokens que dependen de uno sobrescrito se redeclaran dentro del ámbito.
-- **Paquete `@kafka/theme-altazor`:** solo CSS, sin logotipos ni fotografías. Cambia `bg.sunken` (claro), `radius.control` (8 px), `radius.tile` (14 px) y añade tokens de decoración `--kafka-altazor-deco-*`.
+- **Paquete `@kafka-ds/theme-altazor`:** solo CSS, sin logotipos ni fotografías. Cambia `bg.sunken` (claro), `radius.control` (8 px), `radius.tile` (14 px) y añade tokens de decoración `--kafka-altazor-deco-*`.
 - **Tests:** `test:themes` (el ámbito llega a cada dependiente y no escapa) y el contraste se mide también con cada tema aplicado.
 - **Gobernanza:** el tema de Altazor se construye sobre Kafka, no dentro de él.
 
@@ -169,7 +177,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). K
 - **Íconos**: selección nombrada de Phosphor (`src/icons.tsx`). **Textos**: `KafkaProvider`, `labelsEn` y `labelsEs`.
 - **Playground** con todos los ejemplos (`?theme=dark`, `?only=button`).
 - **Documentación generada** por componente (props desde los tipos, ejemplos ejecutables) y `docs:check` en CI.
-- **Paquetes** `@kafka/tokens` y `@kafka/react` (sin publicar), probados instalándolos como tarball en un proyecto nuevo (28 comprobaciones: archivos, hoja de estilos, render en servidor y tipos).
+- **Paquetes** `@kafka-ds/tokens` y `@kafka-ds/react` (sin publicar), probados instalándolos como tarball en un proyecto nuevo (28 comprobaciones: archivos, hoja de estilos, render en servidor y tipos).
 - **Pruebas nuevas**: teclado y ARIA en navegador real (16 comprobaciones), axe-core (cada ejemplo × 2 tamaños × 2 temas, 0 violaciones), ejemplos de la documentación, diferencia visual contra la rama base. El lint ahora revisa componentes y ejemplos, y detecta colores de la paleta de Tailwind.
 
 ### H0 · Cimientos (21 oct 2026)

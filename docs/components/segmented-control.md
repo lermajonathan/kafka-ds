@@ -4,7 +4,7 @@
 A strip of two to five mutually exclusive options, one always selected: a view, a format, a period.
 
 ```tsx
-import { SegmentedControl } from '@kafka/react'
+import { SegmentedControl } from '@kafka-ds/react'
 ```
 
 ## When to use it

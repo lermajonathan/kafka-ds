@@ -4,7 +4,7 @@
 A list of actions opened from a button.
 
 ```tsx
-import { Menu } from '@kafka/react'
+import { Menu } from '@kafka-ds/react'
 ```
 
 ## When to use it

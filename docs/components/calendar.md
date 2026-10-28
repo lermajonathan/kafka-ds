@@ -4,7 +4,7 @@
 A month grid for choosing a date.
 
 ```tsx
-import { Calendar } from '@kafka/react'
+import { Calendar } from '@kafka-ds/react'
 ```
 
 ## When to use it

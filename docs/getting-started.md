@@ -2,7 +2,7 @@
 
 Kafka es un sistema de diseño para la literatura en pantalla: tipografía de lectura primero, interfaz accesible después. Tiene tres piezas que se pueden usar por separado: los **tokens** (variables CSS), los **componentes** de React y el **módulo de impresión**.
 
-> **Estado: pre-1.0.** Los paquetes `@kafka/tokens` y `@kafka/react` todavía no están en npm: se publican con la versión 1.0.0, cuando el sistema esté completo. Mientras tanto se usa desde el repositorio.
+> **Estado: 1.0.0.** Los paquetes `@kafka-ds/tokens`, `@kafka-ds/react` y `@kafka-ds/theme-altazor` están en npm. También puedes usar Kafka desde el repositorio, como se explica abajo.
 
 ## 1. Pruébalo
 
@@ -37,7 +37,7 @@ El modo oscuro sigue al sistema. Para forzarlo, `<html data-theme="dark">`; para
 Envuelve la aplicación en `KafkaProvider` (textos de la interfaz) y en `ThemeProvider` (modo claro, oscuro o sistema). Pon `themeInitScript()` en el `<head>` para que la primera pintura ya tenga el tema correcto.
 
 ```tsx
-import { KafkaProvider, ThemeProvider, ThemeToggle, Button, labelsEs } from '@kafka/react'
+import { KafkaProvider, ThemeProvider, ThemeToggle, Button, labelsEs } from '@kafka-ds/react'
 
 export function App() {
   return (

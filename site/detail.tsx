@@ -78,7 +78,7 @@ function Detail({ id }: { id: string }) {
         </div>
         <div className="d-facts">
           <p className="l-mono l-muted">Importar</p>
-          <pre data-import tabIndex={0}><code>{parts?.importLine ?? `import { ${c.name} } from '@kafka/react'`}</code></pre>
+          <pre data-import tabIndex={0}><code>{parts?.importLine ?? `import { ${c.name} } from '@kafka-ds/react'`}</code></pre>
           <dl>
             <div><dt>Familia</dt><dd>{familyName(family)}</dd></div>
             <div><dt>Ejemplos</dt><dd>{examples === null ? '…' : examples.length}</dd></div>

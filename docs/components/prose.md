@@ -4,7 +4,7 @@
 The reading column: styles paragraphs, headings, lists, links, block quotes and rules inside a 66-character line.
 
 ```tsx
-import { Prose } from '@kafka/react'
+import { Prose } from '@kafka-ds/react'
 ```
 
 ## When to use it

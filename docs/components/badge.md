@@ -4,7 +4,7 @@
 A short label for a status or category, with an icon and a border on status tones.
 
 ```tsx
-import { Badge } from '@kafka/react'
+import { Badge } from '@kafka-ds/react'
 ```
 
 ## When to use it

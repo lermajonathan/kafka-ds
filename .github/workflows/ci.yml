@@ -63,6 +63,8 @@ jobs:
       # ── Packages ────────────────────────────────────────────────────────────
       - name: Build packages
         run: pnpm run build:packages
+      - name: Release readiness (scope, versions, publish workflow)
+        run: pnpm run test:release
       - name: Packages install and work in a fresh project
         run: pnpm run test:packages
 

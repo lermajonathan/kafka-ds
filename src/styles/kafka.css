@@ -1,5 +1,5 @@
-/* Kafka · compiled stylesheet entry (used by the playground and the @kafka/react build).
-   Apps that already run Tailwind v4 import '@kafka/react/tailwind.css' instead. */
+/* Kafka · compiled stylesheet entry (used by the playground and the @kafka-ds/react build).
+   Apps that already run Tailwind v4 import '@kafka-ds/react/tailwind.css' instead. */
 @import 'tailwindcss';
 /* Tailwind scans relative to the build root; point it at the sources explicitly. */
 @source '../components';

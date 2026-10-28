@@ -4,7 +4,7 @@
 Links to the texts before and after this one, with their titles.
 
 ```tsx
-import { PrevNext } from '@kafka/react'
+import { PrevNext } from '@kafka-ds/react'
 ```
 
 ## When to use it

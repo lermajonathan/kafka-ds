@@ -4,7 +4,7 @@
 A short label that describes a control on focus or hover.
 
 ```tsx
-import { Tooltip } from '@kafka/react'
+import { Tooltip } from '@kafka-ds/react'
 ```
 
 ## When to use it

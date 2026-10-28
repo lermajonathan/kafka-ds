@@ -4,7 +4,7 @@
 A multi-line text field with the same look as Input.
 
 ```tsx
-import { Textarea } from '@kafka/react'
+import { Textarea } from '@kafka-ds/react'
 ```
 
 ## When to use it

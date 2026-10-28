@@ -4,7 +4,7 @@
 A small number for pending items, such as unread notifications.
 
 ```tsx
-import { CountBadge } from '@kafka/react'
+import { CountBadge } from '@kafka-ds/react'
 ```
 
 ## When to use it

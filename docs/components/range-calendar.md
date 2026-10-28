@@ -4,7 +4,7 @@
 A month grid for choosing a first and a last day.
 
 ```tsx
-import { RangeCalendar } from '@kafka/react'
+import { RangeCalendar } from '@kafka-ds/react'
 ```
 
 ## When to use it

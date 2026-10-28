@@ -4,7 +4,7 @@
 A date field that can be typed or picked from a calendar.
 
 ```tsx
-import { DatePicker } from '@kafka/react'
+import { DatePicker } from '@kafka-ds/react'
 ```
 
 ## When to use it

@@ -4,7 +4,7 @@
 A button with only an icon, 44 × 44 px, always named by a required label.
 
 ```tsx
-import { IconButton } from '@kafka/react'
+import { IconButton } from '@kafka-ds/react'
 ```
 
 ## When to use it

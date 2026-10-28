@@ -4,7 +4,7 @@
 Buttons that belong together, with consistent spacing and a name for assistive technology.
 
 ```tsx
-import { ButtonGroup } from '@kafka/react'
+import { ButtonGroup } from '@kafka-ds/react'
 ```
 
 ## When to use it

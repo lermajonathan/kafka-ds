@@ -4,7 +4,7 @@
 An on/off control for settings that apply immediately.
 
 ```tsx
-import { Switch } from '@kafka/react'
+import { Switch } from '@kafka-ds/react'
 ```
 
 ## When to use it

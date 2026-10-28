@@ -4,7 +4,7 @@
 A placeholder shaped like the content that is loading.
 
 ```tsx
-import { Skeleton } from '@kafka/react'
+import { Skeleton } from '@kafka-ds/react'
 ```
 
 ## When to use it

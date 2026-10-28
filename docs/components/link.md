@@ -4,7 +4,7 @@
 An underlined link with a visible focus ring, distinct hover and visited colours, and a safe external variant.
 
 ```tsx
-import { Link } from '@kafka/react'
+import { Link } from '@kafka-ds/react'
 ```
 
 ## When to use it

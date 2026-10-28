@@ -4,7 +4,7 @@
 A small non-modal panel anchored to a button.
 
 ```tsx
-import { Popover } from '@kafka/react'
+import { Popover } from '@kafka-ds/react'
 ```
 
 ## When to use it

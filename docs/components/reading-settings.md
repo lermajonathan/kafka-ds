@@ -4,7 +4,7 @@
 The reader's controls: text size, line width, typeface and theme.
 
 ```tsx
-import { ReadingSettings } from '@kafka/react'
+import { ReadingSettings } from '@kafka-ds/react'
 ```
 
 ## When to use it

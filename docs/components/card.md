@@ -4,7 +4,7 @@
 A bordered surface with a resting shadow for grouping related content.
 
 ```tsx
-import { Card } from '@kafka/react'
+import { Card } from '@kafka-ds/react'
 ```
 
 ## When to use it

@@ -4,7 +4,7 @@
 An image with a caption and a credit, cropped to a ratio.
 
 ```tsx
-import { Figure } from '@kafka/react'
+import { Figure } from '@kafka-ds/react'
 ```
 
 ## When to use it

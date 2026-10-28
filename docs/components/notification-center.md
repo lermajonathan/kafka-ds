@@ -4,7 +4,7 @@
 A bell with an unread count that opens a list of notifications the reader can review later.
 
 ```tsx
-import { NotificationCenter } from '@kafka/react'
+import { NotificationCenter } from '@kafka-ds/react'
 ```
 
 ## When to use it

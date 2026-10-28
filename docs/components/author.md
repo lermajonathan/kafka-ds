@@ -4,7 +4,7 @@
 A byline: portrait or initials, name, role and an optional bio.
 
 ```tsx
-import { Author } from '@kafka/react'
+import { Author } from '@kafka-ds/react'
 ```
 
 ## When to use it

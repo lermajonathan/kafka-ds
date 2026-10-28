@@ -4,7 +4,7 @@
 Switches between related panels of content in the same place.
 
 ```tsx
-import { Tabs } from '@kafka/react'
+import { Tabs } from '@kafka-ds/react'
 ```
 
 ## When to use it

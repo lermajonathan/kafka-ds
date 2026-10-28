@@ -4,7 +4,7 @@
 A list of checkboxes under one question, with an optional "select all" that shows the mixed state.
 
 ```tsx
-import { CheckboxGroup } from '@kafka/react'
+import { CheckboxGroup } from '@kafka-ds/react'
 ```
 
 ## When to use it

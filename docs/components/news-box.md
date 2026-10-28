@@ -4,7 +4,7 @@
 A small box of community news: events, congratulations, notices and open calls. It can float in a corner of the screen.
 
 ```tsx
-import { NewsBox } from '@kafka/react'
+import { NewsBox } from '@kafka-ds/react'
 ```
 
 ## When to use it

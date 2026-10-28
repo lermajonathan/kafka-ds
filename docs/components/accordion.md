@@ -4,7 +4,7 @@
 Titles that expand and collapse their content in place.
 
 ```tsx
-import { Accordion } from '@kafka/react'
+import { Accordion } from '@kafka-ds/react'
 ```
 
 ## When to use it

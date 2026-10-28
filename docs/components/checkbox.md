@@ -4,7 +4,7 @@
 A native checkbox with a Kafka box and mark, an optional description and an indeterminate state.
 
 ```tsx
-import { Checkbox } from '@kafka/react'
+import { Checkbox } from '@kafka-ds/react'
 ```
 
 ## When to use it

@@ -4,7 +4,7 @@
 A toggle for filtering a list: a button with `aria-pressed` and a check when selected.
 
 ```tsx
-import { Chip } from '@kafka/react'
+import { Chip } from '@kafka-ds/react'
 ```
 
 ## When to use it

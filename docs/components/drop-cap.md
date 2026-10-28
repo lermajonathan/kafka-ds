@@ -4,7 +4,7 @@
 A paragraph whose first letter is a large gold initial, made with CSS so the text stays one ordinary paragraph.
 
 ```tsx
-import { DropCap } from '@kafka/react'
+import { DropCap } from '@kafka-ds/react'
 ```
 
 ## When to use it

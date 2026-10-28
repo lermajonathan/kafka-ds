@@ -4,7 +4,7 @@
 A short text that is edited in place: it looks like text, becomes a field on click and goes back when saved.
 
 ```tsx
-import { InlineEdit } from '@kafka/react'
+import { InlineEdit } from '@kafka-ds/react'
 ```
 
 ## When to use it

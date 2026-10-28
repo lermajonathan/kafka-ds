@@ -4,7 +4,7 @@
 The vertical navigation of an app or dashboard: links with icons, groups that open, the current page marked.
 
 ```tsx
-import { NavMenu } from '@kafka/react'
+import { NavMenu } from '@kafka-ds/react'
 ```
 
 ## When to use it

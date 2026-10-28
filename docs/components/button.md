@@ -4,7 +4,7 @@
 Starts an action: sending a form, enrolling, moving to the next step. Gold primary, soft and outline variants, at least 44 px tall.
 
 ```tsx
-import { Button } from '@kafka/react'
+import { Button } from '@kafka-ds/react'
 ```
 
 ## When to use it

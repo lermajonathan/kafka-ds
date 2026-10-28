@@ -4,7 +4,7 @@
 Free-form tags that are typed and removed, each with its own button.
 
 ```tsx
-import { TagInput } from '@kafka/react'
+import { TagInput } from '@kafka-ds/react'
 ```
 
 ## When to use it

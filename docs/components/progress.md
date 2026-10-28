@@ -4,7 +4,7 @@
 A bar showing how far a task has got.
 
 ```tsx
-import { Progress } from '@kafka/react'
+import { Progress } from '@kafka-ds/react'
 ```
 
 ## When to use it

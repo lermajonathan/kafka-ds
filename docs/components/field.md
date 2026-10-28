@@ -4,7 +4,7 @@
 Connects a label, a hint and an error to the control inside it.
 
 ```tsx
-import { Field } from '@kafka/react'
+import { Field } from '@kafka-ds/react'
 ```
 
 ## When to use it

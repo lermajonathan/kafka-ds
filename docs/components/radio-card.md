@@ -4,7 +4,7 @@
 A single choice presented as cards, each with a title, a description, an icon and an optional badge. `RadioCardGroup` holds them; `RadioCard` is one card.
 
 ```tsx
-import { RadioCardGroup } from '@kafka/react'
+import { RadioCardGroup } from '@kafka-ds/react'
 ```
 
 ## When to use it

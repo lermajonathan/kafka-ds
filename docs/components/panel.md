@@ -4,7 +4,7 @@
 A card with a header, body, footer and optional collapse.
 
 ```tsx
-import { Panel } from '@kafka/react'
+import { Panel } from '@kafka-ds/react'
 ```
 
 ## When to use it

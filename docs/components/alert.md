@@ -4,7 +4,7 @@
 A message inside the page that informs, confirms, warns or reports a problem, without interrupting.
 
 ```tsx
-import { Alert } from '@kafka/react'
+import { Alert } from '@kafka-ds/react'
 ```
 
 ## When to use it

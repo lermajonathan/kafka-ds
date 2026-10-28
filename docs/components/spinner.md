@@ -4,7 +4,7 @@
 Progress with no known duration.
 
 ```tsx
-import { Spinner } from '@kafka/react'
+import { Spinner } from '@kafka-ds/react'
 ```
 
 ## When to use it
