@@ -43,6 +43,7 @@ if (fs.existsSync(wfPath)) {
   for (const pkg of ['tokens', 'react', 'theme-altazor']) check(wf.includes(`packages/${pkg}`), `release.yml publishes packages/${pkg}`)
   check(/github\.ref_name|GITHUB_REF_NAME|release\.tag_name/.test(wf), 'release.yml compares the tag with the package versions')
   check(/pnpm (run )?verify|pnpm (run )?test:packages/.test(wf), 'release.yml tests before it publishes')
+  check(/poppler-utils/.test(wf), 'release.yml installs poppler-utils (the print tests in verify need pdfinfo)')
   check(/--dry-run/.test(wf), 'release.yml can dry-run the publish')
 }
 

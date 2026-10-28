@@ -37,6 +37,8 @@ jobs:
             if [ "$v" != "$tag" ]; then echo "::error::Tag v$tag does not match packages/$pkg ($v)"; exit 1; fi
           done
 
+      - name: poppler (pdfinfo, pdffonts, pdftotext) for the print tests
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: pnpm run tokens
       - run: pnpm exec playwright install --with-deps chromium
       - name: Full gate
