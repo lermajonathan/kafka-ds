@@ -95,7 +95,8 @@ export function checkGeometry({ check }, pdf, expectedMm, edgeMm = 5) {
  */
 export const checkReadingFont = (check, rows) => {
   check(rows.some((r) => /Literata/i.test(r)), 'the PDF must embed Literata: the reading text needs the self-hosted font, not a fallback')
-  const fallback = rows.filter((r) => /Liberation|DejaVu|Georgia|Times|FreeSerif|NimbusRoman/i.test(r))
+  const fallback = rows.filter((r) => /LiberationSerif|DejaVuSerif|Georgia|Times|FreeSerif|NimbusRoman/i.test(r))
+  // Only serif replacements count: the UI text uses the system font (system-ui), which is Inter on one machine and DejaVu Sans on a CI runner.
   check(fallback.length === 0, `a serif fallback replaced Literata: ${fallback.map((r) => r.split(/\s+/)[0]).join(', ')}`)
 }
 
@@ -107,4 +108,17 @@ export const linesOf = (words) => {
     if (last && Math.abs(last.y1 - w.y1) < 2.5) last.words.push(w); else out.push({ y1: w.y1, words: [w] })
   }
   return out.map((l) => ({ ...l, x0: Math.min(...l.words.map((w) => w.x0)), text: l.words.map((w) => w.t).join(' ') }))
+}
+
+// Every character a print template shows must be one Literata ships (its @font-face unicode-range). A character outside it
+// is drawn by whatever font the machine has — DejaVu on a CI runner, something else on a Mac — so the PDF changes with the machine.
+export function checkTemplateGlyphs(check, htmlFiles) {
+  const css = fs.readFileSync(path.join(root, 'src/styles/fonts.css'), 'utf8')
+  const ranges = [...css.matchAll(/unicode-range:\s*([^;]+);/g)].flatMap((m) => [...m[1].matchAll(/U\+([0-9A-Fa-f]+)(?:-([0-9A-Fa-f]+))?/g)].map((r) => [parseInt(r[1], 16), parseInt(r[2] ?? r[1], 16)]))
+  const covered = (cp) => ranges.some(([a, b]) => cp >= a && cp <= b)
+  for (const file of htmlFiles) {
+    const html = fs.readFileSync(file, 'utf8').replace(/<!--[\s\S]*?-->/g, '').replace(/<(script|style)[\s\S]*?<\/\1>/g, '').replace(/<[^>]+>/g, '') // visible text only
+    const missing = [...new Set([...html].filter((c) => c.codePointAt(0) > 0x7f && !covered(c.codePointAt(0))))]
+    check(missing.length === 0, `${path.relative(root, file)} shows characters Literata does not ship: ${missing.map((c) => `${c} (U+${c.codePointAt(0).toString(16).toUpperCase()})`).join(', ')}`)
+  }
 }

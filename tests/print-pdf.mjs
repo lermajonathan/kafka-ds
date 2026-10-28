@@ -11,7 +11,7 @@ import { createElement as h } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { chromium } from 'playwright'
 import { tsImport } from 'tsx/esm/api'
-import { checkReadingFont } from './lib/pdf.mjs'
+import { checkReadingFont, checkTemplateGlyphs, root as repoRoot } from './lib/pdf.mjs'
 
 const root = path.resolve(import.meta.dirname, '..')
 const MM_TO_PT = 72 / 25.4
@@ -122,6 +122,7 @@ for (const row of fontRows) {
 }
 
 checkReadingFont(check, fontRows)
+checkTemplateGlyphs(check, ['book', 'magazine', 'sheet'].map((n) => path.join(repoRoot, 'templates/print', `${n}.html`)))
 
 // 4 · No cut text: the last word survives, and no word sits outside the printable area
 const text = tool('pdftotext', '-layout', pdfFile, '-')
