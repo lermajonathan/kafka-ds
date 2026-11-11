@@ -1,4 +1,4 @@
-// The examples point at files served from the root ("/portada.svg"). The site lives under a base path (/kafka-ds/),
+// The examples point at files served from the root ("/portada.svg"). If the site is ever served under a base path (KAFKA_SITE_BASE),
 // so every host element gets its root-relative src/href/poster prefixed as it is created: no request ever goes to the wrong place.
 // Vite aliases react/jsx-runtime to this file for the site only; the library and the playground are untouched.
 // @ts-expect-error — the real runtime, imported by path because "react/jsx-runtime" is aliased to this file
