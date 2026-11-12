@@ -6,7 +6,7 @@ import { chromium } from 'playwright'
 
 const PORT = Number(process.env.KAFKA_SITE_PORT ?? 4174)
 const ORIGIN = `http://localhost:${PORT}`
-const BASE = `${ORIGIN}/kafka-ds/`
+const BASE = `${ORIGIN}/`
 const axeSource = fs.readFileSync(new URL('../node_modules/axe-core/axe.min.js', import.meta.url), 'utf8')
 const failures = []
 const check = (ok, msg) => { if (!ok) failures.push(msg) }
@@ -25,7 +25,7 @@ try {
   const errors = [], foreign = []
   page.on('pageerror', (e) => errors.push(e.message))
   page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errors.push(m.text()) }) // failed loads are reported by the response listener
-  page.on('response', (r) => { if (r.status() >= 400 && !r.url().endsWith('/kafka-ds/no-existe.jpg')) errors.push(`${r.status()} ${r.url()}`) })
+  page.on('response', (r) => { if (r.status() >= 400 && !r.url().endsWith('/no-existe.jpg')) errors.push(`${r.status()} ${r.url()}`) })
   page.on('request', (r) => { if (!r.url().startsWith(ORIGIN) && !r.url().startsWith('data:')) foreign.push(r.url()) })
   const go = async (hash) => { await page.goto(BASE + (hash ? '#' + hash : '')); await page.waitForSelector('main h1') }
 

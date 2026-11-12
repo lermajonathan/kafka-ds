@@ -8,6 +8,8 @@ Sistema de diseño para la literatura en pantalla: legibilidad, contraste y tipo
 
 Kafka parte de la arquitectura de [Pance](https://github.com/lermajonathan/pance-ds) (tokens en tres capas, geometría, lista de componentes y controles de calidad) con una identidad propia: papel cálido, tinta y oro, y tipografía de lectura Literata.
 
+> **Documentación: [kafka-ds.jonathanlerma.com](https://kafka-ds.jonathanlerma.com/).**
+
 > **Estado: 1.0.0.** Kafka cumple el criterio de «completo» de [DDR-KF-004](docs/decisions/DDR-KF-004-alcance-v1.md) y se publica en npm bajo `@kafka-ds`: `@kafka-ds/tokens`, `@kafka-ds/react` y `@kafka-ds/theme-altazor`. El avance está en el [roadmap](docs/roadmap.md).
 
 ## Qué hay hoy

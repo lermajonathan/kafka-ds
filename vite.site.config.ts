@@ -1,4 +1,4 @@
-// Docs site: React app in /site, built from docs/*.md and the live examples. Served from GitHub Pages under /kafka-ds/.
+// Docs site: React app in /site, built from docs/*.md and the live examples. Served from GitHub Pages at its own domain (kafka-ds.jonathanlerma.com), so from the root.
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
@@ -46,14 +46,14 @@ function siteData(): Plugin {
 
 export default defineConfig({
   root: 'site',
-  base: process.env.KAFKA_SITE_BASE ?? '/kafka-ds/',
+  base: process.env.KAFKA_SITE_BASE ?? '/',
   publicDir: resolve(import.meta.dirname, 'playground/public'), // portada.svg, avatar.svg and embed-demo.html used by the examples
   plugins: [react(), tailwindcss(), siteData()],
   resolve: {
     alias: [
       { find: '@examples', replacement: resolve(import.meta.dirname, 'examples') },
       { find: '@', replacement: resolve(import.meta.dirname, 'src') },
-      // Examples use root-relative asset paths; under /kafka-ds/ they need the base. See site/jsx-runtime.ts.
+      // Examples use root-relative asset paths; under a sub-path they need the base. See site/jsx-runtime.ts.
       { find: /^react\/jsx-runtime$/, replacement: resolve(import.meta.dirname, 'site/jsx-runtime.ts') },
       { find: /^react\/jsx-dev-runtime$/, replacement: resolve(import.meta.dirname, 'site/jsx-dev-runtime.ts') },
     ],
